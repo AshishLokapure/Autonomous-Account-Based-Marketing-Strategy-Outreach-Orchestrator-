@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import { ArrowRight, BarChart3, CheckCircle2, Eye, EyeOff, LockKeyhole, Mail, ShieldCheck, Sparkles } from "lucide-react";
 import { createClient } from "@/lib/supabase";
 
+import { ArrowRight, BarChart3, CheckCircle2, Eye, LockKeyhole, Mail, ShieldCheck, Sparkles } from "lucide-react";
+
 export default function LoginTemplate({ children }: Readonly<{ children: React.ReactNode }>) {
   const router = useRouter();
   const supabase = createClient();

@@ -1,43 +1,22 @@
-"""SQLAlchemy engine, session factory, and declarative base."""
-
 from collections.abc import Generator
 
-from sqlalchemy import create_engine, text
+from sqlalchemy import create_engine
 from sqlalchemy.orm import DeclarativeBase, Session, sessionmaker
 
-from app.core.config import settings
-from app.core.logger import logger
-
-engine = create_engine(
-    settings.sqlalchemy_database_url,
-    pool_pre_ping=True,
-    pool_size=10,
-    max_overflow=20,
-    echo=False,
-)
-
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+from app.core.config import get_settings
 
 
 class Base(DeclarativeBase):
-    """Declarative base for all ORM models."""
+    """Base class for every AccountPilot relational model."""
+
+
+engine = create_engine(get_settings().database_url, pool_pre_ping=True, pool_size=5, max_overflow=10)
+SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False, expire_on_commit=False)
 
 
 def get_db() -> Generator[Session, None, None]:
-    """FastAPI dependency that yields a database session."""
-    db = SessionLocal()
+    database = SessionLocal()
     try:
-        yield db
+        yield database
     finally:
-        db.close()
-
-
-def check_database_connection() -> bool:
-    """Verify the database is reachable. Used by the health check and startup."""
-    try:
-        with engine.connect() as connection:
-            connection.execute(text("SELECT 1"))
-        return True
-    except Exception as exc:  # pragma: no cover - depends on external DB
-        logger.error(f"Database connection failed: {exc}")
-        return False
+        database.close()
