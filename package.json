@@ -1,0 +1,22 @@
+{
+  "name": "accountpilot-ai",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Autonomous Account-Based Marketing Strategy & Outreach Orchestrator",
+  "author": "Your Team",
+  "license": "MIT",
+  "packageManager": "pnpm@10",
+  "scripts": {
+    "dev": "pnpm --parallel --filter web dev --filter api dev",
+    "build": "pnpm -r build",
+    "lint": "pnpm -r lint",
+    "format": "pnpm -r format",
+    "test": "pnpm -r test",
+    "clean": "pnpm -r clean"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.0",
+    "prettier": "^3.5.0",
+    "eslint": "^9.0.0"
+  }
+}
