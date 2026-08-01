@@ -5,9 +5,14 @@ services:
   frontend:
     build:
       context: ./apps/web
+      args:
+        NEXT_PUBLIC_SUPABASE_URL: ${NEXT_PUBLIC_SUPABASE_URL}
+        NEXT_PUBLIC_SUPABASE_ANON_KEY: ${NEXT_PUBLIC_SUPABASE_ANON_KEY}
     container_name: accountpilot-frontend
     ports:
       - "3000:3000"
+    env_file:
+      - .env
     depends_on:
       - backend
 
@@ -23,14 +28,6 @@ services:
       - postgres
       - redis
       - qdrant
-
-  worker:
-    build:
-      context: ./apps/worker
-    container_name: accountpilot-worker
-    depends_on:
-      - backend
-      - redis
 
   postgres:
     image: postgres:16

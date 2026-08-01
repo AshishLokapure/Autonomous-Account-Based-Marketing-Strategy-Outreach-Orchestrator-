@@ -1,24 +1,206 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowRight, BarChart3, Building2, Check, CheckCircle2, ChevronDown, Cloud, Globe2, LayoutDashboard, Plus, Sparkles, Users } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { ArrowRight, Building2, Globe2, Sparkles } from "lucide-react";
+import { createClient } from "@/lib/supabase";
+import { useAuth } from "@/providers/auth-provider";
 import styles from "./onboarding.module.css";
 
-const industries = ["Technology", "Healthcare", "Finance", "Retail", "Manufacturing", "Education", "Telecommunications", "Automotive", "Other"];
-const goals = ["Generate Enterprise Leads", "Increase Product Sales", "Personalized Outreach", "Competitor Analysis", "Pipeline Growth", "Upsell Existing Customers", "Customer Retention", "Market Expansion", "Other"];
-const integrations = ["Salesforce CRM", "HubSpot", "Microsoft Dynamics", "Gmail", "Outlook", "Slack", "Microsoft Teams", "Zoom", "Google Meet", "SharePoint", "Notion", "Confluence", "Google Drive", "Website", "Knowledge Base"];
+const industries = [
+  "Software / SaaS",
+  "FinTech",
+  "Healthcare",
+  "E-commerce",
+  "Technology",
+  "Banking & Finance",
+  "Telecommunications",
+  "Manufacturing",
+  "Retail",
+  "Education",
+  "Logistics",
+  "Other",
+];
 
-export function PrimaryButton({ children, onClick, type = "button" }: { children: React.ReactNode; onClick?: () => void; type?: "button" | "submit" }) { return <button className={styles.primaryButton} type={type} onClick={onClick}>{children}<ArrowRight size={16}/></button>; }
-export function FormInput({ label, placeholder, type = "text" }: { label: string; placeholder: string; type?: string }) { return <label className={styles.fieldLabel}>{label}<input className={styles.input} type={type} placeholder={placeholder}/></label>; }
-export function Dropdown({ label, options, placeholder }: { label: string; options: string[]; placeholder: string }) { return <label className={styles.fieldLabel}>{label}<span className={styles.selectWrap}><select className={styles.input} defaultValue=""><option value="" disabled>{placeholder}</option>{options.map(option => <option key={option}>{option}</option>)}</select><ChevronDown size={15}/></span></label>; }
-export function Stepper({ step }: { step: number }) { return <div className={styles.stepper}>{["Organization", "Goals", "Products", "Connect"].map((label, index) => <div className={styles.step} key={label}><span className={step > index + 1 ? styles.complete : step === index + 1 ? styles.current : ""}>{step > index + 1 ? <Check size={14}/> : index + 1}</span><b>{label}</b>{index < 3 && <i className={step > index + 1 ? styles.completeLine : ""}/>}</div>)}</div>; }
-export function IntegrationCard({ name, connected, onConnect }: { name: string; connected: boolean; onConnect: () => void }) { return <article className={styles.integration}><span className={styles.integrationIcon}><Cloud size={17}/></span><div><b>{name}</b><small>{connected ? "Connected" : "Not connected"}</small></div><button className={connected ? styles.connected : styles.connect} onClick={onConnect}>{connected ? <Check size={14}/> : "Connect"}</button></article>; }
-export function ProductCard({ index, onRemove }: { index: number; onRemove?: () => void }) { return <article className={styles.productCard}><div className={styles.productHeading}><span><Sparkles size={16}/></span><b>Product {index}</b>{onRemove && <button onClick={onRemove}>Remove</button>}</div><div className={styles.gridTwo}><FormInput label="Product name" placeholder="e.g. AI Infrastructure Platform"/><FormInput label="Category" placeholder="e.g. Cloud & AI"/><FormInput label="Short description" placeholder="What does this product do?"/><FormInput label="Target audience" placeholder="e.g. Enterprise IT teams"/><FormInput label="Pain points solved" placeholder="Cost, speed, security..."/><FormInput label="Competitors" placeholder="e.g. AWS, Google Cloud"/><Dropdown label="Pricing model" placeholder="Select a model" options={["Subscription", "Usage-based", "One-time", "Custom enterprise"]}/><FormInput label="Product URL" placeholder="https://yourproduct.com"/></div></article>; }
+const companySizes = [
+  "1–50",
+  "51–200",
+  "201–500",
+  "501–1000",
+  "1001–5000",
+  "5000+",
+];
 
-function OrganizationStep({ next }: { next: () => void }) { return <><div className={styles.heading}><span>STEP 1 OF 4</span><h1>Tell us about your organization</h1><p>This helps AccountPilot tailor intelligence, research, and recommendations to your business.</p></div><div className={styles.gridTwo}><FormInput label="Organization name" placeholder="Your company name"/><Dropdown label="Industry" placeholder="Select industry" options={industries}/><Dropdown label="Company size" placeholder="Select company size" options={["1-50", "51-200", "201-1000", "1000-5000", "5000+"]}/><FormInput label="Website URL" placeholder="https://company.com"/><FormInput label="Country" placeholder="Select country"/><FormInput label="Time zone" placeholder="e.g. Asia/Kolkata"/></div><label className={styles.upload}><Building2 size={20}/><span><b>Upload your organization logo</b><small>PNG, JPG, or SVG up to 5MB</small></span><button type="button">Choose file</button></label><PrimaryButton onClick={next}>Continue</PrimaryButton></>; }
-function GoalsStep({ next }: { next: () => void }) { const [selected, setSelected] = useState<string[]>([goals[0], goals[2]]); const toggle = (goal: string) => setSelected(current => current.includes(goal) ? current.filter(item => item !== goal) : [...current, goal]); return <><div className={styles.heading}><span>STEP 2 OF 4</span><h1>What would you like our AI agents to achieve?</h1><p>Select the outcomes that matter most. You can refine these targets later.</p></div><div className={styles.goalGrid}>{goals.map(goal => <button className={selected.includes(goal) ? styles.goalSelected : styles.goal} onClick={() => toggle(goal)} key={goal}><i>{selected.includes(goal) && <Check size={14}/>}</i>{goal}</button>)}</div><div className={styles.gridTwo}><FormInput label="Campaign name" placeholder="e.g. Azure Enterprise Growth"/><FormInput label="Campaign objective" placeholder="What does success look like?"/><FormInput label="Target regions" placeholder="e.g. North America, EMEA"/><FormInput label="Target industries" placeholder="e.g. Finance, Healthcare"/><FormInput label="Target company size" placeholder="e.g. 1000+ employees"/><FormInput label="Monthly outreach goal" type="number" placeholder="e.g. 250"/><FormInput label="Budget" placeholder="e.g. $20,000 / month"/></div><PrimaryButton onClick={next}>Continue</PrimaryButton></>; }
-function ProductsStep({ next }: { next: () => void }) { const [count, setCount] = useState(1); return <><div className={styles.heading}><span>STEP 3 OF 4</span><h1>What products should our AI agents promote?</h1><p>Give the agents a clear understanding of your offers and the problems they solve.</p></div>{Array.from({ length: count }, (_, index) => <ProductCard key={index} index={index + 1} onRemove={count > 1 ? () => setCount(value => value - 1) : undefined}/>) }<button className={styles.addProduct} onClick={() => setCount(value => value + 1)}><Plus size={16}/> Add another product</button><PrimaryButton onClick={next}>Continue</PrimaryButton></>; }
-function ConnectStep({ finish }: { finish: () => void }) { const [connected, setConnected] = useState<string[]>(["Website"]); return <><div className={styles.heading}><span>STEP 4 OF 4</span><h1>Connect your business systems</h1><p>Connect your existing tools to give your agents a trusted, unified view of every account.</p></div><div className={styles.integrationGrid}>{integrations.map(name => <IntegrationCard key={name} name={name} connected={connected.includes(name)} onConnect={() => setConnected(current => current.includes(name) ? current.filter(item => item !== name) : [...current, name])}/>)}</div><label className={styles.later}><input type="checkbox"/> I&apos;ll connect these later</label><PrimaryButton onClick={finish}>Finish setup</PrimaryButton></>; }
-function Preview() { return <div className={styles.preview}><div className={styles.previewTop}><div><span>YOUR WORKSPACE IS READY</span><h1>Welcome, Microsoft</h1><p>Azure Enterprise Growth is ready for your next account moment.</p></div><button><LayoutDashboard size={16}/> View dashboard</button></div><div className={styles.stats}>{[["Connected sources","8",Globe2],["Products","3",Sparkles],["Target accounts","126",Users],["AI agents ready","6",CheckCircle2]].map(([label,value,Icon]) => { const IconComponent = Icon as typeof Globe2; return <article key={label as string}><span><IconComponent size={18}/></span><b>{value as string}</b><small>{label as string}</small></article>; })}</div><div className={styles.previewGrid}><article><h2>Quick actions</h2>{["Start research", "Generate target accounts", "Launch outreach campaign"].map(item => <button key={item}>{item}<ArrowRight size={15}/></button>)}</article><article><h2>Recent activity</h2><p><i/> Account intelligence workspace created</p><p><i/> Website source connected successfully</p><p><i/> Six AI agents ready to work</p></article></div></div> }
+export default function OnboardingPage() {
+  const router = useRouter();
+  const supabase = createClient();
+  const { user, refreshWorkspace } = useAuth();
 
-export default function OnboardingPage() { const [step, setStep] = useState(1); const [done, setDone] = useState(false); const next = () => setStep(value => Math.min(value + 1, 4)); return <main className={styles.page}><header className={styles.top}><a href="/login" className={styles.brand}><span><Sparkles size={17}/></span>ABM AI Orchestrator</a>{!done && <span className={styles.secure}>Secure onboarding</span>}</header>{done ? <Preview/> : <section className={styles.card}><Stepper step={step}/><div className={styles.stepContent}>{step === 1 && <OrganizationStep next={next}/>} {step === 2 && <GoalsStep next={next}/>} {step === 3 && <ProductsStep next={next}/>} {step === 4 && <ConnectStep finish={() => setDone(true)}/>}</div></section>}</main>; }
+  const [name, setName] = useState("");
+  const [website, setWebsite] = useState("");
+  const [industry, setIndustry] = useState("Software / SaaS");
+  const [companySize, setCompanySize] = useState("51–200");
+  const [country, setCountry] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!name.trim()) {
+      setError("Company / Workspace Name is required.");
+      return;
+    }
+
+    setLoading(true);
+    setError(null);
+
+    try {
+      if (!user) {
+        throw new Error("User not authenticated.");
+      }
+
+      // 1. Create workspace
+      const { data: workspaceData, error: wsError } = await supabase
+        .from("workspaces")
+        .insert({
+          name: name.trim(),
+          website: website.trim() || null,
+          industry,
+          company_size: companySize,
+          country: country.trim() || null,
+        })
+        .select("id")
+        .single();
+
+      if (wsError) throw wsError;
+
+      // 2. Add owner membership
+      const { error: memberError } = await supabase
+        .from("workspace_members")
+        .insert({
+          workspace_id: workspaceData.id,
+          user_id: user.id,
+          role: "owner",
+        });
+
+      if (memberError) throw memberError;
+
+      await refreshWorkspace();
+      router.push("/products");
+    } catch (err: any) {
+      setError(err.message || "Failed to create workspace. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <main className={styles.page}>
+      <header className={styles.top}>
+        <a href="/dashboard" className={styles.brand}>
+          <span>
+            <Sparkles size={17} />
+          </span>
+          AccountPilot AI
+        </a>
+        <span className={styles.secure}>Workspace Setup</span>
+      </header>
+
+      <section className={styles.card} style={{ maxWidth: 640 }}>
+        <div className={styles.stepContent} style={{ padding: "40px 48px" }}>
+          <div className={styles.heading}>
+            <span>WORKSPACE CREATION</span>
+            <h1>Create your workspace</h1>
+            <p>Tell us about your organization to personalize your account intelligence workspace.</p>
+          </div>
+
+          {error && (
+            <div style={{ background: "#fef2f2", border: "1px solid #fecaca", color: "#dc2626", padding: "10px 14px", borderRadius: 8, fontSize: 13, marginBottom: 20 }}>
+              {error}
+            </div>
+          )}
+
+          <form onSubmit={handleSubmit}>
+            <div style={{ display: "grid", gap: 18 }}>
+              <label className={styles.fieldLabel}>
+                Company / Workspace Name *
+                <input
+                  className={styles.input}
+                  placeholder="e.g. Northstar Revenue"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                />
+              </label>
+
+              <label className={styles.fieldLabel}>
+                Company website (optional)
+                <input
+                  className={styles.input}
+                  placeholder="https://northstarrevenue.com"
+                  value={website}
+                  onChange={(e) => setWebsite(e.target.value)}
+                />
+              </label>
+
+              <div className={styles.gridTwo}>
+                <label className={styles.fieldLabel}>
+                  Industry
+                  <span className={styles.selectWrap}>
+                    <select
+                      className={styles.input}
+                      value={industry}
+                      onChange={(e) => setIndustry(e.target.value)}
+                    >
+                      {industries.map((ind) => (
+                        <option key={ind} value={ind}>
+                          {ind}
+                        </option>
+                      ))}
+                    </select>
+                  </span>
+                </label>
+
+                <label className={styles.fieldLabel}>
+                  Company size
+                  <span className={styles.selectWrap}>
+                    <select
+                      className={styles.input}
+                      value={companySize}
+                      onChange={(e) => setCompanySize(e.target.value)}
+                    >
+                      {companySizes.map((sz) => (
+                        <option key={sz} value={sz}>
+                          {sz} employees
+                        </option>
+                      ))}
+                    </select>
+                  </span>
+                </label>
+              </div>
+
+              <label className={styles.fieldLabel}>
+                Country (optional)
+                <input
+                  className={styles.input}
+                  placeholder="e.g. United States, India"
+                  value={country}
+                  onChange={(e) => setCountry(e.target.value)}
+                />
+              </label>
+            </div>
+
+            <button
+              className={styles.primaryButton}
+              type="submit"
+              disabled={loading}
+              style={{ marginTop: 28, width: "100%", justifyContent: "center" }}
+            >
+              {loading ? "Creating workspace..." : "Create Workspace & Continue"} <ArrowRight size={16} />
+            </button>
+          </form>
+        </div>
+      </section>
+    </main>
+  );
+}
