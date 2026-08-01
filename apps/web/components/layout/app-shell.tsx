@@ -1,8 +1,9 @@
 "use client";
 
-import { Bell, Command, Moon, Sparkles, Search } from "lucide-react";
+import { Bell, Command, Moon, Search } from "lucide-react";
 import { Sidebar } from "./sidebar";
 import { useAuth } from "@/providers/auth-provider";
+import { RunCampaignButton } from "@/components/campaign/run-campaign-button";
 
 export function AppShell({ children, active }: { children: React.ReactNode; active?: string }) {
   const { profile } = useAuth();
@@ -38,9 +39,7 @@ export function AppShell({ children, active }: { children: React.ReactNode; acti
           <div className="avatar">{initials || "AP"}</div>
         </header>
         {children}
-        <button className="float-ai" aria-label="Open AccountPilot AI">
-          <Sparkles size={23} />
-        </button>
+        <RunCampaignButton />
       </main>
     </div>
   );
