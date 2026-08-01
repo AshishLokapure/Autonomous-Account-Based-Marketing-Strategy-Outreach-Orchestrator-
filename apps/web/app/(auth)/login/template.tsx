@@ -1,3 +1,5 @@
+"use client";
+
 import { ArrowRight, BarChart3, CheckCircle2, Eye, LockKeyhole, Mail, ShieldCheck, Sparkles } from "lucide-react";
 
 export default function LoginTemplate({ children }: Readonly<{ children: React.ReactNode }>) {

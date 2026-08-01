@@ -1,0 +1,1 @@
+"""AccountPilot AI FastAPI application."""
