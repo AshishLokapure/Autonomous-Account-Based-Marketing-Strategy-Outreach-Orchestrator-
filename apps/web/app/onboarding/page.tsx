@@ -38,8 +38,13 @@ export default function OnboardingPage() {
 
   const [name, setName] = useState("");
   const [website, setWebsite] = useState("");
-  const [industry, setIndustry] = useState("Software / SaaS");
+  const [selectedIndustries, setSelectedIndustries] = useState<string[]>([]);
   const [companySize, setCompanySize] = useState("51–200");
+
+  const toggleIndustry = (ind: string) =>
+    setSelectedIndustries(prev =>
+      prev.includes(ind) ? prev.filter(i => i !== ind) : [...prev, ind]
+    );
   const [country, setCountry] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -65,7 +70,7 @@ export default function OnboardingPage() {
         .insert({
           name: name.trim(),
           website: website.trim() || null,
-          industry,
+          industry: selectedIndustries.join(", "),
           company_size: companySize,
           country: country.trim() || null,
         })
@@ -86,7 +91,7 @@ export default function OnboardingPage() {
       if (memberError) throw memberError;
 
       await refreshWorkspace();
-      router.push("/products");
+      router.push("/dashboard");
     } catch (err: any) {
       setError(err.message || "Failed to create workspace. Please try again.");
     } finally {
@@ -144,22 +149,31 @@ export default function OnboardingPage() {
               </label>
 
               <div className={styles.gridTwo}>
-                <label className={styles.fieldLabel}>
-                  Industry
-                  <span className={styles.selectWrap}>
-                    <select
-                      className={styles.input}
-                      value={industry}
-                      onChange={(e) => setIndustry(e.target.value)}
-                    >
-                      {industries.map((ind) => (
-                        <option key={ind} value={ind}>
-                          {ind}
-                        </option>
-                      ))}
-                    </select>
-                  </span>
-                </label>
+                <div className={styles.fieldLabel}>
+                  Industry <span style={{ color: "#94a3b8", fontWeight: 400 }}>(select all that apply)</span>
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 8 }}>
+                    {industries.map(ind => (
+                      <button
+                        key={ind}
+                        type="button"
+                        onClick={() => toggleIndustry(ind)}
+                        style={{
+                          padding: "5px 12px",
+                          borderRadius: 20,
+                          border: selectedIndustries.includes(ind) ? "1.5px solid #2563eb" : "1.5px solid #dce2eb",
+                          background: selectedIndustries.includes(ind) ? "#eff6ff" : "#fff",
+                          color: selectedIndustries.includes(ind) ? "#2563eb" : "#64748b",
+                          fontSize: 12,
+                          fontWeight: selectedIndustries.includes(ind) ? 700 : 500,
+                          cursor: "pointer",
+                          transition: "0.15s",
+                        }}
+                      >
+                        {ind}
+                      </button>
+                    ))}
+                  </div>
+                </div>
 
                 <label className={styles.fieldLabel}>
                   Company size

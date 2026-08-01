@@ -45,16 +45,8 @@ export async function middleware(request: NextRequest) {
   }
 
   if (user && (pathname === "/login" || pathname === "/register")) {
-    // Authenticated user on auth pages → check workspace
-    const { data: membership } = await supabase
-      .from("workspace_members")
-      .select("workspace_id")
-      .eq("user_id", user.id)
-      .limit(1)
-      .single();
-
     const url = request.nextUrl.clone();
-    url.pathname = membership ? "/dashboard" : "/onboarding";
+    url.pathname = "/dashboard";
     return NextResponse.redirect(url);
   }
 
