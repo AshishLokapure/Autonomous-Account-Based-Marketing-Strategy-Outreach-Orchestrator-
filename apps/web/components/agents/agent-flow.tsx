@@ -608,7 +608,13 @@ export function AgentFlow() {
         .af-node.completed { border-color:#4ade80; animation:af-success .7s ease-out 1; }
         .af-node.failed { border-color:#f87171; background:#fffbfb; animation:af-shake .5s ease-in-out 1; }
 
-        .af-ring { position:absolute; inset:-7px; border-radius:21px; padding:2px; background:conic-gradient(from 0deg, transparent 0 300deg, #3b82f6 330deg, #8b5cf6 360deg); -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite:xor; mask-composite:exclude; animation:af-spin-ring 1.3s linear infinite; pointer-events:none; }
+        /* Fix: the ring previously animated transform:rotate on the whole element.
+           That only looks right on a circle — on these rectangular nodes (esp. the
+           470px-wide orchestrator) the rotating rounded-rect outline swept around
+           like a spinning line. Animate the conic-gradient's start angle instead,
+           so the highlight travels around the static border shape. */
+        @property --af-ring-angle { syntax:'<angle>'; inherits:false; initial-value:0deg; }
+        .af-ring { position:absolute; inset:-7px; border-radius:21px; padding:2px; background:conic-gradient(from var(--af-ring-angle), transparent 0 300deg, #3b82f6 330deg, #8b5cf6 360deg); -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite:xor; mask-composite:exclude; animation:af-ring-sweep 1.3s linear infinite; pointer-events:none; }
 
         .af-node-head { display:flex; align-items:center; gap:11px; }
         .af-node-icon { display:grid; place-items:center; width:34px; height:34px; border-radius:10px; flex-shrink:0; transition:filter .3s, opacity .3s; }
@@ -676,6 +682,7 @@ export function AgentFlow() {
 
         @keyframes af-dash { to { stroke-dashoffset:-16; } }
         @keyframes af-spin-ring { to { transform:rotate(360deg); } }
+        @keyframes af-ring-sweep { to { --af-ring-angle:360deg; } }
         @keyframes af-blink { 0%,100% { opacity:1; } 50% { opacity:.25; } }
         @keyframes af-border-flow { to { background-position:0 0, 300% 0; } }
         @keyframes af-glow { 0%,100% { box-shadow:0 0 0 0 rgba(59,130,246,.28), 0 10px 30px rgba(59,130,246,.18); } 50% { box-shadow:0 0 0 9px rgba(59,130,246,0), 0 10px 34px rgba(139,92,246,.28); } }

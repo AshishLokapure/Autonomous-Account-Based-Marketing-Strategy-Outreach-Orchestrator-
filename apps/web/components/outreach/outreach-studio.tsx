@@ -450,9 +450,20 @@ export function OutreachStudio() {
           font-family: 'Plus Jakarta Sans', sans-serif;
         }
         
+        /* ── Company Tabs Container ─────────────────── */
+        .company-tabs {
+          display: flex !important;
+          flex-direction: row !important;
+          flex-wrap: nowrap !important;
+          gap: 10px !important;
+          overflow-x: auto;
+          padding-bottom: 16px;
+          margin-bottom: 24px;
+        }
+
         /* ── Company Tabs with Avatars ─────────────── */
         .company-tab {
-          display: flex;
+          display: inline-flex;
           align-items: center;
           gap: 0.5rem;
           padding: 0.5rem 1rem 0.5rem 0.5rem;
@@ -465,6 +476,7 @@ export function OutreachStudio() {
           cursor: pointer;
           transition: all 0.2s ease;
           white-space: nowrap;
+          flex-shrink: 0;
         }
         .company-tab:hover {
           background: white;
@@ -497,9 +509,17 @@ export function OutreachStudio() {
           flex-shrink: 0;
         }
 
+        /* ── Channel Tab Bar Container ──────────────── */
+        .asset-header {
+          display: flex !important;
+          flex-direction: row !important;
+          align-items: center;
+          gap: 8px;
+        }
+
         /* ── Channel Tabs ──────────────────────────── */
         .tab-btn {
-          display: flex;
+          display: inline-flex;
           align-items: center;
           gap: 0.5rem;
           padding: 0.6rem 1.25rem;
@@ -509,6 +529,7 @@ export function OutreachStudio() {
           border-radius: 10px;
           transition: all 0.2s ease;
           position: relative;
+          flex-shrink: 0;
         }
         .tab-btn:hover {
           background: rgba(0,0,0,0.05);

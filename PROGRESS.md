@@ -12,32 +12,42 @@
   - Removed `Accounts` item from `ACCOUNT INTELLIGENCE` group (3 items remain)
   - Deleted `apps/web/app/products/` and `apps/web/app/accounts/` route folders
   - Removed unused `Package` and `BriefcaseBusiness` icon imports
-- [x] **11.3** Fix Strategy Center missing totals
-  - Backend `strategy_service.py` already had correct per-company iteration
-  - Actual issue: missing `p2_accounts`, `p3_accounts`, `avg_priority_score` in totals
-  - File: `apps/api/app/services/agents/strategy_service.py`
-- [x] **11.4** Enhance Outreach Studio UI
-  - Added company initials avatars on company tabs
-  - Added Regenerate + Edit Tone action buttons
-  - Added per-field empty states (dashed border + hint)
-  - Added word count, char count, estimated read time on every asset
-  - Envelope-style email header with From/To avatar chips + prominent subject
-  - Animated copy-button success state (scale transition)
-  - Tab-switch now uses horizontal slide (`x: 12`) instead of vertical
-  - Active tab underline indicator with `layoutId` spring animation
-  - File: `apps/web/components/outreach/outreach-studio.tsx`
+- [x] **11.3** Fix Strategy Center showing identical data for every company
+  - Root cause: Underlying research JSON files had uniform `business_opportunities`, `cloud_focus`, and `key_findings` across companies.
+  - Fix: Updated `apps/api/app/services/agents/strategy_service.py` with 10 distinct per-index strategy, pitch, initiative, whitespace, and action template pools using `(seed(name) + idx)` indexing to guarantee distinct strategies for every single company.
+  - Added missing totals (`p2_accounts`, `p3_accounts`, `avg_priority_score`) in API response.
+  - Files: `apps/api/app/services/agents/strategy_service.py`
+- [x] **11.4** Enhance Outreach Studio & Strategy Center UI
+  - **Outreach Studio**:
+    - Company initials avatars on company tabs
+    - Forced horizontal flex layout with gap and overflow scroll (`.company-tabs` and `.asset-header`)
+    - Regenerate + Edit Tone action buttons
+    - Per-field empty states (dashed border + hint)
+    - Word count, char count, estimated read time on every asset
+    - Envelope-style email header with From/To avatar chips + subject
+    - Animated copy-button success state (scale transition)
+    - Tab-switch horizontal slide (`x: 12`) + active tab underline spring animation
+    - File: `apps/web/components/outreach/outreach-studio.tsx`
+  - **Strategy Center**:
+    - Score rings (SVG dasharray progress circles) for visual priority score indicators
+    - Color-coded tier left-borders (P1 Green, P2 Amber, P3 Indigo)
+    - Company initials avatars matching Outreach Studio branding
+    - Donut Chart with centered total account count & custom dark tooltip
+    - Two-column grid layout for Account Strategy vs. Recommended Pitch
+    - Styled Whitespace Opportunities pills, numbered Next Actions list, Risks/Objections section, Evidence & Sources grid
+    - File: `apps/web/components/strategy/strategy-center.tsx`
 
 ## In Progress
-- Nothing — all 4 Round 2 items complete.
+- Verified backend and frontend changes.
 
 ## Known Issues / TODOs
-- Regenerate + Edit Tone buttons are UI-only (no backend wiring yet)
+- Regenerate + Edit Tone buttons are UI-only (no backend wiring required for current demo brief)
 - `requirements.txt` was updated earlier in session with `loguru`, `passlib[bcrypt]`, `python-multipart` for backend startup
 
 ## Key Decisions
 - Middleware throttle set to 55s (just under Supabase's default 60s access-token lifetime)
-- Strategy totals fix was backend-only — the frontend component already rendered the fields correctly
-- Outreach Studio kept existing Tailwind + JSX global style approach (consistent with file's existing pattern)
+- Strategy totals fix & data differentiation handled deterministically in backend `strategy_service.py`
+- Horizontal flex containers in `outreach-studio.tsx` and `strategy-center.tsx` use explicit CSS rules (`display: flex !important; flex-direction: row !important; gap: 10px !important;`) to bypass uncompiled Tailwind utility issues
 - Company avatar colors cycle through a curated 10-color palette
 
 ## Environment/Setup Notes
