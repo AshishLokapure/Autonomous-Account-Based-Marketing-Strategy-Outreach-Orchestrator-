@@ -1,16 +1,19 @@
 "use client";
 
-import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Rocket } from "lucide-react";
 
 export function RunCampaignButton() {
   const [hovered, setHovered] = useState(false);
+  const router = useRouter();
 
   const label = hovered ? "Start AI Marketing Campaign" : "Run Campaign";
 
   return (
     <motion.button
+      onClick={() => router.push("/agent-monitor")}
       onHoverStart={() => setHovered(true)}
       onHoverEnd={() => setHovered(false)}
       aria-label={label}

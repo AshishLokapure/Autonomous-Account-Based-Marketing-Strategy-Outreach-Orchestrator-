@@ -127,6 +127,7 @@ export function Sidebar({ active = "Dashboard" }: { active?: string }) {
   const [hoveredWs, setHoveredWs] = useState<string | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const contextRef = useRef<HTMLDivElement>(null);
+  const navScrollRef = useRef<HTMLDivElement>(null);
 
   const workspaceName = workspace?.name || "No workspace";
   const userName = profile?.full_name || "User";
@@ -224,13 +225,29 @@ export function Sidebar({ active = "Dashboard" }: { active?: string }) {
           )}
         </div>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: 16, overflowY: "auto", paddingBottom: 10 }}>
+        <div
+          ref={navScrollRef}
+          style={{ display: "flex", flexDirection: "column", gap: 16, overflowY: "auto", paddingBottom: 10 }}
+        >
           {navigationGroups.map((group, gIdx) => (
             <div key={gIdx}>
               {group.label && <div className="nav-label">{group.label}</div>}
               <nav className="nav">
                 {group.items.map(({ label, href, icon: Icon }) => (
-                  <a className={active === label ? "active" : ""} href={href} key={label}>
+                  <a
+                    key={label}
+                    className={active === label ? "active" : ""}
+                    href={href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      const scrollTop = navScrollRef.current?.scrollTop ?? 0;
+                      router.push(href);
+                      // Restore scroll after navigation paint
+                      requestAnimationFrame(() => {
+                        if (navScrollRef.current) navScrollRef.current.scrollTop = scrollTop;
+                      });
+                    }}
+                  >
                     <Icon size={17} /><span>{label}</span>
                   </a>
                 ))}

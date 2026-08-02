@@ -5,6 +5,8 @@ import { Sidebar } from "./sidebar";
 import { useAuth } from "@/providers/auth-provider";
 import { RunCampaignButton } from "@/components/campaign/run-campaign-button";
 
+const CAMPAIGN_BUTTON_PAGES = ["Agent Monitor", "Research Center", "Stakeholders", "Intent Signals"];
+
 export function AppShell({ children, active }: { children: React.ReactNode; active?: string }) {
   const { profile } = useAuth();
   const userName = profile?.full_name || "John Smith";
@@ -14,6 +16,8 @@ export function AppShell({ children, active }: { children: React.ReactNode; acti
     .join("")
     .substring(0, 2)
     .toUpperCase();
+
+  const showCampaignButton = active ? CAMPAIGN_BUTTON_PAGES.includes(active) : false;
 
   return (
     <div className="app-shell">
@@ -39,7 +43,7 @@ export function AppShell({ children, active }: { children: React.ReactNode; acti
           <div className="avatar">{initials || "AP"}</div>
         </header>
         {children}
-        <RunCampaignButton />
+        {showCampaignButton && <RunCampaignButton />}
       </main>
     </div>
   );
