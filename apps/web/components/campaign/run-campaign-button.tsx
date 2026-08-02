@@ -13,7 +13,7 @@ export function RunCampaignButton() {
 
   return (
     <motion.button
-      onClick={() => router.push("/agent-monitor")}
+      onClick={() => router.push("/agent-monitor?autostart=1")}
       onHoverStart={() => setHovered(true)}
       onHoverEnd={() => setHovered(false)}
       aria-label={label}

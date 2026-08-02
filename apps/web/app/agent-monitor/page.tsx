@@ -1,2 +1,15 @@
-import { FeaturePage } from "@/components/common/feature-page";
-export default function AgentMonitorPage(){return <FeaturePage active="Agent Monitor" eyebrow="AI OPERATIONS" title="Agent Monitor" description="Observe the specialized AI agents that keep your account intelligence current." metric="6/6" metricLabel="Agents online" items={[{title:"Research Agent",detail:"Scanning approved sources for new company, market, and competitor context.",tag:"Running"},{title:"Intent Agent",detail:"Scoring verified account signals against the active buying model.",tag:"Completed"},{title:"Verification Agent",detail:"Checking recommendations for evidence, confidence, and unsupported claims.",tag:"Protected"}]}/>}
+import { Suspense } from "react";
+import { AppShell } from "@/components/layout/app-shell";
+import { AgentFlow } from "@/components/agents/agent-flow";
+
+export default function AgentMonitorPage() {
+  return (
+    <AppShell active="Agent Monitor">
+      <div className="content">
+        <Suspense fallback={null}>
+          <AgentFlow />
+        </Suspense>
+      </div>
+    </AppShell>
+  );
+}
