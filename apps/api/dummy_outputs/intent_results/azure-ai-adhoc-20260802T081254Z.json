@@ -1,0 +1,4935 @@
+{
+  "company": "All Campaign Companies",
+  "product": "Azure AI",
+  "campaign_id": null,
+  "status": "completed",
+  "execution_time": 0.03,
+  "companies": 10,
+  "average_intent": 80,
+  "high_intent_companies": [
+    "Infosys",
+    "TCS",
+    "Wipro",
+    "HCLTech",
+    "Tech Mahindra",
+    "Cognizant",
+    "Accenture",
+    "Capgemini",
+    "LTIMindtree",
+    "Persistent Systems"
+  ],
+  "intent_analysis": [
+    {
+      "company": "Capgemini",
+      "company_name": "Capgemini",
+      "product": "Azure AI",
+      "intent_score": 83,
+      "intent_level": "High",
+      "purchase_probability": 81,
+      "buying_score": 81,
+      "confidence": 67,
+      "buying_stage": "Technical Evaluation",
+      "purchase_window": "30-60 Days",
+      "positive_signals": [
+        {
+          "signal": "Migration Planned",
+          "weight": 15,
+          "source": "research",
+          "confidence": 95,
+          "evidence": "Migration Planned matched 7 time(s) in research",
+          "occurrences": 7
+        },
+        {
+          "signal": "Executive Meeting",
+          "weight": 15,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Executive Meeting matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        },
+        {
+          "signal": "Hiring AI Engineers",
+          "weight": 12,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Hiring AI Engineers matched 1 time(s) in research",
+          "occurrences": 1
+        },
+        {
+          "signal": "Security Review",
+          "weight": 10,
+          "source": "research",
+          "confidence": 75,
+          "evidence": "Security Review matched 2 time(s) in research",
+          "occurrences": 2
+        },
+        {
+          "signal": "Security Review",
+          "weight": 10,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Security Review matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        },
+        {
+          "signal": "Pricing Requested",
+          "weight": 10,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Pricing Requested matched 1 time(s) in research",
+          "occurrences": 1
+        },
+        {
+          "signal": "Procurement Discussion",
+          "weight": 10,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Procurement Discussion matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        },
+        {
+          "signal": "Cloud Expansion",
+          "weight": 10,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Cloud Expansion matched 1 time(s) in research",
+          "occurrences": 1
+        }
+      ],
+      "negative_signals": [],
+      "signal_breakdown": {
+        "buying_signals": 100,
+        "stakeholder_importance": 58.83,
+        "research_confidence": 94,
+        "technology_match": 60,
+        "executive_participation": 100,
+        "urgency": 55,
+        "positive_sentiment": 58,
+        "negative_signals": 0
+      },
+      "matched_keywords": [
+        {
+          "keyword": "Azure",
+          "category": "technology",
+          "occurrences": 30,
+          "sources": [
+            "research",
+            "stakeholder",
+            "meetings"
+          ]
+        },
+        {
+          "keyword": "Azure AI",
+          "category": "technology",
+          "occurrences": 5,
+          "sources": [
+            "research",
+            "stakeholder"
+          ]
+        },
+        {
+          "keyword": "Azure OpenAI",
+          "category": "technology",
+          "occurrences": 2,
+          "sources": [
+            "research"
+          ]
+        },
+        {
+          "keyword": "Azure Security",
+          "category": "technology",
+          "occurrences": 2,
+          "sources": [
+            "research",
+            "stakeholder"
+          ]
+        },
+        {
+          "keyword": "Cloud Modernization",
+          "category": "technology",
+          "occurrences": 1,
+          "sources": [
+            "research"
+          ]
+        },
+        {
+          "keyword": "AWS",
+          "category": "competitors",
+          "occurrences": 5,
+          "sources": [
+            "research",
+            "stakeholder",
+            "meetings"
+          ]
+        }
+      ],
+      "executive_involvement": [
+        {
+          "name": "Priya Rao",
+          "title": "VP Engineering",
+          "type": "decision_maker",
+          "influence": "High",
+          "score": 100,
+          "executive": true
+        },
+        {
+          "name": "Divya Reddy",
+          "title": "Head of Cloud Platform",
+          "type": "champion",
+          "influence": "High",
+          "score": 93,
+          "executive": true
+        },
+        {
+          "name": "Priya Rao",
+          "title": "Director, AI Initiatives",
+          "type": "champion",
+          "influence": "Medium",
+          "score": 55,
+          "executive": false
+        },
+        {
+          "name": "Ananya Krishnan",
+          "title": "Principal Cloud Architect",
+          "type": "influencer",
+          "influence": "Medium",
+          "score": 36,
+          "executive": false
+        },
+        {
+          "name": "Aditya Desai",
+          "title": "Engineering Manager, Platform",
+          "type": "influencer",
+          "influence": "Medium",
+          "score": 36,
+          "executive": false
+        },
+        {
+          "name": "Karthik Patel",
+          "title": "VP Procurement",
+          "type": "blocker",
+          "influence": "High",
+          "score": 33,
+          "executive": true
+        }
+      ],
+      "recommended_action": "Run a technical workshop with the decision maker and champion this week.",
+      "recommended_priority": "P1",
+      "explanation": {
+        "summary": "Capgemini scored 83/100 because of +15 Migration Planned (research), +15 Executive Meeting (stakeholder), +12 Hiring AI Engineers (research), +10 Security Review (research).",
+        "line_items": [
+          "+15 Migration Planned (research)",
+          "+15 Executive Meeting (stakeholder)",
+          "+12 Hiring AI Engineers (research)",
+          "+10 Security Review (research)",
+          "+10 Security Review (stakeholder)"
+        ],
+        "final_score": 83
+      },
+      "urgency": "High",
+      "predicted_timeline": "30-60 Days",
+      "objections": [
+        "No active blockers detected"
+      ],
+      "evidence": [
+        {
+          "source": "Website",
+          "fact": "Cloud modernization initiatives published"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Azure-related hiring observed"
+        },
+        {
+          "source": "Reddit",
+          "fact": "Azure enterprise discussions trending"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Hiring Azure Cloud Engineer, Cloud Architect \u2014 committee inferred from org signals"
+        },
+        {
+          "source": "Meetings",
+          "fact": "Buying roles referenced in recent meeting transcripts"
+        }
+      ]
+    },
+    {
+      "company": "TCS",
+      "company_name": "TCS",
+      "product": "Azure AI",
+      "intent_score": 81,
+      "intent_level": "High",
+      "purchase_probability": 80,
+      "buying_score": 80,
+      "confidence": 68,
+      "buying_stage": "Technical Evaluation",
+      "purchase_window": "30-60 Days",
+      "positive_signals": [
+        {
+          "signal": "Migration Planned",
+          "weight": 15,
+          "source": "research",
+          "confidence": 95,
+          "evidence": "Migration Planned matched 7 time(s) in research",
+          "occurrences": 7
+        },
+        {
+          "signal": "Executive Meeting",
+          "weight": 15,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Executive Meeting matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        },
+        {
+          "signal": "Hiring Azure Engineers",
+          "weight": 12,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Hiring Azure Engineers matched 1 time(s) in research",
+          "occurrences": 1
+        },
+        {
+          "signal": "Hiring AI Engineers",
+          "weight": 12,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Hiring AI Engineers matched 1 time(s) in research",
+          "occurrences": 1
+        },
+        {
+          "signal": "Security Review",
+          "weight": 10,
+          "source": "stakeholder",
+          "confidence": 85,
+          "evidence": "Security Review matched 3 time(s) in stakeholder",
+          "occurrences": 3
+        },
+        {
+          "signal": "Pricing Requested",
+          "weight": 10,
+          "source": "research",
+          "confidence": 85,
+          "evidence": "Pricing Requested matched 3 time(s) in research",
+          "occurrences": 3
+        },
+        {
+          "signal": "Security Review",
+          "weight": 10,
+          "source": "research",
+          "confidence": 75,
+          "evidence": "Security Review matched 2 time(s) in research",
+          "occurrences": 2
+        },
+        {
+          "signal": "Procurement Discussion",
+          "weight": 10,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Procurement Discussion matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        },
+        {
+          "signal": "Cloud Expansion",
+          "weight": 10,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Cloud Expansion matched 1 time(s) in research",
+          "occurrences": 1
+        }
+      ],
+      "negative_signals": [
+        {
+          "signal": "Security Concern",
+          "weight": -12,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Security Concern matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        }
+      ],
+      "signal_breakdown": {
+        "buying_signals": 100,
+        "stakeholder_importance": 63.0,
+        "research_confidence": 93,
+        "technology_match": 75,
+        "executive_participation": 100,
+        "urgency": 49,
+        "positive_sentiment": 57,
+        "negative_signals": 16
+      },
+      "matched_keywords": [
+        {
+          "keyword": "Azure",
+          "category": "technology",
+          "occurrences": 27,
+          "sources": [
+            "research",
+            "stakeholder",
+            "meetings"
+          ]
+        },
+        {
+          "keyword": "Azure AI",
+          "category": "technology",
+          "occurrences": 3,
+          "sources": [
+            "research",
+            "stakeholder"
+          ]
+        },
+        {
+          "keyword": "Azure OpenAI",
+          "category": "technology",
+          "occurrences": 3,
+          "sources": [
+            "research",
+            "stakeholder"
+          ]
+        },
+        {
+          "keyword": "Azure Security",
+          "category": "technology",
+          "occurrences": 3,
+          "sources": [
+            "research",
+            "stakeholder"
+          ]
+        },
+        {
+          "keyword": "Cloud Modernization",
+          "category": "technology",
+          "occurrences": 3,
+          "sources": [
+            "research"
+          ]
+        },
+        {
+          "keyword": "AWS",
+          "category": "competitors",
+          "occurrences": 4,
+          "sources": [
+            "research",
+            "stakeholder",
+            "meetings"
+          ]
+        }
+      ],
+      "executive_involvement": [
+        {
+          "name": "Vikram Gupta",
+          "title": "Chief Technology Officer",
+          "type": "decision_maker",
+          "influence": "High",
+          "score": 100,
+          "executive": true
+        },
+        {
+          "name": "Karthik Kulkarni",
+          "title": "VP Engineering",
+          "type": "decision_maker",
+          "influence": "High",
+          "score": 100,
+          "executive": true
+        },
+        {
+          "name": "Priya Desai",
+          "title": "Head of Cloud Platform",
+          "type": "champion",
+          "influence": "High",
+          "score": 93,
+          "executive": true
+        },
+        {
+          "name": "Ananya Bose",
+          "title": "Director, AI Initiatives",
+          "type": "champion",
+          "influence": "Medium",
+          "score": 55,
+          "executive": false
+        },
+        {
+          "name": "Kavya Nair",
+          "title": "Principal Cloud Architect",
+          "type": "influencer",
+          "influence": "Medium",
+          "score": 36,
+          "executive": false
+        },
+        {
+          "name": "Vikram Iyer",
+          "title": "VP Procurement",
+          "type": "blocker",
+          "influence": "High",
+          "score": 33,
+          "executive": true
+        },
+        {
+          "name": "Rahul Reddy",
+          "title": "Head of Information Security",
+          "type": "blocker",
+          "influence": "Medium",
+          "score": 24,
+          "executive": true
+        }
+      ],
+      "recommended_action": "Run a technical workshop with the decision maker and champion this week.",
+      "recommended_priority": "P1",
+      "explanation": {
+        "summary": "TCS scored 81/100 because of +15 Migration Planned (research), +15 Executive Meeting (stakeholder), +12 Hiring Azure Engineers (research), +12 Hiring AI Engineers (research).",
+        "line_items": [
+          "+15 Migration Planned (research)",
+          "+15 Executive Meeting (stakeholder)",
+          "+12 Hiring Azure Engineers (research)",
+          "+12 Hiring AI Engineers (research)",
+          "+10 Security Review (stakeholder)",
+          "-12 Security Concern (stakeholder)"
+        ],
+        "final_score": 81
+      },
+      "urgency": "High",
+      "predicted_timeline": "30-60 Days",
+      "objections": [
+        "Security Concern"
+      ],
+      "evidence": [
+        {
+          "source": "Website",
+          "fact": "Enterprise AI initiatives highlighted"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Hiring Azure-focused engineers"
+        },
+        {
+          "source": "Reddit",
+          "fact": "Community discussions around Azure pricing"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Hiring Azure Cloud Engineer, Cloud Architect \u2014 committee inferred from org signals"
+        },
+        {
+          "source": "Meetings",
+          "fact": "Buying roles referenced in recent meeting transcripts"
+        }
+      ]
+    },
+    {
+      "company": "Tech Mahindra",
+      "company_name": "Tech Mahindra",
+      "product": "Azure AI",
+      "intent_score": 81,
+      "intent_level": "High",
+      "purchase_probability": 79,
+      "buying_score": 79,
+      "confidence": 67,
+      "buying_stage": "Technical Evaluation",
+      "purchase_window": "30-60 Days",
+      "positive_signals": [
+        {
+          "signal": "Migration Planned",
+          "weight": 15,
+          "source": "research",
+          "confidence": 95,
+          "evidence": "Migration Planned matched 7 time(s) in research",
+          "occurrences": 7
+        },
+        {
+          "signal": "Executive Meeting",
+          "weight": 15,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Executive Meeting matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        },
+        {
+          "signal": "Hiring Azure Engineers",
+          "weight": 12,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Hiring Azure Engineers matched 1 time(s) in research",
+          "occurrences": 1
+        },
+        {
+          "signal": "Hiring AI Engineers",
+          "weight": 12,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Hiring AI Engineers matched 1 time(s) in research",
+          "occurrences": 1
+        },
+        {
+          "signal": "Security Review",
+          "weight": 10,
+          "source": "stakeholder",
+          "confidence": 85,
+          "evidence": "Security Review matched 3 time(s) in stakeholder",
+          "occurrences": 3
+        },
+        {
+          "signal": "Pricing Requested",
+          "weight": 10,
+          "source": "research",
+          "confidence": 85,
+          "evidence": "Pricing Requested matched 3 time(s) in research",
+          "occurrences": 3
+        },
+        {
+          "signal": "Security Review",
+          "weight": 10,
+          "source": "research",
+          "confidence": 75,
+          "evidence": "Security Review matched 2 time(s) in research",
+          "occurrences": 2
+        },
+        {
+          "signal": "Procurement Discussion",
+          "weight": 10,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Procurement Discussion matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        },
+        {
+          "signal": "Cloud Expansion",
+          "weight": 10,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Cloud Expansion matched 1 time(s) in research",
+          "occurrences": 1
+        }
+      ],
+      "negative_signals": [
+        {
+          "signal": "Security Concern",
+          "weight": -12,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Security Concern matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        }
+      ],
+      "signal_breakdown": {
+        "buying_signals": 100,
+        "stakeholder_importance": 59.62,
+        "research_confidence": 93,
+        "technology_match": 75,
+        "executive_participation": 100,
+        "urgency": 58,
+        "positive_sentiment": 60,
+        "negative_signals": 16
+      },
+      "matched_keywords": [
+        {
+          "keyword": "Azure",
+          "category": "technology",
+          "occurrences": 28,
+          "sources": [
+            "research",
+            "stakeholder",
+            "meetings"
+          ]
+        },
+        {
+          "keyword": "Azure AI",
+          "category": "technology",
+          "occurrences": 5,
+          "sources": [
+            "research",
+            "stakeholder"
+          ]
+        },
+        {
+          "keyword": "Azure OpenAI",
+          "category": "technology",
+          "occurrences": 4,
+          "sources": [
+            "research",
+            "stakeholder"
+          ]
+        },
+        {
+          "keyword": "Azure Security",
+          "category": "technology",
+          "occurrences": 3,
+          "sources": [
+            "research",
+            "stakeholder"
+          ]
+        },
+        {
+          "keyword": "Cloud Modernization",
+          "category": "technology",
+          "occurrences": 3,
+          "sources": [
+            "research"
+          ]
+        },
+        {
+          "keyword": "AWS",
+          "category": "competitors",
+          "occurrences": 4,
+          "sources": [
+            "research",
+            "stakeholder",
+            "meetings"
+          ]
+        }
+      ],
+      "executive_involvement": [
+        {
+          "name": "Arjun Iyer",
+          "title": "Chief Technology Officer",
+          "type": "decision_maker",
+          "influence": "High",
+          "score": 100,
+          "executive": true
+        },
+        {
+          "name": "Aditya Kulkarni",
+          "title": "VP Engineering",
+          "type": "decision_maker",
+          "influence": "High",
+          "score": 100,
+          "executive": true
+        },
+        {
+          "name": "Karthik Gupta",
+          "title": "Head of Cloud Platform",
+          "type": "champion",
+          "influence": "High",
+          "score": 93,
+          "executive": true
+        },
+        {
+          "name": "Priya Menon",
+          "title": "Director, AI Initiatives",
+          "type": "champion",
+          "influence": "Medium",
+          "score": 55,
+          "executive": false
+        },
+        {
+          "name": "Divya Sharma",
+          "title": "Principal Cloud Architect",
+          "type": "influencer",
+          "influence": "Medium",
+          "score": 36,
+          "executive": false
+        },
+        {
+          "name": "Priya Patel",
+          "title": "Engineering Manager, Platform",
+          "type": "influencer",
+          "influence": "Medium",
+          "score": 36,
+          "executive": false
+        },
+        {
+          "name": "Meera Desai",
+          "title": "VP Procurement",
+          "type": "blocker",
+          "influence": "High",
+          "score": 33,
+          "executive": true
+        },
+        {
+          "name": "Rohan Krishnan",
+          "title": "Head of Information Security",
+          "type": "blocker",
+          "influence": "Medium",
+          "score": 24,
+          "executive": true
+        }
+      ],
+      "recommended_action": "Run a technical workshop with the decision maker and champion this week.",
+      "recommended_priority": "P1",
+      "explanation": {
+        "summary": "Tech Mahindra scored 81/100 because of +15 Migration Planned (research), +15 Executive Meeting (stakeholder), +12 Hiring Azure Engineers (research), +12 Hiring AI Engineers (research).",
+        "line_items": [
+          "+15 Migration Planned (research)",
+          "+15 Executive Meeting (stakeholder)",
+          "+12 Hiring Azure Engineers (research)",
+          "+12 Hiring AI Engineers (research)",
+          "+10 Security Review (stakeholder)",
+          "-12 Security Concern (stakeholder)"
+        ],
+        "final_score": 81
+      },
+      "urgency": "High",
+      "predicted_timeline": "30-60 Days",
+      "objections": [
+        "Security Concern"
+      ],
+      "evidence": [
+        {
+          "source": "Website",
+          "fact": "Enterprise AI initiatives highlighted"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Hiring Azure-focused engineers"
+        },
+        {
+          "source": "Reddit",
+          "fact": "Community discussions around Azure pricing"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Hiring Azure Cloud Engineer, Cloud Architect \u2014 committee inferred from org signals"
+        },
+        {
+          "source": "Meetings",
+          "fact": "Buying roles referenced in recent meeting transcripts"
+        }
+      ]
+    },
+    {
+      "company": "Infosys",
+      "company_name": "Infosys",
+      "product": "Azure AI",
+      "intent_score": 80,
+      "intent_level": "High",
+      "purchase_probability": 79,
+      "buying_score": 79,
+      "confidence": 68,
+      "buying_stage": "Technical Evaluation",
+      "purchase_window": "60-90 Days",
+      "positive_signals": [
+        {
+          "signal": "Migration Planned",
+          "weight": 15,
+          "source": "research",
+          "confidence": 95,
+          "evidence": "Migration Planned matched 7 time(s) in research",
+          "occurrences": 7
+        },
+        {
+          "signal": "Executive Meeting",
+          "weight": 15,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Executive Meeting matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        },
+        {
+          "signal": "Hiring Azure Engineers",
+          "weight": 12,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Hiring Azure Engineers matched 1 time(s) in research",
+          "occurrences": 1
+        },
+        {
+          "signal": "Hiring AI Engineers",
+          "weight": 12,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Hiring AI Engineers matched 1 time(s) in research",
+          "occurrences": 1
+        },
+        {
+          "signal": "Pricing Requested",
+          "weight": 10,
+          "source": "research",
+          "confidence": 85,
+          "evidence": "Pricing Requested matched 3 time(s) in research",
+          "occurrences": 3
+        },
+        {
+          "signal": "Security Review",
+          "weight": 10,
+          "source": "research",
+          "confidence": 75,
+          "evidence": "Security Review matched 2 time(s) in research",
+          "occurrences": 2
+        },
+        {
+          "signal": "Security Review",
+          "weight": 10,
+          "source": "stakeholder",
+          "confidence": 75,
+          "evidence": "Security Review matched 2 time(s) in stakeholder",
+          "occurrences": 2
+        },
+        {
+          "signal": "Procurement Discussion",
+          "weight": 10,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Procurement Discussion matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        },
+        {
+          "signal": "Cloud Expansion",
+          "weight": 10,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Cloud Expansion matched 1 time(s) in research",
+          "occurrences": 1
+        }
+      ],
+      "negative_signals": [
+        {
+          "signal": "Security Concern",
+          "weight": -12,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Security Concern matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        }
+      ],
+      "signal_breakdown": {
+        "buying_signals": 100,
+        "stakeholder_importance": 63.0,
+        "research_confidence": 93,
+        "technology_match": 72,
+        "executive_participation": 100,
+        "urgency": 46,
+        "positive_sentiment": 56,
+        "negative_signals": 16
+      },
+      "matched_keywords": [
+        {
+          "keyword": "Azure",
+          "category": "technology",
+          "occurrences": 27,
+          "sources": [
+            "research",
+            "stakeholder",
+            "meetings"
+          ]
+        },
+        {
+          "keyword": "Azure AI",
+          "category": "technology",
+          "occurrences": 5,
+          "sources": [
+            "research",
+            "stakeholder"
+          ]
+        },
+        {
+          "keyword": "Azure OpenAI",
+          "category": "technology",
+          "occurrences": 4,
+          "sources": [
+            "research",
+            "stakeholder"
+          ]
+        },
+        {
+          "keyword": "Azure Security",
+          "category": "technology",
+          "occurrences": 2,
+          "sources": [
+            "research",
+            "stakeholder"
+          ]
+        },
+        {
+          "keyword": "Cloud Modernization",
+          "category": "technology",
+          "occurrences": 3,
+          "sources": [
+            "research"
+          ]
+        },
+        {
+          "keyword": "AWS",
+          "category": "competitors",
+          "occurrences": 4,
+          "sources": [
+            "research",
+            "stakeholder",
+            "meetings"
+          ]
+        }
+      ],
+      "executive_involvement": [
+        {
+          "name": "Rohan Krishnan",
+          "title": "Chief Technology Officer",
+          "type": "decision_maker",
+          "influence": "High",
+          "score": 100,
+          "executive": true
+        },
+        {
+          "name": "Arjun Iyer",
+          "title": "VP Engineering",
+          "type": "decision_maker",
+          "influence": "High",
+          "score": 100,
+          "executive": true
+        },
+        {
+          "name": "Sneha Menon",
+          "title": "Head of Cloud Platform",
+          "type": "champion",
+          "influence": "High",
+          "score": 93,
+          "executive": true
+        },
+        {
+          "name": "Ananya Desai",
+          "title": "Director, AI Initiatives",
+          "type": "champion",
+          "influence": "Medium",
+          "score": 55,
+          "executive": false
+        },
+        {
+          "name": "Kavya Menon",
+          "title": "Principal Cloud Architect",
+          "type": "influencer",
+          "influence": "Medium",
+          "score": 36,
+          "executive": false
+        },
+        {
+          "name": "Aditya Krishnan",
+          "title": "VP Procurement",
+          "type": "blocker",
+          "influence": "High",
+          "score": 33,
+          "executive": true
+        },
+        {
+          "name": "Karthik Iyer",
+          "title": "Head of Information Security",
+          "type": "blocker",
+          "influence": "Medium",
+          "score": 24,
+          "executive": true
+        }
+      ],
+      "recommended_action": "Run a technical workshop with the decision maker and champion this week.",
+      "recommended_priority": "P1",
+      "explanation": {
+        "summary": "Infosys scored 80/100 because of +15 Migration Planned (research), +15 Executive Meeting (stakeholder), +12 Hiring Azure Engineers (research), +12 Hiring AI Engineers (research).",
+        "line_items": [
+          "+15 Migration Planned (research)",
+          "+15 Executive Meeting (stakeholder)",
+          "+12 Hiring Azure Engineers (research)",
+          "+12 Hiring AI Engineers (research)",
+          "+10 Pricing Requested (research)",
+          "-12 Security Concern (stakeholder)"
+        ],
+        "final_score": 80
+      },
+      "urgency": "High",
+      "predicted_timeline": "60-90 Days",
+      "objections": [
+        "Security Concern"
+      ],
+      "evidence": [
+        {
+          "source": "Website",
+          "fact": "Enterprise AI initiatives highlighted"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Hiring Azure-focused engineers"
+        },
+        {
+          "source": "Reddit",
+          "fact": "Community discussions around Azure pricing"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Hiring Azure Cloud Engineer, Cloud Architect \u2014 committee inferred from org signals"
+        },
+        {
+          "source": "Meetings",
+          "fact": "Buying roles referenced in recent meeting transcripts"
+        }
+      ]
+    },
+    {
+      "company": "Cognizant",
+      "company_name": "Cognizant",
+      "product": "Azure AI",
+      "intent_score": 80,
+      "intent_level": "High",
+      "purchase_probability": 79,
+      "buying_score": 79,
+      "confidence": 69,
+      "buying_stage": "Technical Evaluation",
+      "purchase_window": "60-90 Days",
+      "positive_signals": [
+        {
+          "signal": "Migration Planned",
+          "weight": 15,
+          "source": "research",
+          "confidence": 95,
+          "evidence": "Migration Planned matched 7 time(s) in research",
+          "occurrences": 7
+        },
+        {
+          "signal": "Executive Meeting",
+          "weight": 15,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Executive Meeting matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        },
+        {
+          "signal": "Hiring AI Engineers",
+          "weight": 12,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Hiring AI Engineers matched 1 time(s) in research",
+          "occurrences": 1
+        },
+        {
+          "signal": "Security Review",
+          "weight": 10,
+          "source": "stakeholder",
+          "confidence": 95,
+          "evidence": "Security Review matched 4 time(s) in stakeholder",
+          "occurrences": 4
+        },
+        {
+          "signal": "Security Review",
+          "weight": 10,
+          "source": "research",
+          "confidence": 75,
+          "evidence": "Security Review matched 2 time(s) in research",
+          "occurrences": 2
+        },
+        {
+          "signal": "Pricing Requested",
+          "weight": 10,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Pricing Requested matched 1 time(s) in research",
+          "occurrences": 1
+        },
+        {
+          "signal": "Procurement Discussion",
+          "weight": 10,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Procurement Discussion matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        },
+        {
+          "signal": "Cloud Expansion",
+          "weight": 10,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Cloud Expansion matched 1 time(s) in research",
+          "occurrences": 1
+        }
+      ],
+      "negative_signals": [
+        {
+          "signal": "Security Concern",
+          "weight": -12,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Security Concern matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        }
+      ],
+      "signal_breakdown": {
+        "buying_signals": 100,
+        "stakeholder_importance": 64.33,
+        "research_confidence": 94,
+        "technology_match": 66,
+        "executive_participation": 100,
+        "urgency": 49,
+        "positive_sentiment": 48,
+        "negative_signals": 16
+      },
+      "matched_keywords": [
+        {
+          "keyword": "Azure",
+          "category": "technology",
+          "occurrences": 30,
+          "sources": [
+            "research",
+            "stakeholder",
+            "meetings"
+          ]
+        },
+        {
+          "keyword": "Azure AI",
+          "category": "technology",
+          "occurrences": 3,
+          "sources": [
+            "research",
+            "stakeholder"
+          ]
+        },
+        {
+          "keyword": "Azure OpenAI",
+          "category": "technology",
+          "occurrences": 3,
+          "sources": [
+            "research",
+            "stakeholder"
+          ]
+        },
+        {
+          "keyword": "Azure Security",
+          "category": "technology",
+          "occurrences": 4,
+          "sources": [
+            "research",
+            "stakeholder"
+          ]
+        },
+        {
+          "keyword": "Cloud Modernization",
+          "category": "technology",
+          "occurrences": 1,
+          "sources": [
+            "research"
+          ]
+        },
+        {
+          "keyword": "AWS",
+          "category": "competitors",
+          "occurrences": 5,
+          "sources": [
+            "research",
+            "stakeholder",
+            "meetings"
+          ]
+        }
+      ],
+      "executive_involvement": [
+        {
+          "name": "Aditya Kulkarni",
+          "title": "Chief Technology Officer",
+          "type": "decision_maker",
+          "influence": "High",
+          "score": 100,
+          "executive": true
+        },
+        {
+          "name": "Ananya Desai",
+          "title": "VP Engineering",
+          "type": "decision_maker",
+          "influence": "High",
+          "score": 100,
+          "executive": true
+        },
+        {
+          "name": "Kavya Menon",
+          "title": "Head of Cloud Platform",
+          "type": "champion",
+          "influence": "High",
+          "score": 93,
+          "executive": true
+        },
+        {
+          "name": "Rahul Gupta",
+          "title": "Engineering Manager, Platform",
+          "type": "influencer",
+          "influence": "Medium",
+          "score": 36,
+          "executive": false
+        },
+        {
+          "name": "Rohan Reddy",
+          "title": "VP Procurement",
+          "type": "blocker",
+          "influence": "High",
+          "score": 33,
+          "executive": true
+        },
+        {
+          "name": "Arjun Gupta",
+          "title": "Head of Information Security",
+          "type": "blocker",
+          "influence": "Medium",
+          "score": 24,
+          "executive": true
+        }
+      ],
+      "recommended_action": "Run a technical workshop with the decision maker and champion this week.",
+      "recommended_priority": "P1",
+      "explanation": {
+        "summary": "Cognizant scored 80/100 because of +15 Migration Planned (research), +15 Executive Meeting (stakeholder), +12 Hiring AI Engineers (research), +10 Security Review (stakeholder).",
+        "line_items": [
+          "+15 Migration Planned (research)",
+          "+15 Executive Meeting (stakeholder)",
+          "+12 Hiring AI Engineers (research)",
+          "+10 Security Review (stakeholder)",
+          "+10 Security Review (research)",
+          "-12 Security Concern (stakeholder)"
+        ],
+        "final_score": 80
+      },
+      "urgency": "High",
+      "predicted_timeline": "60-90 Days",
+      "objections": [
+        "Security Concern"
+      ],
+      "evidence": [
+        {
+          "source": "Website",
+          "fact": "Cloud modernization initiatives published"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Azure-related hiring observed"
+        },
+        {
+          "source": "Reddit",
+          "fact": "Azure enterprise discussions trending"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Hiring Azure Cloud Engineer, Cloud Architect \u2014 committee inferred from org signals"
+        },
+        {
+          "source": "Meetings",
+          "fact": "Buying roles referenced in recent meeting transcripts"
+        }
+      ]
+    },
+    {
+      "company": "LTIMindtree",
+      "company_name": "LTIMindtree",
+      "product": "Azure AI",
+      "intent_score": 80,
+      "intent_level": "High",
+      "purchase_probability": 78,
+      "buying_score": 78,
+      "confidence": 67,
+      "buying_stage": "Technical Evaluation",
+      "purchase_window": "60-90 Days",
+      "positive_signals": [
+        {
+          "signal": "Migration Planned",
+          "weight": 15,
+          "source": "research",
+          "confidence": 95,
+          "evidence": "Migration Planned matched 7 time(s) in research",
+          "occurrences": 7
+        },
+        {
+          "signal": "Executive Meeting",
+          "weight": 15,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Executive Meeting matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        },
+        {
+          "signal": "Hiring AI Engineers",
+          "weight": 12,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Hiring AI Engineers matched 1 time(s) in research",
+          "occurrences": 1
+        },
+        {
+          "signal": "Security Review",
+          "weight": 10,
+          "source": "stakeholder",
+          "confidence": 85,
+          "evidence": "Security Review matched 3 time(s) in stakeholder",
+          "occurrences": 3
+        },
+        {
+          "signal": "Security Review",
+          "weight": 10,
+          "source": "research",
+          "confidence": 75,
+          "evidence": "Security Review matched 2 time(s) in research",
+          "occurrences": 2
+        },
+        {
+          "signal": "Pricing Requested",
+          "weight": 10,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Pricing Requested matched 1 time(s) in research",
+          "occurrences": 1
+        },
+        {
+          "signal": "Procurement Discussion",
+          "weight": 10,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Procurement Discussion matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        },
+        {
+          "signal": "Cloud Expansion",
+          "weight": 10,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Cloud Expansion matched 1 time(s) in research",
+          "occurrences": 1
+        }
+      ],
+      "negative_signals": [
+        {
+          "signal": "Security Concern",
+          "weight": -12,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Security Concern matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        }
+      ],
+      "signal_breakdown": {
+        "buying_signals": 100,
+        "stakeholder_importance": 59.62,
+        "research_confidence": 94,
+        "technology_match": 66,
+        "executive_participation": 100,
+        "urgency": 58,
+        "positive_sentiment": 58,
+        "negative_signals": 16
+      },
+      "matched_keywords": [
+        {
+          "keyword": "Azure",
+          "category": "technology",
+          "occurrences": 32,
+          "sources": [
+            "research",
+            "stakeholder",
+            "meetings"
+          ]
+        },
+        {
+          "keyword": "Azure AI",
+          "category": "technology",
+          "occurrences": 5,
+          "sources": [
+            "research",
+            "stakeholder"
+          ]
+        },
+        {
+          "keyword": "Azure OpenAI",
+          "category": "technology",
+          "occurrences": 4,
+          "sources": [
+            "research",
+            "stakeholder"
+          ]
+        },
+        {
+          "keyword": "Azure Security",
+          "category": "technology",
+          "occurrences": 3,
+          "sources": [
+            "research",
+            "stakeholder"
+          ]
+        },
+        {
+          "keyword": "Cloud Modernization",
+          "category": "technology",
+          "occurrences": 1,
+          "sources": [
+            "research"
+          ]
+        },
+        {
+          "keyword": "AWS",
+          "category": "competitors",
+          "occurrences": 5,
+          "sources": [
+            "research",
+            "stakeholder",
+            "meetings"
+          ]
+        }
+      ],
+      "executive_involvement": [
+        {
+          "name": "Meera Reddy",
+          "title": "Chief Technology Officer",
+          "type": "decision_maker",
+          "influence": "High",
+          "score": 100,
+          "executive": true
+        },
+        {
+          "name": "Sneha Rao",
+          "title": "VP Engineering",
+          "type": "decision_maker",
+          "influence": "High",
+          "score": 100,
+          "executive": true
+        },
+        {
+          "name": "Divya Kulkarni",
+          "title": "Head of Cloud Platform",
+          "type": "champion",
+          "influence": "High",
+          "score": 93,
+          "executive": true
+        },
+        {
+          "name": "Vikram Sharma",
+          "title": "Director, AI Initiatives",
+          "type": "champion",
+          "influence": "Medium",
+          "score": 55,
+          "executive": false
+        },
+        {
+          "name": "Rahul Bose",
+          "title": "Principal Cloud Architect",
+          "type": "influencer",
+          "influence": "Medium",
+          "score": 36,
+          "executive": false
+        },
+        {
+          "name": "Vikram Sharma",
+          "title": "Engineering Manager, Platform",
+          "type": "influencer",
+          "influence": "Medium",
+          "score": 36,
+          "executive": false
+        },
+        {
+          "name": "Rahul Menon",
+          "title": "VP Procurement",
+          "type": "blocker",
+          "influence": "High",
+          "score": 33,
+          "executive": true
+        },
+        {
+          "name": "Sneha Iyer",
+          "title": "Head of Information Security",
+          "type": "blocker",
+          "influence": "Medium",
+          "score": 24,
+          "executive": true
+        }
+      ],
+      "recommended_action": "Run a technical workshop with the decision maker and champion this week.",
+      "recommended_priority": "P1",
+      "explanation": {
+        "summary": "LTIMindtree scored 80/100 because of +15 Migration Planned (research), +15 Executive Meeting (stakeholder), +12 Hiring AI Engineers (research), +10 Security Review (stakeholder).",
+        "line_items": [
+          "+15 Migration Planned (research)",
+          "+15 Executive Meeting (stakeholder)",
+          "+12 Hiring AI Engineers (research)",
+          "+10 Security Review (stakeholder)",
+          "+10 Security Review (research)",
+          "-12 Security Concern (stakeholder)"
+        ],
+        "final_score": 80
+      },
+      "urgency": "High",
+      "predicted_timeline": "60-90 Days",
+      "objections": [
+        "Security Concern"
+      ],
+      "evidence": [
+        {
+          "source": "Website",
+          "fact": "Cloud modernization initiatives published"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Azure-related hiring observed"
+        },
+        {
+          "source": "Reddit",
+          "fact": "Azure enterprise discussions trending"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Hiring Azure Cloud Engineer, Cloud Architect \u2014 committee inferred from org signals"
+        },
+        {
+          "source": "Meetings",
+          "fact": "Buying roles referenced in recent meeting transcripts"
+        }
+      ]
+    },
+    {
+      "company": "Wipro",
+      "company_name": "Wipro",
+      "product": "Azure AI",
+      "intent_score": 79,
+      "intent_level": "High",
+      "purchase_probability": 77,
+      "buying_score": 77,
+      "confidence": 65,
+      "buying_stage": "Technical Evaluation",
+      "purchase_window": "60-90 Days",
+      "positive_signals": [
+        {
+          "signal": "Migration Planned",
+          "weight": 15,
+          "source": "research",
+          "confidence": 95,
+          "evidence": "Migration Planned matched 7 time(s) in research",
+          "occurrences": 7
+        },
+        {
+          "signal": "Hiring Azure Engineers",
+          "weight": 12,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Hiring Azure Engineers matched 1 time(s) in research",
+          "occurrences": 1
+        },
+        {
+          "signal": "Hiring AI Engineers",
+          "weight": 12,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Hiring AI Engineers matched 1 time(s) in research",
+          "occurrences": 1
+        },
+        {
+          "signal": "Security Review",
+          "weight": 10,
+          "source": "stakeholder",
+          "confidence": 85,
+          "evidence": "Security Review matched 3 time(s) in stakeholder",
+          "occurrences": 3
+        },
+        {
+          "signal": "Pricing Requested",
+          "weight": 10,
+          "source": "research",
+          "confidence": 85,
+          "evidence": "Pricing Requested matched 3 time(s) in research",
+          "occurrences": 3
+        },
+        {
+          "signal": "Security Review",
+          "weight": 10,
+          "source": "research",
+          "confidence": 75,
+          "evidence": "Security Review matched 2 time(s) in research",
+          "occurrences": 2
+        },
+        {
+          "signal": "Procurement Discussion",
+          "weight": 10,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Procurement Discussion matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        },
+        {
+          "signal": "Cloud Expansion",
+          "weight": 10,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Cloud Expansion matched 1 time(s) in research",
+          "occurrences": 1
+        }
+      ],
+      "negative_signals": [
+        {
+          "signal": "Security Concern",
+          "weight": -12,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Security Concern matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        }
+      ],
+      "signal_breakdown": {
+        "buying_signals": 100,
+        "stakeholder_importance": 53.86,
+        "research_confidence": 93,
+        "technology_match": 75,
+        "executive_participation": 100,
+        "urgency": 52,
+        "positive_sentiment": 58,
+        "negative_signals": 16
+      },
+      "matched_keywords": [
+        {
+          "keyword": "Azure",
+          "category": "technology",
+          "occurrences": 27,
+          "sources": [
+            "research",
+            "stakeholder",
+            "meetings"
+          ]
+        },
+        {
+          "keyword": "Azure AI",
+          "category": "technology",
+          "occurrences": 4,
+          "sources": [
+            "research",
+            "stakeholder"
+          ]
+        },
+        {
+          "keyword": "Azure OpenAI",
+          "category": "technology",
+          "occurrences": 3,
+          "sources": [
+            "research",
+            "stakeholder"
+          ]
+        },
+        {
+          "keyword": "Azure Security",
+          "category": "technology",
+          "occurrences": 3,
+          "sources": [
+            "research",
+            "stakeholder"
+          ]
+        },
+        {
+          "keyword": "Cloud Modernization",
+          "category": "technology",
+          "occurrences": 3,
+          "sources": [
+            "research"
+          ]
+        },
+        {
+          "keyword": "AWS",
+          "category": "competitors",
+          "occurrences": 4,
+          "sources": [
+            "research",
+            "stakeholder",
+            "meetings"
+          ]
+        }
+      ],
+      "executive_involvement": [
+        {
+          "name": "Aditya Iyer",
+          "title": "Chief Technology Officer",
+          "type": "decision_maker",
+          "influence": "High",
+          "score": 100,
+          "executive": true
+        },
+        {
+          "name": "Kavya Sharma",
+          "title": "Head of Cloud Platform",
+          "type": "champion",
+          "influence": "High",
+          "score": 93,
+          "executive": true
+        },
+        {
+          "name": "Ananya Bose",
+          "title": "Director, AI Initiatives",
+          "type": "champion",
+          "influence": "Medium",
+          "score": 55,
+          "executive": false
+        },
+        {
+          "name": "Kavya Sharma",
+          "title": "Principal Cloud Architect",
+          "type": "influencer",
+          "influence": "Medium",
+          "score": 36,
+          "executive": false
+        },
+        {
+          "name": "Ananya Bose",
+          "title": "Engineering Manager, Platform",
+          "type": "influencer",
+          "influence": "Medium",
+          "score": 36,
+          "executive": false
+        },
+        {
+          "name": "Rohan Gupta",
+          "title": "VP Procurement",
+          "type": "blocker",
+          "influence": "High",
+          "score": 33,
+          "executive": true
+        },
+        {
+          "name": "Arjun Krishnan",
+          "title": "Head of Information Security",
+          "type": "blocker",
+          "influence": "Medium",
+          "score": 24,
+          "executive": true
+        }
+      ],
+      "recommended_action": "Run a technical workshop with the decision maker and champion this week.",
+      "recommended_priority": "P1",
+      "explanation": {
+        "summary": "Wipro scored 79/100 because of +15 Migration Planned (research), +12 Hiring Azure Engineers (research), +12 Hiring AI Engineers (research), +10 Security Review (stakeholder).",
+        "line_items": [
+          "+15 Migration Planned (research)",
+          "+12 Hiring Azure Engineers (research)",
+          "+12 Hiring AI Engineers (research)",
+          "+10 Security Review (stakeholder)",
+          "+10 Pricing Requested (research)",
+          "-12 Security Concern (stakeholder)"
+        ],
+        "final_score": 79
+      },
+      "urgency": "High",
+      "predicted_timeline": "60-90 Days",
+      "objections": [
+        "Security Concern"
+      ],
+      "evidence": [
+        {
+          "source": "Website",
+          "fact": "Enterprise AI initiatives highlighted"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Hiring Azure-focused engineers"
+        },
+        {
+          "source": "Reddit",
+          "fact": "Community discussions around Azure pricing"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Hiring Azure Cloud Engineer, Cloud Architect \u2014 committee inferred from org signals"
+        },
+        {
+          "source": "Meetings",
+          "fact": "Buying roles referenced in recent meeting transcripts"
+        }
+      ]
+    },
+    {
+      "company": "HCLTech",
+      "company_name": "HCLTech",
+      "product": "Azure AI",
+      "intent_score": 79,
+      "intent_level": "High",
+      "purchase_probability": 77,
+      "buying_score": 77,
+      "confidence": 65,
+      "buying_stage": "Technical Evaluation",
+      "purchase_window": "60-90 Days",
+      "positive_signals": [
+        {
+          "signal": "Migration Planned",
+          "weight": 15,
+          "source": "research",
+          "confidence": 95,
+          "evidence": "Migration Planned matched 7 time(s) in research",
+          "occurrences": 7
+        },
+        {
+          "signal": "Hiring Azure Engineers",
+          "weight": 12,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Hiring Azure Engineers matched 1 time(s) in research",
+          "occurrences": 1
+        },
+        {
+          "signal": "Hiring AI Engineers",
+          "weight": 12,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Hiring AI Engineers matched 1 time(s) in research",
+          "occurrences": 1
+        },
+        {
+          "signal": "Pricing Requested",
+          "weight": 10,
+          "source": "research",
+          "confidence": 85,
+          "evidence": "Pricing Requested matched 3 time(s) in research",
+          "occurrences": 3
+        },
+        {
+          "signal": "Security Review",
+          "weight": 10,
+          "source": "research",
+          "confidence": 75,
+          "evidence": "Security Review matched 2 time(s) in research",
+          "occurrences": 2
+        },
+        {
+          "signal": "Security Review",
+          "weight": 10,
+          "source": "stakeholder",
+          "confidence": 75,
+          "evidence": "Security Review matched 2 time(s) in stakeholder",
+          "occurrences": 2
+        },
+        {
+          "signal": "Procurement Discussion",
+          "weight": 10,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Procurement Discussion matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        },
+        {
+          "signal": "Cloud Expansion",
+          "weight": 10,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Cloud Expansion matched 1 time(s) in research",
+          "occurrences": 1
+        }
+      ],
+      "negative_signals": [
+        {
+          "signal": "Security Concern",
+          "weight": -12,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Security Concern matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        }
+      ],
+      "signal_breakdown": {
+        "buying_signals": 100,
+        "stakeholder_importance": 53.86,
+        "research_confidence": 93,
+        "technology_match": 72,
+        "executive_participation": 100,
+        "urgency": 55,
+        "positive_sentiment": 49,
+        "negative_signals": 16
+      },
+      "matched_keywords": [
+        {
+          "keyword": "Azure",
+          "category": "technology",
+          "occurrences": 27,
+          "sources": [
+            "research",
+            "stakeholder",
+            "meetings"
+          ]
+        },
+        {
+          "keyword": "Azure AI",
+          "category": "technology",
+          "occurrences": 5,
+          "sources": [
+            "research",
+            "stakeholder"
+          ]
+        },
+        {
+          "keyword": "Azure OpenAI",
+          "category": "technology",
+          "occurrences": 4,
+          "sources": [
+            "research",
+            "stakeholder"
+          ]
+        },
+        {
+          "keyword": "Azure Security",
+          "category": "technology",
+          "occurrences": 2,
+          "sources": [
+            "research",
+            "stakeholder"
+          ]
+        },
+        {
+          "keyword": "Cloud Modernization",
+          "category": "technology",
+          "occurrences": 3,
+          "sources": [
+            "research"
+          ]
+        },
+        {
+          "keyword": "AWS",
+          "category": "competitors",
+          "occurrences": 4,
+          "sources": [
+            "research",
+            "stakeholder",
+            "meetings"
+          ]
+        }
+      ],
+      "executive_involvement": [
+        {
+          "name": "Arjun Reddy",
+          "title": "Chief Technology Officer",
+          "type": "decision_maker",
+          "influence": "High",
+          "score": 100,
+          "executive": true
+        },
+        {
+          "name": "Divya Patel",
+          "title": "Head of Cloud Platform",
+          "type": "champion",
+          "influence": "High",
+          "score": 93,
+          "executive": true
+        },
+        {
+          "name": "Sneha Sharma",
+          "title": "Director, AI Initiatives",
+          "type": "champion",
+          "influence": "Medium",
+          "score": 55,
+          "executive": false
+        },
+        {
+          "name": "Meera Menon",
+          "title": "Principal Cloud Architect",
+          "type": "influencer",
+          "influence": "Medium",
+          "score": 36,
+          "executive": false
+        },
+        {
+          "name": "Priya Sharma",
+          "title": "Engineering Manager, Platform",
+          "type": "influencer",
+          "influence": "Medium",
+          "score": 36,
+          "executive": false
+        },
+        {
+          "name": "Arjun Reddy",
+          "title": "VP Procurement",
+          "type": "blocker",
+          "influence": "High",
+          "score": 33,
+          "executive": true
+        },
+        {
+          "name": "Aditya Gupta",
+          "title": "Head of Information Security",
+          "type": "blocker",
+          "influence": "Medium",
+          "score": 24,
+          "executive": true
+        }
+      ],
+      "recommended_action": "Run a technical workshop with the decision maker and champion this week.",
+      "recommended_priority": "P1",
+      "explanation": {
+        "summary": "HCLTech scored 79/100 because of +15 Migration Planned (research), +12 Hiring Azure Engineers (research), +12 Hiring AI Engineers (research), +10 Pricing Requested (research).",
+        "line_items": [
+          "+15 Migration Planned (research)",
+          "+12 Hiring Azure Engineers (research)",
+          "+12 Hiring AI Engineers (research)",
+          "+10 Pricing Requested (research)",
+          "+10 Security Review (research)",
+          "-12 Security Concern (stakeholder)"
+        ],
+        "final_score": 79
+      },
+      "urgency": "High",
+      "predicted_timeline": "60-90 Days",
+      "objections": [
+        "Security Concern"
+      ],
+      "evidence": [
+        {
+          "source": "Website",
+          "fact": "Enterprise AI initiatives highlighted"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Hiring Azure-focused engineers"
+        },
+        {
+          "source": "Reddit",
+          "fact": "Community discussions around Azure pricing"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Hiring Azure Cloud Engineer, Cloud Architect \u2014 committee inferred from org signals"
+        },
+        {
+          "source": "Meetings",
+          "fact": "Buying roles referenced in recent meeting transcripts"
+        }
+      ]
+    },
+    {
+      "company": "Persistent Systems",
+      "company_name": "Persistent Systems",
+      "product": "Azure AI",
+      "intent_score": 79,
+      "intent_level": "High",
+      "purchase_probability": 78,
+      "buying_score": 78,
+      "confidence": 68,
+      "buying_stage": "Technical Evaluation",
+      "purchase_window": "60-90 Days",
+      "positive_signals": [
+        {
+          "signal": "Migration Planned",
+          "weight": 15,
+          "source": "research",
+          "confidence": 95,
+          "evidence": "Migration Planned matched 7 time(s) in research",
+          "occurrences": 7
+        },
+        {
+          "signal": "Executive Meeting",
+          "weight": 15,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Executive Meeting matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        },
+        {
+          "signal": "Hiring AI Engineers",
+          "weight": 12,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Hiring AI Engineers matched 1 time(s) in research",
+          "occurrences": 1
+        },
+        {
+          "signal": "Security Review",
+          "weight": 10,
+          "source": "research",
+          "confidence": 75,
+          "evidence": "Security Review matched 2 time(s) in research",
+          "occurrences": 2
+        },
+        {
+          "signal": "Security Review",
+          "weight": 10,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Security Review matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        },
+        {
+          "signal": "Pricing Requested",
+          "weight": 10,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Pricing Requested matched 1 time(s) in research",
+          "occurrences": 1
+        },
+        {
+          "signal": "Procurement Discussion",
+          "weight": 10,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Procurement Discussion matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        },
+        {
+          "signal": "Cloud Expansion",
+          "weight": 10,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Cloud Expansion matched 1 time(s) in research",
+          "occurrences": 1
+        }
+      ],
+      "negative_signals": [
+        {
+          "signal": "Security Concern",
+          "weight": -12,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Security Concern matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        }
+      ],
+      "signal_breakdown": {
+        "buying_signals": 100,
+        "stakeholder_importance": 63.0,
+        "research_confidence": 94,
+        "technology_match": 54,
+        "executive_participation": 100,
+        "urgency": 61,
+        "positive_sentiment": 48,
+        "negative_signals": 16
+      },
+      "matched_keywords": [
+        {
+          "keyword": "Azure",
+          "category": "technology",
+          "occurrences": 31,
+          "sources": [
+            "research",
+            "stakeholder",
+            "meetings"
+          ]
+        },
+        {
+          "keyword": "Azure AI",
+          "category": "technology",
+          "occurrences": 5,
+          "sources": [
+            "research",
+            "stakeholder"
+          ]
+        },
+        {
+          "keyword": "Azure OpenAI",
+          "category": "technology",
+          "occurrences": 2,
+          "sources": [
+            "research"
+          ]
+        },
+        {
+          "keyword": "Azure Security",
+          "category": "technology",
+          "occurrences": 1,
+          "sources": [
+            "research"
+          ]
+        },
+        {
+          "keyword": "Cloud Modernization",
+          "category": "technology",
+          "occurrences": 1,
+          "sources": [
+            "research"
+          ]
+        },
+        {
+          "keyword": "AWS",
+          "category": "competitors",
+          "occurrences": 5,
+          "sources": [
+            "research",
+            "stakeholder",
+            "meetings"
+          ]
+        }
+      ],
+      "executive_involvement": [
+        {
+          "name": "Vikram Iyer",
+          "title": "Chief Technology Officer",
+          "type": "decision_maker",
+          "influence": "High",
+          "score": 100,
+          "executive": true
+        },
+        {
+          "name": "Karthik Krishnan",
+          "title": "VP Engineering",
+          "type": "decision_maker",
+          "influence": "High",
+          "score": 100,
+          "executive": true
+        },
+        {
+          "name": "Kavya Sharma",
+          "title": "Head of Cloud Platform",
+          "type": "champion",
+          "influence": "High",
+          "score": 93,
+          "executive": true
+        },
+        {
+          "name": "Meera Menon",
+          "title": "Director, AI Initiatives",
+          "type": "champion",
+          "influence": "Medium",
+          "score": 55,
+          "executive": false
+        },
+        {
+          "name": "Sneha Sharma",
+          "title": "Principal Cloud Architect",
+          "type": "influencer",
+          "influence": "Medium",
+          "score": 36,
+          "executive": false
+        },
+        {
+          "name": "Vikram Rao",
+          "title": "VP Procurement",
+          "type": "blocker",
+          "influence": "High",
+          "score": 33,
+          "executive": true
+        },
+        {
+          "name": "Arjun Reddy",
+          "title": "Head of Information Security",
+          "type": "blocker",
+          "influence": "Medium",
+          "score": 24,
+          "executive": true
+        }
+      ],
+      "recommended_action": "Run a technical workshop with the decision maker and champion this week.",
+      "recommended_priority": "P1",
+      "explanation": {
+        "summary": "Persistent Systems scored 79/100 because of +15 Migration Planned (research), +15 Executive Meeting (stakeholder), +12 Hiring AI Engineers (research), +10 Security Review (research).",
+        "line_items": [
+          "+15 Migration Planned (research)",
+          "+15 Executive Meeting (stakeholder)",
+          "+12 Hiring AI Engineers (research)",
+          "+10 Security Review (research)",
+          "+10 Security Review (stakeholder)",
+          "-12 Security Concern (stakeholder)"
+        ],
+        "final_score": 79
+      },
+      "urgency": "High",
+      "predicted_timeline": "60-90 Days",
+      "objections": [
+        "Security Concern"
+      ],
+      "evidence": [
+        {
+          "source": "Website",
+          "fact": "Cloud modernization initiatives published"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Azure-related hiring observed"
+        },
+        {
+          "source": "Reddit",
+          "fact": "Azure enterprise discussions trending"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Hiring Azure Cloud Engineer, Cloud Architect \u2014 committee inferred from org signals"
+        },
+        {
+          "source": "Meetings",
+          "fact": "Buying roles referenced in recent meeting transcripts"
+        }
+      ]
+    },
+    {
+      "company": "Accenture",
+      "company_name": "Accenture",
+      "product": "Azure AI",
+      "intent_score": 77,
+      "intent_level": "High",
+      "purchase_probability": 75,
+      "buying_score": 75,
+      "confidence": 63,
+      "buying_stage": "Technical Evaluation",
+      "purchase_window": "60-90 Days",
+      "positive_signals": [
+        {
+          "signal": "Migration Planned",
+          "weight": 15,
+          "source": "research",
+          "confidence": 95,
+          "evidence": "Migration Planned matched 7 time(s) in research",
+          "occurrences": 7
+        },
+        {
+          "signal": "Hiring AI Engineers",
+          "weight": 12,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Hiring AI Engineers matched 1 time(s) in research",
+          "occurrences": 1
+        },
+        {
+          "signal": "Security Review",
+          "weight": 10,
+          "source": "stakeholder",
+          "confidence": 85,
+          "evidence": "Security Review matched 3 time(s) in stakeholder",
+          "occurrences": 3
+        },
+        {
+          "signal": "Security Review",
+          "weight": 10,
+          "source": "research",
+          "confidence": 75,
+          "evidence": "Security Review matched 2 time(s) in research",
+          "occurrences": 2
+        },
+        {
+          "signal": "Pricing Requested",
+          "weight": 10,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Pricing Requested matched 1 time(s) in research",
+          "occurrences": 1
+        },
+        {
+          "signal": "Procurement Discussion",
+          "weight": 10,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Procurement Discussion matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        },
+        {
+          "signal": "Cloud Expansion",
+          "weight": 10,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Cloud Expansion matched 1 time(s) in research",
+          "occurrences": 1
+        }
+      ],
+      "negative_signals": [
+        {
+          "signal": "Security Concern",
+          "weight": -12,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Security Concern matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        }
+      ],
+      "signal_breakdown": {
+        "buying_signals": 100,
+        "stakeholder_importance": 45.8,
+        "research_confidence": 94,
+        "technology_match": 63,
+        "executive_participation": 100,
+        "urgency": 52,
+        "positive_sentiment": 58,
+        "negative_signals": 16
+      },
+      "matched_keywords": [
+        {
+          "keyword": "Azure",
+          "category": "technology",
+          "occurrences": 29,
+          "sources": [
+            "research",
+            "stakeholder",
+            "meetings"
+          ]
+        },
+        {
+          "keyword": "Azure AI",
+          "category": "technology",
+          "occurrences": 2,
+          "sources": [
+            "research"
+          ]
+        },
+        {
+          "keyword": "Azure OpenAI",
+          "category": "technology",
+          "occurrences": 3,
+          "sources": [
+            "research",
+            "stakeholder"
+          ]
+        },
+        {
+          "keyword": "Azure Security",
+          "category": "technology",
+          "occurrences": 3,
+          "sources": [
+            "research",
+            "stakeholder"
+          ]
+        },
+        {
+          "keyword": "Cloud Modernization",
+          "category": "technology",
+          "occurrences": 1,
+          "sources": [
+            "research"
+          ]
+        },
+        {
+          "keyword": "AWS",
+          "category": "competitors",
+          "occurrences": 5,
+          "sources": [
+            "research",
+            "stakeholder",
+            "meetings"
+          ]
+        }
+      ],
+      "executive_involvement": [
+        {
+          "name": "Rohan Reddy",
+          "title": "Chief Technology Officer",
+          "type": "decision_maker",
+          "influence": "High",
+          "score": 100,
+          "executive": true
+        },
+        {
+          "name": "Priya Menon",
+          "title": "Principal Cloud Architect",
+          "type": "influencer",
+          "influence": "Medium",
+          "score": 36,
+          "executive": false
+        },
+        {
+          "name": "Meera Sharma",
+          "title": "Engineering Manager, Platform",
+          "type": "influencer",
+          "influence": "Medium",
+          "score": 36,
+          "executive": false
+        },
+        {
+          "name": "Kavya Bose",
+          "title": "VP Procurement",
+          "type": "blocker",
+          "influence": "High",
+          "score": 33,
+          "executive": true
+        },
+        {
+          "name": "Ananya Sharma",
+          "title": "Head of Information Security",
+          "type": "blocker",
+          "influence": "Medium",
+          "score": 24,
+          "executive": true
+        }
+      ],
+      "recommended_action": "Run a technical workshop with the decision maker and champion this week.",
+      "recommended_priority": "P1",
+      "explanation": {
+        "summary": "Accenture scored 77/100 because of +15 Migration Planned (research), +12 Hiring AI Engineers (research), +10 Security Review (stakeholder), +10 Security Review (research).",
+        "line_items": [
+          "+15 Migration Planned (research)",
+          "+12 Hiring AI Engineers (research)",
+          "+10 Security Review (stakeholder)",
+          "+10 Security Review (research)",
+          "+10 Pricing Requested (research)",
+          "-12 Security Concern (stakeholder)"
+        ],
+        "final_score": 77
+      },
+      "urgency": "High",
+      "predicted_timeline": "60-90 Days",
+      "objections": [
+        "Security Concern"
+      ],
+      "evidence": [
+        {
+          "source": "Website",
+          "fact": "Cloud modernization initiatives published"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Azure-related hiring observed"
+        },
+        {
+          "source": "Reddit",
+          "fact": "Azure enterprise discussions trending"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Hiring Azure Cloud Engineer, Cloud Architect \u2014 committee inferred from org signals"
+        },
+        {
+          "source": "Meetings",
+          "fact": "Buying roles referenced in recent meeting transcripts"
+        }
+      ]
+    }
+  ],
+  "totals": {
+    "average_intent_score": 80,
+    "high_intent_accounts": 10,
+    "average_purchase_probability": 78,
+    "average_confidence": 67,
+    "expected_revenue_opportunity": 978750,
+    "average_buying_window": "60-90 Days",
+    "signal_frequency": {
+      "Migration Planned": 70,
+      "Executive Meeting": 7,
+      "Hiring Azure Engineers": 5,
+      "Hiring AI Engineers": 10,
+      "Pricing Requested": 20,
+      "Security Review": 45,
+      "Procurement Discussion": 10,
+      "Cloud Expansion": 10
+    }
+  },
+  "companies_summary": [
+    {
+      "company_name": "Capgemini",
+      "intent_score": 83,
+      "purchase_probability": 81,
+      "buying_stage": "Technical Evaluation",
+      "recommended_priority": "P1",
+      "recommended_action": "Run a technical workshop with the decision maker and champion this week.",
+      "urgency": "High",
+      "predicted_timeline": "30-60 Days",
+      "positive_signals": [
+        {
+          "signal": "Migration Planned",
+          "weight": 15,
+          "source": "research",
+          "confidence": 95,
+          "evidence": "Migration Planned matched 7 time(s) in research",
+          "occurrences": 7
+        },
+        {
+          "signal": "Executive Meeting",
+          "weight": 15,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Executive Meeting matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        },
+        {
+          "signal": "Hiring AI Engineers",
+          "weight": 12,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Hiring AI Engineers matched 1 time(s) in research",
+          "occurrences": 1
+        },
+        {
+          "signal": "Security Review",
+          "weight": 10,
+          "source": "research",
+          "confidence": 75,
+          "evidence": "Security Review matched 2 time(s) in research",
+          "occurrences": 2
+        },
+        {
+          "signal": "Security Review",
+          "weight": 10,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Security Review matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        },
+        {
+          "signal": "Pricing Requested",
+          "weight": 10,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Pricing Requested matched 1 time(s) in research",
+          "occurrences": 1
+        },
+        {
+          "signal": "Procurement Discussion",
+          "weight": 10,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Procurement Discussion matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        },
+        {
+          "signal": "Cloud Expansion",
+          "weight": 10,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Cloud Expansion matched 1 time(s) in research",
+          "occurrences": 1
+        }
+      ],
+      "negative_signals": [],
+      "matched_keywords": [
+        {
+          "keyword": "Azure",
+          "category": "technology",
+          "occurrences": 30,
+          "sources": [
+            "research",
+            "stakeholder",
+            "meetings"
+          ]
+        },
+        {
+          "keyword": "Azure AI",
+          "category": "technology",
+          "occurrences": 5,
+          "sources": [
+            "research",
+            "stakeholder"
+          ]
+        },
+        {
+          "keyword": "Azure OpenAI",
+          "category": "technology",
+          "occurrences": 2,
+          "sources": [
+            "research"
+          ]
+        },
+        {
+          "keyword": "Azure Security",
+          "category": "technology",
+          "occurrences": 2,
+          "sources": [
+            "research",
+            "stakeholder"
+          ]
+        },
+        {
+          "keyword": "Cloud Modernization",
+          "category": "technology",
+          "occurrences": 1,
+          "sources": [
+            "research"
+          ]
+        },
+        {
+          "keyword": "AWS",
+          "category": "competitors",
+          "occurrences": 5,
+          "sources": [
+            "research",
+            "stakeholder",
+            "meetings"
+          ]
+        }
+      ],
+      "explanation": {
+        "summary": "Capgemini scored 83/100 because of +15 Migration Planned (research), +15 Executive Meeting (stakeholder), +12 Hiring AI Engineers (research), +10 Security Review (research).",
+        "line_items": [
+          "+15 Migration Planned (research)",
+          "+15 Executive Meeting (stakeholder)",
+          "+12 Hiring AI Engineers (research)",
+          "+10 Security Review (research)",
+          "+10 Security Review (stakeholder)"
+        ],
+        "final_score": 83
+      },
+      "executive_involvement": [
+        {
+          "name": "Priya Rao",
+          "title": "VP Engineering",
+          "type": "decision_maker",
+          "influence": "High",
+          "score": 100,
+          "executive": true
+        },
+        {
+          "name": "Divya Reddy",
+          "title": "Head of Cloud Platform",
+          "type": "champion",
+          "influence": "High",
+          "score": 93,
+          "executive": true
+        },
+        {
+          "name": "Priya Rao",
+          "title": "Director, AI Initiatives",
+          "type": "champion",
+          "influence": "Medium",
+          "score": 55,
+          "executive": false
+        },
+        {
+          "name": "Ananya Krishnan",
+          "title": "Principal Cloud Architect",
+          "type": "influencer",
+          "influence": "Medium",
+          "score": 36,
+          "executive": false
+        },
+        {
+          "name": "Aditya Desai",
+          "title": "Engineering Manager, Platform",
+          "type": "influencer",
+          "influence": "Medium",
+          "score": 36,
+          "executive": false
+        },
+        {
+          "name": "Karthik Patel",
+          "title": "VP Procurement",
+          "type": "blocker",
+          "influence": "High",
+          "score": 33,
+          "executive": true
+        }
+      ],
+      "objections": [
+        "No active blockers detected"
+      ],
+      "evidence": [
+        {
+          "source": "Website",
+          "fact": "Cloud modernization initiatives published"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Azure-related hiring observed"
+        },
+        {
+          "source": "Reddit",
+          "fact": "Azure enterprise discussions trending"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Hiring Azure Cloud Engineer, Cloud Architect \u2014 committee inferred from org signals"
+        },
+        {
+          "source": "Meetings",
+          "fact": "Buying roles referenced in recent meeting transcripts"
+        }
+      ]
+    },
+    {
+      "company_name": "TCS",
+      "intent_score": 81,
+      "purchase_probability": 80,
+      "buying_stage": "Technical Evaluation",
+      "recommended_priority": "P1",
+      "recommended_action": "Run a technical workshop with the decision maker and champion this week.",
+      "urgency": "High",
+      "predicted_timeline": "30-60 Days",
+      "positive_signals": [
+        {
+          "signal": "Migration Planned",
+          "weight": 15,
+          "source": "research",
+          "confidence": 95,
+          "evidence": "Migration Planned matched 7 time(s) in research",
+          "occurrences": 7
+        },
+        {
+          "signal": "Executive Meeting",
+          "weight": 15,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Executive Meeting matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        },
+        {
+          "signal": "Hiring Azure Engineers",
+          "weight": 12,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Hiring Azure Engineers matched 1 time(s) in research",
+          "occurrences": 1
+        },
+        {
+          "signal": "Hiring AI Engineers",
+          "weight": 12,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Hiring AI Engineers matched 1 time(s) in research",
+          "occurrences": 1
+        },
+        {
+          "signal": "Security Review",
+          "weight": 10,
+          "source": "stakeholder",
+          "confidence": 85,
+          "evidence": "Security Review matched 3 time(s) in stakeholder",
+          "occurrences": 3
+        },
+        {
+          "signal": "Pricing Requested",
+          "weight": 10,
+          "source": "research",
+          "confidence": 85,
+          "evidence": "Pricing Requested matched 3 time(s) in research",
+          "occurrences": 3
+        },
+        {
+          "signal": "Security Review",
+          "weight": 10,
+          "source": "research",
+          "confidence": 75,
+          "evidence": "Security Review matched 2 time(s) in research",
+          "occurrences": 2
+        },
+        {
+          "signal": "Procurement Discussion",
+          "weight": 10,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Procurement Discussion matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        },
+        {
+          "signal": "Cloud Expansion",
+          "weight": 10,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Cloud Expansion matched 1 time(s) in research",
+          "occurrences": 1
+        }
+      ],
+      "negative_signals": [
+        {
+          "signal": "Security Concern",
+          "weight": -12,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Security Concern matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        }
+      ],
+      "matched_keywords": [
+        {
+          "keyword": "Azure",
+          "category": "technology",
+          "occurrences": 27,
+          "sources": [
+            "research",
+            "stakeholder",
+            "meetings"
+          ]
+        },
+        {
+          "keyword": "Azure AI",
+          "category": "technology",
+          "occurrences": 3,
+          "sources": [
+            "research",
+            "stakeholder"
+          ]
+        },
+        {
+          "keyword": "Azure OpenAI",
+          "category": "technology",
+          "occurrences": 3,
+          "sources": [
+            "research",
+            "stakeholder"
+          ]
+        },
+        {
+          "keyword": "Azure Security",
+          "category": "technology",
+          "occurrences": 3,
+          "sources": [
+            "research",
+            "stakeholder"
+          ]
+        },
+        {
+          "keyword": "Cloud Modernization",
+          "category": "technology",
+          "occurrences": 3,
+          "sources": [
+            "research"
+          ]
+        },
+        {
+          "keyword": "AWS",
+          "category": "competitors",
+          "occurrences": 4,
+          "sources": [
+            "research",
+            "stakeholder",
+            "meetings"
+          ]
+        }
+      ],
+      "explanation": {
+        "summary": "TCS scored 81/100 because of +15 Migration Planned (research), +15 Executive Meeting (stakeholder), +12 Hiring Azure Engineers (research), +12 Hiring AI Engineers (research).",
+        "line_items": [
+          "+15 Migration Planned (research)",
+          "+15 Executive Meeting (stakeholder)",
+          "+12 Hiring Azure Engineers (research)",
+          "+12 Hiring AI Engineers (research)",
+          "+10 Security Review (stakeholder)",
+          "-12 Security Concern (stakeholder)"
+        ],
+        "final_score": 81
+      },
+      "executive_involvement": [
+        {
+          "name": "Vikram Gupta",
+          "title": "Chief Technology Officer",
+          "type": "decision_maker",
+          "influence": "High",
+          "score": 100,
+          "executive": true
+        },
+        {
+          "name": "Karthik Kulkarni",
+          "title": "VP Engineering",
+          "type": "decision_maker",
+          "influence": "High",
+          "score": 100,
+          "executive": true
+        },
+        {
+          "name": "Priya Desai",
+          "title": "Head of Cloud Platform",
+          "type": "champion",
+          "influence": "High",
+          "score": 93,
+          "executive": true
+        },
+        {
+          "name": "Ananya Bose",
+          "title": "Director, AI Initiatives",
+          "type": "champion",
+          "influence": "Medium",
+          "score": 55,
+          "executive": false
+        },
+        {
+          "name": "Kavya Nair",
+          "title": "Principal Cloud Architect",
+          "type": "influencer",
+          "influence": "Medium",
+          "score": 36,
+          "executive": false
+        },
+        {
+          "name": "Vikram Iyer",
+          "title": "VP Procurement",
+          "type": "blocker",
+          "influence": "High",
+          "score": 33,
+          "executive": true
+        },
+        {
+          "name": "Rahul Reddy",
+          "title": "Head of Information Security",
+          "type": "blocker",
+          "influence": "Medium",
+          "score": 24,
+          "executive": true
+        }
+      ],
+      "objections": [
+        "Security Concern"
+      ],
+      "evidence": [
+        {
+          "source": "Website",
+          "fact": "Enterprise AI initiatives highlighted"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Hiring Azure-focused engineers"
+        },
+        {
+          "source": "Reddit",
+          "fact": "Community discussions around Azure pricing"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Hiring Azure Cloud Engineer, Cloud Architect \u2014 committee inferred from org signals"
+        },
+        {
+          "source": "Meetings",
+          "fact": "Buying roles referenced in recent meeting transcripts"
+        }
+      ]
+    },
+    {
+      "company_name": "Tech Mahindra",
+      "intent_score": 81,
+      "purchase_probability": 79,
+      "buying_stage": "Technical Evaluation",
+      "recommended_priority": "P1",
+      "recommended_action": "Run a technical workshop with the decision maker and champion this week.",
+      "urgency": "High",
+      "predicted_timeline": "30-60 Days",
+      "positive_signals": [
+        {
+          "signal": "Migration Planned",
+          "weight": 15,
+          "source": "research",
+          "confidence": 95,
+          "evidence": "Migration Planned matched 7 time(s) in research",
+          "occurrences": 7
+        },
+        {
+          "signal": "Executive Meeting",
+          "weight": 15,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Executive Meeting matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        },
+        {
+          "signal": "Hiring Azure Engineers",
+          "weight": 12,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Hiring Azure Engineers matched 1 time(s) in research",
+          "occurrences": 1
+        },
+        {
+          "signal": "Hiring AI Engineers",
+          "weight": 12,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Hiring AI Engineers matched 1 time(s) in research",
+          "occurrences": 1
+        },
+        {
+          "signal": "Security Review",
+          "weight": 10,
+          "source": "stakeholder",
+          "confidence": 85,
+          "evidence": "Security Review matched 3 time(s) in stakeholder",
+          "occurrences": 3
+        },
+        {
+          "signal": "Pricing Requested",
+          "weight": 10,
+          "source": "research",
+          "confidence": 85,
+          "evidence": "Pricing Requested matched 3 time(s) in research",
+          "occurrences": 3
+        },
+        {
+          "signal": "Security Review",
+          "weight": 10,
+          "source": "research",
+          "confidence": 75,
+          "evidence": "Security Review matched 2 time(s) in research",
+          "occurrences": 2
+        },
+        {
+          "signal": "Procurement Discussion",
+          "weight": 10,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Procurement Discussion matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        },
+        {
+          "signal": "Cloud Expansion",
+          "weight": 10,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Cloud Expansion matched 1 time(s) in research",
+          "occurrences": 1
+        }
+      ],
+      "negative_signals": [
+        {
+          "signal": "Security Concern",
+          "weight": -12,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Security Concern matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        }
+      ],
+      "matched_keywords": [
+        {
+          "keyword": "Azure",
+          "category": "technology",
+          "occurrences": 28,
+          "sources": [
+            "research",
+            "stakeholder",
+            "meetings"
+          ]
+        },
+        {
+          "keyword": "Azure AI",
+          "category": "technology",
+          "occurrences": 5,
+          "sources": [
+            "research",
+            "stakeholder"
+          ]
+        },
+        {
+          "keyword": "Azure OpenAI",
+          "category": "technology",
+          "occurrences": 4,
+          "sources": [
+            "research",
+            "stakeholder"
+          ]
+        },
+        {
+          "keyword": "Azure Security",
+          "category": "technology",
+          "occurrences": 3,
+          "sources": [
+            "research",
+            "stakeholder"
+          ]
+        },
+        {
+          "keyword": "Cloud Modernization",
+          "category": "technology",
+          "occurrences": 3,
+          "sources": [
+            "research"
+          ]
+        },
+        {
+          "keyword": "AWS",
+          "category": "competitors",
+          "occurrences": 4,
+          "sources": [
+            "research",
+            "stakeholder",
+            "meetings"
+          ]
+        }
+      ],
+      "explanation": {
+        "summary": "Tech Mahindra scored 81/100 because of +15 Migration Planned (research), +15 Executive Meeting (stakeholder), +12 Hiring Azure Engineers (research), +12 Hiring AI Engineers (research).",
+        "line_items": [
+          "+15 Migration Planned (research)",
+          "+15 Executive Meeting (stakeholder)",
+          "+12 Hiring Azure Engineers (research)",
+          "+12 Hiring AI Engineers (research)",
+          "+10 Security Review (stakeholder)",
+          "-12 Security Concern (stakeholder)"
+        ],
+        "final_score": 81
+      },
+      "executive_involvement": [
+        {
+          "name": "Arjun Iyer",
+          "title": "Chief Technology Officer",
+          "type": "decision_maker",
+          "influence": "High",
+          "score": 100,
+          "executive": true
+        },
+        {
+          "name": "Aditya Kulkarni",
+          "title": "VP Engineering",
+          "type": "decision_maker",
+          "influence": "High",
+          "score": 100,
+          "executive": true
+        },
+        {
+          "name": "Karthik Gupta",
+          "title": "Head of Cloud Platform",
+          "type": "champion",
+          "influence": "High",
+          "score": 93,
+          "executive": true
+        },
+        {
+          "name": "Priya Menon",
+          "title": "Director, AI Initiatives",
+          "type": "champion",
+          "influence": "Medium",
+          "score": 55,
+          "executive": false
+        },
+        {
+          "name": "Divya Sharma",
+          "title": "Principal Cloud Architect",
+          "type": "influencer",
+          "influence": "Medium",
+          "score": 36,
+          "executive": false
+        },
+        {
+          "name": "Priya Patel",
+          "title": "Engineering Manager, Platform",
+          "type": "influencer",
+          "influence": "Medium",
+          "score": 36,
+          "executive": false
+        },
+        {
+          "name": "Meera Desai",
+          "title": "VP Procurement",
+          "type": "blocker",
+          "influence": "High",
+          "score": 33,
+          "executive": true
+        },
+        {
+          "name": "Rohan Krishnan",
+          "title": "Head of Information Security",
+          "type": "blocker",
+          "influence": "Medium",
+          "score": 24,
+          "executive": true
+        }
+      ],
+      "objections": [
+        "Security Concern"
+      ],
+      "evidence": [
+        {
+          "source": "Website",
+          "fact": "Enterprise AI initiatives highlighted"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Hiring Azure-focused engineers"
+        },
+        {
+          "source": "Reddit",
+          "fact": "Community discussions around Azure pricing"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Hiring Azure Cloud Engineer, Cloud Architect \u2014 committee inferred from org signals"
+        },
+        {
+          "source": "Meetings",
+          "fact": "Buying roles referenced in recent meeting transcripts"
+        }
+      ]
+    },
+    {
+      "company_name": "Infosys",
+      "intent_score": 80,
+      "purchase_probability": 79,
+      "buying_stage": "Technical Evaluation",
+      "recommended_priority": "P1",
+      "recommended_action": "Run a technical workshop with the decision maker and champion this week.",
+      "urgency": "High",
+      "predicted_timeline": "60-90 Days",
+      "positive_signals": [
+        {
+          "signal": "Migration Planned",
+          "weight": 15,
+          "source": "research",
+          "confidence": 95,
+          "evidence": "Migration Planned matched 7 time(s) in research",
+          "occurrences": 7
+        },
+        {
+          "signal": "Executive Meeting",
+          "weight": 15,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Executive Meeting matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        },
+        {
+          "signal": "Hiring Azure Engineers",
+          "weight": 12,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Hiring Azure Engineers matched 1 time(s) in research",
+          "occurrences": 1
+        },
+        {
+          "signal": "Hiring AI Engineers",
+          "weight": 12,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Hiring AI Engineers matched 1 time(s) in research",
+          "occurrences": 1
+        },
+        {
+          "signal": "Pricing Requested",
+          "weight": 10,
+          "source": "research",
+          "confidence": 85,
+          "evidence": "Pricing Requested matched 3 time(s) in research",
+          "occurrences": 3
+        },
+        {
+          "signal": "Security Review",
+          "weight": 10,
+          "source": "research",
+          "confidence": 75,
+          "evidence": "Security Review matched 2 time(s) in research",
+          "occurrences": 2
+        },
+        {
+          "signal": "Security Review",
+          "weight": 10,
+          "source": "stakeholder",
+          "confidence": 75,
+          "evidence": "Security Review matched 2 time(s) in stakeholder",
+          "occurrences": 2
+        },
+        {
+          "signal": "Procurement Discussion",
+          "weight": 10,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Procurement Discussion matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        },
+        {
+          "signal": "Cloud Expansion",
+          "weight": 10,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Cloud Expansion matched 1 time(s) in research",
+          "occurrences": 1
+        }
+      ],
+      "negative_signals": [
+        {
+          "signal": "Security Concern",
+          "weight": -12,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Security Concern matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        }
+      ],
+      "matched_keywords": [
+        {
+          "keyword": "Azure",
+          "category": "technology",
+          "occurrences": 27,
+          "sources": [
+            "research",
+            "stakeholder",
+            "meetings"
+          ]
+        },
+        {
+          "keyword": "Azure AI",
+          "category": "technology",
+          "occurrences": 5,
+          "sources": [
+            "research",
+            "stakeholder"
+          ]
+        },
+        {
+          "keyword": "Azure OpenAI",
+          "category": "technology",
+          "occurrences": 4,
+          "sources": [
+            "research",
+            "stakeholder"
+          ]
+        },
+        {
+          "keyword": "Azure Security",
+          "category": "technology",
+          "occurrences": 2,
+          "sources": [
+            "research",
+            "stakeholder"
+          ]
+        },
+        {
+          "keyword": "Cloud Modernization",
+          "category": "technology",
+          "occurrences": 3,
+          "sources": [
+            "research"
+          ]
+        },
+        {
+          "keyword": "AWS",
+          "category": "competitors",
+          "occurrences": 4,
+          "sources": [
+            "research",
+            "stakeholder",
+            "meetings"
+          ]
+        }
+      ],
+      "explanation": {
+        "summary": "Infosys scored 80/100 because of +15 Migration Planned (research), +15 Executive Meeting (stakeholder), +12 Hiring Azure Engineers (research), +12 Hiring AI Engineers (research).",
+        "line_items": [
+          "+15 Migration Planned (research)",
+          "+15 Executive Meeting (stakeholder)",
+          "+12 Hiring Azure Engineers (research)",
+          "+12 Hiring AI Engineers (research)",
+          "+10 Pricing Requested (research)",
+          "-12 Security Concern (stakeholder)"
+        ],
+        "final_score": 80
+      },
+      "executive_involvement": [
+        {
+          "name": "Rohan Krishnan",
+          "title": "Chief Technology Officer",
+          "type": "decision_maker",
+          "influence": "High",
+          "score": 100,
+          "executive": true
+        },
+        {
+          "name": "Arjun Iyer",
+          "title": "VP Engineering",
+          "type": "decision_maker",
+          "influence": "High",
+          "score": 100,
+          "executive": true
+        },
+        {
+          "name": "Sneha Menon",
+          "title": "Head of Cloud Platform",
+          "type": "champion",
+          "influence": "High",
+          "score": 93,
+          "executive": true
+        },
+        {
+          "name": "Ananya Desai",
+          "title": "Director, AI Initiatives",
+          "type": "champion",
+          "influence": "Medium",
+          "score": 55,
+          "executive": false
+        },
+        {
+          "name": "Kavya Menon",
+          "title": "Principal Cloud Architect",
+          "type": "influencer",
+          "influence": "Medium",
+          "score": 36,
+          "executive": false
+        },
+        {
+          "name": "Aditya Krishnan",
+          "title": "VP Procurement",
+          "type": "blocker",
+          "influence": "High",
+          "score": 33,
+          "executive": true
+        },
+        {
+          "name": "Karthik Iyer",
+          "title": "Head of Information Security",
+          "type": "blocker",
+          "influence": "Medium",
+          "score": 24,
+          "executive": true
+        }
+      ],
+      "objections": [
+        "Security Concern"
+      ],
+      "evidence": [
+        {
+          "source": "Website",
+          "fact": "Enterprise AI initiatives highlighted"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Hiring Azure-focused engineers"
+        },
+        {
+          "source": "Reddit",
+          "fact": "Community discussions around Azure pricing"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Hiring Azure Cloud Engineer, Cloud Architect \u2014 committee inferred from org signals"
+        },
+        {
+          "source": "Meetings",
+          "fact": "Buying roles referenced in recent meeting transcripts"
+        }
+      ]
+    },
+    {
+      "company_name": "Cognizant",
+      "intent_score": 80,
+      "purchase_probability": 79,
+      "buying_stage": "Technical Evaluation",
+      "recommended_priority": "P1",
+      "recommended_action": "Run a technical workshop with the decision maker and champion this week.",
+      "urgency": "High",
+      "predicted_timeline": "60-90 Days",
+      "positive_signals": [
+        {
+          "signal": "Migration Planned",
+          "weight": 15,
+          "source": "research",
+          "confidence": 95,
+          "evidence": "Migration Planned matched 7 time(s) in research",
+          "occurrences": 7
+        },
+        {
+          "signal": "Executive Meeting",
+          "weight": 15,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Executive Meeting matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        },
+        {
+          "signal": "Hiring AI Engineers",
+          "weight": 12,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Hiring AI Engineers matched 1 time(s) in research",
+          "occurrences": 1
+        },
+        {
+          "signal": "Security Review",
+          "weight": 10,
+          "source": "stakeholder",
+          "confidence": 95,
+          "evidence": "Security Review matched 4 time(s) in stakeholder",
+          "occurrences": 4
+        },
+        {
+          "signal": "Security Review",
+          "weight": 10,
+          "source": "research",
+          "confidence": 75,
+          "evidence": "Security Review matched 2 time(s) in research",
+          "occurrences": 2
+        },
+        {
+          "signal": "Pricing Requested",
+          "weight": 10,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Pricing Requested matched 1 time(s) in research",
+          "occurrences": 1
+        },
+        {
+          "signal": "Procurement Discussion",
+          "weight": 10,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Procurement Discussion matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        },
+        {
+          "signal": "Cloud Expansion",
+          "weight": 10,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Cloud Expansion matched 1 time(s) in research",
+          "occurrences": 1
+        }
+      ],
+      "negative_signals": [
+        {
+          "signal": "Security Concern",
+          "weight": -12,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Security Concern matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        }
+      ],
+      "matched_keywords": [
+        {
+          "keyword": "Azure",
+          "category": "technology",
+          "occurrences": 30,
+          "sources": [
+            "research",
+            "stakeholder",
+            "meetings"
+          ]
+        },
+        {
+          "keyword": "Azure AI",
+          "category": "technology",
+          "occurrences": 3,
+          "sources": [
+            "research",
+            "stakeholder"
+          ]
+        },
+        {
+          "keyword": "Azure OpenAI",
+          "category": "technology",
+          "occurrences": 3,
+          "sources": [
+            "research",
+            "stakeholder"
+          ]
+        },
+        {
+          "keyword": "Azure Security",
+          "category": "technology",
+          "occurrences": 4,
+          "sources": [
+            "research",
+            "stakeholder"
+          ]
+        },
+        {
+          "keyword": "Cloud Modernization",
+          "category": "technology",
+          "occurrences": 1,
+          "sources": [
+            "research"
+          ]
+        },
+        {
+          "keyword": "AWS",
+          "category": "competitors",
+          "occurrences": 5,
+          "sources": [
+            "research",
+            "stakeholder",
+            "meetings"
+          ]
+        }
+      ],
+      "explanation": {
+        "summary": "Cognizant scored 80/100 because of +15 Migration Planned (research), +15 Executive Meeting (stakeholder), +12 Hiring AI Engineers (research), +10 Security Review (stakeholder).",
+        "line_items": [
+          "+15 Migration Planned (research)",
+          "+15 Executive Meeting (stakeholder)",
+          "+12 Hiring AI Engineers (research)",
+          "+10 Security Review (stakeholder)",
+          "+10 Security Review (research)",
+          "-12 Security Concern (stakeholder)"
+        ],
+        "final_score": 80
+      },
+      "executive_involvement": [
+        {
+          "name": "Aditya Kulkarni",
+          "title": "Chief Technology Officer",
+          "type": "decision_maker",
+          "influence": "High",
+          "score": 100,
+          "executive": true
+        },
+        {
+          "name": "Ananya Desai",
+          "title": "VP Engineering",
+          "type": "decision_maker",
+          "influence": "High",
+          "score": 100,
+          "executive": true
+        },
+        {
+          "name": "Kavya Menon",
+          "title": "Head of Cloud Platform",
+          "type": "champion",
+          "influence": "High",
+          "score": 93,
+          "executive": true
+        },
+        {
+          "name": "Rahul Gupta",
+          "title": "Engineering Manager, Platform",
+          "type": "influencer",
+          "influence": "Medium",
+          "score": 36,
+          "executive": false
+        },
+        {
+          "name": "Rohan Reddy",
+          "title": "VP Procurement",
+          "type": "blocker",
+          "influence": "High",
+          "score": 33,
+          "executive": true
+        },
+        {
+          "name": "Arjun Gupta",
+          "title": "Head of Information Security",
+          "type": "blocker",
+          "influence": "Medium",
+          "score": 24,
+          "executive": true
+        }
+      ],
+      "objections": [
+        "Security Concern"
+      ],
+      "evidence": [
+        {
+          "source": "Website",
+          "fact": "Cloud modernization initiatives published"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Azure-related hiring observed"
+        },
+        {
+          "source": "Reddit",
+          "fact": "Azure enterprise discussions trending"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Hiring Azure Cloud Engineer, Cloud Architect \u2014 committee inferred from org signals"
+        },
+        {
+          "source": "Meetings",
+          "fact": "Buying roles referenced in recent meeting transcripts"
+        }
+      ]
+    },
+    {
+      "company_name": "LTIMindtree",
+      "intent_score": 80,
+      "purchase_probability": 78,
+      "buying_stage": "Technical Evaluation",
+      "recommended_priority": "P1",
+      "recommended_action": "Run a technical workshop with the decision maker and champion this week.",
+      "urgency": "High",
+      "predicted_timeline": "60-90 Days",
+      "positive_signals": [
+        {
+          "signal": "Migration Planned",
+          "weight": 15,
+          "source": "research",
+          "confidence": 95,
+          "evidence": "Migration Planned matched 7 time(s) in research",
+          "occurrences": 7
+        },
+        {
+          "signal": "Executive Meeting",
+          "weight": 15,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Executive Meeting matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        },
+        {
+          "signal": "Hiring AI Engineers",
+          "weight": 12,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Hiring AI Engineers matched 1 time(s) in research",
+          "occurrences": 1
+        },
+        {
+          "signal": "Security Review",
+          "weight": 10,
+          "source": "stakeholder",
+          "confidence": 85,
+          "evidence": "Security Review matched 3 time(s) in stakeholder",
+          "occurrences": 3
+        },
+        {
+          "signal": "Security Review",
+          "weight": 10,
+          "source": "research",
+          "confidence": 75,
+          "evidence": "Security Review matched 2 time(s) in research",
+          "occurrences": 2
+        },
+        {
+          "signal": "Pricing Requested",
+          "weight": 10,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Pricing Requested matched 1 time(s) in research",
+          "occurrences": 1
+        },
+        {
+          "signal": "Procurement Discussion",
+          "weight": 10,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Procurement Discussion matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        },
+        {
+          "signal": "Cloud Expansion",
+          "weight": 10,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Cloud Expansion matched 1 time(s) in research",
+          "occurrences": 1
+        }
+      ],
+      "negative_signals": [
+        {
+          "signal": "Security Concern",
+          "weight": -12,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Security Concern matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        }
+      ],
+      "matched_keywords": [
+        {
+          "keyword": "Azure",
+          "category": "technology",
+          "occurrences": 32,
+          "sources": [
+            "research",
+            "stakeholder",
+            "meetings"
+          ]
+        },
+        {
+          "keyword": "Azure AI",
+          "category": "technology",
+          "occurrences": 5,
+          "sources": [
+            "research",
+            "stakeholder"
+          ]
+        },
+        {
+          "keyword": "Azure OpenAI",
+          "category": "technology",
+          "occurrences": 4,
+          "sources": [
+            "research",
+            "stakeholder"
+          ]
+        },
+        {
+          "keyword": "Azure Security",
+          "category": "technology",
+          "occurrences": 3,
+          "sources": [
+            "research",
+            "stakeholder"
+          ]
+        },
+        {
+          "keyword": "Cloud Modernization",
+          "category": "technology",
+          "occurrences": 1,
+          "sources": [
+            "research"
+          ]
+        },
+        {
+          "keyword": "AWS",
+          "category": "competitors",
+          "occurrences": 5,
+          "sources": [
+            "research",
+            "stakeholder",
+            "meetings"
+          ]
+        }
+      ],
+      "explanation": {
+        "summary": "LTIMindtree scored 80/100 because of +15 Migration Planned (research), +15 Executive Meeting (stakeholder), +12 Hiring AI Engineers (research), +10 Security Review (stakeholder).",
+        "line_items": [
+          "+15 Migration Planned (research)",
+          "+15 Executive Meeting (stakeholder)",
+          "+12 Hiring AI Engineers (research)",
+          "+10 Security Review (stakeholder)",
+          "+10 Security Review (research)",
+          "-12 Security Concern (stakeholder)"
+        ],
+        "final_score": 80
+      },
+      "executive_involvement": [
+        {
+          "name": "Meera Reddy",
+          "title": "Chief Technology Officer",
+          "type": "decision_maker",
+          "influence": "High",
+          "score": 100,
+          "executive": true
+        },
+        {
+          "name": "Sneha Rao",
+          "title": "VP Engineering",
+          "type": "decision_maker",
+          "influence": "High",
+          "score": 100,
+          "executive": true
+        },
+        {
+          "name": "Divya Kulkarni",
+          "title": "Head of Cloud Platform",
+          "type": "champion",
+          "influence": "High",
+          "score": 93,
+          "executive": true
+        },
+        {
+          "name": "Vikram Sharma",
+          "title": "Director, AI Initiatives",
+          "type": "champion",
+          "influence": "Medium",
+          "score": 55,
+          "executive": false
+        },
+        {
+          "name": "Rahul Bose",
+          "title": "Principal Cloud Architect",
+          "type": "influencer",
+          "influence": "Medium",
+          "score": 36,
+          "executive": false
+        },
+        {
+          "name": "Vikram Sharma",
+          "title": "Engineering Manager, Platform",
+          "type": "influencer",
+          "influence": "Medium",
+          "score": 36,
+          "executive": false
+        },
+        {
+          "name": "Rahul Menon",
+          "title": "VP Procurement",
+          "type": "blocker",
+          "influence": "High",
+          "score": 33,
+          "executive": true
+        },
+        {
+          "name": "Sneha Iyer",
+          "title": "Head of Information Security",
+          "type": "blocker",
+          "influence": "Medium",
+          "score": 24,
+          "executive": true
+        }
+      ],
+      "objections": [
+        "Security Concern"
+      ],
+      "evidence": [
+        {
+          "source": "Website",
+          "fact": "Cloud modernization initiatives published"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Azure-related hiring observed"
+        },
+        {
+          "source": "Reddit",
+          "fact": "Azure enterprise discussions trending"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Hiring Azure Cloud Engineer, Cloud Architect \u2014 committee inferred from org signals"
+        },
+        {
+          "source": "Meetings",
+          "fact": "Buying roles referenced in recent meeting transcripts"
+        }
+      ]
+    },
+    {
+      "company_name": "Wipro",
+      "intent_score": 79,
+      "purchase_probability": 77,
+      "buying_stage": "Technical Evaluation",
+      "recommended_priority": "P1",
+      "recommended_action": "Run a technical workshop with the decision maker and champion this week.",
+      "urgency": "High",
+      "predicted_timeline": "60-90 Days",
+      "positive_signals": [
+        {
+          "signal": "Migration Planned",
+          "weight": 15,
+          "source": "research",
+          "confidence": 95,
+          "evidence": "Migration Planned matched 7 time(s) in research",
+          "occurrences": 7
+        },
+        {
+          "signal": "Hiring Azure Engineers",
+          "weight": 12,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Hiring Azure Engineers matched 1 time(s) in research",
+          "occurrences": 1
+        },
+        {
+          "signal": "Hiring AI Engineers",
+          "weight": 12,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Hiring AI Engineers matched 1 time(s) in research",
+          "occurrences": 1
+        },
+        {
+          "signal": "Security Review",
+          "weight": 10,
+          "source": "stakeholder",
+          "confidence": 85,
+          "evidence": "Security Review matched 3 time(s) in stakeholder",
+          "occurrences": 3
+        },
+        {
+          "signal": "Pricing Requested",
+          "weight": 10,
+          "source": "research",
+          "confidence": 85,
+          "evidence": "Pricing Requested matched 3 time(s) in research",
+          "occurrences": 3
+        },
+        {
+          "signal": "Security Review",
+          "weight": 10,
+          "source": "research",
+          "confidence": 75,
+          "evidence": "Security Review matched 2 time(s) in research",
+          "occurrences": 2
+        },
+        {
+          "signal": "Procurement Discussion",
+          "weight": 10,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Procurement Discussion matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        },
+        {
+          "signal": "Cloud Expansion",
+          "weight": 10,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Cloud Expansion matched 1 time(s) in research",
+          "occurrences": 1
+        }
+      ],
+      "negative_signals": [
+        {
+          "signal": "Security Concern",
+          "weight": -12,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Security Concern matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        }
+      ],
+      "matched_keywords": [
+        {
+          "keyword": "Azure",
+          "category": "technology",
+          "occurrences": 27,
+          "sources": [
+            "research",
+            "stakeholder",
+            "meetings"
+          ]
+        },
+        {
+          "keyword": "Azure AI",
+          "category": "technology",
+          "occurrences": 4,
+          "sources": [
+            "research",
+            "stakeholder"
+          ]
+        },
+        {
+          "keyword": "Azure OpenAI",
+          "category": "technology",
+          "occurrences": 3,
+          "sources": [
+            "research",
+            "stakeholder"
+          ]
+        },
+        {
+          "keyword": "Azure Security",
+          "category": "technology",
+          "occurrences": 3,
+          "sources": [
+            "research",
+            "stakeholder"
+          ]
+        },
+        {
+          "keyword": "Cloud Modernization",
+          "category": "technology",
+          "occurrences": 3,
+          "sources": [
+            "research"
+          ]
+        },
+        {
+          "keyword": "AWS",
+          "category": "competitors",
+          "occurrences": 4,
+          "sources": [
+            "research",
+            "stakeholder",
+            "meetings"
+          ]
+        }
+      ],
+      "explanation": {
+        "summary": "Wipro scored 79/100 because of +15 Migration Planned (research), +12 Hiring Azure Engineers (research), +12 Hiring AI Engineers (research), +10 Security Review (stakeholder).",
+        "line_items": [
+          "+15 Migration Planned (research)",
+          "+12 Hiring Azure Engineers (research)",
+          "+12 Hiring AI Engineers (research)",
+          "+10 Security Review (stakeholder)",
+          "+10 Pricing Requested (research)",
+          "-12 Security Concern (stakeholder)"
+        ],
+        "final_score": 79
+      },
+      "executive_involvement": [
+        {
+          "name": "Aditya Iyer",
+          "title": "Chief Technology Officer",
+          "type": "decision_maker",
+          "influence": "High",
+          "score": 100,
+          "executive": true
+        },
+        {
+          "name": "Kavya Sharma",
+          "title": "Head of Cloud Platform",
+          "type": "champion",
+          "influence": "High",
+          "score": 93,
+          "executive": true
+        },
+        {
+          "name": "Ananya Bose",
+          "title": "Director, AI Initiatives",
+          "type": "champion",
+          "influence": "Medium",
+          "score": 55,
+          "executive": false
+        },
+        {
+          "name": "Kavya Sharma",
+          "title": "Principal Cloud Architect",
+          "type": "influencer",
+          "influence": "Medium",
+          "score": 36,
+          "executive": false
+        },
+        {
+          "name": "Ananya Bose",
+          "title": "Engineering Manager, Platform",
+          "type": "influencer",
+          "influence": "Medium",
+          "score": 36,
+          "executive": false
+        },
+        {
+          "name": "Rohan Gupta",
+          "title": "VP Procurement",
+          "type": "blocker",
+          "influence": "High",
+          "score": 33,
+          "executive": true
+        },
+        {
+          "name": "Arjun Krishnan",
+          "title": "Head of Information Security",
+          "type": "blocker",
+          "influence": "Medium",
+          "score": 24,
+          "executive": true
+        }
+      ],
+      "objections": [
+        "Security Concern"
+      ],
+      "evidence": [
+        {
+          "source": "Website",
+          "fact": "Enterprise AI initiatives highlighted"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Hiring Azure-focused engineers"
+        },
+        {
+          "source": "Reddit",
+          "fact": "Community discussions around Azure pricing"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Hiring Azure Cloud Engineer, Cloud Architect \u2014 committee inferred from org signals"
+        },
+        {
+          "source": "Meetings",
+          "fact": "Buying roles referenced in recent meeting transcripts"
+        }
+      ]
+    },
+    {
+      "company_name": "HCLTech",
+      "intent_score": 79,
+      "purchase_probability": 77,
+      "buying_stage": "Technical Evaluation",
+      "recommended_priority": "P1",
+      "recommended_action": "Run a technical workshop with the decision maker and champion this week.",
+      "urgency": "High",
+      "predicted_timeline": "60-90 Days",
+      "positive_signals": [
+        {
+          "signal": "Migration Planned",
+          "weight": 15,
+          "source": "research",
+          "confidence": 95,
+          "evidence": "Migration Planned matched 7 time(s) in research",
+          "occurrences": 7
+        },
+        {
+          "signal": "Hiring Azure Engineers",
+          "weight": 12,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Hiring Azure Engineers matched 1 time(s) in research",
+          "occurrences": 1
+        },
+        {
+          "signal": "Hiring AI Engineers",
+          "weight": 12,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Hiring AI Engineers matched 1 time(s) in research",
+          "occurrences": 1
+        },
+        {
+          "signal": "Pricing Requested",
+          "weight": 10,
+          "source": "research",
+          "confidence": 85,
+          "evidence": "Pricing Requested matched 3 time(s) in research",
+          "occurrences": 3
+        },
+        {
+          "signal": "Security Review",
+          "weight": 10,
+          "source": "research",
+          "confidence": 75,
+          "evidence": "Security Review matched 2 time(s) in research",
+          "occurrences": 2
+        },
+        {
+          "signal": "Security Review",
+          "weight": 10,
+          "source": "stakeholder",
+          "confidence": 75,
+          "evidence": "Security Review matched 2 time(s) in stakeholder",
+          "occurrences": 2
+        },
+        {
+          "signal": "Procurement Discussion",
+          "weight": 10,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Procurement Discussion matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        },
+        {
+          "signal": "Cloud Expansion",
+          "weight": 10,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Cloud Expansion matched 1 time(s) in research",
+          "occurrences": 1
+        }
+      ],
+      "negative_signals": [
+        {
+          "signal": "Security Concern",
+          "weight": -12,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Security Concern matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        }
+      ],
+      "matched_keywords": [
+        {
+          "keyword": "Azure",
+          "category": "technology",
+          "occurrences": 27,
+          "sources": [
+            "research",
+            "stakeholder",
+            "meetings"
+          ]
+        },
+        {
+          "keyword": "Azure AI",
+          "category": "technology",
+          "occurrences": 5,
+          "sources": [
+            "research",
+            "stakeholder"
+          ]
+        },
+        {
+          "keyword": "Azure OpenAI",
+          "category": "technology",
+          "occurrences": 4,
+          "sources": [
+            "research",
+            "stakeholder"
+          ]
+        },
+        {
+          "keyword": "Azure Security",
+          "category": "technology",
+          "occurrences": 2,
+          "sources": [
+            "research",
+            "stakeholder"
+          ]
+        },
+        {
+          "keyword": "Cloud Modernization",
+          "category": "technology",
+          "occurrences": 3,
+          "sources": [
+            "research"
+          ]
+        },
+        {
+          "keyword": "AWS",
+          "category": "competitors",
+          "occurrences": 4,
+          "sources": [
+            "research",
+            "stakeholder",
+            "meetings"
+          ]
+        }
+      ],
+      "explanation": {
+        "summary": "HCLTech scored 79/100 because of +15 Migration Planned (research), +12 Hiring Azure Engineers (research), +12 Hiring AI Engineers (research), +10 Pricing Requested (research).",
+        "line_items": [
+          "+15 Migration Planned (research)",
+          "+12 Hiring Azure Engineers (research)",
+          "+12 Hiring AI Engineers (research)",
+          "+10 Pricing Requested (research)",
+          "+10 Security Review (research)",
+          "-12 Security Concern (stakeholder)"
+        ],
+        "final_score": 79
+      },
+      "executive_involvement": [
+        {
+          "name": "Arjun Reddy",
+          "title": "Chief Technology Officer",
+          "type": "decision_maker",
+          "influence": "High",
+          "score": 100,
+          "executive": true
+        },
+        {
+          "name": "Divya Patel",
+          "title": "Head of Cloud Platform",
+          "type": "champion",
+          "influence": "High",
+          "score": 93,
+          "executive": true
+        },
+        {
+          "name": "Sneha Sharma",
+          "title": "Director, AI Initiatives",
+          "type": "champion",
+          "influence": "Medium",
+          "score": 55,
+          "executive": false
+        },
+        {
+          "name": "Meera Menon",
+          "title": "Principal Cloud Architect",
+          "type": "influencer",
+          "influence": "Medium",
+          "score": 36,
+          "executive": false
+        },
+        {
+          "name": "Priya Sharma",
+          "title": "Engineering Manager, Platform",
+          "type": "influencer",
+          "influence": "Medium",
+          "score": 36,
+          "executive": false
+        },
+        {
+          "name": "Arjun Reddy",
+          "title": "VP Procurement",
+          "type": "blocker",
+          "influence": "High",
+          "score": 33,
+          "executive": true
+        },
+        {
+          "name": "Aditya Gupta",
+          "title": "Head of Information Security",
+          "type": "blocker",
+          "influence": "Medium",
+          "score": 24,
+          "executive": true
+        }
+      ],
+      "objections": [
+        "Security Concern"
+      ],
+      "evidence": [
+        {
+          "source": "Website",
+          "fact": "Enterprise AI initiatives highlighted"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Hiring Azure-focused engineers"
+        },
+        {
+          "source": "Reddit",
+          "fact": "Community discussions around Azure pricing"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Hiring Azure Cloud Engineer, Cloud Architect \u2014 committee inferred from org signals"
+        },
+        {
+          "source": "Meetings",
+          "fact": "Buying roles referenced in recent meeting transcripts"
+        }
+      ]
+    },
+    {
+      "company_name": "Persistent Systems",
+      "intent_score": 79,
+      "purchase_probability": 78,
+      "buying_stage": "Technical Evaluation",
+      "recommended_priority": "P1",
+      "recommended_action": "Run a technical workshop with the decision maker and champion this week.",
+      "urgency": "High",
+      "predicted_timeline": "60-90 Days",
+      "positive_signals": [
+        {
+          "signal": "Migration Planned",
+          "weight": 15,
+          "source": "research",
+          "confidence": 95,
+          "evidence": "Migration Planned matched 7 time(s) in research",
+          "occurrences": 7
+        },
+        {
+          "signal": "Executive Meeting",
+          "weight": 15,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Executive Meeting matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        },
+        {
+          "signal": "Hiring AI Engineers",
+          "weight": 12,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Hiring AI Engineers matched 1 time(s) in research",
+          "occurrences": 1
+        },
+        {
+          "signal": "Security Review",
+          "weight": 10,
+          "source": "research",
+          "confidence": 75,
+          "evidence": "Security Review matched 2 time(s) in research",
+          "occurrences": 2
+        },
+        {
+          "signal": "Security Review",
+          "weight": 10,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Security Review matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        },
+        {
+          "signal": "Pricing Requested",
+          "weight": 10,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Pricing Requested matched 1 time(s) in research",
+          "occurrences": 1
+        },
+        {
+          "signal": "Procurement Discussion",
+          "weight": 10,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Procurement Discussion matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        },
+        {
+          "signal": "Cloud Expansion",
+          "weight": 10,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Cloud Expansion matched 1 time(s) in research",
+          "occurrences": 1
+        }
+      ],
+      "negative_signals": [
+        {
+          "signal": "Security Concern",
+          "weight": -12,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Security Concern matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        }
+      ],
+      "matched_keywords": [
+        {
+          "keyword": "Azure",
+          "category": "technology",
+          "occurrences": 31,
+          "sources": [
+            "research",
+            "stakeholder",
+            "meetings"
+          ]
+        },
+        {
+          "keyword": "Azure AI",
+          "category": "technology",
+          "occurrences": 5,
+          "sources": [
+            "research",
+            "stakeholder"
+          ]
+        },
+        {
+          "keyword": "Azure OpenAI",
+          "category": "technology",
+          "occurrences": 2,
+          "sources": [
+            "research"
+          ]
+        },
+        {
+          "keyword": "Azure Security",
+          "category": "technology",
+          "occurrences": 1,
+          "sources": [
+            "research"
+          ]
+        },
+        {
+          "keyword": "Cloud Modernization",
+          "category": "technology",
+          "occurrences": 1,
+          "sources": [
+            "research"
+          ]
+        },
+        {
+          "keyword": "AWS",
+          "category": "competitors",
+          "occurrences": 5,
+          "sources": [
+            "research",
+            "stakeholder",
+            "meetings"
+          ]
+        }
+      ],
+      "explanation": {
+        "summary": "Persistent Systems scored 79/100 because of +15 Migration Planned (research), +15 Executive Meeting (stakeholder), +12 Hiring AI Engineers (research), +10 Security Review (research).",
+        "line_items": [
+          "+15 Migration Planned (research)",
+          "+15 Executive Meeting (stakeholder)",
+          "+12 Hiring AI Engineers (research)",
+          "+10 Security Review (research)",
+          "+10 Security Review (stakeholder)",
+          "-12 Security Concern (stakeholder)"
+        ],
+        "final_score": 79
+      },
+      "executive_involvement": [
+        {
+          "name": "Vikram Iyer",
+          "title": "Chief Technology Officer",
+          "type": "decision_maker",
+          "influence": "High",
+          "score": 100,
+          "executive": true
+        },
+        {
+          "name": "Karthik Krishnan",
+          "title": "VP Engineering",
+          "type": "decision_maker",
+          "influence": "High",
+          "score": 100,
+          "executive": true
+        },
+        {
+          "name": "Kavya Sharma",
+          "title": "Head of Cloud Platform",
+          "type": "champion",
+          "influence": "High",
+          "score": 93,
+          "executive": true
+        },
+        {
+          "name": "Meera Menon",
+          "title": "Director, AI Initiatives",
+          "type": "champion",
+          "influence": "Medium",
+          "score": 55,
+          "executive": false
+        },
+        {
+          "name": "Sneha Sharma",
+          "title": "Principal Cloud Architect",
+          "type": "influencer",
+          "influence": "Medium",
+          "score": 36,
+          "executive": false
+        },
+        {
+          "name": "Vikram Rao",
+          "title": "VP Procurement",
+          "type": "blocker",
+          "influence": "High",
+          "score": 33,
+          "executive": true
+        },
+        {
+          "name": "Arjun Reddy",
+          "title": "Head of Information Security",
+          "type": "blocker",
+          "influence": "Medium",
+          "score": 24,
+          "executive": true
+        }
+      ],
+      "objections": [
+        "Security Concern"
+      ],
+      "evidence": [
+        {
+          "source": "Website",
+          "fact": "Cloud modernization initiatives published"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Azure-related hiring observed"
+        },
+        {
+          "source": "Reddit",
+          "fact": "Azure enterprise discussions trending"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Hiring Azure Cloud Engineer, Cloud Architect \u2014 committee inferred from org signals"
+        },
+        {
+          "source": "Meetings",
+          "fact": "Buying roles referenced in recent meeting transcripts"
+        }
+      ]
+    },
+    {
+      "company_name": "Accenture",
+      "intent_score": 77,
+      "purchase_probability": 75,
+      "buying_stage": "Technical Evaluation",
+      "recommended_priority": "P1",
+      "recommended_action": "Run a technical workshop with the decision maker and champion this week.",
+      "urgency": "High",
+      "predicted_timeline": "60-90 Days",
+      "positive_signals": [
+        {
+          "signal": "Migration Planned",
+          "weight": 15,
+          "source": "research",
+          "confidence": 95,
+          "evidence": "Migration Planned matched 7 time(s) in research",
+          "occurrences": 7
+        },
+        {
+          "signal": "Hiring AI Engineers",
+          "weight": 12,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Hiring AI Engineers matched 1 time(s) in research",
+          "occurrences": 1
+        },
+        {
+          "signal": "Security Review",
+          "weight": 10,
+          "source": "stakeholder",
+          "confidence": 85,
+          "evidence": "Security Review matched 3 time(s) in stakeholder",
+          "occurrences": 3
+        },
+        {
+          "signal": "Security Review",
+          "weight": 10,
+          "source": "research",
+          "confidence": 75,
+          "evidence": "Security Review matched 2 time(s) in research",
+          "occurrences": 2
+        },
+        {
+          "signal": "Pricing Requested",
+          "weight": 10,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Pricing Requested matched 1 time(s) in research",
+          "occurrences": 1
+        },
+        {
+          "signal": "Procurement Discussion",
+          "weight": 10,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Procurement Discussion matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        },
+        {
+          "signal": "Cloud Expansion",
+          "weight": 10,
+          "source": "research",
+          "confidence": 65,
+          "evidence": "Cloud Expansion matched 1 time(s) in research",
+          "occurrences": 1
+        }
+      ],
+      "negative_signals": [
+        {
+          "signal": "Security Concern",
+          "weight": -12,
+          "source": "stakeholder",
+          "confidence": 65,
+          "evidence": "Security Concern matched 1 time(s) in stakeholder",
+          "occurrences": 1
+        }
+      ],
+      "matched_keywords": [
+        {
+          "keyword": "Azure",
+          "category": "technology",
+          "occurrences": 29,
+          "sources": [
+            "research",
+            "stakeholder",
+            "meetings"
+          ]
+        },
+        {
+          "keyword": "Azure AI",
+          "category": "technology",
+          "occurrences": 2,
+          "sources": [
+            "research"
+          ]
+        },
+        {
+          "keyword": "Azure OpenAI",
+          "category": "technology",
+          "occurrences": 3,
+          "sources": [
+            "research",
+            "stakeholder"
+          ]
+        },
+        {
+          "keyword": "Azure Security",
+          "category": "technology",
+          "occurrences": 3,
+          "sources": [
+            "research",
+            "stakeholder"
+          ]
+        },
+        {
+          "keyword": "Cloud Modernization",
+          "category": "technology",
+          "occurrences": 1,
+          "sources": [
+            "research"
+          ]
+        },
+        {
+          "keyword": "AWS",
+          "category": "competitors",
+          "occurrences": 5,
+          "sources": [
+            "research",
+            "stakeholder",
+            "meetings"
+          ]
+        }
+      ],
+      "explanation": {
+        "summary": "Accenture scored 77/100 because of +15 Migration Planned (research), +12 Hiring AI Engineers (research), +10 Security Review (stakeholder), +10 Security Review (research).",
+        "line_items": [
+          "+15 Migration Planned (research)",
+          "+12 Hiring AI Engineers (research)",
+          "+10 Security Review (stakeholder)",
+          "+10 Security Review (research)",
+          "+10 Pricing Requested (research)",
+          "-12 Security Concern (stakeholder)"
+        ],
+        "final_score": 77
+      },
+      "executive_involvement": [
+        {
+          "name": "Rohan Reddy",
+          "title": "Chief Technology Officer",
+          "type": "decision_maker",
+          "influence": "High",
+          "score": 100,
+          "executive": true
+        },
+        {
+          "name": "Priya Menon",
+          "title": "Principal Cloud Architect",
+          "type": "influencer",
+          "influence": "Medium",
+          "score": 36,
+          "executive": false
+        },
+        {
+          "name": "Meera Sharma",
+          "title": "Engineering Manager, Platform",
+          "type": "influencer",
+          "influence": "Medium",
+          "score": 36,
+          "executive": false
+        },
+        {
+          "name": "Kavya Bose",
+          "title": "VP Procurement",
+          "type": "blocker",
+          "influence": "High",
+          "score": 33,
+          "executive": true
+        },
+        {
+          "name": "Ananya Sharma",
+          "title": "Head of Information Security",
+          "type": "blocker",
+          "influence": "Medium",
+          "score": 24,
+          "executive": true
+        }
+      ],
+      "objections": [
+        "Security Concern"
+      ],
+      "evidence": [
+        {
+          "source": "Website",
+          "fact": "Cloud modernization initiatives published"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Azure-related hiring observed"
+        },
+        {
+          "source": "Reddit",
+          "fact": "Azure enterprise discussions trending"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Hiring Azure Cloud Engineer, Cloud Architect \u2014 committee inferred from org signals"
+        },
+        {
+          "source": "Meetings",
+          "fact": "Buying roles referenced in recent meeting transcripts"
+        }
+      ]
+    }
+  ]
+}

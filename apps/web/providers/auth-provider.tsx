@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
 import { User, Session } from "@supabase/supabase-js";
@@ -89,12 +89,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       }
 
       if (memberships && memberships.length > 0) {
-        const workspaceList = memberships.map((m: any) => m.workspaces as Workspace).filter(Boolean);
+        const workspaceList = memberships.map((m: any) => m.workspaces as Workspace).filter((item: Workspace | null | undefined): item is Workspace => Boolean(item));
         setAllWorkspaces(workspaceList);
 
         // Use saved workspace or default to first
         const savedId = typeof window !== "undefined" ? localStorage.getItem("activeWorkspaceId") : null;
-        const active = workspaceList.find((w) => w.id === savedId) ?? workspaceList[0];
+        const active = workspaceList.find((w: Workspace) => w.id === savedId) ?? workspaceList[0];
         setWorkspace(active);
         setRole(memberships.find((m: any) => m.workspace_id === active.id)?.role ?? null);
       } else {
@@ -108,7 +108,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   const switchWorkspace = (id: string) => {
-    const found = allWorkspaces.find(w => w.id === id);
+    const found = allWorkspaces.find((w: Workspace) => w.id === id);
     if (found) {
       setWorkspace(found);
       if (typeof window !== "undefined") localStorage.setItem("activeWorkspaceId", id);
@@ -120,7 +120,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const deleteWorkspace = async (id: string) => {
     const { error } = await supabase.rpc("delete_workspace", { p_workspace_id: id });
     if (error) throw new Error(error.message);
-    const remaining = allWorkspaces.filter(w => w.id !== id);
+    const remaining = allWorkspaces.filter((w: Workspace) => w.id !== id);
     setAllWorkspaces(remaining);
     if (workspace?.id === id) {
       const next = remaining[0] ?? null;
@@ -142,7 +142,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     };
     init();
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_, s) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_event: string, s: Session | null) => {
       setSession(s); setUser(s?.user ?? null);
       if (s?.user) await fetchUserData(s.user);
       else { setProfile(null); setAllWorkspaces([]); setWorkspace(null); setRole(null); }
@@ -167,4 +167,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 }
 
 export const useAuth = () => useContext(AuthContext);
+
+
+
 

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Stakeholder Supabase persistence.
  * Saves generated stakeholder intel and per-person profiles.
  */
@@ -91,7 +91,7 @@ export async function fetchStakeholderIntel(runId: string): Promise<GroqStakehol
     console.warn("[Supabase] stakeholder_people fetch skipped:", peopleError.message);
   }
 
-  return intelRows.map((row) => ({
+  return intelRows.map((row: Record<string, any>) => ({
     company: row.company,
     product: row.product,
     who_to_contact: row.who_to_contact,
@@ -103,7 +103,7 @@ export async function fetchStakeholderIntel(runId: string): Promise<GroqStakehol
     what_opportunity: row.what_opportunity,
     raw_llm_response: row.raw_llm_response,
     people: (peopleRows ?? [])
-      .filter((person) => person.company === row.company)
+      .filter((person: Record<string, any>) => person.company === row.company)
       .map(rowToPersonProfile),
   }));
 }

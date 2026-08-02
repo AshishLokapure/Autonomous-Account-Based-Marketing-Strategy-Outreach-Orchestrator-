@@ -1,4 +1,4 @@
-"""Strategy Agent — turns research + intent context into account strategy."""
+﻿"""Strategy Agent - turns research + intent context into account strategy."""
 
 import time
 
@@ -9,7 +9,7 @@ from app.services.agents.intent_service import IntentService
 CHANNELS = ["Executive email + LinkedIn", "Warm intro via champion", "Technical workshop first", "Executive briefing"]
 
 PITCH_TEMPLATES = [
-    "Lead with {opp} outcomes — anchor on their announced {focus} initiatives",
+    "Lead with {opp} outcomes - anchor on their announced {focus} initiatives",
     "Position {opp} as the fastest path to their {focus} roadmap",
     "Open with a {opp} proof-of-value tied to current {focus} hiring",
 ]
@@ -21,7 +21,7 @@ class StrategyService:
     def run(self, product: str) -> dict:
         started = time.perf_counter()
         validate_product(product)
-        logger.info(f"{self.AGENT} started — product={product}")
+        logger.info("%s started - product=%s", self.AGENT, product)
 
         research = load_research_data(product)
         intent = IntentService().run(product)["result"]
@@ -66,7 +66,7 @@ class StrategyService:
         company_results.sort(key=lambda c: c["priority_score"], reverse=True)
 
         execution_time = round(time.perf_counter() - started, 3)
-        logger.info(f"{self.AGENT} completed — {len(company_results)} strategies ({execution_time}s)")
+        logger.info("%s completed - %s strategies (%ss)", self.AGENT, len(company_results), execution_time)
         return {
             "agent": self.AGENT,
             "status": "completed",
@@ -81,3 +81,4 @@ class StrategyService:
                 "companies": company_results,
             },
         }
+

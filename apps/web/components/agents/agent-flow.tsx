@@ -259,15 +259,18 @@ export function AgentFlow() {
       }, 0) / completedAgents.length)
     : null;
 
-  const phase = !campaign.started
-    ? "idle"
-    : campaign.completed
-      ? "done"
-      : "running";
+  const phase = campaign.status === "failed"
+    ? "failed"
+    : !campaign.started
+      ? "idle"
+      : campaign.completed
+        ? "done"
+        : "running";
 
   const statusPill =
     phase === "idle" ? { text: "Idle", cls: "idle" } :
     phase === "done" ? { text: "Campaign Completed", cls: "done" } :
+    phase === "failed" ? { text: "Campaign Failed", cls: "fail" } :
     { text: "Agents Running", cls: "live" };
 
   const PRODUCTS = ["Azure AI", "AWS Cloud", "Claude Enterprise"] as const;
@@ -323,6 +326,16 @@ export function AgentFlow() {
           </motion.button>
         </div>
       </div>
+
+      {campaign.error && (
+        <div className="af-error-banner">
+          <XCircle size={16} />
+          <div>
+            <strong>Campaign start failed</strong>
+            <p>{campaign.error}</p>
+          </div>
+        </div>
+      )}
 
       <div className="af-status-strip">
         <div className="af-status-block">
@@ -567,6 +580,8 @@ export function AgentFlow() {
         .af-pill.live { color:#1d4ed8; border-color:#bfdbfe; background:#eff6ff; }
         .af-pill.done { color:#15803d; border-color:#bbf7d0; background:#f0fdf4; }
         .af-pill.fail { color:#b91c1c; border-color:#fecaca; background:#fef2f2; }
+        .af-error-banner { display:flex; align-items:flex-start; gap:10px; padding:14px 16px; margin-bottom:18px; border-radius:14px; border:1px solid #fecaca; background:#fef2f2; color:#991b1b; }
+        .af-error-banner p { margin:4px 0 0; font-size:12px; color:#7f1d1d; }
         .af-pill.sm { padding:4px 9px; font-size:10px; }
         .af-live-dot { width:7px; height:7px; border-radius:50%; background:#22c55e; animation:af-blink 1.1s ease-in-out infinite; }
 

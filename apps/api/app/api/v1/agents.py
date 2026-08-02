@@ -1,12 +1,10 @@
-"""Agent execution endpoints.
+﻿"""Agent execution endpoints.
 
-POST /api/v1/research/run     — Research Agent (loads product research JSON)
-POST /api/v1/stakeholder/run  — Stakeholder Agent
-POST /api/v1/intent/run       — Intent Agent
-POST /api/v1/strategy/run     — Strategy Agent
-POST /api/v1/outreach/run     — Outreach Agent
-
-Each returns: { agent, status, execution_time, confidence, result }
+POST /api/v1/research/run     - Research Agent
+POST /api/v1/stakeholder/run  - Stakeholder Agent
+POST /api/v1/intent/run       - Intent Agent
+POST /api/v1/strategy/run     - Strategy Agent
+POST /api/v1/outreach/run     - Outreach Agent
 """
 
 from typing import Literal
@@ -29,6 +27,11 @@ class AgentRunRequest(BaseModel):
     product: ProductName
 
 
+class IntentRunRequest(BaseModel):
+    campaign_id: str | None = None
+    product: ProductName
+
+
 class AgentRunResponse(BaseModel):
     agent: str
     status: str
@@ -39,29 +42,25 @@ class AgentRunResponse(BaseModel):
 
 @router.post("/research/run", response_model=AgentRunResponse)
 def run_research(body: AgentRunRequest) -> dict:
-    """Run the Research Agent for the selected product."""
     return ResearchService().run(body.product)
 
 
 @router.post("/stakeholder/run", response_model=AgentRunResponse)
 def run_stakeholder(body: AgentRunRequest) -> dict:
-    """Run the Stakeholder Agent (requires research to exist for the product)."""
     return StakeholderService().run(body.product)
 
 
 @router.post("/intent/run", response_model=AgentRunResponse)
-def run_intent(body: AgentRunRequest) -> dict:
-    """Run the Intent Agent."""
-    return IntentService().run(body.product)
+def run_intent(body: IntentRunRequest) -> dict:
+    return IntentService().run(body.product, campaign_id=body.campaign_id)
 
 
 @router.post("/strategy/run", response_model=AgentRunResponse)
 def run_strategy(body: AgentRunRequest) -> dict:
-    """Run the Strategy Agent."""
     return StrategyService().run(body.product)
 
 
 @router.post("/outreach/run", response_model=AgentRunResponse)
 def run_outreach(body: AgentRunRequest) -> dict:
-    """Run the Outreach Agent."""
     return OutreachService().run(body.product)
+
