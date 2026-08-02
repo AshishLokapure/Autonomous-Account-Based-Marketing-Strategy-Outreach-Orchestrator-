@@ -1,0 +1,442 @@
+[
+  {
+    "id": "aws_meeting_001",
+    "workspace_id": "workspace_aws_demo",
+    "source": "meeting",
+    "source_id": "netflix_meeting_001",
+    "account": {
+      "name": "Netflix",
+      "domain": "netflix.com"
+    },
+    "participants": [
+      {
+        "name": "Alex Carter",
+        "email": "alex@netflix.com",
+        "role": "VP Cloud Engineering",
+        "type": "prospect"
+      },
+      {
+        "name": "Emily Davis",
+        "email": "emily@netflix.com",
+        "role": "Director of Infrastructure",
+        "type": "prospect"
+      },
+      {
+        "name": "AccountPilot AE",
+        "type": "internal"
+      }
+    ],
+    "timestamp": "2026-08-03T10:00:00Z",
+    "content": {
+      "title": "Netflix - AWS Cloud Strategy Discovery Meeting",
+      "transcript": [
+        {
+          "speaker": "Alex Carter",
+          "start": 0.0,
+          "end": 5.8,
+          "text": "We are expanding our AWS footprint to support new AI and analytics workloads."
+        },
+        {
+          "speaker": "AccountPilot AE",
+          "start": 5.9,
+          "end": 12.6,
+          "text": "Which AWS services are currently under evaluation?"
+        },
+        {
+          "speaker": "Emily Davis",
+          "start": 12.7,
+          "end": 21.3,
+          "text": "Amazon Bedrock, Amazon SageMaker, Amazon EKS and AWS Security Hub are our primary focus areas."
+        },
+        {
+          "speaker": "Alex Carter",
+          "start": 21.4,
+          "end": 30.5,
+          "text": "Our biggest concerns are governance, cloud costs, compliance and deployment timelines."
+        },
+        {
+          "speaker": "AccountPilot AE",
+          "start": 30.6,
+          "end": 39.4,
+          "text": "We can prepare an architecture covering Bedrock integration, FinOps recommendations and security best practices."
+        },
+        {
+          "speaker": "Emily Davis",
+          "start": 39.5,
+          "end": 48.2,
+          "text": "Please schedule a technical workshop and share pricing along with a phased migration roadmap."
+        }
+      ]
+    },
+    "metadata": {
+      "duration_seconds": 2280,
+      "meeting_type": "discovery",
+      "mentioned_topics": [
+        "Amazon Bedrock",
+        "Amazon SageMaker",
+        "Amazon EKS",
+        "AWS Security Hub",
+        "FinOps",
+        "Cloud Migration"
+      ],
+      "action_items": [
+        "Schedule AWS architecture workshop",
+        "Share pricing estimates",
+        "Prepare migration roadmap",
+        "Provide security and governance documentation"
+      ]
+    }
+  },
+  {
+    "id": "aws_meeting_002",
+    "workspace_id": "workspace_aws_demo",
+    "source": "meeting",
+    "source_id": "airbnb_meeting_002",
+    "account": {
+      "name": "Airbnb",
+      "domain": "airbnb.com"
+    },
+    "participants": [
+      {
+        "name": "Alex Carter",
+        "email": "alex@airbnb.com",
+        "role": "VP Cloud Engineering",
+        "type": "prospect"
+      },
+      {
+        "name": "Emily Davis",
+        "email": "emily@airbnb.com",
+        "role": "Director of Infrastructure",
+        "type": "prospect"
+      },
+      {
+        "name": "AccountPilot AE",
+        "type": "internal"
+      }
+    ],
+    "timestamp": "2026-08-04T10:00:00Z",
+    "content": {
+      "title": "Airbnb - AWS Cloud Strategy Discovery Meeting",
+      "transcript": [
+        {
+          "speaker": "Alex Carter",
+          "start": 0.0,
+          "end": 5.8,
+          "text": "We are expanding our AWS footprint to support new AI and analytics workloads."
+        },
+        {
+          "speaker": "AccountPilot AE",
+          "start": 5.9,
+          "end": 12.6,
+          "text": "Which AWS services are currently under evaluation?"
+        },
+        {
+          "speaker": "Emily Davis",
+          "start": 12.7,
+          "end": 21.3,
+          "text": "Amazon Bedrock, Amazon SageMaker, Amazon EKS and AWS Security Hub are our primary focus areas."
+        },
+        {
+          "speaker": "Alex Carter",
+          "start": 21.4,
+          "end": 30.5,
+          "text": "Our biggest concerns are governance, cloud costs, compliance and deployment timelines."
+        },
+        {
+          "speaker": "AccountPilot AE",
+          "start": 30.6,
+          "end": 39.4,
+          "text": "We can prepare an architecture covering Bedrock integration, FinOps recommendations and security best practices."
+        },
+        {
+          "speaker": "Emily Davis",
+          "start": 39.5,
+          "end": 48.2,
+          "text": "Please schedule a technical workshop and share pricing along with a phased migration roadmap."
+        }
+      ]
+    },
+    "metadata": {
+      "duration_seconds": 2280,
+      "meeting_type": "discovery",
+      "mentioned_topics": [
+        "Amazon Bedrock",
+        "Amazon SageMaker",
+        "Amazon EKS",
+        "AWS Security Hub",
+        "FinOps",
+        "Cloud Migration"
+      ],
+      "action_items": [
+        "Schedule AWS architecture workshop",
+        "Share pricing estimates",
+        "Prepare migration roadmap",
+        "Provide security and governance documentation"
+      ]
+    }
+  },
+  {
+    "id": "aws_meeting_003",
+    "workspace_id": "workspace_aws_demo",
+    "source": "meeting",
+    "source_id": "pinterest_meeting_003",
+    "account": {
+      "name": "Pinterest",
+      "domain": "pinterest.com"
+    },
+    "participants": [
+      {
+        "name": "Alex Carter",
+        "email": "alex@pinterest.com",
+        "role": "VP Cloud Engineering",
+        "type": "prospect"
+      },
+      {
+        "name": "Emily Davis",
+        "email": "emily@pinterest.com",
+        "role": "Director of Infrastructure",
+        "type": "prospect"
+      },
+      {
+        "name": "AccountPilot AE",
+        "type": "internal"
+      }
+    ],
+    "timestamp": "2026-08-05T10:00:00Z",
+    "content": {
+      "title": "Pinterest - AWS Cloud Strategy Discovery Meeting",
+      "transcript": [
+        {
+          "speaker": "Alex Carter",
+          "start": 0.0,
+          "end": 5.8,
+          "text": "We are expanding our AWS footprint to support new AI and analytics workloads."
+        },
+        {
+          "speaker": "AccountPilot AE",
+          "start": 5.9,
+          "end": 12.6,
+          "text": "Which AWS services are currently under evaluation?"
+        },
+        {
+          "speaker": "Emily Davis",
+          "start": 12.7,
+          "end": 21.3,
+          "text": "Amazon Bedrock, Amazon SageMaker, Amazon EKS and AWS Security Hub are our primary focus areas."
+        },
+        {
+          "speaker": "Alex Carter",
+          "start": 21.4,
+          "end": 30.5,
+          "text": "Our biggest concerns are governance, cloud costs, compliance and deployment timelines."
+        },
+        {
+          "speaker": "AccountPilot AE",
+          "start": 30.6,
+          "end": 39.4,
+          "text": "We can prepare an architecture covering Bedrock integration, FinOps recommendations and security best practices."
+        },
+        {
+          "speaker": "Emily Davis",
+          "start": 39.5,
+          "end": 48.2,
+          "text": "Please schedule a technical workshop and share pricing along with a phased migration roadmap."
+        }
+      ]
+    },
+    "metadata": {
+      "duration_seconds": 2280,
+      "meeting_type": "discovery",
+      "mentioned_topics": [
+        "Amazon Bedrock",
+        "Amazon SageMaker",
+        "Amazon EKS",
+        "AWS Security Hub",
+        "FinOps",
+        "Cloud Migration"
+      ],
+      "action_items": [
+        "Schedule AWS architecture workshop",
+        "Share pricing estimates",
+        "Prepare migration roadmap",
+        "Provide security and governance documentation"
+      ]
+    }
+  },
+  {
+    "id": "aws_meeting_004",
+    "workspace_id": "workspace_aws_demo",
+    "source": "meeting",
+    "source_id": "twilio_meeting_004",
+    "account": {
+      "name": "Twilio",
+      "domain": "twilio.com"
+    },
+    "participants": [
+      {
+        "name": "Alex Carter",
+        "email": "alex@twilio.com",
+        "role": "VP Cloud Engineering",
+        "type": "prospect"
+      },
+      {
+        "name": "Emily Davis",
+        "email": "emily@twilio.com",
+        "role": "Director of Infrastructure",
+        "type": "prospect"
+      },
+      {
+        "name": "AccountPilot AE",
+        "type": "internal"
+      }
+    ],
+    "timestamp": "2026-08-06T10:00:00Z",
+    "content": {
+      "title": "Twilio - AWS Cloud Strategy Discovery Meeting",
+      "transcript": [
+        {
+          "speaker": "Alex Carter",
+          "start": 0.0,
+          "end": 5.8,
+          "text": "We are expanding our AWS footprint to support new AI and analytics workloads."
+        },
+        {
+          "speaker": "AccountPilot AE",
+          "start": 5.9,
+          "end": 12.6,
+          "text": "Which AWS services are currently under evaluation?"
+        },
+        {
+          "speaker": "Emily Davis",
+          "start": 12.7,
+          "end": 21.3,
+          "text": "Amazon Bedrock, Amazon SageMaker, Amazon EKS and AWS Security Hub are our primary focus areas."
+        },
+        {
+          "speaker": "Alex Carter",
+          "start": 21.4,
+          "end": 30.5,
+          "text": "Our biggest concerns are governance, cloud costs, compliance and deployment timelines."
+        },
+        {
+          "speaker": "AccountPilot AE",
+          "start": 30.6,
+          "end": 39.4,
+          "text": "We can prepare an architecture covering Bedrock integration, FinOps recommendations and security best practices."
+        },
+        {
+          "speaker": "Emily Davis",
+          "start": 39.5,
+          "end": 48.2,
+          "text": "Please schedule a technical workshop and share pricing along with a phased migration roadmap."
+        }
+      ]
+    },
+    "metadata": {
+      "duration_seconds": 2280,
+      "meeting_type": "discovery",
+      "mentioned_topics": [
+        "Amazon Bedrock",
+        "Amazon SageMaker",
+        "Amazon EKS",
+        "AWS Security Hub",
+        "FinOps",
+        "Cloud Migration"
+      ],
+      "action_items": [
+        "Schedule AWS architecture workshop",
+        "Share pricing estimates",
+        "Prepare migration roadmap",
+        "Provide security and governance documentation"
+      ]
+    }
+  },
+  {
+    "id": "aws_meeting_005",
+    "workspace_id": "workspace_aws_demo",
+    "source": "meeting",
+    "source_id": "coinbase_meeting_005",
+    "account": {
+      "name": "Coinbase",
+      "domain": "coinbase.com"
+    },
+    "participants": [
+      {
+        "name": "Alex Carter",
+        "email": "alex@coinbase.com",
+        "role": "VP Cloud Engineering",
+        "type": "prospect"
+      },
+      {
+        "name": "Emily Davis",
+        "email": "emily@coinbase.com",
+        "role": "Director of Infrastructure",
+        "type": "prospect"
+      },
+      {
+        "name": "AccountPilot AE",
+        "type": "internal"
+      }
+    ],
+    "timestamp": "2026-08-07T10:00:00Z",
+    "content": {
+      "title": "Coinbase - AWS Cloud Strategy Discovery Meeting",
+      "transcript": [
+        {
+          "speaker": "Alex Carter",
+          "start": 0.0,
+          "end": 5.8,
+          "text": "We are expanding our AWS footprint to support new AI and analytics workloads."
+        },
+        {
+          "speaker": "AccountPilot AE",
+          "start": 5.9,
+          "end": 12.6,
+          "text": "Which AWS services are currently under evaluation?"
+        },
+        {
+          "speaker": "Emily Davis",
+          "start": 12.7,
+          "end": 21.3,
+          "text": "Amazon Bedrock, Amazon SageMaker, Amazon EKS and AWS Security Hub are our primary focus areas."
+        },
+        {
+          "speaker": "Alex Carter",
+          "start": 21.4,
+          "end": 30.5,
+          "text": "Our biggest concerns are governance, cloud costs, compliance and deployment timelines."
+        },
+        {
+          "speaker": "AccountPilot AE",
+          "start": 30.6,
+          "end": 39.4,
+          "text": "We can prepare an architecture covering Bedrock integration, FinOps recommendations and security best practices."
+        },
+        {
+          "speaker": "Emily Davis",
+          "start": 39.5,
+          "end": 48.2,
+          "text": "Please schedule a technical workshop and share pricing along with a phased migration roadmap."
+        }
+      ]
+    },
+    "metadata": {
+      "duration_seconds": 2280,
+      "meeting_type": "discovery",
+      "mentioned_topics": [
+        "Amazon Bedrock",
+        "Amazon SageMaker",
+        "Amazon EKS",
+        "AWS Security Hub",
+        "FinOps",
+        "Cloud Migration"
+      ],
+      "action_items": [
+        "Schedule AWS architecture workshop",
+        "Share pricing estimates",
+        "Prepare migration roadmap",
+        "Provide security and governance documentation"
+      ]
+    }
+  }
+]

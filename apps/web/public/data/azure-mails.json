@@ -1,0 +1,162 @@
+[
+  {
+    "email_id": "azure_infosys_email_001",
+    "timestamp": "2026-08-03T09:15:00Z",
+    "from_person_id": "infosys_person_003",
+    "to_person_ids": ["infosys_person_001","infosys_person_005"],
+    "cc_person_ids": ["infosys_person_002"],
+    "subject": "Enterprise Azure AI rollout planning",
+    "body": "Several BFSI customers have requested secure Generative AI capabilities on Microsoft Azure. Azure OpenAI and Azure AI Studio appear suitable for governance and compliance requirements. We should prepare a deployment roadmap before next week's architecture review.",
+    "mentioned_topics": [
+      "Azure OpenAI",
+      "Azure AI Studio",
+      "Governance",
+      "BFSI",
+      "Deployment"
+    ]
+  },
+  {
+    "email_id": "azure_tcs_email_001",
+    "timestamp": "2026-08-03T11:30:00Z",
+    "from_person_id": "tcs_person_004",
+    "to_person_ids": ["tcs_person_001","tcs_person_006"],
+    "cc_person_ids": ["tcs_person_002"],
+    "subject": "Azure Kubernetes migration proposal",
+    "body": "Our enterprise clients are evaluating Azure Kubernetes Service for container modernization. Engineering should prepare migration estimates and compare operational costs with current self-managed clusters.",
+    "mentioned_topics": [
+      "Azure Kubernetes Service",
+      "AKS",
+      "Migration",
+      "Containers",
+      "Cloud Modernization"
+    ]
+  },
+  {
+    "email_id": "azure_wipro_email_001",
+    "timestamp": "2026-08-04T08:45:00Z",
+    "from_person_id": "wipro_person_002",
+    "to_person_ids": ["wipro_person_001","wipro_person_004"],
+    "cc_person_ids": ["wipro_person_003"],
+    "subject": "Security assessment for Azure OpenAI deployment",
+    "body": "Healthcare customers require confirmation regarding HIPAA compliance, data residency and enterprise governance before Azure OpenAI adoption. Please schedule a workshop with Microsoft's technical team.",
+    "mentioned_topics": [
+      "Azure OpenAI",
+      "Security",
+      "Compliance",
+      "Healthcare",
+      "Governance"
+    ]
+  },
+  {
+    "email_id": "azure_hcltech_email_001",
+    "timestamp": "2026-08-04T14:20:00Z",
+    "from_person_id": "hcl_person_005",
+    "to_person_ids": ["hcl_person_001","hcl_person_002"],
+    "cc_person_ids": ["hcl_person_004"],
+    "subject": "Proposal for enterprise AI migration to Azure",
+    "body": "The customer wants to consolidate AI workloads currently spread across multiple cloud providers. Azure AI Studio and Azure Machine Learning provide stronger governance capabilities than their current environment. We should prepare a phased migration plan and expected ROI.",
+    "mentioned_topics": [
+      "Azure AI Studio",
+      "Azure ML",
+      "Migration",
+      "ROI",
+      "Enterprise AI"
+    ]
+  },
+  {
+    "email_id": "azure_techm_email_001",
+    "timestamp": "2026-08-05T10:15:00Z",
+    "from_person_id": "techm_person_003",
+    "to_person_ids": ["techm_person_001","techm_person_005"],
+    "cc_person_ids": ["techm_person_002"],
+    "subject": "Azure cost optimization before enterprise rollout",
+    "body": "Finance requested Azure Cost Management recommendations before approving the enterprise AI rollout. Reserved Instances and workload optimization should be included in the proposal.",
+    "mentioned_topics": [
+      "Azure Cost Management",
+      "Cost Optimization",
+      "Enterprise AI",
+      "Reserved Instances",
+      "Cloud"
+    ]
+  },
+  {
+    "email_id": "azure_cognizant_email_001",
+    "timestamp": "2026-08-05T13:10:00Z",
+    "from_person_id": "cognizant_person_004",
+    "to_person_ids": ["cognizant_person_001","cognizant_person_006"],
+    "cc_person_ids": ["cognizant_person_002"],
+    "subject": "Azure AI governance discussion",
+    "body": "Multiple enterprise customers are asking about governance controls for Azure AI. Security and compliance documentation should be finalized before customer demonstrations.",
+    "mentioned_topics": [
+      "Azure AI",
+      "Governance",
+      "Security",
+      "Compliance",
+      "Enterprise"
+    ]
+  },
+  {
+    "email_id": "azure_accenture_email_001",
+    "timestamp": "2026-08-06T09:30:00Z",
+    "from_person_id": "accenture_person_005",
+    "to_person_ids": ["accenture_person_001","accenture_person_003"],
+    "cc_person_ids": ["accenture_person_002"],
+    "subject": "Enterprise Azure OpenAI pilot approval",
+    "body": "Leadership has approved an Azure OpenAI pilot for document intelligence. Engineering should begin architecture validation and prepare deployment guidelines.",
+    "mentioned_topics": [
+      "Azure OpenAI",
+      "Document Intelligence",
+      "Pilot",
+      "Architecture",
+      "Deployment"
+    ]
+  },
+  {
+    "email_id": "azure_capgemini_email_001",
+    "timestamp": "2026-08-06T12:45:00Z",
+    "from_person_id": "capgemini_person_003",
+    "to_person_ids": ["capgemini_person_001","capgemini_person_005"],
+    "cc_person_ids": ["capgemini_person_002"],
+    "subject": "Migration workshop using Azure Landing Zone",
+    "body": "The customer architecture team wants to adopt Azure Landing Zone as part of their enterprise migration initiative. Please prepare governance templates and security baselines.",
+    "mentioned_topics": [
+      "Azure Landing Zone",
+      "Migration",
+      "Governance",
+      "Security",
+      "Enterprise"
+    ]
+  },
+  {
+    "email_id": "azure_ltimindtree_email_001",
+    "timestamp": "2026-08-07T09:20:00Z",
+    "from_person_id": "ltim_person_004",
+    "to_person_ids": ["ltim_person_001","ltim_person_006"],
+    "cc_person_ids": ["ltim_person_002"],
+    "subject": "Azure AI deployment roadmap",
+    "body": "Enterprise clients are planning phased Azure AI deployments over the next two quarters. We should align infrastructure modernization with AI governance policies.",
+    "mentioned_topics": [
+      "Azure AI",
+      "Deployment",
+      "Governance",
+      "Infrastructure",
+      "Roadmap"
+    ]
+  },
+  {
+    "email_id": "azure_persistent_email_001",
+    "timestamp": "2026-08-07T14:50:00Z",
+    "from_person_id": "persistent_person_003",
+    "to_person_ids": ["persistent_person_001","persistent_person_004"],
+    "cc_person_ids": ["persistent_person_002"],
+    "subject": "Azure Machine Learning integration planning",
+    "body": "Our analytics team recommends Azure Machine Learning for enterprise predictive analytics workloads. We should estimate infrastructure costs and prepare customer workshops.",
+    "mentioned_topics": [
+      "Azure Machine Learning",
+      "Predictive Analytics",
+      "Infrastructure",
+      "Customer Workshop",
+      "Enterprise AI"
+    ]
+  }
+]

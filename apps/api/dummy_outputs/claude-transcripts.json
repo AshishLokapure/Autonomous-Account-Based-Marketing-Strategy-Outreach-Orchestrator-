@@ -1,0 +1,437 @@
+[
+  {
+    "id": "claude_meeting_001",
+    "workspace_id": "workspace_claude_demo",
+    "source": "meeting",
+    "source_id": "notion_meeting_001",
+    "account": {
+      "name": "Notion",
+      "domain": "notion.com"
+    },
+    "participants": [
+      {
+        "name": "Sarah Johnson",
+        "email": "sarah@notion.com",
+        "role": "VP Engineering",
+        "type": "prospect"
+      },
+      {
+        "name": "Michael Chen",
+        "email": "michael@notion.com",
+        "role": "Director of AI",
+        "type": "prospect"
+      },
+      {
+        "name": "AccountPilot AE",
+        "type": "internal"
+      }
+    ],
+    "timestamp": "2026-08-03T10:00:00Z",
+    "content": {
+      "title": "Notion - Claude Enterprise Discovery Call",
+      "transcript": [
+        {
+          "speaker": "Sarah Johnson",
+          "start": 0.0,
+          "end": 5.2,
+          "text": "Our teams are evaluating enterprise LLM platforms for internal productivity."
+        },
+        {
+          "speaker": "AccountPilot AE",
+          "start": 5.3,
+          "end": 10.1,
+          "text": "What are your biggest challenges today?"
+        },
+        {
+          "speaker": "Michael Chen",
+          "start": 10.2,
+          "end": 17.4,
+          "text": "Knowledge retrieval is slow and developers need better AI assistance."
+        },
+        {
+          "speaker": "Sarah Johnson",
+          "start": 17.5,
+          "end": 24.3,
+          "text": "Claude Enterprise looks promising because of its long context window."
+        },
+        {
+          "speaker": "AccountPilot AE",
+          "start": 24.4,
+          "end": 31.6,
+          "text": "We can demonstrate document intelligence, RAG, and secure enterprise deployment."
+        },
+        {
+          "speaker": "Michael Chen",
+          "start": 31.7,
+          "end": 39.8,
+          "text": "Please prepare a proof of concept along with pricing and governance documentation."
+        }
+      ]
+    },
+    "metadata": {
+      "duration_seconds": 2400,
+      "meeting_type": "discovery",
+      "mentioned_topics": [
+        "Claude Enterprise",
+        "RAG",
+        "Knowledge Management",
+        "AI Coding Assistant",
+        "Enterprise Security"
+      ],
+      "action_items": [
+        "Schedule Claude Enterprise demo",
+        "Share pricing",
+        "Provide security documentation",
+        "Prepare proof of concept"
+      ]
+    }
+  },
+  {
+    "id": "claude_meeting_002",
+    "workspace_id": "workspace_claude_demo",
+    "source": "meeting",
+    "source_id": "canva_meeting_002",
+    "account": {
+      "name": "Canva",
+      "domain": "canva.com"
+    },
+    "participants": [
+      {
+        "name": "Sarah Johnson",
+        "email": "sarah@canva.com",
+        "role": "VP Engineering",
+        "type": "prospect"
+      },
+      {
+        "name": "Michael Chen",
+        "email": "michael@canva.com",
+        "role": "Director of AI",
+        "type": "prospect"
+      },
+      {
+        "name": "AccountPilot AE",
+        "type": "internal"
+      }
+    ],
+    "timestamp": "2026-08-04T10:00:00Z",
+    "content": {
+      "title": "Canva - Claude Enterprise Discovery Call",
+      "transcript": [
+        {
+          "speaker": "Sarah Johnson",
+          "start": 0.0,
+          "end": 5.2,
+          "text": "Our teams are evaluating enterprise LLM platforms for internal productivity."
+        },
+        {
+          "speaker": "AccountPilot AE",
+          "start": 5.3,
+          "end": 10.1,
+          "text": "What are your biggest challenges today?"
+        },
+        {
+          "speaker": "Michael Chen",
+          "start": 10.2,
+          "end": 17.4,
+          "text": "Knowledge retrieval is slow and developers need better AI assistance."
+        },
+        {
+          "speaker": "Sarah Johnson",
+          "start": 17.5,
+          "end": 24.3,
+          "text": "Claude Enterprise looks promising because of its long context window."
+        },
+        {
+          "speaker": "AccountPilot AE",
+          "start": 24.4,
+          "end": 31.6,
+          "text": "We can demonstrate document intelligence, RAG, and secure enterprise deployment."
+        },
+        {
+          "speaker": "Michael Chen",
+          "start": 31.7,
+          "end": 39.8,
+          "text": "Please prepare a proof of concept along with pricing and governance documentation."
+        }
+      ]
+    },
+    "metadata": {
+      "duration_seconds": 2400,
+      "meeting_type": "discovery",
+      "mentioned_topics": [
+        "Claude Enterprise",
+        "RAG",
+        "Knowledge Management",
+        "AI Coding Assistant",
+        "Enterprise Security"
+      ],
+      "action_items": [
+        "Schedule Claude Enterprise demo",
+        "Share pricing",
+        "Provide security documentation",
+        "Prepare proof of concept"
+      ]
+    }
+  },
+  {
+    "id": "claude_meeting_003",
+    "workspace_id": "workspace_claude_demo",
+    "source": "meeting",
+    "source_id": "duolingo_meeting_003",
+    "account": {
+      "name": "Duolingo",
+      "domain": "duolingo.com"
+    },
+    "participants": [
+      {
+        "name": "Sarah Johnson",
+        "email": "sarah@duolingo.com",
+        "role": "VP Engineering",
+        "type": "prospect"
+      },
+      {
+        "name": "Michael Chen",
+        "email": "michael@duolingo.com",
+        "role": "Director of AI",
+        "type": "prospect"
+      },
+      {
+        "name": "AccountPilot AE",
+        "type": "internal"
+      }
+    ],
+    "timestamp": "2026-08-05T10:00:00Z",
+    "content": {
+      "title": "Duolingo - Claude Enterprise Discovery Call",
+      "transcript": [
+        {
+          "speaker": "Sarah Johnson",
+          "start": 0.0,
+          "end": 5.2,
+          "text": "Our teams are evaluating enterprise LLM platforms for internal productivity."
+        },
+        {
+          "speaker": "AccountPilot AE",
+          "start": 5.3,
+          "end": 10.1,
+          "text": "What are your biggest challenges today?"
+        },
+        {
+          "speaker": "Michael Chen",
+          "start": 10.2,
+          "end": 17.4,
+          "text": "Knowledge retrieval is slow and developers need better AI assistance."
+        },
+        {
+          "speaker": "Sarah Johnson",
+          "start": 17.5,
+          "end": 24.3,
+          "text": "Claude Enterprise looks promising because of its long context window."
+        },
+        {
+          "speaker": "AccountPilot AE",
+          "start": 24.4,
+          "end": 31.6,
+          "text": "We can demonstrate document intelligence, RAG, and secure enterprise deployment."
+        },
+        {
+          "speaker": "Michael Chen",
+          "start": 31.7,
+          "end": 39.8,
+          "text": "Please prepare a proof of concept along with pricing and governance documentation."
+        }
+      ]
+    },
+    "metadata": {
+      "duration_seconds": 2400,
+      "meeting_type": "discovery",
+      "mentioned_topics": [
+        "Claude Enterprise",
+        "RAG",
+        "Knowledge Management",
+        "AI Coding Assistant",
+        "Enterprise Security"
+      ],
+      "action_items": [
+        "Schedule Claude Enterprise demo",
+        "Share pricing",
+        "Provide security documentation",
+        "Prepare proof of concept"
+      ]
+    }
+  },
+  {
+    "id": "claude_meeting_004",
+    "workspace_id": "workspace_claude_demo",
+    "source": "meeting",
+    "source_id": "scale_meeting_004",
+    "account": {
+      "name": "Scale AI",
+      "domain": "scale.com"
+    },
+    "participants": [
+      {
+        "name": "Sarah Johnson",
+        "email": "sarah@scale.com",
+        "role": "VP Engineering",
+        "type": "prospect"
+      },
+      {
+        "name": "Michael Chen",
+        "email": "michael@scale.com",
+        "role": "Director of AI",
+        "type": "prospect"
+      },
+      {
+        "name": "AccountPilot AE",
+        "type": "internal"
+      }
+    ],
+    "timestamp": "2026-08-06T10:00:00Z",
+    "content": {
+      "title": "Scale AI - Claude Enterprise Discovery Call",
+      "transcript": [
+        {
+          "speaker": "Sarah Johnson",
+          "start": 0.0,
+          "end": 5.2,
+          "text": "Our teams are evaluating enterprise LLM platforms for internal productivity."
+        },
+        {
+          "speaker": "AccountPilot AE",
+          "start": 5.3,
+          "end": 10.1,
+          "text": "What are your biggest challenges today?"
+        },
+        {
+          "speaker": "Michael Chen",
+          "start": 10.2,
+          "end": 17.4,
+          "text": "Knowledge retrieval is slow and developers need better AI assistance."
+        },
+        {
+          "speaker": "Sarah Johnson",
+          "start": 17.5,
+          "end": 24.3,
+          "text": "Claude Enterprise looks promising because of its long context window."
+        },
+        {
+          "speaker": "AccountPilot AE",
+          "start": 24.4,
+          "end": 31.6,
+          "text": "We can demonstrate document intelligence, RAG, and secure enterprise deployment."
+        },
+        {
+          "speaker": "Michael Chen",
+          "start": 31.7,
+          "end": 39.8,
+          "text": "Please prepare a proof of concept along with pricing and governance documentation."
+        }
+      ]
+    },
+    "metadata": {
+      "duration_seconds": 2400,
+      "meeting_type": "discovery",
+      "mentioned_topics": [
+        "Claude Enterprise",
+        "RAG",
+        "Knowledge Management",
+        "AI Coding Assistant",
+        "Enterprise Security"
+      ],
+      "action_items": [
+        "Schedule Claude Enterprise demo",
+        "Share pricing",
+        "Provide security documentation",
+        "Prepare proof of concept"
+      ]
+    }
+  },
+  {
+    "id": "claude_meeting_005",
+    "workspace_id": "workspace_claude_demo",
+    "source": "meeting",
+    "source_id": "asana_meeting_005",
+    "account": {
+      "name": "Asana",
+      "domain": "asana.com"
+    },
+    "participants": [
+      {
+        "name": "Sarah Johnson",
+        "email": "sarah@asana.com",
+        "role": "VP Engineering",
+        "type": "prospect"
+      },
+      {
+        "name": "Michael Chen",
+        "email": "michael@asana.com",
+        "role": "Director of AI",
+        "type": "prospect"
+      },
+      {
+        "name": "AccountPilot AE",
+        "type": "internal"
+      }
+    ],
+    "timestamp": "2026-08-07T10:00:00Z",
+    "content": {
+      "title": "Asana - Claude Enterprise Discovery Call",
+      "transcript": [
+        {
+          "speaker": "Sarah Johnson",
+          "start": 0.0,
+          "end": 5.2,
+          "text": "Our teams are evaluating enterprise LLM platforms for internal productivity."
+        },
+        {
+          "speaker": "AccountPilot AE",
+          "start": 5.3,
+          "end": 10.1,
+          "text": "What are your biggest challenges today?"
+        },
+        {
+          "speaker": "Michael Chen",
+          "start": 10.2,
+          "end": 17.4,
+          "text": "Knowledge retrieval is slow and developers need better AI assistance."
+        },
+        {
+          "speaker": "Sarah Johnson",
+          "start": 17.5,
+          "end": 24.3,
+          "text": "Claude Enterprise looks promising because of its long context window."
+        },
+        {
+          "speaker": "AccountPilot AE",
+          "start": 24.4,
+          "end": 31.6,
+          "text": "We can demonstrate document intelligence, RAG, and secure enterprise deployment."
+        },
+        {
+          "speaker": "Michael Chen",
+          "start": 31.7,
+          "end": 39.8,
+          "text": "Please prepare a proof of concept along with pricing and governance documentation."
+        }
+      ]
+    },
+    "metadata": {
+      "duration_seconds": 2400,
+      "meeting_type": "discovery",
+      "mentioned_topics": [
+        "Claude Enterprise",
+        "RAG",
+        "Knowledge Management",
+        "AI Coding Assistant",
+        "Enterprise Security"
+      ],
+      "action_items": [
+        "Schedule Claude Enterprise demo",
+        "Share pricing",
+        "Provide security documentation",
+        "Prepare proof of concept"
+      ]
+    }
+  }
+]

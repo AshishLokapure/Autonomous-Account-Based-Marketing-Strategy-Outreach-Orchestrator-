@@ -95,11 +95,21 @@ const AGENT_DEFS: {
   },
 ];
 
-/** Map product name → public JSON file */
+/** Map product name ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ public JSON files */
 function getResearchFile(product: string): string {
   if (product === "AWS Cloud") return "/data/aws-research-data.json";
   if (product === "Claude Enterprise") return "/data/claude-research-data.json";
-  return "/data/azure-research-data.json"; // default: Azure AI
+  return "/data/azure-research-data.json";
+}
+function getMailsFile(product: string): string {
+  if (product === "AWS Cloud") return "/data/aws-mails.json";
+  if (product === "Claude Enterprise") return "/data/claude-mails.json";
+  return "/data/azure-mails.json";
+}
+function getTranscriptsFile(product: string): string {
+  if (product === "AWS Cloud") return "/data/aws-transcripts.json";
+  if (product === "Claude Enterprise") return "/data/claude-transcripts.json";
+  return "/data/azure-transcripts.json";
 }
 
 function buildInitialAgents(): AgentState[] {
@@ -261,18 +271,76 @@ export function CampaignProvider({ children }: { children: ReactNode }) {
           timersRef.current.push(tick);
         }
 
-        // Mark agent completed — for Research Agent, also load JSON
+        // Mark agent completed ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â for Research Agent, also load JSON
         const tEnd = setTimeout(async () => {
-          // Load research data when Research Agent completes
+          // Load data when specific agents complete
           let researchData: unknown = null;
+          let stakeholderData: unknown = null;
+
           if (def.id === "research") {
             try {
-              const file = getResearchFile(product);
-              const res = await fetch(file);
+              const res = await fetch(getResearchFile(product));
               if (res.ok) researchData = await res.json();
-            } catch {
-              // silently ignore fetch errors
-            }
+            } catch { /* ignore */ }
+          }
+
+          if (def.id === "stakeholder") {
+            try {
+              const [mailsRes, transcriptsRes] = await Promise.all([
+                fetch(getMailsFile(product)),
+                fetch(getTranscriptsFile(product)),
+              ]);
+              const mails = mailsRes.ok ? await mailsRes.json() : [];
+              const transcripts = transcriptsRes.ok ? await transcriptsRes.json() : [];
+
+              // ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚ÂÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚ÂÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ Groq LLM: answer 7 questions per company ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚ÂÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚ÂÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚ÂÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚ÂÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚ÂÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚ÂÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚ÂÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚ÂÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚ÂÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚ÂÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚ÂÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚ÂÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚ÂÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚ÂÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚ÂÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚ÂÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚ÂÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚ÂÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬
+              let groqIntel: unknown[] = [];
+              let currentRunId: string | null = null;
+              try {
+                const { runGroqStakeholderIntel } = await import("@/lib/groq-stakeholder");
+                const { saveAllStakeholderIntel } = await import("@/lib/stakeholder-supabase");
+
+                // Get company names from research JSON already fetched
+                // Re-fetch the research file (already cached by browser)
+                const researchCompanies: string[] = [];
+                try {
+                  const rRes = await fetch(getResearchFile(product));
+                  if (rRes.ok) {
+                    const rData = await rRes.json();
+                    (rData.companies ?? []).forEach((c: any) => {
+                      const name = c.company_profile?.company_name;
+                      if (name) researchCompanies.push(name);
+                    });
+                  }
+                } catch { /* ignore */ }
+
+                // Run Groq for each company in parallel
+                const intelResults = await Promise.all(
+                  researchCompanies.map((company) => {
+                    const companyEmails = (mails as any[]).filter((e: any) =>
+                      e.email_id?.toLowerCase().includes(company.toLowerCase().replace(/\s/g, "_")) ||
+                      e.email_id?.toLowerCase().includes(company.toLowerCase().split(" ")[0])
+                    );
+                    const companyMeetings = (transcripts as any[]).filter((m: any) =>
+                      m.account?.name?.toLowerCase().includes(company.toLowerCase()) ||
+                      company.toLowerCase().includes(m.account?.name?.toLowerCase() ?? "")
+                    );
+                    return runGroqStakeholderIntel(company, companyEmails, companyMeetings, product);
+                  })
+                );
+
+                groqIntel = intelResults;
+
+                // Save to Supabase using the campaign runId
+                currentRunId = `run-${Date.now()}`;
+                await saveAllStakeholderIntel(intelResults, currentRunId);
+                console.log(`[Stakeholder Agent] Groq + Supabase complete. ${intelResults.length} companies processed.`);
+              } catch (groqErr) {
+                console.error("[Groq/Supabase] stakeholder intel failed:", groqErr);
+              }
+
+              stakeholderData = { mails, transcripts, groqIntel, runId: currentRunId };
+            } catch { /* ignore */ }
           }
 
           setState((s) => {
@@ -303,10 +371,11 @@ export function CampaignProvider({ children }: { children: ReactNode }) {
               currentStep: nextAgent
                 ? AGENT_DEFS[agentIdx + 1]?.steps[0] ?? null
                 : null,
-              agentResults:
-                researchData !== null
-                  ? { ...(s.agentResults ?? {}), research: researchData }
-                  : s.agentResults,
+              agentResults: {
+                ...(s.agentResults ?? {}),
+                ...(researchData !== null ? { research: researchData } : {}),
+                ...(stakeholderData !== null ? { stakeholder: stakeholderData } : {}),
+              },
             };
           });
         }, agentEnd);

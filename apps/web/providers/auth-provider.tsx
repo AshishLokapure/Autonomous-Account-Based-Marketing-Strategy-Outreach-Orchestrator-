@@ -56,13 +56,37 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const fetchUserData = async (currentUser: User) => {
     try {
-      const { data: profileData } = await supabase.from("profiles").select("*").eq("id", currentUser.id).single();
-      setProfile(profileData ?? { id: currentUser.id, full_name: currentUser.user_metadata?.full_name || currentUser.email?.split("@")[0] || "User" });
+      const { data: profileRows, error: profileError } = await supabase
+        .from("profiles")
+        .select("id, full_name, avatar_url")
+        .eq("id", currentUser.id)
+        .limit(1);
 
-      const { data: memberships } = await supabase
+      if (profileError) {
+        console.warn("Profile lookup skipped:", profileError.message);
+      }
+
+      const profileData = profileRows?.[0] ?? null;
+
+      setProfile(
+        profileData ?? {
+          id: currentUser.id,
+          full_name: currentUser.user_metadata?.full_name || currentUser.email?.split("@")[0] || "User",
+        }
+      );
+
+      const { data: memberships, error: membershipsError } = await supabase
         .from("workspace_members")
         .select("workspace_id, role, workspaces(*)")
         .eq("user_id", currentUser.id);
+
+      if (membershipsError) {
+        console.warn("Workspace lookup skipped:", membershipsError.message);
+        setAllWorkspaces([]);
+        setWorkspace(null);
+        setRole(null);
+        return;
+      }
 
       if (memberships && memberships.length > 0) {
         const workspaceList = memberships.map((m: any) => m.workspaces as Workspace).filter(Boolean);
@@ -70,7 +94,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
         // Use saved workspace or default to first
         const savedId = typeof window !== "undefined" ? localStorage.getItem("activeWorkspaceId") : null;
-        const active = workspaceList.find(w => w.id === savedId) ?? workspaceList[0];
+        const active = workspaceList.find((w) => w.id === savedId) ?? workspaceList[0];
         setWorkspace(active);
         setRole(memberships.find((m: any) => m.workspace_id === active.id)?.role ?? null);
       } else {
@@ -79,7 +103,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         setRole(null);
       }
     } catch (err) {
-      console.error("Error fetching user data:", err);
+      console.warn("Auth data lookup skipped:", err);
     }
   };
 
@@ -143,3 +167,4 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 }
 
 export const useAuth = () => useContext(AuthContext);
+

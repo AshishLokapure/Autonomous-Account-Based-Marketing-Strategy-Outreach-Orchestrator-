@@ -1,0 +1,442 @@
+[
+  {
+    "id": "azure_meeting_001",
+    "workspace_id": "workspace_azure_demo",
+    "source": "meeting",
+    "source_id": "infosys_meeting_001",
+    "account": {
+      "name": "Infosys",
+      "domain": "infosys.com"
+    },
+    "participants": [
+      {
+        "name": "Rahul Sharma",
+        "email": "rahul@infosys.com",
+        "role": "Head of Cloud",
+        "type": "prospect"
+      },
+      {
+        "name": "Priya Nair",
+        "email": "priya@infosys.com",
+        "role": "Director of Infrastructure",
+        "type": "prospect"
+      },
+      {
+        "name": "AccountPilot AE",
+        "type": "internal"
+      }
+    ],
+    "timestamp": "2026-08-03T10:00:00Z",
+    "content": {
+      "title": "Infosys - Azure AI Discovery Meeting",
+      "transcript": [
+        {
+          "speaker": "Rahul Sharma",
+          "start": 0.0,
+          "end": 6.0,
+          "text": "Our enterprise customers are asking for secure Azure AI solutions."
+        },
+        {
+          "speaker": "AccountPilot AE",
+          "start": 6.1,
+          "end": 12.5,
+          "text": "Which workloads are you planning to migrate?"
+        },
+        {
+          "speaker": "Priya Nair",
+          "start": 12.6,
+          "end": 20.2,
+          "text": "We are evaluating Azure OpenAI, Azure AI Studio and Azure Kubernetes Service."
+        },
+        {
+          "speaker": "Rahul Sharma",
+          "start": 20.3,
+          "end": 29.1,
+          "text": "Security, governance and compliance are our highest priorities."
+        },
+        {
+          "speaker": "AccountPilot AE",
+          "start": 29.2,
+          "end": 37.8,
+          "text": "We can demonstrate Azure Landing Zone, Cost Management and enterprise governance."
+        },
+        {
+          "speaker": "Priya Nair",
+          "start": 37.9,
+          "end": 46.5,
+          "text": "Please prepare a proof of concept with pricing estimates and migration timelines."
+        }
+      ]
+    },
+    "metadata": {
+      "duration_seconds": 2100,
+      "meeting_type": "discovery",
+      "mentioned_topics": [
+        "Azure AI",
+        "Azure OpenAI",
+        "Azure AI Studio",
+        "Azure Kubernetes Service",
+        "Governance",
+        "Cloud Migration"
+      ],
+      "action_items": [
+        "Schedule Azure AI demo",
+        "Share pricing",
+        "Prepare migration roadmap",
+        "Provide governance documentation"
+      ]
+    }
+  },
+  {
+    "id": "azure_meeting_002",
+    "workspace_id": "workspace_azure_demo",
+    "source": "meeting",
+    "source_id": "tcs_meeting_002",
+    "account": {
+      "name": "TCS",
+      "domain": "tcs.com"
+    },
+    "participants": [
+      {
+        "name": "Rahul Sharma",
+        "email": "rahul@tcs.com",
+        "role": "Head of Cloud",
+        "type": "prospect"
+      },
+      {
+        "name": "Priya Nair",
+        "email": "priya@tcs.com",
+        "role": "Director of Infrastructure",
+        "type": "prospect"
+      },
+      {
+        "name": "AccountPilot AE",
+        "type": "internal"
+      }
+    ],
+    "timestamp": "2026-08-04T10:00:00Z",
+    "content": {
+      "title": "TCS - Azure AI Discovery Meeting",
+      "transcript": [
+        {
+          "speaker": "Rahul Sharma",
+          "start": 0.0,
+          "end": 6.0,
+          "text": "Our enterprise customers are asking for secure Azure AI solutions."
+        },
+        {
+          "speaker": "AccountPilot AE",
+          "start": 6.1,
+          "end": 12.5,
+          "text": "Which workloads are you planning to migrate?"
+        },
+        {
+          "speaker": "Priya Nair",
+          "start": 12.6,
+          "end": 20.2,
+          "text": "We are evaluating Azure OpenAI, Azure AI Studio and Azure Kubernetes Service."
+        },
+        {
+          "speaker": "Rahul Sharma",
+          "start": 20.3,
+          "end": 29.1,
+          "text": "Security, governance and compliance are our highest priorities."
+        },
+        {
+          "speaker": "AccountPilot AE",
+          "start": 29.2,
+          "end": 37.8,
+          "text": "We can demonstrate Azure Landing Zone, Cost Management and enterprise governance."
+        },
+        {
+          "speaker": "Priya Nair",
+          "start": 37.9,
+          "end": 46.5,
+          "text": "Please prepare a proof of concept with pricing estimates and migration timelines."
+        }
+      ]
+    },
+    "metadata": {
+      "duration_seconds": 2100,
+      "meeting_type": "discovery",
+      "mentioned_topics": [
+        "Azure AI",
+        "Azure OpenAI",
+        "Azure AI Studio",
+        "Azure Kubernetes Service",
+        "Governance",
+        "Cloud Migration"
+      ],
+      "action_items": [
+        "Schedule Azure AI demo",
+        "Share pricing",
+        "Prepare migration roadmap",
+        "Provide governance documentation"
+      ]
+    }
+  },
+  {
+    "id": "azure_meeting_003",
+    "workspace_id": "workspace_azure_demo",
+    "source": "meeting",
+    "source_id": "wipro_meeting_003",
+    "account": {
+      "name": "Wipro",
+      "domain": "wipro.com"
+    },
+    "participants": [
+      {
+        "name": "Rahul Sharma",
+        "email": "rahul@wipro.com",
+        "role": "Head of Cloud",
+        "type": "prospect"
+      },
+      {
+        "name": "Priya Nair",
+        "email": "priya@wipro.com",
+        "role": "Director of Infrastructure",
+        "type": "prospect"
+      },
+      {
+        "name": "AccountPilot AE",
+        "type": "internal"
+      }
+    ],
+    "timestamp": "2026-08-05T10:00:00Z",
+    "content": {
+      "title": "Wipro - Azure AI Discovery Meeting",
+      "transcript": [
+        {
+          "speaker": "Rahul Sharma",
+          "start": 0.0,
+          "end": 6.0,
+          "text": "Our enterprise customers are asking for secure Azure AI solutions."
+        },
+        {
+          "speaker": "AccountPilot AE",
+          "start": 6.1,
+          "end": 12.5,
+          "text": "Which workloads are you planning to migrate?"
+        },
+        {
+          "speaker": "Priya Nair",
+          "start": 12.6,
+          "end": 20.2,
+          "text": "We are evaluating Azure OpenAI, Azure AI Studio and Azure Kubernetes Service."
+        },
+        {
+          "speaker": "Rahul Sharma",
+          "start": 20.3,
+          "end": 29.1,
+          "text": "Security, governance and compliance are our highest priorities."
+        },
+        {
+          "speaker": "AccountPilot AE",
+          "start": 29.2,
+          "end": 37.8,
+          "text": "We can demonstrate Azure Landing Zone, Cost Management and enterprise governance."
+        },
+        {
+          "speaker": "Priya Nair",
+          "start": 37.9,
+          "end": 46.5,
+          "text": "Please prepare a proof of concept with pricing estimates and migration timelines."
+        }
+      ]
+    },
+    "metadata": {
+      "duration_seconds": 2100,
+      "meeting_type": "discovery",
+      "mentioned_topics": [
+        "Azure AI",
+        "Azure OpenAI",
+        "Azure AI Studio",
+        "Azure Kubernetes Service",
+        "Governance",
+        "Cloud Migration"
+      ],
+      "action_items": [
+        "Schedule Azure AI demo",
+        "Share pricing",
+        "Prepare migration roadmap",
+        "Provide governance documentation"
+      ]
+    }
+  },
+  {
+    "id": "azure_meeting_004",
+    "workspace_id": "workspace_azure_demo",
+    "source": "meeting",
+    "source_id": "hcltech_meeting_004",
+    "account": {
+      "name": "HCLTech",
+      "domain": "hcltech.com"
+    },
+    "participants": [
+      {
+        "name": "Rahul Sharma",
+        "email": "rahul@hcltech.com",
+        "role": "Head of Cloud",
+        "type": "prospect"
+      },
+      {
+        "name": "Priya Nair",
+        "email": "priya@hcltech.com",
+        "role": "Director of Infrastructure",
+        "type": "prospect"
+      },
+      {
+        "name": "AccountPilot AE",
+        "type": "internal"
+      }
+    ],
+    "timestamp": "2026-08-06T10:00:00Z",
+    "content": {
+      "title": "HCLTech - Azure AI Discovery Meeting",
+      "transcript": [
+        {
+          "speaker": "Rahul Sharma",
+          "start": 0.0,
+          "end": 6.0,
+          "text": "Our enterprise customers are asking for secure Azure AI solutions."
+        },
+        {
+          "speaker": "AccountPilot AE",
+          "start": 6.1,
+          "end": 12.5,
+          "text": "Which workloads are you planning to migrate?"
+        },
+        {
+          "speaker": "Priya Nair",
+          "start": 12.6,
+          "end": 20.2,
+          "text": "We are evaluating Azure OpenAI, Azure AI Studio and Azure Kubernetes Service."
+        },
+        {
+          "speaker": "Rahul Sharma",
+          "start": 20.3,
+          "end": 29.1,
+          "text": "Security, governance and compliance are our highest priorities."
+        },
+        {
+          "speaker": "AccountPilot AE",
+          "start": 29.2,
+          "end": 37.8,
+          "text": "We can demonstrate Azure Landing Zone, Cost Management and enterprise governance."
+        },
+        {
+          "speaker": "Priya Nair",
+          "start": 37.9,
+          "end": 46.5,
+          "text": "Please prepare a proof of concept with pricing estimates and migration timelines."
+        }
+      ]
+    },
+    "metadata": {
+      "duration_seconds": 2100,
+      "meeting_type": "discovery",
+      "mentioned_topics": [
+        "Azure AI",
+        "Azure OpenAI",
+        "Azure AI Studio",
+        "Azure Kubernetes Service",
+        "Governance",
+        "Cloud Migration"
+      ],
+      "action_items": [
+        "Schedule Azure AI demo",
+        "Share pricing",
+        "Prepare migration roadmap",
+        "Provide governance documentation"
+      ]
+    }
+  },
+  {
+    "id": "azure_meeting_005",
+    "workspace_id": "workspace_azure_demo",
+    "source": "meeting",
+    "source_id": "techm_meeting_005",
+    "account": {
+      "name": "Tech Mahindra",
+      "domain": "techm.com"
+    },
+    "participants": [
+      {
+        "name": "Rahul Sharma",
+        "email": "rahul@techm.com",
+        "role": "Head of Cloud",
+        "type": "prospect"
+      },
+      {
+        "name": "Priya Nair",
+        "email": "priya@techm.com",
+        "role": "Director of Infrastructure",
+        "type": "prospect"
+      },
+      {
+        "name": "AccountPilot AE",
+        "type": "internal"
+      }
+    ],
+    "timestamp": "2026-08-07T10:00:00Z",
+    "content": {
+      "title": "Tech Mahindra - Azure AI Discovery Meeting",
+      "transcript": [
+        {
+          "speaker": "Rahul Sharma",
+          "start": 0.0,
+          "end": 6.0,
+          "text": "Our enterprise customers are asking for secure Azure AI solutions."
+        },
+        {
+          "speaker": "AccountPilot AE",
+          "start": 6.1,
+          "end": 12.5,
+          "text": "Which workloads are you planning to migrate?"
+        },
+        {
+          "speaker": "Priya Nair",
+          "start": 12.6,
+          "end": 20.2,
+          "text": "We are evaluating Azure OpenAI, Azure AI Studio and Azure Kubernetes Service."
+        },
+        {
+          "speaker": "Rahul Sharma",
+          "start": 20.3,
+          "end": 29.1,
+          "text": "Security, governance and compliance are our highest priorities."
+        },
+        {
+          "speaker": "AccountPilot AE",
+          "start": 29.2,
+          "end": 37.8,
+          "text": "We can demonstrate Azure Landing Zone, Cost Management and enterprise governance."
+        },
+        {
+          "speaker": "Priya Nair",
+          "start": 37.9,
+          "end": 46.5,
+          "text": "Please prepare a proof of concept with pricing estimates and migration timelines."
+        }
+      ]
+    },
+    "metadata": {
+      "duration_seconds": 2100,
+      "meeting_type": "discovery",
+      "mentioned_topics": [
+        "Azure AI",
+        "Azure OpenAI",
+        "Azure AI Studio",
+        "Azure Kubernetes Service",
+        "Governance",
+        "Cloud Migration"
+      ],
+      "action_items": [
+        "Schedule Azure AI demo",
+        "Share pricing",
+        "Prepare migration roadmap",
+        "Provide governance documentation"
+      ]
+    }
+  }
+]

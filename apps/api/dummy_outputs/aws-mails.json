@@ -1,0 +1,311 @@
+[
+  {
+    "email_id": "aws_netflix_email_001",
+    "timestamp": "2026-08-03T09:15:00Z",
+    "from_person_id": "netflix_person_003",
+    "to_person_ids": [
+      "netflix_person_001",
+      "netflix_person_005"
+    ],
+    "cc_person_ids": [
+      "netflix_person_002"
+    ],
+    "subject": "Amazon Bedrock evaluation for recommendation engine",
+    "body": "Our AI platform team evaluated Amazon Bedrock for integrating foundation models into the recommendation engine. The managed service reduces operational complexity while supporting enterprise security requirements. We should begin a proof of concept before Q4 planning.",
+    "mentioned_topics": [
+      "Amazon Bedrock",
+      "Generative AI",
+      "Recommendation Engine",
+      "Security",
+      "Proof of Concept"
+    ]
+  },
+  {
+    "email_id": "aws_airbnb_email_001",
+    "timestamp": "2026-08-03T11:20:00Z",
+    "from_person_id": "airbnb_person_004",
+    "to_person_ids": [
+      "airbnb_person_001",
+      "airbnb_person_006"
+    ],
+    "cc_person_ids": [
+      "airbnb_person_002"
+    ],
+    "subject": "AWS migration roadmap for global booking platform",
+    "body": "Engineering recommends migrating remaining workloads to Amazon EKS to improve deployment consistency and scalability. Finance has requested projected infrastructure savings before approving the migration budget.",
+    "mentioned_topics": [
+      "AWS",
+      "Amazon EKS",
+      "Migration",
+      "Infrastructure",
+      "Scalability"
+    ]
+  },
+  {
+    "email_id": "aws_pinterest_email_001",
+    "timestamp": "2026-08-04T08:10:00Z",
+    "from_person_id": "pinterest_person_003",
+    "to_person_ids": [
+      "pinterest_person_001",
+      "pinterest_person_004"
+    ],
+    "cc_person_ids": [
+      "pinterest_person_002"
+    ],
+    "subject": "Amazon SageMaker adoption for image ranking models",
+    "body": "The ML engineering team believes Amazon SageMaker can simplify model deployment while improving experiment tracking. Please review licensing, deployment timelines and integration with our current pipelines.",
+    "mentioned_topics": [
+      "Amazon SageMaker",
+      "Machine Learning",
+      "Model Deployment",
+      "Experiment Tracking",
+      "AWS"
+    ]
+  },
+  {
+    "email_id": "aws_twilio_email_001",
+    "timestamp": "2026-08-04T13:45:00Z",
+    "from_person_id": "twilio_person_005",
+    "to_person_ids": [
+      "twilio_person_001",
+      "twilio_person_003"
+    ],
+    "cc_person_ids": [
+      "twilio_person_002"
+    ],
+    "subject": "AWS cost optimization review before Q4",
+    "body": "Cloud spend has increased over the last two quarters. AWS Cost Explorer indicates opportunities for Reserved Instances and Compute Savings Plans. Please prepare optimization recommendations before the executive review.",
+    "mentioned_topics": [
+      "AWS Cost Explorer",
+      "Reserved Instances",
+      "Savings Plans",
+      "Cost Optimization",
+      "Cloud Spend"
+    ]
+  },
+  {
+    "email_id": "aws_coinbase_email_001",
+    "timestamp": "2026-08-05T09:30:00Z",
+    "from_person_id": "coinbase_person_004",
+    "to_person_ids": [
+      "coinbase_person_001",
+      "coinbase_person_005"
+    ],
+    "cc_person_ids": [
+      "coinbase_person_002"
+    ],
+    "subject": "Security review for AWS Security Hub rollout",
+    "body": "Security engineering recommends enabling AWS Security Hub across all production accounts. The centralized compliance dashboard will simplify auditing and improve incident response visibility.",
+    "mentioned_topics": [
+      "AWS Security Hub",
+      "Compliance",
+      "Cloud Security",
+      "Audit",
+      "Incident Response"
+    ]
+  },
+  {
+    "email_id": "aws_adobe_email_001",
+    "timestamp": "2026-08-05T11:40:00Z",
+    "from_person_id": "adobe_person_003",
+    "to_person_ids": [
+      "adobe_person_001",
+      "adobe_person_006"
+    ],
+    "cc_person_ids": [
+      "adobe_person_002"
+    ],
+    "subject": "Amazon Bedrock integration into Creative AI services",
+    "body": "The product team wants to evaluate Amazon Bedrock for accelerating generative design workflows. We should benchmark latency, pricing and enterprise governance before customer rollout.",
+    "mentioned_topics": [
+      "Amazon Bedrock",
+      "Creative AI",
+      "Enterprise AI",
+      "Governance",
+      "Pricing"
+    ]
+  },
+  {
+    "email_id": "aws_salesforce_email_001",
+    "timestamp": "2026-08-06T08:50:00Z",
+    "from_person_id": "salesforce_person_005",
+    "to_person_ids": [
+      "salesforce_person_001",
+      "salesforce_person_004"
+    ],
+    "cc_person_ids": [
+      "salesforce_person_002"
+    ],
+    "subject": "Enterprise customers requesting AWS-native AI integrations",
+    "body": "Several enterprise accounts requested AWS-native AI deployment options alongside Salesforce Einstein. The architecture team should evaluate Amazon Bedrock integration opportunities.",
+    "mentioned_topics": [
+      "Amazon Bedrock",
+      "Salesforce Einstein",
+      "Enterprise AI",
+      "Integration",
+      "AWS"
+    ]
+  },
+  {
+    "email_id": "aws_datadog_email_001",
+    "timestamp": "2026-08-06T12:10:00Z",
+    "from_person_id": "datadog_person_004",
+    "to_person_ids": [
+      "datadog_person_001",
+      "datadog_person_005"
+    ],
+    "cc_person_ids": [
+      "datadog_person_002"
+    ],
+    "subject": "Expanding AWS observability for enterprise workloads",
+    "body": "Customer demand for AWS observability continues to increase. We should extend monitoring support for Amazon EKS, Lambda and Bedrock APIs in the next release.",
+    "mentioned_topics": [
+      "AWS Observability",
+      "Amazon EKS",
+      "AWS Lambda",
+      "Amazon Bedrock",
+      "Monitoring"
+    ]
+  },
+  {
+    "email_id": "aws_snowflake_email_001",
+    "timestamp": "2026-08-07T09:00:00Z",
+    "from_person_id": "snowflake_person_003",
+    "to_person_ids": [
+      "snowflake_person_001",
+      "snowflake_person_004"
+    ],
+    "cc_person_ids": [
+      "snowflake_person_002"
+    ],
+    "subject": "Data platform modernization using AWS",
+    "body": "Enterprise customers want tighter integration between Snowflake workloads and AWS analytics services. Please prepare a roadmap covering data governance and security.",
+    "mentioned_topics": [
+      "AWS Analytics",
+      "Snowflake",
+      "Data Governance",
+      "Security",
+      "Modernization"
+    ]
+  },
+  {
+    "email_id": "aws_atlassian_email_001",
+    "timestamp": "2026-08-07T14:30:00Z",
+    "from_person_id": "atlassian_person_005",
+    "to_person_ids": [
+      "atlassian_person_001",
+      "atlassian_person_003"
+    ],
+    "cc_person_ids": [
+      "atlassian_person_002"
+    ],
+    "subject": "Evaluating Amazon Q Developer for engineering teams",
+    "body": "Several platform teams are interested in Amazon Q Developer to improve developer productivity. We need security approval before rolling it out across engineering.",
+    "mentioned_topics": [
+      "Amazon Q",
+      "Developer Productivity",
+      "Security",
+      "Enterprise AI",
+      "AWS"
+    ]
+  },
+  {
+    "email_id": "aws_netflix_email_002",
+    "timestamp": "2026-08-08T09:45:00Z",
+    "from_person_id": "netflix_person_006",
+    "to_person_ids": [
+      "netflix_person_001"
+    ],
+    "cc_person_ids": [
+      "netflix_person_003"
+    ],
+    "subject": "Serverless migration using AWS Lambda",
+    "body": "The infrastructure team recommends increasing AWS Lambda adoption for event-driven services. This should reduce operational overhead and improve scaling efficiency.",
+    "mentioned_topics": [
+      "AWS Lambda",
+      "Serverless",
+      "Scaling",
+      "Cloud Infrastructure"
+    ]
+  },
+  {
+    "email_id": "aws_airbnb_email_002",
+    "timestamp": "2026-08-08T12:20:00Z",
+    "from_person_id": "airbnb_person_005",
+    "to_person_ids": [
+      "airbnb_person_002",
+      "airbnb_person_004"
+    ],
+    "cc_person_ids": [
+      "airbnb_person_001"
+    ],
+    "subject": "AWS disaster recovery planning",
+    "body": "Operations requested a review of our multi-region disaster recovery strategy. AWS Backup and cross-region replication should be included in the proposal.",
+    "mentioned_topics": [
+      "AWS Backup",
+      "Disaster Recovery",
+      "Multi Region",
+      "Cloud Resilience"
+    ]
+  },
+  {
+    "email_id": "aws_salesforce_email_002",
+    "timestamp": "2026-08-09T10:40:00Z",
+    "from_person_id": "salesforce_person_004",
+    "to_person_ids": [
+      "salesforce_person_006"
+    ],
+    "cc_person_ids": [
+      "salesforce_person_001"
+    ],
+    "subject": "Customer workshop on AWS AI services",
+    "body": "The enterprise sales team has scheduled a customer workshop covering Amazon Bedrock, SageMaker and AWS AI services. Please prepare demonstration environments.",
+    "mentioned_topics": [
+      "Amazon Bedrock",
+      "Amazon SageMaker",
+      "Enterprise Workshop",
+      "AWS AI"
+    ]
+  },
+  {
+    "email_id": "aws_adobe_email_002",
+    "timestamp": "2026-08-09T15:15:00Z",
+    "from_person_id": "adobe_person_004",
+    "to_person_ids": [
+      "adobe_person_001",
+      "adobe_person_005"
+    ],
+    "cc_person_ids": [
+      "adobe_person_002"
+    ],
+    "subject": "AWS governance requirements before AI rollout",
+    "body": "Legal and security teams require governance documentation before enabling AI services in production. AWS IAM policies and Security Hub findings should be reviewed.",
+    "mentioned_topics": [
+      "AWS IAM",
+      "Governance",
+      "Security Hub",
+      "Enterprise AI"
+    ]
+  },
+  {
+    "email_id": "aws_datadog_email_002",
+    "timestamp": "2026-08-10T09:20:00Z",
+    "from_person_id": "datadog_person_003",
+    "to_person_ids": [
+      "datadog_person_001",
+      "datadog_person_004"
+    ],
+    "cc_person_ids": [
+      "datadog_person_002"
+    ],
+    "subject": "Executive approval for AWS modernization initiative",
+    "body": "The executive committee approved the AWS modernization program. Engineering should prioritize Amazon EKS migration, observability improvements and AI service integration during the next quarter.",
+    "mentioned_topics": [
+      "AWS Modernization",
+      "Amazon EKS",
+      "Observability",
+      "Enterprise AI",
+      "Executive Approval"
+    ]
+  }
+]
