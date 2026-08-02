@@ -1,8 +1,8 @@
 "use client";
 
 import {
-  Activity, AlertTriangle, Bell, Bot, BriefcaseBusiness, ChartNoAxesCombined, Check,
-  ChevronDown, CircleHelp, FileText, LayoutDashboard, LogOut, Mail,
+  Activity, AlertTriangle, Bell, Bot, BriefcaseBusiness, Check,
+  ChevronDown, CircleHelp, LayoutDashboard, LogOut, Mail,
   MoreHorizontal, Package, Plus, Search, Settings, Sparkles, Target, Trash2, Users,
 } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
@@ -28,11 +28,9 @@ const navigationGroups = [
       { label: "Outreach Studio", href: "/outreach", icon: Mail },
     ],
   },
-  { label: "KNOWLEDGE", items: [{ label: "Documents", href: "/documents", icon: FileText }] },
   {
     label: "OPERATIONS",
     items: [
-      { label: "Analytics", href: "/analytics", icon: ChartNoAxesCombined },
       { label: "Agent Monitor", href: "/agent-monitor", icon: Bot },
       { label: "Notifications", href: "/notifications", icon: Bell },
       { label: "Settings", href: "/settings", icon: Settings },

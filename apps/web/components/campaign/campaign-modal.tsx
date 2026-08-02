@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -146,7 +146,7 @@ export function CampaignModal({ isOpen, onClose }: { isOpen: boolean; onClose: (
         }
       }
       setDone(true);
-      setTimeout(() => { if (!cancelled) router.push("/analytics"); }, 2500);
+      setTimeout(() => { if (!cancelled) router.push("/dashboard"); }, 2500);
     }
     run();
 

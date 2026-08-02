@@ -417,7 +417,7 @@ export function AgentFlow() {
                         strategy: "/strategy",
                         outreach: "/outreach",
                       }[a.backendAgent]
-                    : "/analytics";
+                    : "/dashboard";
                   if (href) router.push(href);
                 }}
               >

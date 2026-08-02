@@ -1,4 +1,4 @@
-##############################
+﻿##############################
 # Node
 ##############################
 
@@ -7,6 +7,8 @@ node_modules/
 .next/
 out/
 dist/
+*.tsbuildinfo
+.turbo/
 
 ##############################
 # Python
@@ -29,6 +31,8 @@ env/
 .env.local
 .env.production
 .env.development
+!.env.example
+!**/.env.example
 
 ##############################
 # Logs
@@ -36,6 +40,10 @@ env/
 
 logs/
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
 ##############################
 # IDE
@@ -85,6 +93,7 @@ storage/
 .vector_cache/
 embeddings/
 qdrant_storage/
+apps/api/dummy_outputs/intent_results/
 
 ##############################
 # Testing
@@ -92,6 +101,9 @@ qdrant_storage/
 
 .pytest_cache/
 .mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
 
 ##############################
 # Secrets
