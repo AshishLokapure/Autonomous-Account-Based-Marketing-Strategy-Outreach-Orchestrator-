@@ -10,3 +10,4 @@ ENV NEXT_PUBLIC_SUPABASE_ANON_KEY=$NEXT_PUBLIC_SUPABASE_ANON_KEY
 RUN npm run build
 EXPOSE 3000
 CMD ["npm", "start"]
+CMD ["sh", "-c", "npm run start -- -p ${PORT:-3000}"]
