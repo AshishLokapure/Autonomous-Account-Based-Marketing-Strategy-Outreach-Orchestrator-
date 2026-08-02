@@ -1,9 +1,9 @@
 "use client";
 
 import {
-  Activity, AlertTriangle, Bell, Bot, BriefcaseBusiness, Check,
+  Activity, AlertTriangle, Bell, Bot, Check,
   ChevronDown, CircleHelp, LayoutDashboard, LogOut, Mail,
-  MoreHorizontal, Package, Plus, Search, Settings, Sparkles, Target, Trash2, Users,
+  MoreHorizontal, Plus, Search, Settings, Sparkles, Target, Trash2, Users,
 } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
@@ -11,11 +11,9 @@ import { useAuth } from "@/providers/auth-provider";
 
 const navigationGroups = [
   { items: [{ label: "Dashboard", href: "/dashboard", icon: LayoutDashboard }] },
-  { label: "PRODUCT INTELLIGENCE", items: [{ label: "Products & ICP", href: "/products", icon: Package }] },
   {
     label: "ACCOUNT INTELLIGENCE",
     items: [
-      { label: "Accounts", href: "/accounts", icon: BriefcaseBusiness },
       { label: "Research Center", href: "/research", icon: Search },
       { label: "Stakeholders", href: "/stakeholders", icon: Users },
       { label: "Intent Signals", href: "/intent", icon: Activity },

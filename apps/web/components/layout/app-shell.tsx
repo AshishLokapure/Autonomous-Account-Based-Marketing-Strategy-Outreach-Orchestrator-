@@ -14,7 +14,6 @@ const CAMPAIGN_BUTTON_PAGES = [
   "Intent Signals",
   "Strategy Center",
   "Outreach Studio",
-  "Accounts"
 ];
 
 export function AppShell({ children, active }: { children: React.ReactNode; active?: string }) {
