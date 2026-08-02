@@ -1,21 +1,59 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useCampaign } from "@/stores/campaign-store";
+import { useAuth } from "@/providers/auth-provider";
+import { createClient } from "@/lib/supabase";
 import { motion, AnimatePresence } from "framer-motion";
-import { 
+import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, Legend, ResponsiveContainer,
 } from "recharts";
-import { 
-  Building2, Users, Briefcase, Target, Search, ChevronDown, ChevronRight, 
+import {
+  Building2, Users, Briefcase, Target, Search, ChevronDown, ChevronRight,
   Globe, Linkedin, MessageSquare, CheckCircle2, TrendingUp, AlertCircle
 } from "lucide-react";
 import Link from "next/link";
 
 export function ResearchCenter() {
   const { state } = useCampaign();
-  const research = state.agentResults?.research;
+  const { workspace } = useAuth();
+  const research = state.agentResults?.research as any;
   const [expandedRow, setExpandedRow] = useState<number | null>(null);
+  const [saveStatus, setSaveStatus] = useState<string | null>(null);
+  const savedIt = useRef(false);
+
+  useEffect(() => {
+    if (!research || savedIt.current) return;
+    savedIt.current = true;
+    const supabase = createClient();
+
+    const persistResearch = async () => {
+      try {
+        const payload = {
+          account_id: workspace?.id ?? null,
+          business_summary: research.organization?.summary ?? research.campaign?.summary ?? "",
+          technologies: research.companies?.flatMap((c: any) => c.website_analysis.technology_stack) ?? [],
+          competitors: research.companies?.flatMap((c: any) => c.competitors ?? []),
+          leadership: research.companies?.map((c: any) => c.company_profile.ceo || c.company_profile.head_of_it).filter(Boolean),
+          funding: { total_rounds: research.organization?.funding_rounds?.length ?? 0, latest: research.organization?.latest_funding ?? null },
+          hiring_trends: research.companies?.map((c: any) => ({ company: c.company_profile.company_name, open_positions: c.linkedin_analysis.open_positions })) ?? [],
+          latest_news: research.companies?.flatMap((c: any) => c.website_analysis.recent_announcements ?? []),
+          ai_initiatives: research.companies?.flatMap((c: any) => c.company_summary.cloud_focus ?? []),
+        };
+
+        const { error } = await supabase.from("company_research").upsert(payload, { onConflict: "account_id" });
+        if (error) {
+          setSaveStatus(`Unable to save research analytics: ${error.message}`);
+        } else {
+          setSaveStatus("Research analytics saved to Supabase.");
+        }
+      } catch (err) {
+        setSaveStatus(`Saving failed: ${String(err)}`);
+      }
+    };
+
+    persistResearch();
+  }, [research, workspace]);
 
   if (!research) {
     return (
@@ -49,9 +87,12 @@ export function ResearchCenter() {
   
   // Aggregations
   const totalAnalyzed = companies.length;
-  const avgConfidence = Math.round(companies.reduce((acc: number, c: any) => acc + c.research_scores.overall_confidence, 0) / (totalAnalyzed || 1));
-  const totalOpenPositions = companies.reduce((acc: number, c: any) => acc + c.linkedin_analysis.open_positions, 0);
-  const totalFindings = companies.reduce((acc: number, c: any) => acc + c.key_findings.length, 0);
+  const avgConfidence = useMemo(() => {
+    if (!companies.length) return 0;
+    return Math.round(companies.reduce((acc: number, c: any) => acc + c.research_scores.overall_confidence, 0) / companies.length);
+  }, [companies]);
+  const totalOpenPositions = useMemo(() => companies.reduce((acc: number, c: any) => acc + c.linkedin_analysis.open_positions, 0), [companies]);
+  const totalFindings = useMemo(() => companies.reduce((acc: number, c: any) => acc + c.key_findings.length, 0), [companies]);
   
   // Collect unique tech stack
   const techStack = Array.from(new Set(
@@ -60,8 +101,29 @@ export function ResearchCenter() {
 
   // Collect key findings with evidence
   const allFindings = companies.flatMap((c: any) => 
-    c.evidence.map((e: any) => ({ company: c.company_profile.company_name, ...e }))
+    (c.evidence ?? []).map((e: any) => ({ company: c.company_profile.company_name, ...e }))
   ).slice(0, 8); // Top 8
+
+  const heatmapMatrix: { company: string; metrics: { label: string; value: number }[] }[] = useMemo(() => {
+    return companies.map((c: any): { company: string; metrics: { label: string; value: number }[] } => ({
+      company: c.company_profile.company_name as string,
+      metrics: [
+        { label: "Website", value: c.research_scores.website_score as number },
+        { label: "LinkedIn", value: c.research_scores.linkedin_score as number },
+        { label: "Reddit", value: c.research_scores.reddit_score as number },
+        { label: "Confidence", value: c.research_scores.overall_confidence as number },
+        { label: "Open Positions", value: c.linkedin_analysis.open_positions as number },
+      ],
+    }));
+  }, [companies]);
+
+  const getHeatmapColor = (value: number) => {
+    if (value >= 90) return "#0f766e";
+    if (value >= 75) return "#0ea5e9";
+    if (value >= 60) return "#f97316";
+    if (value >= 40) return "#facc15";
+    return "#ef4444";
+  };
 
   const toggleRow = (idx: number) => {
     setExpandedRow(expandedRow === idx ? null : idx);
@@ -319,6 +381,34 @@ export function ResearchCenter() {
                 </ResponsiveContainer>
               </div>
           </div>
+
+          <div className="card heatmap-card">
+            <h3 className="card-title">Research Heatmap</h3>
+            <p className="card-subtitle">Product-specific signal intensity across target accounts</p>
+            <div className="heatmap-grid">
+              <div className="heatmap-header-cell">Company</div>
+              <div className="heatmap-header-cell">Website</div>
+              <div className="heatmap-header-cell">LinkedIn</div>
+              <div className="heatmap-header-cell">Reddit</div>
+              <div className="heatmap-header-cell">Confidence</div>
+              <div className="heatmap-header-cell">Open Positions</div>
+
+              {heatmapMatrix.map((row, rowIdx) => (
+                <React.Fragment key={rowIdx}>
+                  <div className="heatmap-company-cell">{row.company}</div>
+                  {row.metrics.map((metric, metricIdx) => (
+                    <div
+                      key={`${row.company}-${metric.label}-${metricIdx}`}
+                      className="heatmap-cell"
+                      style={{ backgroundColor: getHeatmapColor(metric.value), color: metric.value > 65 ? "white" : "#0f172a" }}
+                    >
+                      {metric.label === "Open Positions" ? metric.value.toLocaleString() : `${metric.value}%`}
+                    </div>
+                  ))}
+                </React.Fragment>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 
@@ -503,6 +593,39 @@ export function ResearchCenter() {
 
         .chart-wrapper {
           margin-top: 20px;
+        }
+        .heatmap-card {
+          grid-column: 1 / -1;
+        }
+        .heatmap-grid {
+          display: grid;
+          grid-template-columns: 1.8fr repeat(5, 1fr);
+          gap: 8px;
+          margin-top: 16px;
+          align-items: center;
+        }
+        .heatmap-header-cell {
+          font-size: 11px;
+          font-weight: 700;
+          text-transform: uppercase;
+          color: #475569;
+          padding: 10px 8px;
+        }
+        .heatmap-company-cell {
+          padding: 10px 8px;
+          font-size: 13px;
+          font-weight: 700;
+          color: #0f172a;
+          border-top: 1px solid #e2e8f0;
+        }
+        .heatmap-cell {
+          min-height: 42px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 10px;
+          font-size: 12px;
+          font-weight: 700;
         }
       `}</style>
     </motion.div>

@@ -15,7 +15,7 @@ const URGENCY_COLORS = {
 
 export function IntentCenter() {
   const { state } = useCampaign() as any;
-  const data = state.agentResults?.intent;
+  const data = state.agentResults?.intent as any;
 
   if (!data) {
     return (

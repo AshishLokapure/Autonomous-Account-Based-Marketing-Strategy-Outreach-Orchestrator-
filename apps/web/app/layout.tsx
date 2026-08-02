@@ -1,6 +1,7 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import "./globals.css";
 import { AuthProvider } from "@/providers/auth-provider";
+import { CampaignProvider } from "@/stores/campaign-store";
 
 export const metadata: Metadata = {
   title: "AccountPilot AI",
@@ -11,7 +12,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <body>
-        <AuthProvider>{children}</AuthProvider>
+        <AuthProvider>
+          <CampaignProvider>{children}</CampaignProvider>
+        </AuthProvider>
       </body>
     </html>
   );

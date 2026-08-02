@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Activity, BarChart3, CheckCircle2, Clock, Cpu, Globe, Linkedin, Loader2,
@@ -118,6 +118,7 @@ function mapBackendStatus(s: CampaignAgentStatus): NodeStatus {
 export function AgentFlow() {
   const { state: campaign, startCampaign } = useCampaign();
   const searchParams = useSearchParams();
+  const router = useRouter();
   const autoStarted = useRef(false);
   const logRef = useRef<HTMLDivElement>(null);
   const prevAgentsRef = useRef<string>(""); // track changes for log entries
@@ -141,18 +142,20 @@ export function AgentFlow() {
           const stepIdx = stepMap[def.id];
           const step = ba.steps[stepIdx];
           let status: NodeStatus = "waiting";
-          if (ba.status === "completed") status = "completed";
-          else if (ba.status === "running" || ba.status === "idle") {
-            if (step?.done) status = "completed";
-            else if (ba.status === "running") {
-              // Check if we're at or past this step
-              const currentStepIdx = ba.steps.findIndex(s => !s.done);
-              if (currentStepIdx >= 0 && currentStepIdx <= stepIdx) status = "running";
-              else if (currentStepIdx > stepIdx) status = "completed";
-              else status = "waiting";
+          if (ba.status === "completed" || step?.done) {
+            status = "completed";
+          } else if (ba.status === "running") {
+            const currentStepIdx = ba.steps.findIndex((s) => !s.done);
+            if (currentStepIdx === stepIdx) {
+              status = "running";
+            } else if (currentStepIdx > stepIdx) {
+              status = "completed";
+            } else {
+              status = "waiting";
             }
+          } else if (ba.status === "error") {
+            status = "failed";
           }
-          else if (ba.status === "error") status = "failed";
           nodeStates[def.id] = {
             status,
             progress: status === "completed" ? 100 : status === "running" ? ba.progress : 0,
@@ -172,9 +175,11 @@ export function AgentFlow() {
         nodeStates[def.id] = { status: "waiting", progress: 0, elapsed: 0, retried: false };
       }
     } else if (def.id === "orchestrator") {
-      // Orchestrator is "completed" once campaign is running
+      // Orchestrator should complete once the first agent has started.
       const s: NodeStatus = campaign.started
-        ? campaign.running ? "running" : "completed"
+        ? campaign.currentAgent && campaign.currentAgent !== "orchestrator"
+          ? "completed"
+          : "running"
         : "waiting";
       nodeStates[def.id] = {
         status: s,
@@ -254,15 +259,23 @@ export function AgentFlow() {
       }, 0) / completedAgents.length)
     : null;
 
-  const hasFailure = AGENTS.some((a) => nodeStates[a.id]?.status === "failed");
-  const phase = !campaign.started ? "idle" : campaign.completed ? "done" : "running";
+  const phase = !campaign.started
+    ? "idle"
+    : campaign.completed
+      ? "done"
+      : "running";
 
   const statusPill =
     phase === "idle" ? { text: "Idle", cls: "idle" } :
     phase === "done" ? { text: "Campaign Completed", cls: "done" } :
-    hasFailure ? { text: "Attention Needed", cls: "fail" } : { text: "Agents Running", cls: "live" };
+    { text: "Agents Running", cls: "live" };
 
   const PRODUCTS = ["Azure AI", "AWS Cloud", "Claude Enterprise"] as const;
+
+  const completedCount = campaign.agents.filter((a) => a.status === "completed").length;
+  const failedCount = campaign.agents.filter((a) => a.status === "error").length;
+  const remainingCount = campaign.agents.filter((a) => a.status !== "completed").length;
+  const currentStepText = campaign.currentStep ?? (campaign.currentAgent ? "Orchestrating step…" : "Waiting for pipeline start");
 
   return (
     <div className="agent-flow">
@@ -275,7 +288,7 @@ export function AgentFlow() {
         </div>
         <div className="af-header-right">
           <span className={`af-pill ${statusPill.cls}`}>
-            {phase === "running" && !hasFailure && <span className="af-live-dot" />}
+            {phase === "running" && <span className="af-live-dot" />}
             {statusPill.text}
           </span>
           <span className="af-pill idle"><Clock size={13} /> {fmt(campaign.totalElapsed)}</span>
@@ -311,9 +324,36 @@ export function AgentFlow() {
         </div>
       </div>
 
-      {/* ---------- Flow canvas ---------- */}
-      <div className="af-scroll">
-        <div className="af-canvas" style={{ width: CANVAS.w, height: CANVAS.h }}>
+      <div className="af-status-strip">
+        <div className="af-status-block">
+          <span className="label">Campaign Status</span>
+          <strong>{statusPill.text}</strong>
+        </div>
+        <div className="af-status-block">
+          <span className="label">Current Agent</span>
+          <strong>{campaign.currentAgent ? campaign.currentAgent.replace(/\b\w/g, c => c.toUpperCase()) : "Idle"}</strong>
+        </div>
+        <div className="af-status-block">
+          <span className="label">Current Step</span>
+          <strong>{currentStepText}</strong>
+        </div>
+        <div className="af-status-block">
+          <span className="label">Progress</span>
+          <strong>{campaign.progress}%</strong>
+        </div>
+        <div className="af-status-block">
+          <span className="label">Completed</span>
+          <strong>{completedCount} / 5 agents</strong>
+        </div>
+        <div className="af-status-block">
+          <span className="label">Errors</span>
+          <strong>{failedCount}</strong>
+        </div>
+      </div>
+
+      <div className="af-main-grid">
+        <div className="af-scroll">
+          <div className="af-canvas" style={{ width: CANVAS.w, height: CANVAS.h }}>
           <svg className="af-edges" width={CANVAS.w} height={CANVAS.h}>
             <defs>
               <linearGradient id="af-flow-grad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -348,12 +388,25 @@ export function AgentFlow() {
             const ba = a.backendAgent ? backendMap.get(a.backendAgent) : null;
             const displayConfidence = ba?.confidence ?? a.confidence;
             return (
-              <motion.div
+              <motion.button
+                type="button"
                 key={a.id}
                 className={`af-node ${n.status} ${a.wide ? "wide" : ""} ${a.source ? "source" : ""}`}
                 style={{ left: a.x - d.w / 2, top: a.y, width: d.w, minHeight: d.h }}
                 whileHover={{ y: -3, boxShadow: "0 20px 44px rgba(15,23,42,0.16)" }}
                 transition={{ type: "spring", stiffness: 320, damping: 24 }}
+                onClick={() => {
+                  const href = a.backendAgent
+                    ? {
+                        research: "/research",
+                        stakeholder: "/stakeholders",
+                        intent: "/intent",
+                        strategy: "/strategy",
+                        outreach: "/outreach",
+                      }[a.backendAgent]
+                    : "/analytics";
+                  if (href) router.push(href);
+                }}
               >
                 {n.status === "running" && <span className="af-ring" />}
 
@@ -407,12 +460,85 @@ export function AgentFlow() {
                 {n.status === "failed" && (
                   <div className="af-badges">
                     <span className="af-badge err"><XCircle size={11} /> Error</span>
+                    <span
+                      role="button"
+                      tabIndex={0}
+                      className="af-badge retry"
+                      onClick={(e) => { e.stopPropagation(); start(); }}
+                      onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.stopPropagation(); start(); } }}
+                    >
+                      <RotateCcw size={11} /> Retry
+                    </span>
                   </div>
                 )}
-              </motion.div>
+              </motion.button>
             );
           })}
+          </div>
         </div>
+        <aside className="af-sidebar">
+          <div className="af-sidebar-card">
+            <div className="aside-head">
+              <div>
+                <p className="aside-label">Live orchestration</p>
+                <h2>Campaign insights</h2>
+              </div>
+            </div>
+            <div className="aside-summary">
+              <div className="aside-chip">Product: {campaign.product}</div>
+              <div className="aside-chip">Elapsed: {fmt(campaign.totalElapsed)}</div>
+              <div className="aside-chip">Agent count: {campaign.agents.length}</div>
+            </div>
+            <div className="aside-meter">
+              <span>{campaign.progress}% complete</span>
+              <div className="aside-progress"><span style={{ width: `${campaign.progress}%` }} /></div>
+            </div>
+            <div className="aside-items">
+              <div>
+                <span className="aside-value">{completedCount}</span>
+                <span>Agents completed</span>
+              </div>
+              <div>
+                <span className="aside-value">{remainingCount}</span>
+                <span>Remaining</span>
+              </div>
+              <div>
+                <span className="aside-value">{failedCount}</span>
+                <span>Errors</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="af-sidebar-card">
+            <div className="aside-head">
+              <div>
+                <p className="aside-label">Pipeline health</p>
+                <h3>Live pulse</h3>
+              </div>
+            </div>
+            <div className="af-sidebar-row">
+              <div>
+                <strong>{campaign.currentAgent ? campaign.currentAgent.toUpperCase() : "IDLE"}</strong>
+                <p>Active agent</p>
+              </div>
+              <div>
+                <strong>{campaign.currentStep ?? "Waiting"}</strong>
+                <p>Current step</p>
+              </div>
+            </div>
+            <div className="af-sidebar-row">
+              <div>
+                <strong>{completedAgents.length}</strong>
+                <p>Success count</p>
+              </div>
+              <div>
+                <strong>{failedCount}</strong>
+                <p>Failure count</p>
+              </div>
+            </div>
+            <div className="af-sidebar-note">The next agent begins automatically after the previous one completes.</div>
+          </div>
+        </aside>
       </div>
 
       {/* ---------- Live activity log ---------- */}
@@ -460,7 +586,7 @@ export function AgentFlow() {
         .af-edge.done { stroke:#6ee7b7; }
         .af-particle { fill:#60a5fa; filter:drop-shadow(0 0 5px rgba(59,130,246,.9)); }
 
-        .af-node { position:absolute; background:#fff; border:1.5px solid #e2e8f0; border-radius:16px; padding:14px 16px 13px; box-shadow:0 8px 22px rgba(15,23,42,.06); transition:border-color .3s; }
+        .af-node { position:absolute; background:#fff; border:1.5px solid #e2e8f0; border-radius:16px; padding:14px 16px 13px; box-shadow:0 8px 22px rgba(15,23,42,.06); transition:border-color .3s; text-align:left; cursor:pointer; width:100%; }
         .af-node.waiting { opacity:.78; }
         .af-node.waiting .af-node-icon { filter:grayscale(.7); opacity:.6; }
         .af-node.running { border-color:transparent; background:linear-gradient(#fff,#fff) padding-box, linear-gradient(120deg,#3b82f6,#8b5cf6,#06b6d4,#3b82f6) border-box; background-size:100% 100%, 300% 300%; animation:af-border-flow 3s linear infinite, af-glow 1.8s ease-in-out infinite; }
@@ -482,6 +608,32 @@ export function AgentFlow() {
         .af-node.completed .af-node-desc { color:#15803d; font-weight:600; }
         .af-node.failed .af-node-desc { color:#b91c1c; }
 
+        .af-status-strip { display:grid; grid-template-columns:repeat(3, minmax(180px, 1fr)); gap:14px; margin-bottom:22px; }
+        .af-status-block { padding:16px 18px; border-radius:16px; background:#f8fafc; border:1px solid #e2e8f0; }
+        .af-status-block .label { display:block; font-size:10.5px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:#64748b; margin-bottom:8px; }
+        .af-status-block strong { display:block; font-size:15px; color:#0f172a; line-height:1.35; }
+
+        .af-main-grid { display:grid; grid-template-columns:1fr 320px; gap:22px; align-items:flex-start; }
+        .af-sidebar { display:flex; flex-direction:column; gap:18px; }
+        .af-sidebar-card { background:#0f172a; color:#f8fafc; border-radius:22px; padding:20px; box-shadow:0 20px 50px rgba(15,23,42,.16); border:1px solid rgba(255,255,255,.08); }
+        .aside-head { display:flex; align-items:flex-end; justify-content:space-between; gap:14px; margin-bottom:18px; }
+        .aside-label { font-size:10px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:#94a3b8; margin-bottom:8px; }
+        .aside-head h2, .aside-head h3 { margin:0; font-size:18px; line-height:1.2; }
+        .aside-summary { display:grid; gap:10px; margin-bottom:18px; }
+        .aside-chip { display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px; background:rgba(255,255,255,.08); color:#e2e8f0; font-size:11px; }
+        .aside-meter { margin-bottom:18px; }
+        .aside-meter span { display:block; font-size:12px; color:#cbd5e1; margin-bottom:10px; }
+        .aside-progress { height:10px; background:rgba(255,255,255,.08); border-radius:999px; overflow:hidden; }
+        .aside-progress span { display:block; height:100%; background:linear-gradient(90deg,#60a5fa,#8b5cf6); }
+        .aside-items { display:grid; gap:12px; }
+        .aside-items div { display:flex; justify-content:space-between; align-items:center; font-size:13px; color:#e2e8f0; }
+        .aside-value { font-size:22px; font-weight:800; color:#fff; }
+        .af-sidebar-row { display:grid; gap:14px; }
+        .af-sidebar-row > div { background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.08); border-radius:14px; padding:16px; }
+        .af-sidebar-row strong { display:block; font-size:20px; font-weight:800; margin-bottom:6px; }
+        .af-sidebar-row p { margin:0; color:#cbd5e1; font-size:12px; }
+        .af-sidebar-note { margin-top:14px; color:#cbd5e1; font-size:12px; line-height:1.6; }
+
         .af-progress-row { display:flex; align-items:center; gap:10px; margin-top:10px; }
         .af-progress { flex:1; height:6px; border-radius:99px; background:#eef2f8; overflow:hidden; }
         .af-progress span { display:block; height:100%; border-radius:99px; background:linear-gradient(90deg,#3b82f6,#8b5cf6); transition:width .12s linear; }
@@ -492,6 +644,8 @@ export function AgentFlow() {
         .af-badge.time { background:#f1f5f9; color:#475569; }
         .af-badge.conf { background:#f0fdf4; color:#15803d; border:1px solid #bbf7d0; }
         .af-badge.err  { background:#fef2f2; color:#b91c1c; border:1px solid #fecaca; }
+        .af-badge.retry { background:#eff6ff; color:#1d4ed8; border:1px solid #bfdbfe; cursor:pointer; }
+        .af-badge.retry:hover { background:#dbeafe; }
 
         .af-log-card { margin-top:26px; border:1px solid #e2e8f0; border-radius:16px; background:#fff; overflow:hidden; }
         .af-log-head { display:flex; align-items:center; gap:9px; padding:13px 18px; border-bottom:1px solid #eef2f8; color:#0f172a; font-size:13px; }

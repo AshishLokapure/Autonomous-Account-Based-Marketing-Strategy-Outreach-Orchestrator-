@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -56,9 +56,9 @@ const INITIAL_METRICS: Metric[] = [
   { label: "Buying Signals",         value: 0,    suffix: "",     icon: Zap,        color: "#d97706" },
   { label: "High Intent Accounts",   value: 0,    suffix: "",     icon: TrendingUp, color: "#16a34a" },
   { label: "Emails Generated",       value: 0,    suffix: "",     icon: Mail,       color: "#db2777" },
-  { label: "Avg Intent Score",       value: "—",  suffix: "/100", icon: BarChart3,  color: "#2563eb" },
+  { label: "Avg Intent Score",       value: "â€”",  suffix: "/100", icon: BarChart3,  color: "#2563eb" },
   { label: "Execution Time",         value: "0s", suffix: "",     icon: Clock,      color: "#64748b" },
-  { label: "Confidence",             value: "—",  suffix: "%",    icon: ShieldCheck,color: "#16a34a" },
+  { label: "Confidence",             value: "â€”",  suffix: "%",    icon: ShieldCheck,color: "#16a34a" },
 ];
 
 const LOG_MESSAGES: [number, string][] = [
@@ -66,7 +66,7 @@ const LOG_MESSAGES: [number, string][] = [
   [500,  "Loading CRM account data..."],
   [2000, "Research Agent started"],
   [3000, "Retrieved 38 target companies"],
-  [4200, "Website analysis complete — 38 domains scanned"],
+  [4200, "Website analysis complete â€” 38 domains scanned"],
   [5500, "Stakeholder Agent started"],
   [6200, "Identified 94 decision makers across accounts"],
   [7500, "Intent Agent started"],
@@ -79,9 +79,9 @@ const LOG_MESSAGES: [number, string][] = [
   [15200,"Generated 38 executive emails"],
   [16000,"Generated 38 LinkedIn messages"],
   [17000,"Verification Agent started"],
-  [18500,"Hallucination scan complete — 0 issues found"],
+  [18500,"Hallucination scan complete â€” 0 issues found"],
   [19500,"Confidence score: 94%"],
-  [20500,"Campaign execution complete ✓"],
+  [20500,"Campaign execution complete âœ“"],
 ];
 
 function pad(n: number) { return String(n).padStart(2, "0"); }
@@ -101,8 +101,8 @@ function animateCount(target: number, cb: (v: number) => void, duration = 1200) 
 
 function StatusBadge({ status }: { status: StepStatus }) {
   const map: Record<StepStatus, [string, string, string]> = {
-    done:    ["✓ Done",   "#dcfce7", "#16a34a"],
-    running: ["● Running","#eff6ff", "#2563eb"],
+    done:    ["âœ“ Done",   "#dcfce7", "#16a34a"],
+    running: ["â— Running","#eff6ff", "#2563eb"],
     queued:  ["Queued",   "#f1f5f9", "#94a3b8"],
   };
   const [label, bg, color] = map[status];
@@ -117,7 +117,8 @@ function ProgressBar({ pct, color = "#2563eb" }: { pct: number; color?: string }
   );
 }
 
-export function CampaignModal({ onClose }: { onClose: () => void }) {
+export function CampaignModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
+  if (!isOpen) return null;
   const router = useRouter();
   const [currentStep, setCurrentStep] = useState(0);
   const [stepProgress, setStepProgress] = useState(0);
@@ -205,7 +206,7 @@ export function CampaignModal({ onClose }: { onClose: () => void }) {
           <div>
             <div style={{ fontSize: 10, fontWeight: 800, color: "#7c3aed", letterSpacing: 1, marginBottom: 4 }}>AI CAMPAIGN EXECUTION</div>
             <h2 style={{ margin: 0, fontSize: 20, fontWeight: 800, letterSpacing: -0.8, color: "#0f172a" }}>
-              {done ? "Campaign Completed ✓" : "Running Multi-Agent Campaign..."}
+              {done ? "Campaign Completed âœ“" : "Running Multi-Agent Campaign..."}
             </h2>
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
@@ -294,7 +295,7 @@ export function CampaignModal({ onClose }: { onClose: () => void }) {
                     </div>
                     <motion.div key={String(m.value)} initial={{ scale: 1.15 }} animate={{ scale: 1 }} transition={{ duration: 0.25 }}
                       style={{ fontSize: 19, fontWeight: 800, letterSpacing: -0.8, color: "#0f172a" }}>
-                      {m.value}{m.suffix && m.value !== "—" ? <span style={{ fontSize: 10, fontWeight: 600, color: "#94a3b8" }}>{m.suffix}</span> : ""}
+                      {m.value}{m.suffix && m.value !== "â€”" ? <span style={{ fontSize: 10, fontWeight: 600, color: "#94a3b8" }}>{m.suffix}</span> : ""}
                     </motion.div>
                   </div>
                 );
@@ -317,7 +318,7 @@ export function CampaignModal({ onClose }: { onClose: () => void }) {
                       </div>
                       {a.status !== "queued" && (
                         <div style={{ fontSize: 10, color: "#94a3b8", marginTop: 2 }}>
-                          {a.elapsed}s elapsed · Confidence: {a.confidence}%
+                          {a.elapsed}s elapsed Â· Confidence: {a.confidence}%
                         </div>
                       )}
                       {a.status === "running" && <ProgressBar pct={a.progress} />}
@@ -341,7 +342,7 @@ export function CampaignModal({ onClose }: { onClose: () => void }) {
                 ))}
               </AnimatePresence>
               {!done && (
-                <motion.span animate={{ opacity: [1, 0] }} transition={{ repeat: Infinity, duration: 0.8 }} style={{ color: "#4ade80" }}>█</motion.span>
+                <motion.span animate={{ opacity: [1, 0] }} transition={{ repeat: Infinity, duration: 0.8 }} style={{ color: "#4ade80" }}>â–ˆ</motion.span>
               )}
             </div>
 
@@ -360,7 +361,7 @@ export function CampaignModal({ onClose }: { onClose: () => void }) {
               <div style={{ fontSize: 10, fontWeight: 800, color: "#64748b", marginBottom: 10, letterSpacing: .5 }}>CAMPAIGN SUMMARY</div>
               {[
                 ["Target Accounts",    "38 companies"],
-                ["Outreach Generated", "38 emails · 38 LinkedIn"],
+                ["Outreach Generated", "38 emails Â· 38 LinkedIn"],
                 ["Pipeline Value",     "$4.82M estimated"],
                 ["Top Signal",         "Pricing review requested"],
               ].map(([k, v]) => (
@@ -377,3 +378,4 @@ export function CampaignModal({ onClose }: { onClose: () => void }) {
     </motion.div>
   );
 }
+

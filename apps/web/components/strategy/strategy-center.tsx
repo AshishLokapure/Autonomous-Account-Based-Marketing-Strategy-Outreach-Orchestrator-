@@ -20,7 +20,7 @@ const COLORS = {
 
 export function StrategyCenter() {
   const { state } = useCampaign();
-  const data = state.agentResults?.strategy;
+  const data = state.agentResults?.strategy as any;
   
   const [expandedCards, setExpandedCards] = useState<Record<string, boolean>>({});
 

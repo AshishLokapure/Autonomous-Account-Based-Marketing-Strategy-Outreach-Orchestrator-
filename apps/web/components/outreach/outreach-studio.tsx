@@ -11,7 +11,7 @@ import Link from "next/link";
 
 export function OutreachStudio() {
   const { state } = useCampaign();
-  const data = state.agentResults?.outreach;
+  const data = state.agentResults?.outreach as any;
 
   const [selectedCompanyIndex, setSelectedCompanyIndex] = useState(0);
   const [activeTab, setActiveTab] = useState<'email'|'linkedin'|'call'>('email');

@@ -1,33 +1,41 @@
-"use client";
+﻿"use client";
 
-import React, { useState } from "react";
-import { 
-  ArrowUpRight, Bot, CalendarDays, ChevronRight, CircleDollarSign, 
+import React from "react";
+import {
+  ArrowUpRight, Bot, CalendarDays, ChevronRight, CircleDollarSign,
   Lightbulb, Plus, TrendingUp, UsersRound, Zap, Sparkles, Rocket,
   Building2, ArrowRight, CheckCircle2, ShieldCheck, Mail, Target
 } from "lucide-react";
 import { AppShell } from "@/components/layout/app-shell";
 import { useCampaign } from "@/stores/campaign-store";
 import { useAuth } from "@/providers/auth-provider";
-import { CampaignModal } from "@/components/campaign/campaign-modal";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 
+type LiveAccount = {
+  name: string;
+  industry: string;
+  pipeline: string;
+  stage: string;
+  score: number;
+  tier: string;
+  highlight: string;
+};
 export function Dashboard() {
   const { state } = useCampaign();
   const { profile } = useAuth();
-  const [modalOpen, setModalOpen] = useState(false);
 
   const userName = profile?.full_name?.split(" ")[0] || "John";
   const isRunning = state.status === "running" || state.status === "starting";
   const isCompleted = state.status === "completed";
 
   // Live data extraction from Agent Results
-  const researchData = state.agentResults?.research;
-  const stakeholderData = state.agentResults?.stakeholder;
-  const intentData = state.agentResults?.intent;
-  const strategyData = state.agentResults?.strategy;
-  const outreachData = state.agentResults?.outreach;
+  const agentResults = state.agentResults as Record<string, any> | null;
+  const researchData = agentResults?.research;
+  const stakeholderData = agentResults?.stakeholder;
+  const intentData = agentResults?.intent;
+  const strategyData = agentResults?.strategy;
+  const outreachData = agentResults?.outreach;
 
   // Dynamic KPI Metrics
   const highIntentCount = intentData?.totals?.high_intent_accounts ?? 24;
@@ -37,7 +45,7 @@ export function Dashboard() {
   const outreachAssetsCount = outreachData?.totals?.total_assets ?? 18;
 
   // Real accounts from agent data or rich defaults
-  const liveAccounts = React.useMemo(() => {
+  const liveAccounts = React.useMemo<LiveAccount[]>(() => {
     if (researchData?.companies && researchData.companies.length > 0) {
       return researchData.companies.map((c: any) => {
         const companyName = c.company_profile?.company_name || "Enterprise Account";
@@ -124,9 +132,9 @@ export function Dashboard() {
                 : "Here is your multi-agent account intelligence briefing for today."}
             </p>
           </div>
-          <button className="primary-button" onClick={() => setModalOpen(true)}>
+          <Link href="/agent-monitor" className="primary-button">
             <Rocket size={16} /> Run AI Campaign
-          </button>
+          </Link>
         </div>
 
         {/* Live Campaign Status Banner (if running or completed) */}
@@ -257,8 +265,8 @@ export function Dashboard() {
                 </div>
               </div>
               <div style={{ display: "flex", gap: 18, marginTop: 15, fontSize: 11, color: "#64748b" }}>
-                <span><b style={{ color: "#2563eb" }}>●</b> Current pipeline</span>
-                <span><b style={{ color: "#b9d0ff" }}>●</b> Previous period</span>
+                <span><b style={{ color: "#2563eb" }}>â—</b> Current pipeline</span>
+                <span><b style={{ color: "#b9d0ff" }}>â—</b> Previous period</span>
               </div>
             </article>
 
@@ -375,8 +383,6 @@ export function Dashboard() {
           </div>
         </div>
       </div>
-
-      <CampaignModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
 
       <style jsx>{`
         .campaign-banner {
@@ -515,3 +521,4 @@ export function Dashboard() {
     </AppShell>
   );
 }
+

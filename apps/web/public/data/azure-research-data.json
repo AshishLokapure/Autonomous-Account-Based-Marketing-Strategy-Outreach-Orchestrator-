@@ -1,0 +1,1332 @@
+{
+  "product": "Azure AI",
+  "organization": "Microsoft",
+  "campaign": "Azure Enterprise Growth",
+  "companies": [
+    {
+      "metadata": {
+        "agent": "Research Agent",
+        "status": "completed",
+        "execution_time": "18.0 seconds",
+        "confidence": 95,
+        "generated_at": "2026-08-02T12:10:00Z"
+      },
+      "company_profile": {
+        "company_name": "Infosys",
+        "industry": "IT Services and Consulting",
+        "headquarters": "Bengaluru, India",
+        "employees": 340000,
+        "website": "https://www.infosys.com",
+        "linkedin_followers": 2900000
+      },
+      "company_summary": {
+        "overview": "Infosys is evaluating enterprise cloud modernization and AI initiatives with interest in Microsoft Azure capabilities.",
+        "cloud_focus": [
+          "AWS",
+          "Azure",
+          "Google Cloud"
+        ],
+        "business_model": "Enterprise Consulting"
+      },
+      "website_analysis": {
+        "products": [
+          "Cloud Services",
+          "Generative AI",
+          "Data Analytics",
+          "Cyber Security"
+        ],
+        "services": [
+          "Digital Transformation",
+          "Cloud Migration",
+          "Application Modernization"
+        ],
+        "technology_stack": [
+          "Azure",
+          "AWS",
+          "Terraform",
+          "Kubernetes"
+        ],
+        "recent_announcements": [
+          "Expansion of AI capabilities",
+          "Enterprise cloud modernization initiatives"
+        ]
+      },
+      "linkedin_analysis": {
+        "employee_growth": 6,
+        "open_positions": 250,
+        "cloud_jobs": 90,
+        "azure_jobs": 45,
+        "aws_jobs": 40,
+        "ai_jobs": 100,
+        "top_hiring_roles": [
+          "Azure Cloud Engineer",
+          "Cloud Architect",
+          "DevOps Engineer",
+          "AI Engineer"
+        ],
+        "recent_posts": [
+          "Enterprise AI",
+          "Cloud Transformation",
+          "Responsible AI"
+        ]
+      },
+      "reddit_analysis": {
+        "posts_analyzed": 45,
+        "overall_sentiment": "Positive",
+        "positive": 62,
+        "neutral": 22,
+        "negative": 16,
+        "top_discussions": [
+          "Azure Pricing",
+          "Azure OpenAI",
+          "Azure Kubernetes",
+          "Cloud Migration"
+        ],
+        "community_feedback": [
+          "Interest in Azure AI services",
+          "Migration planning discussions",
+          "Need for cost optimization"
+        ]
+      },
+      "market_intelligence": {
+        "competitors": [
+          "AWS",
+          "Google Cloud",
+          "Anthropic Claude"
+        ],
+        "market_trends": [
+          "Growing AI adoption",
+          "Migration to Kubernetes",
+          "Cloud Cost Optimization"
+        ]
+      },
+      "research_scores": {
+        "website_score": 94,
+        "linkedin_score": 90,
+        "reddit_score": 84,
+        "overall_confidence": 93
+      },
+      "key_findings": [
+        "Hiring Azure Engineers.",
+        "Enterprise AI initiatives expanding.",
+        "Cloud modernization projects active.",
+        "Interest in Azure pricing.",
+        "Kubernetes adoption increasing."
+      ],
+      "business_opportunities": [
+        "Azure AI",
+        "Azure OpenAI",
+        "Azure Kubernetes Service",
+        "Azure Security",
+        "Azure Cost Optimization"
+      ],
+      "evidence": [
+        {
+          "source": "Website",
+          "fact": "Enterprise AI initiatives highlighted"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Hiring Azure-focused engineers"
+        },
+        {
+          "source": "Reddit",
+          "fact": "Community discussions around Azure pricing"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "agent": "Research Agent",
+        "status": "completed",
+        "execution_time": "18.7 seconds",
+        "confidence": 94,
+        "generated_at": "2026-08-02T12:10:00Z"
+      },
+      "company_profile": {
+        "company_name": "TCS",
+        "industry": "IT Services and Consulting",
+        "headquarters": "Mumbai, India",
+        "employees": 615000,
+        "website": "https://www.tcs.com",
+        "linkedin_followers": 5200000
+      },
+      "company_summary": {
+        "overview": "TCS is evaluating enterprise cloud modernization and AI initiatives with interest in Microsoft Azure capabilities.",
+        "cloud_focus": [
+          "AWS",
+          "Azure",
+          "Google Cloud"
+        ],
+        "business_model": "Enterprise Consulting"
+      },
+      "website_analysis": {
+        "products": [
+          "Cloud Services",
+          "Generative AI",
+          "Data Analytics",
+          "Cyber Security"
+        ],
+        "services": [
+          "Digital Transformation",
+          "Cloud Migration",
+          "Application Modernization"
+        ],
+        "technology_stack": [
+          "Azure",
+          "AWS",
+          "Terraform",
+          "Kubernetes"
+        ],
+        "recent_announcements": [
+          "Expansion of AI capabilities",
+          "Enterprise cloud modernization initiatives"
+        ]
+      },
+      "linkedin_analysis": {
+        "employee_growth": 7,
+        "open_positions": 290,
+        "cloud_jobs": 98,
+        "azure_jobs": 51,
+        "aws_jobs": 45,
+        "ai_jobs": 110,
+        "top_hiring_roles": [
+          "Azure Cloud Engineer",
+          "Cloud Architect",
+          "DevOps Engineer",
+          "AI Engineer"
+        ],
+        "recent_posts": [
+          "Enterprise AI",
+          "Cloud Transformation",
+          "Responsible AI"
+        ]
+      },
+      "reddit_analysis": {
+        "posts_analyzed": 50,
+        "overall_sentiment": "Positive",
+        "positive": 63,
+        "neutral": 21,
+        "negative": 16,
+        "top_discussions": [
+          "Azure Pricing",
+          "Azure OpenAI",
+          "Azure Kubernetes",
+          "Cloud Migration"
+        ],
+        "community_feedback": [
+          "Interest in Azure AI services",
+          "Migration planning discussions",
+          "Need for cost optimization"
+        ]
+      },
+      "market_intelligence": {
+        "competitors": [
+          "AWS",
+          "Google Cloud",
+          "Anthropic Claude"
+        ],
+        "market_trends": [
+          "Growing AI adoption",
+          "Migration to Kubernetes",
+          "Cloud Cost Optimization"
+        ]
+      },
+      "research_scores": {
+        "website_score": 95,
+        "linkedin_score": 91,
+        "reddit_score": 85,
+        "overall_confidence": 93
+      },
+      "key_findings": [
+        "Hiring Azure Engineers.",
+        "Enterprise AI initiatives expanding.",
+        "Cloud modernization projects active.",
+        "Interest in Azure pricing.",
+        "Kubernetes adoption increasing."
+      ],
+      "business_opportunities": [
+        "Azure AI",
+        "Azure OpenAI",
+        "Azure Kubernetes Service",
+        "Azure Security",
+        "Azure Cost Optimization"
+      ],
+      "evidence": [
+        {
+          "source": "Website",
+          "fact": "Enterprise AI initiatives highlighted"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Hiring Azure-focused engineers"
+        },
+        {
+          "source": "Reddit",
+          "fact": "Community discussions around Azure pricing"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "agent": "Research Agent",
+        "status": "completed",
+        "execution_time": "19.4 seconds",
+        "confidence": 95,
+        "generated_at": "2026-08-02T12:10:00Z"
+      },
+      "company_profile": {
+        "company_name": "Wipro",
+        "industry": "IT Services and Consulting",
+        "headquarters": "Bengaluru, India",
+        "employees": 240000,
+        "website": "https://www.wipro.com",
+        "linkedin_followers": 3800000
+      },
+      "company_summary": {
+        "overview": "Wipro is evaluating enterprise cloud modernization and AI initiatives with interest in Microsoft Azure capabilities.",
+        "cloud_focus": [
+          "AWS",
+          "Azure",
+          "Google Cloud"
+        ],
+        "business_model": "Enterprise Consulting"
+      },
+      "website_analysis": {
+        "products": [
+          "Cloud Services",
+          "Generative AI",
+          "Data Analytics",
+          "Cyber Security"
+        ],
+        "services": [
+          "Digital Transformation",
+          "Cloud Migration",
+          "Application Modernization"
+        ],
+        "technology_stack": [
+          "Azure",
+          "AWS",
+          "Terraform",
+          "Kubernetes"
+        ],
+        "recent_announcements": [
+          "Expansion of AI capabilities",
+          "Enterprise cloud modernization initiatives"
+        ]
+      },
+      "linkedin_analysis": {
+        "employee_growth": 8,
+        "open_positions": 330,
+        "cloud_jobs": 106,
+        "azure_jobs": 57,
+        "aws_jobs": 50,
+        "ai_jobs": 120,
+        "top_hiring_roles": [
+          "Azure Cloud Engineer",
+          "Cloud Architect",
+          "DevOps Engineer",
+          "AI Engineer"
+        ],
+        "recent_posts": [
+          "Enterprise AI",
+          "Cloud Transformation",
+          "Responsible AI"
+        ]
+      },
+      "reddit_analysis": {
+        "posts_analyzed": 55,
+        "overall_sentiment": "Positive",
+        "positive": 64,
+        "neutral": 20,
+        "negative": 16,
+        "top_discussions": [
+          "Azure Pricing",
+          "Azure OpenAI",
+          "Azure Kubernetes",
+          "Cloud Migration"
+        ],
+        "community_feedback": [
+          "Interest in Azure AI services",
+          "Migration planning discussions",
+          "Need for cost optimization"
+        ]
+      },
+      "market_intelligence": {
+        "competitors": [
+          "AWS",
+          "Google Cloud",
+          "Anthropic Claude"
+        ],
+        "market_trends": [
+          "Growing AI adoption",
+          "Migration to Kubernetes",
+          "Cloud Cost Optimization"
+        ]
+      },
+      "research_scores": {
+        "website_score": 96,
+        "linkedin_score": 90,
+        "reddit_score": 84,
+        "overall_confidence": 93
+      },
+      "key_findings": [
+        "Hiring Azure Engineers.",
+        "Enterprise AI initiatives expanding.",
+        "Cloud modernization projects active.",
+        "Interest in Azure pricing.",
+        "Kubernetes adoption increasing."
+      ],
+      "business_opportunities": [
+        "Azure AI",
+        "Azure OpenAI",
+        "Azure Kubernetes Service",
+        "Azure Security",
+        "Azure Cost Optimization"
+      ],
+      "evidence": [
+        {
+          "source": "Website",
+          "fact": "Enterprise AI initiatives highlighted"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Hiring Azure-focused engineers"
+        },
+        {
+          "source": "Reddit",
+          "fact": "Community discussions around Azure pricing"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "agent": "Research Agent",
+        "status": "completed",
+        "execution_time": "20.1 seconds",
+        "confidence": 94,
+        "generated_at": "2026-08-02T12:10:00Z"
+      },
+      "company_profile": {
+        "company_name": "HCLTech",
+        "industry": "IT Services and Consulting",
+        "headquarters": "Noida, India",
+        "employees": 220000,
+        "website": "https://www.hcltech.com",
+        "linkedin_followers": 1800000
+      },
+      "company_summary": {
+        "overview": "HCLTech is evaluating enterprise cloud modernization and AI initiatives with interest in Microsoft Azure capabilities.",
+        "cloud_focus": [
+          "AWS",
+          "Azure",
+          "Google Cloud"
+        ],
+        "business_model": "Enterprise Consulting"
+      },
+      "website_analysis": {
+        "products": [
+          "Cloud Services",
+          "Generative AI",
+          "Data Analytics",
+          "Cyber Security"
+        ],
+        "services": [
+          "Digital Transformation",
+          "Cloud Migration",
+          "Application Modernization"
+        ],
+        "technology_stack": [
+          "Azure",
+          "AWS",
+          "Terraform",
+          "Kubernetes"
+        ],
+        "recent_announcements": [
+          "Expansion of AI capabilities",
+          "Enterprise cloud modernization initiatives"
+        ]
+      },
+      "linkedin_analysis": {
+        "employee_growth": 9,
+        "open_positions": 370,
+        "cloud_jobs": 114,
+        "azure_jobs": 63,
+        "aws_jobs": 55,
+        "ai_jobs": 130,
+        "top_hiring_roles": [
+          "Azure Cloud Engineer",
+          "Cloud Architect",
+          "DevOps Engineer",
+          "AI Engineer"
+        ],
+        "recent_posts": [
+          "Enterprise AI",
+          "Cloud Transformation",
+          "Responsible AI"
+        ]
+      },
+      "reddit_analysis": {
+        "posts_analyzed": 60,
+        "overall_sentiment": "Positive",
+        "positive": 65,
+        "neutral": 19,
+        "negative": 16,
+        "top_discussions": [
+          "Azure Pricing",
+          "Azure OpenAI",
+          "Azure Kubernetes",
+          "Cloud Migration"
+        ],
+        "community_feedback": [
+          "Interest in Azure AI services",
+          "Migration planning discussions",
+          "Need for cost optimization"
+        ]
+      },
+      "market_intelligence": {
+        "competitors": [
+          "AWS",
+          "Google Cloud",
+          "Anthropic Claude"
+        ],
+        "market_trends": [
+          "Growing AI adoption",
+          "Migration to Kubernetes",
+          "Cloud Cost Optimization"
+        ]
+      },
+      "research_scores": {
+        "website_score": 94,
+        "linkedin_score": 91,
+        "reddit_score": 85,
+        "overall_confidence": 93
+      },
+      "key_findings": [
+        "Hiring Azure Engineers.",
+        "Enterprise AI initiatives expanding.",
+        "Cloud modernization projects active.",
+        "Interest in Azure pricing.",
+        "Kubernetes adoption increasing."
+      ],
+      "business_opportunities": [
+        "Azure AI",
+        "Azure OpenAI",
+        "Azure Kubernetes Service",
+        "Azure Security",
+        "Azure Cost Optimization"
+      ],
+      "evidence": [
+        {
+          "source": "Website",
+          "fact": "Enterprise AI initiatives highlighted"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Hiring Azure-focused engineers"
+        },
+        {
+          "source": "Reddit",
+          "fact": "Community discussions around Azure pricing"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "agent": "Research Agent",
+        "status": "completed",
+        "execution_time": "20.8 seconds",
+        "confidence": 95,
+        "generated_at": "2026-08-02T12:10:00Z"
+      },
+      "company_profile": {
+        "company_name": "Tech Mahindra",
+        "industry": "IT Services and Consulting",
+        "headquarters": "Pune, India",
+        "employees": 150000,
+        "website": "https://www.techmahindra.com",
+        "linkedin_followers": 1600000
+      },
+      "company_summary": {
+        "overview": "Tech Mahindra is evaluating enterprise cloud modernization and AI initiatives with interest in Microsoft Azure capabilities.",
+        "cloud_focus": [
+          "AWS",
+          "Azure",
+          "Google Cloud"
+        ],
+        "business_model": "Enterprise Consulting"
+      },
+      "website_analysis": {
+        "products": [
+          "Cloud Services",
+          "Generative AI",
+          "Data Analytics",
+          "Cyber Security"
+        ],
+        "services": [
+          "Digital Transformation",
+          "Cloud Migration",
+          "Application Modernization"
+        ],
+        "technology_stack": [
+          "Azure",
+          "AWS",
+          "Terraform",
+          "Kubernetes"
+        ],
+        "recent_announcements": [
+          "Expansion of AI capabilities",
+          "Enterprise cloud modernization initiatives"
+        ]
+      },
+      "linkedin_analysis": {
+        "employee_growth": 10,
+        "open_positions": 410,
+        "cloud_jobs": 122,
+        "azure_jobs": 69,
+        "aws_jobs": 60,
+        "ai_jobs": 140,
+        "top_hiring_roles": [
+          "Azure Cloud Engineer",
+          "Cloud Architect",
+          "DevOps Engineer",
+          "AI Engineer"
+        ],
+        "recent_posts": [
+          "Enterprise AI",
+          "Cloud Transformation",
+          "Responsible AI"
+        ]
+      },
+      "reddit_analysis": {
+        "posts_analyzed": 65,
+        "overall_sentiment": "Positive",
+        "positive": 66,
+        "neutral": 18,
+        "negative": 16,
+        "top_discussions": [
+          "Azure Pricing",
+          "Azure OpenAI",
+          "Azure Kubernetes",
+          "Cloud Migration"
+        ],
+        "community_feedback": [
+          "Interest in Azure AI services",
+          "Migration planning discussions",
+          "Need for cost optimization"
+        ]
+      },
+      "market_intelligence": {
+        "competitors": [
+          "AWS",
+          "Google Cloud",
+          "Anthropic Claude"
+        ],
+        "market_trends": [
+          "Growing AI adoption",
+          "Migration to Kubernetes",
+          "Cloud Cost Optimization"
+        ]
+      },
+      "research_scores": {
+        "website_score": 95,
+        "linkedin_score": 90,
+        "reddit_score": 84,
+        "overall_confidence": 93
+      },
+      "key_findings": [
+        "Hiring Azure Engineers.",
+        "Enterprise AI initiatives expanding.",
+        "Cloud modernization projects active.",
+        "Interest in Azure pricing.",
+        "Kubernetes adoption increasing."
+      ],
+      "business_opportunities": [
+        "Azure AI",
+        "Azure OpenAI",
+        "Azure Kubernetes Service",
+        "Azure Security",
+        "Azure Cost Optimization"
+      ],
+      "evidence": [
+        {
+          "source": "Website",
+          "fact": "Enterprise AI initiatives highlighted"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Hiring Azure-focused engineers"
+        },
+        {
+          "source": "Reddit",
+          "fact": "Community discussions around Azure pricing"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "agent": "Research Agent",
+        "status": "completed",
+        "execution_time": "17.5 seconds",
+        "confidence": 95,
+        "generated_at": "2026-08-02T12:20:00Z"
+      },
+      "company_profile": {
+        "company_name": "Cognizant",
+        "industry": "IT Services and Consulting",
+        "headquarters": "Teaneck, New Jersey, USA",
+        "employees": 347000,
+        "website": "https://www.cognizant.com",
+        "linkedin_followers": 2100000
+      },
+      "company_summary": {
+        "overview": "Cognizant is actively investing in enterprise cloud, AI transformation, and evaluating Azure-based solutions for customer workloads.",
+        "cloud_focus": [
+          "Azure",
+          "AWS",
+          "Google Cloud"
+        ],
+        "business_model": "Enterprise Consulting"
+      },
+      "website_analysis": {
+        "products": [
+          "Cloud Services",
+          "Generative AI",
+          "Data Analytics",
+          "Cyber Security"
+        ],
+        "services": [
+          "Digital Transformation",
+          "Cloud Migration",
+          "Application Modernization"
+        ],
+        "technology_stack": [
+          "Azure",
+          "AWS",
+          "Terraform",
+          "Kubernetes"
+        ],
+        "recent_announcements": [
+          "AI modernization initiatives",
+          "Expansion of cloud consulting practice"
+        ]
+      },
+      "linkedin_analysis": {
+        "employee_growth": 7,
+        "open_positions": 300,
+        "cloud_jobs": 100,
+        "azure_jobs": 55,
+        "aws_jobs": 48,
+        "ai_jobs": 120,
+        "top_hiring_roles": [
+          "Azure Cloud Engineer",
+          "Cloud Architect",
+          "AI Engineer",
+          "DevOps Engineer"
+        ],
+        "recent_posts": [
+          "Enterprise AI",
+          "Azure Modernization",
+          "Responsible AI"
+        ]
+      },
+      "reddit_analysis": {
+        "posts_analyzed": 55,
+        "overall_sentiment": "Positive",
+        "positive": 64,
+        "neutral": 20,
+        "negative": 16,
+        "top_discussions": [
+          "Azure AI",
+          "Azure Pricing",
+          "Azure Kubernetes",
+          "Cloud Migration"
+        ],
+        "community_feedback": [
+          "Azure adoption increasing",
+          "Customers comparing Azure with AWS",
+          "Interest in Azure OpenAI"
+        ]
+      },
+      "market_intelligence": {
+        "competitors": [
+          "AWS",
+          "Google Cloud",
+          "Anthropic Claude"
+        ],
+        "market_trends": [
+          "Generative AI",
+          "Cloud Modernization",
+          "Cost Optimization",
+          "Responsible AI"
+        ]
+      },
+      "research_scores": {
+        "website_score": 95,
+        "linkedin_score": 91,
+        "reddit_score": 85,
+        "overall_confidence": 94
+      },
+      "key_findings": [
+        "Azure adoption initiatives identified.",
+        "Growing hiring for Azure cloud roles.",
+        "Enterprise AI transformation projects active.",
+        "Cloud migration opportunities detected.",
+        "Interest in Azure cost optimization."
+      ],
+      "business_opportunities": [
+        "Azure AI",
+        "Azure OpenAI",
+        "Azure Kubernetes Service",
+        "Azure Security",
+        "Azure Cost Optimization"
+      ],
+      "evidence": [
+        {
+          "source": "Website",
+          "fact": "Cloud modernization initiatives published"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Azure-related hiring observed"
+        },
+        {
+          "source": "Reddit",
+          "fact": "Azure enterprise discussions trending"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "agent": "Research Agent",
+        "status": "completed",
+        "execution_time": "18.3 seconds",
+        "confidence": 95,
+        "generated_at": "2026-08-02T12:20:00Z"
+      },
+      "company_profile": {
+        "company_name": "Accenture",
+        "industry": "IT Services and Consulting",
+        "headquarters": "Dublin, Ireland",
+        "employees": 774000,
+        "website": "https://www.accenture.com",
+        "linkedin_followers": 12000000
+      },
+      "company_summary": {
+        "overview": "Accenture is actively investing in enterprise cloud, AI transformation, and evaluating Azure-based solutions for customer workloads.",
+        "cloud_focus": [
+          "Azure",
+          "AWS",
+          "Google Cloud"
+        ],
+        "business_model": "Enterprise Consulting"
+      },
+      "website_analysis": {
+        "products": [
+          "Cloud Services",
+          "Generative AI",
+          "Data Analytics",
+          "Cyber Security"
+        ],
+        "services": [
+          "Digital Transformation",
+          "Cloud Migration",
+          "Application Modernization"
+        ],
+        "technology_stack": [
+          "Azure",
+          "AWS",
+          "Terraform",
+          "Kubernetes"
+        ],
+        "recent_announcements": [
+          "AI modernization initiatives",
+          "Expansion of cloud consulting practice"
+        ]
+      },
+      "linkedin_analysis": {
+        "employee_growth": 8,
+        "open_positions": 345,
+        "cloud_jobs": 110,
+        "azure_jobs": 62,
+        "aws_jobs": 53,
+        "ai_jobs": 132,
+        "top_hiring_roles": [
+          "Azure Cloud Engineer",
+          "Cloud Architect",
+          "AI Engineer",
+          "DevOps Engineer"
+        ],
+        "recent_posts": [
+          "Enterprise AI",
+          "Azure Modernization",
+          "Responsible AI"
+        ]
+      },
+      "reddit_analysis": {
+        "posts_analyzed": 59,
+        "overall_sentiment": "Positive",
+        "positive": 64,
+        "neutral": 20,
+        "negative": 16,
+        "top_discussions": [
+          "Azure AI",
+          "Azure Pricing",
+          "Azure Kubernetes",
+          "Cloud Migration"
+        ],
+        "community_feedback": [
+          "Azure adoption increasing",
+          "Customers comparing Azure with AWS",
+          "Interest in Azure OpenAI"
+        ]
+      },
+      "market_intelligence": {
+        "competitors": [
+          "AWS",
+          "Google Cloud",
+          "Anthropic Claude"
+        ],
+        "market_trends": [
+          "Generative AI",
+          "Cloud Modernization",
+          "Cost Optimization",
+          "Responsible AI"
+        ]
+      },
+      "research_scores": {
+        "website_score": 95,
+        "linkedin_score": 91,
+        "reddit_score": 85,
+        "overall_confidence": 94
+      },
+      "key_findings": [
+        "Azure adoption initiatives identified.",
+        "Growing hiring for Azure cloud roles.",
+        "Enterprise AI transformation projects active.",
+        "Cloud migration opportunities detected.",
+        "Interest in Azure cost optimization."
+      ],
+      "business_opportunities": [
+        "Azure AI",
+        "Azure OpenAI",
+        "Azure Kubernetes Service",
+        "Azure Security",
+        "Azure Cost Optimization"
+      ],
+      "evidence": [
+        {
+          "source": "Website",
+          "fact": "Cloud modernization initiatives published"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Azure-related hiring observed"
+        },
+        {
+          "source": "Reddit",
+          "fact": "Azure enterprise discussions trending"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "agent": "Research Agent",
+        "status": "completed",
+        "execution_time": "19.1 seconds",
+        "confidence": 95,
+        "generated_at": "2026-08-02T12:20:00Z"
+      },
+      "company_profile": {
+        "company_name": "Capgemini",
+        "industry": "IT Services and Consulting",
+        "headquarters": "Paris, France",
+        "employees": 340000,
+        "website": "https://www.capgemini.com",
+        "linkedin_followers": 1800000
+      },
+      "company_summary": {
+        "overview": "Capgemini is actively investing in enterprise cloud, AI transformation, and evaluating Azure-based solutions for customer workloads.",
+        "cloud_focus": [
+          "Azure",
+          "AWS",
+          "Google Cloud"
+        ],
+        "business_model": "Enterprise Consulting"
+      },
+      "website_analysis": {
+        "products": [
+          "Cloud Services",
+          "Generative AI",
+          "Data Analytics",
+          "Cyber Security"
+        ],
+        "services": [
+          "Digital Transformation",
+          "Cloud Migration",
+          "Application Modernization"
+        ],
+        "technology_stack": [
+          "Azure",
+          "AWS",
+          "Terraform",
+          "Kubernetes"
+        ],
+        "recent_announcements": [
+          "AI modernization initiatives",
+          "Expansion of cloud consulting practice"
+        ]
+      },
+      "linkedin_analysis": {
+        "employee_growth": 9,
+        "open_positions": 390,
+        "cloud_jobs": 120,
+        "azure_jobs": 69,
+        "aws_jobs": 58,
+        "ai_jobs": 144,
+        "top_hiring_roles": [
+          "Azure Cloud Engineer",
+          "Cloud Architect",
+          "AI Engineer",
+          "DevOps Engineer"
+        ],
+        "recent_posts": [
+          "Enterprise AI",
+          "Azure Modernization",
+          "Responsible AI"
+        ]
+      },
+      "reddit_analysis": {
+        "posts_analyzed": 63,
+        "overall_sentiment": "Positive",
+        "positive": 64,
+        "neutral": 20,
+        "negative": 16,
+        "top_discussions": [
+          "Azure AI",
+          "Azure Pricing",
+          "Azure Kubernetes",
+          "Cloud Migration"
+        ],
+        "community_feedback": [
+          "Azure adoption increasing",
+          "Customers comparing Azure with AWS",
+          "Interest in Azure OpenAI"
+        ]
+      },
+      "market_intelligence": {
+        "competitors": [
+          "AWS",
+          "Google Cloud",
+          "Anthropic Claude"
+        ],
+        "market_trends": [
+          "Generative AI",
+          "Cloud Modernization",
+          "Cost Optimization",
+          "Responsible AI"
+        ]
+      },
+      "research_scores": {
+        "website_score": 95,
+        "linkedin_score": 91,
+        "reddit_score": 85,
+        "overall_confidence": 94
+      },
+      "key_findings": [
+        "Azure adoption initiatives identified.",
+        "Growing hiring for Azure cloud roles.",
+        "Enterprise AI transformation projects active.",
+        "Cloud migration opportunities detected.",
+        "Interest in Azure cost optimization."
+      ],
+      "business_opportunities": [
+        "Azure AI",
+        "Azure OpenAI",
+        "Azure Kubernetes Service",
+        "Azure Security",
+        "Azure Cost Optimization"
+      ],
+      "evidence": [
+        {
+          "source": "Website",
+          "fact": "Cloud modernization initiatives published"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Azure-related hiring observed"
+        },
+        {
+          "source": "Reddit",
+          "fact": "Azure enterprise discussions trending"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "agent": "Research Agent",
+        "status": "completed",
+        "execution_time": "19.9 seconds",
+        "confidence": 95,
+        "generated_at": "2026-08-02T12:20:00Z"
+      },
+      "company_profile": {
+        "company_name": "LTIMindtree",
+        "industry": "IT Services and Consulting",
+        "headquarters": "Mumbai, India",
+        "employees": 86000,
+        "website": "https://www.ltimindtree.com",
+        "linkedin_followers": 900000
+      },
+      "company_summary": {
+        "overview": "LTIMindtree is actively investing in enterprise cloud, AI transformation, and evaluating Azure-based solutions for customer workloads.",
+        "cloud_focus": [
+          "Azure",
+          "AWS",
+          "Google Cloud"
+        ],
+        "business_model": "Enterprise Consulting"
+      },
+      "website_analysis": {
+        "products": [
+          "Cloud Services",
+          "Generative AI",
+          "Data Analytics",
+          "Cyber Security"
+        ],
+        "services": [
+          "Digital Transformation",
+          "Cloud Migration",
+          "Application Modernization"
+        ],
+        "technology_stack": [
+          "Azure",
+          "AWS",
+          "Terraform",
+          "Kubernetes"
+        ],
+        "recent_announcements": [
+          "AI modernization initiatives",
+          "Expansion of cloud consulting practice"
+        ]
+      },
+      "linkedin_analysis": {
+        "employee_growth": 10,
+        "open_positions": 435,
+        "cloud_jobs": 130,
+        "azure_jobs": 76,
+        "aws_jobs": 63,
+        "ai_jobs": 156,
+        "top_hiring_roles": [
+          "Azure Cloud Engineer",
+          "Cloud Architect",
+          "AI Engineer",
+          "DevOps Engineer"
+        ],
+        "recent_posts": [
+          "Enterprise AI",
+          "Azure Modernization",
+          "Responsible AI"
+        ]
+      },
+      "reddit_analysis": {
+        "posts_analyzed": 67,
+        "overall_sentiment": "Positive",
+        "positive": 64,
+        "neutral": 20,
+        "negative": 16,
+        "top_discussions": [
+          "Azure AI",
+          "Azure Pricing",
+          "Azure Kubernetes",
+          "Cloud Migration"
+        ],
+        "community_feedback": [
+          "Azure adoption increasing",
+          "Customers comparing Azure with AWS",
+          "Interest in Azure OpenAI"
+        ]
+      },
+      "market_intelligence": {
+        "competitors": [
+          "AWS",
+          "Google Cloud",
+          "Anthropic Claude"
+        ],
+        "market_trends": [
+          "Generative AI",
+          "Cloud Modernization",
+          "Cost Optimization",
+          "Responsible AI"
+        ]
+      },
+      "research_scores": {
+        "website_score": 95,
+        "linkedin_score": 91,
+        "reddit_score": 85,
+        "overall_confidence": 94
+      },
+      "key_findings": [
+        "Azure adoption initiatives identified.",
+        "Growing hiring for Azure cloud roles.",
+        "Enterprise AI transformation projects active.",
+        "Cloud migration opportunities detected.",
+        "Interest in Azure cost optimization."
+      ],
+      "business_opportunities": [
+        "Azure AI",
+        "Azure OpenAI",
+        "Azure Kubernetes Service",
+        "Azure Security",
+        "Azure Cost Optimization"
+      ],
+      "evidence": [
+        {
+          "source": "Website",
+          "fact": "Cloud modernization initiatives published"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Azure-related hiring observed"
+        },
+        {
+          "source": "Reddit",
+          "fact": "Azure enterprise discussions trending"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "agent": "Research Agent",
+        "status": "completed",
+        "execution_time": "20.7 seconds",
+        "confidence": 95,
+        "generated_at": "2026-08-02T12:20:00Z"
+      },
+      "company_profile": {
+        "company_name": "Persistent Systems",
+        "industry": "IT Services and Consulting",
+        "headquarters": "Pune, India",
+        "employees": 25000,
+        "website": "https://www.persistent.com",
+        "linkedin_followers": 450000
+      },
+      "company_summary": {
+        "overview": "Persistent Systems is actively investing in enterprise cloud, AI transformation, and evaluating Azure-based solutions for customer workloads.",
+        "cloud_focus": [
+          "Azure",
+          "AWS",
+          "Google Cloud"
+        ],
+        "business_model": "Enterprise Consulting"
+      },
+      "website_analysis": {
+        "products": [
+          "Cloud Services",
+          "Generative AI",
+          "Data Analytics",
+          "Cyber Security"
+        ],
+        "services": [
+          "Digital Transformation",
+          "Cloud Migration",
+          "Application Modernization"
+        ],
+        "technology_stack": [
+          "Azure",
+          "AWS",
+          "Terraform",
+          "Kubernetes"
+        ],
+        "recent_announcements": [
+          "AI modernization initiatives",
+          "Expansion of cloud consulting practice"
+        ]
+      },
+      "linkedin_analysis": {
+        "employee_growth": 11,
+        "open_positions": 480,
+        "cloud_jobs": 140,
+        "azure_jobs": 83,
+        "aws_jobs": 68,
+        "ai_jobs": 168,
+        "top_hiring_roles": [
+          "Azure Cloud Engineer",
+          "Cloud Architect",
+          "AI Engineer",
+          "DevOps Engineer"
+        ],
+        "recent_posts": [
+          "Enterprise AI",
+          "Azure Modernization",
+          "Responsible AI"
+        ]
+      },
+      "reddit_analysis": {
+        "posts_analyzed": 71,
+        "overall_sentiment": "Positive",
+        "positive": 64,
+        "neutral": 20,
+        "negative": 16,
+        "top_discussions": [
+          "Azure AI",
+          "Azure Pricing",
+          "Azure Kubernetes",
+          "Cloud Migration"
+        ],
+        "community_feedback": [
+          "Azure adoption increasing",
+          "Customers comparing Azure with AWS",
+          "Interest in Azure OpenAI"
+        ]
+      },
+      "market_intelligence": {
+        "competitors": [
+          "AWS",
+          "Google Cloud",
+          "Anthropic Claude"
+        ],
+        "market_trends": [
+          "Generative AI",
+          "Cloud Modernization",
+          "Cost Optimization",
+          "Responsible AI"
+        ]
+      },
+      "research_scores": {
+        "website_score": 95,
+        "linkedin_score": 91,
+        "reddit_score": 85,
+        "overall_confidence": 94
+      },
+      "key_findings": [
+        "Azure adoption initiatives identified.",
+        "Growing hiring for Azure cloud roles.",
+        "Enterprise AI transformation projects active.",
+        "Cloud migration opportunities detected.",
+        "Interest in Azure cost optimization."
+      ],
+      "business_opportunities": [
+        "Azure AI",
+        "Azure OpenAI",
+        "Azure Kubernetes Service",
+        "Azure Security",
+        "Azure Cost Optimization"
+      ],
+      "evidence": [
+        {
+          "source": "Website",
+          "fact": "Cloud modernization initiatives published"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Azure-related hiring observed"
+        },
+        {
+          "source": "Reddit",
+          "fact": "Azure enterprise discussions trending"
+        }
+      ]
+    }
+  ]
+}

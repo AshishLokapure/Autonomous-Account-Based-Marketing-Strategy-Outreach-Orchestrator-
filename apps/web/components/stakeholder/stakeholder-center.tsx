@@ -16,7 +16,7 @@ const COLORS = {
 
 export function StakeholderCenter() {
   const { state } = useCampaign() as any;
-  const data = state.agentResults?.stakeholder;
+  const data = state.agentResults?.stakeholder as any;
   const [selectedCompany, setSelectedCompany] = useState<string>("All");
 
   if (!data) {
