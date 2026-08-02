@@ -1,4 +1,4 @@
-﻿from functools import lru_cache
+from functools import lru_cache
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
@@ -7,7 +7,7 @@ class Settings(BaseSettings):
     app_name: str = "AccountPilot AI API"
     app_env: str = "development"
     api_v1_prefix: str = "/api/v1"
-    database_url: str
+    database_url: str = "sqlite:///./accountpilot_demo.db"
     jwt_secret_key: str = ""
     jwt_algorithm: str = "HS256"
     access_token_expire_minutes: int = 60

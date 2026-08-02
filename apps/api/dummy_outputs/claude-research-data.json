@@ -1,0 +1,1352 @@
+{
+  "product": "Claude Enterprise",
+  "organization": "Anthropic",
+  "campaign": "Claude Enterprise Growth",
+  "companies": [
+    {
+      "metadata": {
+        "agent": "Research Agent",
+        "status": "completed",
+        "execution_time": "16.2 seconds",
+        "confidence": 95,
+        "generated_at": "2026-08-02T13:20:00Z"
+      },
+      "company_profile": {
+        "company_name": "Notion",
+        "industry": "Software / SaaS",
+        "headquarters": "San Francisco, California, USA",
+        "employees": 1200,
+        "website": "https://www.notion.so",
+        "linkedin_followers": 1800000
+      },
+      "company_summary": {
+        "overview": "Notion is exploring enterprise generative AI adoption, document intelligence, coding assistants, and knowledge management using large language models.",
+        "cloud_focus": [
+          "AWS",
+          "Azure",
+          "Google Cloud"
+        ],
+        "business_model": "Enterprise SaaS"
+      },
+      "website_analysis": {
+        "products": [
+          "Generative AI",
+          "Knowledge Management",
+          "Productivity Platform",
+          "Document Intelligence"
+        ],
+        "services": [
+          "AI Assistants",
+          "Workflow Automation",
+          "Enterprise Search"
+        ],
+        "technology_stack": [
+          "Claude",
+          "RAG",
+          "MCP",
+          "Vector Database",
+          "Kubernetes"
+        ],
+        "recent_announcements": [
+          "Expansion of enterprise AI capabilities",
+          "Investment in AI-powered productivity"
+        ]
+      },
+      "linkedin_analysis": {
+        "employee_growth": 7,
+        "open_positions": 180,
+        "cloud_jobs": 60,
+        "azure_jobs": 15,
+        "aws_jobs": 35,
+        "ai_jobs": 95,
+        "top_hiring_roles": [
+          "Generative AI Engineer",
+          "LLM Engineer",
+          "AI Platform Engineer",
+          "Prompt Engineer"
+        ],
+        "recent_posts": [
+          "Enterprise AI",
+          "LLM Applications",
+          "Responsible AI"
+        ]
+      },
+      "reddit_analysis": {
+        "posts_analyzed": 48,
+        "overall_sentiment": "Very Positive",
+        "positive": 68,
+        "neutral": 20,
+        "negative": 12,
+        "top_discussions": [
+          "Claude Enterprise",
+          "Claude vs GPT",
+          "RAG",
+          "Long Context Window"
+        ],
+        "community_feedback": [
+          "Interest in Claude for enterprise workflows",
+          "Strong demand for secure AI assistants",
+          "Knowledge management use cases expanding"
+        ]
+      },
+      "market_intelligence": {
+        "competitors": [
+          "OpenAI",
+          "Google Gemini",
+          "Microsoft Copilot"
+        ],
+        "market_trends": [
+          "Enterprise LLM Adoption",
+          "RAG Systems",
+          "AI Productivity",
+          "Secure Enterprise AI"
+        ]
+      },
+      "research_scores": {
+        "website_score": 95,
+        "linkedin_score": 90,
+        "reddit_score": 92,
+        "overall_confidence": 94
+      },
+      "key_findings": [
+        "Growing investment in enterprise LLM applications.",
+        "Hiring for AI and LLM engineering roles.",
+        "Knowledge management initiatives expanding.",
+        "Interest in secure internal AI assistants.",
+        "Document intelligence projects identified."
+      ],
+      "business_opportunities": [
+        "Claude Enterprise",
+        "AI Knowledge Assistant",
+        "Document Intelligence",
+        "Secure Enterprise AI",
+        "AI Coding Assistant"
+      ],
+      "evidence": [
+        {
+          "source": "Website",
+          "fact": "Enterprise AI capabilities highlighted"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Hiring LLM and AI engineers"
+        },
+        {
+          "source": "Reddit",
+          "fact": "Community discussing Claude Enterprise adoption"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "agent": "Research Agent",
+        "status": "completed",
+        "execution_time": "16.8 seconds",
+        "confidence": 95,
+        "generated_at": "2026-08-02T13:20:00Z"
+      },
+      "company_profile": {
+        "company_name": "Canva",
+        "industry": "Software / SaaS",
+        "headquarters": "Sydney, Australia",
+        "employees": 5000,
+        "website": "https://www.canva.com",
+        "linkedin_followers": 4200000
+      },
+      "company_summary": {
+        "overview": "Canva is exploring enterprise generative AI adoption, document intelligence, coding assistants, and knowledge management using large language models.",
+        "cloud_focus": [
+          "AWS",
+          "Azure",
+          "Google Cloud"
+        ],
+        "business_model": "Enterprise SaaS"
+      },
+      "website_analysis": {
+        "products": [
+          "Generative AI",
+          "Knowledge Management",
+          "Productivity Platform",
+          "Document Intelligence"
+        ],
+        "services": [
+          "AI Assistants",
+          "Workflow Automation",
+          "Enterprise Search"
+        ],
+        "technology_stack": [
+          "Claude",
+          "RAG",
+          "MCP",
+          "Vector Database",
+          "Kubernetes"
+        ],
+        "recent_announcements": [
+          "Expansion of enterprise AI capabilities",
+          "Investment in AI-powered productivity"
+        ]
+      },
+      "linkedin_analysis": {
+        "employee_growth": 8,
+        "open_positions": 205,
+        "cloud_jobs": 68,
+        "azure_jobs": 16,
+        "aws_jobs": 37,
+        "ai_jobs": 105,
+        "top_hiring_roles": [
+          "Generative AI Engineer",
+          "LLM Engineer",
+          "AI Platform Engineer",
+          "Prompt Engineer"
+        ],
+        "recent_posts": [
+          "Enterprise AI",
+          "LLM Applications",
+          "Responsible AI"
+        ]
+      },
+      "reddit_analysis": {
+        "posts_analyzed": 53,
+        "overall_sentiment": "Very Positive",
+        "positive": 68,
+        "neutral": 20,
+        "negative": 12,
+        "top_discussions": [
+          "Claude Enterprise",
+          "Claude vs GPT",
+          "RAG",
+          "Long Context Window"
+        ],
+        "community_feedback": [
+          "Interest in Claude for enterprise workflows",
+          "Strong demand for secure AI assistants",
+          "Knowledge management use cases expanding"
+        ]
+      },
+      "market_intelligence": {
+        "competitors": [
+          "OpenAI",
+          "Google Gemini",
+          "Microsoft Copilot"
+        ],
+        "market_trends": [
+          "Enterprise LLM Adoption",
+          "RAG Systems",
+          "AI Productivity",
+          "Secure Enterprise AI"
+        ]
+      },
+      "research_scores": {
+        "website_score": 95,
+        "linkedin_score": 90,
+        "reddit_score": 92,
+        "overall_confidence": 94
+      },
+      "key_findings": [
+        "Growing investment in enterprise LLM applications.",
+        "Hiring for AI and LLM engineering roles.",
+        "Knowledge management initiatives expanding.",
+        "Interest in secure internal AI assistants.",
+        "Document intelligence projects identified."
+      ],
+      "business_opportunities": [
+        "Claude Enterprise",
+        "AI Knowledge Assistant",
+        "Document Intelligence",
+        "Secure Enterprise AI",
+        "AI Coding Assistant"
+      ],
+      "evidence": [
+        {
+          "source": "Website",
+          "fact": "Enterprise AI capabilities highlighted"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Hiring LLM and AI engineers"
+        },
+        {
+          "source": "Reddit",
+          "fact": "Community discussing Claude Enterprise adoption"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "agent": "Research Agent",
+        "status": "completed",
+        "execution_time": "17.4 seconds",
+        "confidence": 95,
+        "generated_at": "2026-08-02T13:20:00Z"
+      },
+      "company_profile": {
+        "company_name": "Duolingo",
+        "industry": "Software / SaaS",
+        "headquarters": "Pittsburgh, Pennsylvania, USA",
+        "employees": 3000,
+        "website": "https://www.duolingo.com",
+        "linkedin_followers": 2300000
+      },
+      "company_summary": {
+        "overview": "Duolingo is exploring enterprise generative AI adoption, document intelligence, coding assistants, and knowledge management using large language models.",
+        "cloud_focus": [
+          "AWS",
+          "Azure",
+          "Google Cloud"
+        ],
+        "business_model": "Enterprise SaaS"
+      },
+      "website_analysis": {
+        "products": [
+          "Generative AI",
+          "Knowledge Management",
+          "Productivity Platform",
+          "Document Intelligence"
+        ],
+        "services": [
+          "AI Assistants",
+          "Workflow Automation",
+          "Enterprise Search"
+        ],
+        "technology_stack": [
+          "Claude",
+          "RAG",
+          "MCP",
+          "Vector Database",
+          "Kubernetes"
+        ],
+        "recent_announcements": [
+          "Expansion of enterprise AI capabilities",
+          "Investment in AI-powered productivity"
+        ]
+      },
+      "linkedin_analysis": {
+        "employee_growth": 9,
+        "open_positions": 230,
+        "cloud_jobs": 76,
+        "azure_jobs": 17,
+        "aws_jobs": 39,
+        "ai_jobs": 115,
+        "top_hiring_roles": [
+          "Generative AI Engineer",
+          "LLM Engineer",
+          "AI Platform Engineer",
+          "Prompt Engineer"
+        ],
+        "recent_posts": [
+          "Enterprise AI",
+          "LLM Applications",
+          "Responsible AI"
+        ]
+      },
+      "reddit_analysis": {
+        "posts_analyzed": 58,
+        "overall_sentiment": "Very Positive",
+        "positive": 68,
+        "neutral": 20,
+        "negative": 12,
+        "top_discussions": [
+          "Claude Enterprise",
+          "Claude vs GPT",
+          "RAG",
+          "Long Context Window"
+        ],
+        "community_feedback": [
+          "Interest in Claude for enterprise workflows",
+          "Strong demand for secure AI assistants",
+          "Knowledge management use cases expanding"
+        ]
+      },
+      "market_intelligence": {
+        "competitors": [
+          "OpenAI",
+          "Google Gemini",
+          "Microsoft Copilot"
+        ],
+        "market_trends": [
+          "Enterprise LLM Adoption",
+          "RAG Systems",
+          "AI Productivity",
+          "Secure Enterprise AI"
+        ]
+      },
+      "research_scores": {
+        "website_score": 95,
+        "linkedin_score": 90,
+        "reddit_score": 92,
+        "overall_confidence": 94
+      },
+      "key_findings": [
+        "Growing investment in enterprise LLM applications.",
+        "Hiring for AI and LLM engineering roles.",
+        "Knowledge management initiatives expanding.",
+        "Interest in secure internal AI assistants.",
+        "Document intelligence projects identified."
+      ],
+      "business_opportunities": [
+        "Claude Enterprise",
+        "AI Knowledge Assistant",
+        "Document Intelligence",
+        "Secure Enterprise AI",
+        "AI Coding Assistant"
+      ],
+      "evidence": [
+        {
+          "source": "Website",
+          "fact": "Enterprise AI capabilities highlighted"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Hiring LLM and AI engineers"
+        },
+        {
+          "source": "Reddit",
+          "fact": "Community discussing Claude Enterprise adoption"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "agent": "Research Agent",
+        "status": "completed",
+        "execution_time": "18.0 seconds",
+        "confidence": 95,
+        "generated_at": "2026-08-02T13:20:00Z"
+      },
+      "company_profile": {
+        "company_name": "Scale AI",
+        "industry": "Software / SaaS",
+        "headquarters": "San Francisco, California, USA",
+        "employees": 1200,
+        "website": "https://scale.com",
+        "linkedin_followers": 650000
+      },
+      "company_summary": {
+        "overview": "Scale AI is exploring enterprise generative AI adoption, document intelligence, coding assistants, and knowledge management using large language models.",
+        "cloud_focus": [
+          "AWS",
+          "Azure",
+          "Google Cloud"
+        ],
+        "business_model": "Enterprise SaaS"
+      },
+      "website_analysis": {
+        "products": [
+          "Generative AI",
+          "Knowledge Management",
+          "Productivity Platform",
+          "Document Intelligence"
+        ],
+        "services": [
+          "AI Assistants",
+          "Workflow Automation",
+          "Enterprise Search"
+        ],
+        "technology_stack": [
+          "Claude",
+          "RAG",
+          "MCP",
+          "Vector Database",
+          "Kubernetes"
+        ],
+        "recent_announcements": [
+          "Expansion of enterprise AI capabilities",
+          "Investment in AI-powered productivity"
+        ]
+      },
+      "linkedin_analysis": {
+        "employee_growth": 10,
+        "open_positions": 255,
+        "cloud_jobs": 84,
+        "azure_jobs": 18,
+        "aws_jobs": 41,
+        "ai_jobs": 125,
+        "top_hiring_roles": [
+          "Generative AI Engineer",
+          "LLM Engineer",
+          "AI Platform Engineer",
+          "Prompt Engineer"
+        ],
+        "recent_posts": [
+          "Enterprise AI",
+          "LLM Applications",
+          "Responsible AI"
+        ]
+      },
+      "reddit_analysis": {
+        "posts_analyzed": 63,
+        "overall_sentiment": "Very Positive",
+        "positive": 68,
+        "neutral": 20,
+        "negative": 12,
+        "top_discussions": [
+          "Claude Enterprise",
+          "Claude vs GPT",
+          "RAG",
+          "Long Context Window"
+        ],
+        "community_feedback": [
+          "Interest in Claude for enterprise workflows",
+          "Strong demand for secure AI assistants",
+          "Knowledge management use cases expanding"
+        ]
+      },
+      "market_intelligence": {
+        "competitors": [
+          "OpenAI",
+          "Google Gemini",
+          "Microsoft Copilot"
+        ],
+        "market_trends": [
+          "Enterprise LLM Adoption",
+          "RAG Systems",
+          "AI Productivity",
+          "Secure Enterprise AI"
+        ]
+      },
+      "research_scores": {
+        "website_score": 95,
+        "linkedin_score": 90,
+        "reddit_score": 92,
+        "overall_confidence": 94
+      },
+      "key_findings": [
+        "Growing investment in enterprise LLM applications.",
+        "Hiring for AI and LLM engineering roles.",
+        "Knowledge management initiatives expanding.",
+        "Interest in secure internal AI assistants.",
+        "Document intelligence projects identified."
+      ],
+      "business_opportunities": [
+        "Claude Enterprise",
+        "AI Knowledge Assistant",
+        "Document Intelligence",
+        "Secure Enterprise AI",
+        "AI Coding Assistant"
+      ],
+      "evidence": [
+        {
+          "source": "Website",
+          "fact": "Enterprise AI capabilities highlighted"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Hiring LLM and AI engineers"
+        },
+        {
+          "source": "Reddit",
+          "fact": "Community discussing Claude Enterprise adoption"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "agent": "Research Agent",
+        "status": "completed",
+        "execution_time": "18.6 seconds",
+        "confidence": 95,
+        "generated_at": "2026-08-02T13:20:00Z"
+      },
+      "company_profile": {
+        "company_name": "Asana",
+        "industry": "Software / SaaS",
+        "headquarters": "San Francisco, California, USA",
+        "employees": 1800,
+        "website": "https://asana.com",
+        "linkedin_followers": 1400000
+      },
+      "company_summary": {
+        "overview": "Asana is exploring enterprise generative AI adoption, document intelligence, coding assistants, and knowledge management using large language models.",
+        "cloud_focus": [
+          "AWS",
+          "Azure",
+          "Google Cloud"
+        ],
+        "business_model": "Enterprise SaaS"
+      },
+      "website_analysis": {
+        "products": [
+          "Generative AI",
+          "Knowledge Management",
+          "Productivity Platform",
+          "Document Intelligence"
+        ],
+        "services": [
+          "AI Assistants",
+          "Workflow Automation",
+          "Enterprise Search"
+        ],
+        "technology_stack": [
+          "Claude",
+          "RAG",
+          "MCP",
+          "Vector Database",
+          "Kubernetes"
+        ],
+        "recent_announcements": [
+          "Expansion of enterprise AI capabilities",
+          "Investment in AI-powered productivity"
+        ]
+      },
+      "linkedin_analysis": {
+        "employee_growth": 11,
+        "open_positions": 280,
+        "cloud_jobs": 92,
+        "azure_jobs": 19,
+        "aws_jobs": 43,
+        "ai_jobs": 135,
+        "top_hiring_roles": [
+          "Generative AI Engineer",
+          "LLM Engineer",
+          "AI Platform Engineer",
+          "Prompt Engineer"
+        ],
+        "recent_posts": [
+          "Enterprise AI",
+          "LLM Applications",
+          "Responsible AI"
+        ]
+      },
+      "reddit_analysis": {
+        "posts_analyzed": 68,
+        "overall_sentiment": "Very Positive",
+        "positive": 68,
+        "neutral": 20,
+        "negative": 12,
+        "top_discussions": [
+          "Claude Enterprise",
+          "Claude vs GPT",
+          "RAG",
+          "Long Context Window"
+        ],
+        "community_feedback": [
+          "Interest in Claude for enterprise workflows",
+          "Strong demand for secure AI assistants",
+          "Knowledge management use cases expanding"
+        ]
+      },
+      "market_intelligence": {
+        "competitors": [
+          "OpenAI",
+          "Google Gemini",
+          "Microsoft Copilot"
+        ],
+        "market_trends": [
+          "Enterprise LLM Adoption",
+          "RAG Systems",
+          "AI Productivity",
+          "Secure Enterprise AI"
+        ]
+      },
+      "research_scores": {
+        "website_score": 95,
+        "linkedin_score": 90,
+        "reddit_score": 92,
+        "overall_confidence": 94
+      },
+      "key_findings": [
+        "Growing investment in enterprise LLM applications.",
+        "Hiring for AI and LLM engineering roles.",
+        "Knowledge management initiatives expanding.",
+        "Interest in secure internal AI assistants.",
+        "Document intelligence projects identified."
+      ],
+      "business_opportunities": [
+        "Claude Enterprise",
+        "AI Knowledge Assistant",
+        "Document Intelligence",
+        "Secure Enterprise AI",
+        "AI Coding Assistant"
+      ],
+      "evidence": [
+        {
+          "source": "Website",
+          "fact": "Enterprise AI capabilities highlighted"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Hiring LLM and AI engineers"
+        },
+        {
+          "source": "Reddit",
+          "fact": "Community discussing Claude Enterprise adoption"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "agent": "Research Agent",
+        "status": "completed",
+        "execution_time": "16.8 seconds",
+        "confidence": 94,
+        "generated_at": "2026-08-02T13:40:00Z"
+      },
+      "company_profile": {
+        "company_name": "Box",
+        "industry": "Software / SaaS",
+        "headquarters": "Redwood City, California, USA",
+        "employees": 2800,
+        "website": "https://www.box.com",
+        "linkedin_followers": 1100000
+      },
+      "company_summary": {
+        "overview": "Box is evaluating enterprise generative AI to improve productivity, document intelligence, software development workflows, and internal knowledge management.",
+        "cloud_focus": [
+          "AWS",
+          "Azure",
+          "Google Cloud"
+        ],
+        "business_model": "Enterprise SaaS"
+      },
+      "website_analysis": {
+        "products": [
+          "Enterprise AI",
+          "Document Intelligence",
+          "Knowledge Management",
+          "Workflow Automation"
+        ],
+        "services": [
+          "AI Assistants",
+          "Enterprise Search",
+          "Automation",
+          "Developer Productivity"
+        ],
+        "technology_stack": [
+          "Claude",
+          "RAG",
+          "MCP",
+          "Vector Databases",
+          "Kubernetes"
+        ],
+        "recent_announcements": [
+          "Expansion of AI-powered enterprise features",
+          "Investment in secure generative AI capabilities"
+        ]
+      },
+      "linkedin_analysis": {
+        "employee_growth": 6,
+        "open_positions": 160,
+        "cloud_jobs": 45,
+        "azure_jobs": 12,
+        "aws_jobs": 28,
+        "ai_jobs": 82,
+        "top_hiring_roles": [
+          "LLM Engineer",
+          "AI Platform Engineer",
+          "Prompt Engineer",
+          "Generative AI Engineer"
+        ],
+        "recent_posts": [
+          "Enterprise AI",
+          "Claude Integration",
+          "Knowledge Management"
+        ]
+      },
+      "reddit_analysis": {
+        "posts_analyzed": 46,
+        "overall_sentiment": "Very Positive",
+        "positive": 69,
+        "neutral": 19,
+        "negative": 12,
+        "top_discussions": [
+          "Claude Enterprise",
+          "Claude API",
+          "RAG",
+          "Long Context"
+        ],
+        "community_feedback": [
+          "Claude performs well for enterprise workflows",
+          "Interest in secure AI assistants",
+          "Growing document intelligence use cases"
+        ]
+      },
+      "market_intelligence": {
+        "competitors": [
+          "OpenAI",
+          "Google Gemini",
+          "Microsoft Copilot"
+        ],
+        "market_trends": [
+          "Enterprise LLM Adoption",
+          "Knowledge Management",
+          "AI Automation",
+          "Secure AI"
+        ]
+      },
+      "research_scores": {
+        "website_score": 95,
+        "linkedin_score": 91,
+        "reddit_score": 93,
+        "overall_confidence": 94
+      },
+      "key_findings": [
+        "Strong investment in enterprise LLM initiatives.",
+        "Hiring AI and LLM engineers.",
+        "Knowledge management modernization underway.",
+        "Demand for secure internal AI assistants.",
+        "Document intelligence opportunities identified."
+      ],
+      "business_opportunities": [
+        "Claude Enterprise",
+        "Enterprise Knowledge Assistant",
+        "Document Intelligence",
+        "Secure Enterprise AI",
+        "AI Coding Assistant"
+      ],
+      "evidence": [
+        {
+          "source": "Website",
+          "fact": "AI capabilities highlighted"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "LLM-focused hiring activity"
+        },
+        {
+          "source": "Reddit",
+          "fact": "Community discussions around Claude Enterprise"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "agent": "Research Agent",
+        "status": "completed",
+        "execution_time": "17.3 seconds",
+        "confidence": 95,
+        "generated_at": "2026-08-02T13:40:00Z"
+      },
+      "company_profile": {
+        "company_name": "Miro",
+        "industry": "Software / SaaS",
+        "headquarters": "Amsterdam, Netherlands",
+        "employees": 1800,
+        "website": "https://miro.com",
+        "linkedin_followers": 900000
+      },
+      "company_summary": {
+        "overview": "Miro is evaluating enterprise generative AI to improve productivity, document intelligence, software development workflows, and internal knowledge management.",
+        "cloud_focus": [
+          "AWS",
+          "Azure",
+          "Google Cloud"
+        ],
+        "business_model": "Enterprise SaaS"
+      },
+      "website_analysis": {
+        "products": [
+          "Enterprise AI",
+          "Document Intelligence",
+          "Knowledge Management",
+          "Workflow Automation"
+        ],
+        "services": [
+          "AI Assistants",
+          "Enterprise Search",
+          "Automation",
+          "Developer Productivity"
+        ],
+        "technology_stack": [
+          "Claude",
+          "RAG",
+          "MCP",
+          "Vector Databases",
+          "Kubernetes"
+        ],
+        "recent_announcements": [
+          "Expansion of AI-powered enterprise features",
+          "Investment in secure generative AI capabilities"
+        ]
+      },
+      "linkedin_analysis": {
+        "employee_growth": 7,
+        "open_positions": 182,
+        "cloud_jobs": 50,
+        "azure_jobs": 13,
+        "aws_jobs": 30,
+        "ai_jobs": 91,
+        "top_hiring_roles": [
+          "LLM Engineer",
+          "AI Platform Engineer",
+          "Prompt Engineer",
+          "Generative AI Engineer"
+        ],
+        "recent_posts": [
+          "Enterprise AI",
+          "Claude Integration",
+          "Knowledge Management"
+        ]
+      },
+      "reddit_analysis": {
+        "posts_analyzed": 50,
+        "overall_sentiment": "Very Positive",
+        "positive": 69,
+        "neutral": 19,
+        "negative": 12,
+        "top_discussions": [
+          "Claude Enterprise",
+          "Claude API",
+          "RAG",
+          "Long Context"
+        ],
+        "community_feedback": [
+          "Claude performs well for enterprise workflows",
+          "Interest in secure AI assistants",
+          "Growing document intelligence use cases"
+        ]
+      },
+      "market_intelligence": {
+        "competitors": [
+          "OpenAI",
+          "Google Gemini",
+          "Microsoft Copilot"
+        ],
+        "market_trends": [
+          "Enterprise LLM Adoption",
+          "Knowledge Management",
+          "AI Automation",
+          "Secure AI"
+        ]
+      },
+      "research_scores": {
+        "website_score": 95,
+        "linkedin_score": 91,
+        "reddit_score": 93,
+        "overall_confidence": 94
+      },
+      "key_findings": [
+        "Strong investment in enterprise LLM initiatives.",
+        "Hiring AI and LLM engineers.",
+        "Knowledge management modernization underway.",
+        "Demand for secure internal AI assistants.",
+        "Document intelligence opportunities identified."
+      ],
+      "business_opportunities": [
+        "Claude Enterprise",
+        "Enterprise Knowledge Assistant",
+        "Document Intelligence",
+        "Secure Enterprise AI",
+        "AI Coding Assistant"
+      ],
+      "evidence": [
+        {
+          "source": "Website",
+          "fact": "AI capabilities highlighted"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "LLM-focused hiring activity"
+        },
+        {
+          "source": "Reddit",
+          "fact": "Community discussions around Claude Enterprise"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "agent": "Research Agent",
+        "status": "completed",
+        "execution_time": "17.8 seconds",
+        "confidence": 94,
+        "generated_at": "2026-08-02T13:40:00Z"
+      },
+      "company_profile": {
+        "company_name": "Dropbox",
+        "industry": "Software / SaaS",
+        "headquarters": "San Francisco, California, USA",
+        "employees": 2600,
+        "website": "https://www.dropbox.com",
+        "linkedin_followers": 1700000
+      },
+      "company_summary": {
+        "overview": "Dropbox is evaluating enterprise generative AI to improve productivity, document intelligence, software development workflows, and internal knowledge management.",
+        "cloud_focus": [
+          "AWS",
+          "Azure",
+          "Google Cloud"
+        ],
+        "business_model": "Enterprise SaaS"
+      },
+      "website_analysis": {
+        "products": [
+          "Enterprise AI",
+          "Document Intelligence",
+          "Knowledge Management",
+          "Workflow Automation"
+        ],
+        "services": [
+          "AI Assistants",
+          "Enterprise Search",
+          "Automation",
+          "Developer Productivity"
+        ],
+        "technology_stack": [
+          "Claude",
+          "RAG",
+          "MCP",
+          "Vector Databases",
+          "Kubernetes"
+        ],
+        "recent_announcements": [
+          "Expansion of AI-powered enterprise features",
+          "Investment in secure generative AI capabilities"
+        ]
+      },
+      "linkedin_analysis": {
+        "employee_growth": 8,
+        "open_positions": 204,
+        "cloud_jobs": 55,
+        "azure_jobs": 14,
+        "aws_jobs": 32,
+        "ai_jobs": 100,
+        "top_hiring_roles": [
+          "LLM Engineer",
+          "AI Platform Engineer",
+          "Prompt Engineer",
+          "Generative AI Engineer"
+        ],
+        "recent_posts": [
+          "Enterprise AI",
+          "Claude Integration",
+          "Knowledge Management"
+        ]
+      },
+      "reddit_analysis": {
+        "posts_analyzed": 54,
+        "overall_sentiment": "Very Positive",
+        "positive": 69,
+        "neutral": 19,
+        "negative": 12,
+        "top_discussions": [
+          "Claude Enterprise",
+          "Claude API",
+          "RAG",
+          "Long Context"
+        ],
+        "community_feedback": [
+          "Claude performs well for enterprise workflows",
+          "Interest in secure AI assistants",
+          "Growing document intelligence use cases"
+        ]
+      },
+      "market_intelligence": {
+        "competitors": [
+          "OpenAI",
+          "Google Gemini",
+          "Microsoft Copilot"
+        ],
+        "market_trends": [
+          "Enterprise LLM Adoption",
+          "Knowledge Management",
+          "AI Automation",
+          "Secure AI"
+        ]
+      },
+      "research_scores": {
+        "website_score": 95,
+        "linkedin_score": 91,
+        "reddit_score": 93,
+        "overall_confidence": 94
+      },
+      "key_findings": [
+        "Strong investment in enterprise LLM initiatives.",
+        "Hiring AI and LLM engineers.",
+        "Knowledge management modernization underway.",
+        "Demand for secure internal AI assistants.",
+        "Document intelligence opportunities identified."
+      ],
+      "business_opportunities": [
+        "Claude Enterprise",
+        "Enterprise Knowledge Assistant",
+        "Document Intelligence",
+        "Secure Enterprise AI",
+        "AI Coding Assistant"
+      ],
+      "evidence": [
+        {
+          "source": "Website",
+          "fact": "AI capabilities highlighted"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "LLM-focused hiring activity"
+        },
+        {
+          "source": "Reddit",
+          "fact": "Community discussions around Claude Enterprise"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "agent": "Research Agent",
+        "status": "completed",
+        "execution_time": "18.3 seconds",
+        "confidence": 95,
+        "generated_at": "2026-08-02T13:40:00Z"
+      },
+      "company_profile": {
+        "company_name": "GitLab",
+        "industry": "Software / SaaS",
+        "headquarters": "San Francisco, California, USA",
+        "employees": 2300,
+        "website": "https://about.gitlab.com",
+        "linkedin_followers": 1400000
+      },
+      "company_summary": {
+        "overview": "GitLab is evaluating enterprise generative AI to improve productivity, document intelligence, software development workflows, and internal knowledge management.",
+        "cloud_focus": [
+          "AWS",
+          "Azure",
+          "Google Cloud"
+        ],
+        "business_model": "Enterprise SaaS"
+      },
+      "website_analysis": {
+        "products": [
+          "Enterprise AI",
+          "Document Intelligence",
+          "Knowledge Management",
+          "Workflow Automation"
+        ],
+        "services": [
+          "AI Assistants",
+          "Enterprise Search",
+          "Automation",
+          "Developer Productivity"
+        ],
+        "technology_stack": [
+          "Claude",
+          "RAG",
+          "MCP",
+          "Vector Databases",
+          "Kubernetes"
+        ],
+        "recent_announcements": [
+          "Expansion of AI-powered enterprise features",
+          "Investment in secure generative AI capabilities"
+        ]
+      },
+      "linkedin_analysis": {
+        "employee_growth": 9,
+        "open_positions": 226,
+        "cloud_jobs": 60,
+        "azure_jobs": 15,
+        "aws_jobs": 34,
+        "ai_jobs": 109,
+        "top_hiring_roles": [
+          "LLM Engineer",
+          "AI Platform Engineer",
+          "Prompt Engineer",
+          "Generative AI Engineer"
+        ],
+        "recent_posts": [
+          "Enterprise AI",
+          "Claude Integration",
+          "Knowledge Management"
+        ]
+      },
+      "reddit_analysis": {
+        "posts_analyzed": 58,
+        "overall_sentiment": "Very Positive",
+        "positive": 69,
+        "neutral": 19,
+        "negative": 12,
+        "top_discussions": [
+          "Claude Enterprise",
+          "Claude API",
+          "RAG",
+          "Long Context"
+        ],
+        "community_feedback": [
+          "Claude performs well for enterprise workflows",
+          "Interest in secure AI assistants",
+          "Growing document intelligence use cases"
+        ]
+      },
+      "market_intelligence": {
+        "competitors": [
+          "OpenAI",
+          "Google Gemini",
+          "Microsoft Copilot"
+        ],
+        "market_trends": [
+          "Enterprise LLM Adoption",
+          "Knowledge Management",
+          "AI Automation",
+          "Secure AI"
+        ]
+      },
+      "research_scores": {
+        "website_score": 95,
+        "linkedin_score": 91,
+        "reddit_score": 93,
+        "overall_confidence": 94
+      },
+      "key_findings": [
+        "Strong investment in enterprise LLM initiatives.",
+        "Hiring AI and LLM engineers.",
+        "Knowledge management modernization underway.",
+        "Demand for secure internal AI assistants.",
+        "Document intelligence opportunities identified."
+      ],
+      "business_opportunities": [
+        "Claude Enterprise",
+        "Enterprise Knowledge Assistant",
+        "Document Intelligence",
+        "Secure Enterprise AI",
+        "AI Coding Assistant"
+      ],
+      "evidence": [
+        {
+          "source": "Website",
+          "fact": "AI capabilities highlighted"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "LLM-focused hiring activity"
+        },
+        {
+          "source": "Reddit",
+          "fact": "Community discussions around Claude Enterprise"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "agent": "Research Agent",
+        "status": "completed",
+        "execution_time": "18.8 seconds",
+        "confidence": 94,
+        "generated_at": "2026-08-02T13:40:00Z"
+      },
+      "company_profile": {
+        "company_name": "Zapier",
+        "industry": "Software / SaaS",
+        "headquarters": "San Francisco, California, USA",
+        "employees": 900,
+        "website": "https://zapier.com",
+        "linkedin_followers": 650000
+      },
+      "company_summary": {
+        "overview": "Zapier is evaluating enterprise generative AI to improve productivity, document intelligence, software development workflows, and internal knowledge management.",
+        "cloud_focus": [
+          "AWS",
+          "Azure",
+          "Google Cloud"
+        ],
+        "business_model": "Enterprise SaaS"
+      },
+      "website_analysis": {
+        "products": [
+          "Enterprise AI",
+          "Document Intelligence",
+          "Knowledge Management",
+          "Workflow Automation"
+        ],
+        "services": [
+          "AI Assistants",
+          "Enterprise Search",
+          "Automation",
+          "Developer Productivity"
+        ],
+        "technology_stack": [
+          "Claude",
+          "RAG",
+          "MCP",
+          "Vector Databases",
+          "Kubernetes"
+        ],
+        "recent_announcements": [
+          "Expansion of AI-powered enterprise features",
+          "Investment in secure generative AI capabilities"
+        ]
+      },
+      "linkedin_analysis": {
+        "employee_growth": 10,
+        "open_positions": 248,
+        "cloud_jobs": 65,
+        "azure_jobs": 16,
+        "aws_jobs": 36,
+        "ai_jobs": 118,
+        "top_hiring_roles": [
+          "LLM Engineer",
+          "AI Platform Engineer",
+          "Prompt Engineer",
+          "Generative AI Engineer"
+        ],
+        "recent_posts": [
+          "Enterprise AI",
+          "Claude Integration",
+          "Knowledge Management"
+        ]
+      },
+      "reddit_analysis": {
+        "posts_analyzed": 62,
+        "overall_sentiment": "Very Positive",
+        "positive": 69,
+        "neutral": 19,
+        "negative": 12,
+        "top_discussions": [
+          "Claude Enterprise",
+          "Claude API",
+          "RAG",
+          "Long Context"
+        ],
+        "community_feedback": [
+          "Claude performs well for enterprise workflows",
+          "Interest in secure AI assistants",
+          "Growing document intelligence use cases"
+        ]
+      },
+      "market_intelligence": {
+        "competitors": [
+          "OpenAI",
+          "Google Gemini",
+          "Microsoft Copilot"
+        ],
+        "market_trends": [
+          "Enterprise LLM Adoption",
+          "Knowledge Management",
+          "AI Automation",
+          "Secure AI"
+        ]
+      },
+      "research_scores": {
+        "website_score": 95,
+        "linkedin_score": 91,
+        "reddit_score": 93,
+        "overall_confidence": 94
+      },
+      "key_findings": [
+        "Strong investment in enterprise LLM initiatives.",
+        "Hiring AI and LLM engineers.",
+        "Knowledge management modernization underway.",
+        "Demand for secure internal AI assistants.",
+        "Document intelligence opportunities identified."
+      ],
+      "business_opportunities": [
+        "Claude Enterprise",
+        "Enterprise Knowledge Assistant",
+        "Document Intelligence",
+        "Secure Enterprise AI",
+        "AI Coding Assistant"
+      ],
+      "evidence": [
+        {
+          "source": "Website",
+          "fact": "AI capabilities highlighted"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "LLM-focused hiring activity"
+        },
+        {
+          "source": "Reddit",
+          "fact": "Community discussions around Claude Enterprise"
+        }
+      ]
+    }
+  ]
+}

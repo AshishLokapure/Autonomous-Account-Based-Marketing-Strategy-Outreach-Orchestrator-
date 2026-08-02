@@ -1,2 +1,12 @@
-import { FeaturePage } from "@/components/common/feature-page";
-export default function StakeholdersPage(){return <FeaturePage active="Stakeholders" eyebrow="RELATIONSHIP INTELLIGENCE" title="Stakeholders" description="Map buying committees and engage the people who shape each decision." metric="387" metricLabel="Mapped stakeholders" items={[{title:"Maya Patel · Chief Technology Officer",detail:"High influence champion across Novartis technology initiatives.",tag:"Strong"},{title:"Alex Nguyen · VP Procurement",detail:"Economic buyer for the Lumen opportunity; engaged last week.",tag:"Active"},{title:"Dana Ross · Director, AI Platform",detail:"Technical evaluator with strong interest in GPU infrastructure.",tag:"Champion"}]}/>}
+import { AppShell } from "@/components/layout/app-shell";
+import { StakeholderCenter } from "@/components/stakeholder/stakeholder-center";
+
+export default function StakeholdersPage() {
+  return (
+    <AppShell active="Stakeholders">
+      <div className="content">
+        <StakeholderCenter />
+      </div>
+    </AppShell>
+  );
+}

@@ -8,9 +8,10 @@ import {
   Mail, MessageCircle, Rocket, RotateCcw, Search, ShieldCheck, Target,
   Users, XCircle, Zap,
 } from "lucide-react";
+import { useCampaign, type AgentStatus as CampaignAgentStatus } from "@/stores/campaign-store";
 
 /* ------------------------------------------------------------------ */
-/* Pipeline definition                                                 */
+/* Pipeline definition — maps backend agents to a DAG                  */
 /* ------------------------------------------------------------------ */
 
 type NodeStatus = "waiting" | "running" | "completed" | "failed";
@@ -22,38 +23,39 @@ interface AgentDef {
   id: string;
   name: string;
   icon: React.ElementType;
-  x: number;          // top-center x
-  y: number;          // top y
+  x: number;
+  y: number;
   wide?: boolean;
   source?: boolean;
   deps: string[];
-  duration: number;   // ms
+  duration: number;
   idleText: string;
   runningText: string;
   result: string;
   confidence?: number;
   failChance?: number;
   accent: string;
+  /** Which backend agent id this node maps to, if any */
+  backendAgent?: string;
 }
 
 const AGENTS: AgentDef[] = [
-  { id: "orchestrator", name: "AI Multi-Agent Orchestrator", icon: Cpu, x: 490, y: 24, wide: true, deps: [], duration: 1500, idleText: "Awaiting campaign launch", runningText: "Bootstrapping agent pipeline…", result: "Pipeline configured — 6 agents online", accent: "#7c3aed" },
+  { id: "orchestrator", name: "AI Multi-Agent Orchestrator", icon: Cpu, x: 490, y: 24, wide: true, deps: [], duration: 1500, idleText: "Awaiting campaign launch", runningText: "Bootstrapping agent pipeline…", result: "Pipeline configured — 5 agents online", accent: "#7c3aed" },
 
-  { id: "website",  name: "Website",  icon: Globe,         x: 152, y: 196, source: true, deps: ["orchestrator"], duration: 2400, idleText: "Company domains", runningText: "Crawling company websites…", result: "38 pages analyzed",  accent: "#2563eb" },
-  { id: "linkedin", name: "LinkedIn", icon: Linkedin,      x: 152, y: 348, source: true, deps: ["orchestrator"], duration: 3000, idleText: "Professional graph", runningText: "Scanning company pages & people…", result: "94 profiles mapped", accent: "#0a66c2" },
-  { id: "reddit",   name: "Reddit",   icon: MessageCircle, x: 152, y: 500, source: true, deps: ["orchestrator"], duration: 2700, idleText: "Community signals", runningText: "Mining community discussions…", result: "27 threads scanned", accent: "#ff4500" },
+  { id: "website",  name: "Website",  icon: Globe,         x: 152, y: 196, source: true, deps: ["orchestrator"], duration: 2400, idleText: "Company domains", runningText: "Crawling company websites…", result: "38 pages analyzed",  accent: "#2563eb", backendAgent: "research" },
+  { id: "linkedin", name: "LinkedIn", icon: Linkedin,      x: 152, y: 348, source: true, deps: ["orchestrator"], duration: 3000, idleText: "Professional graph", runningText: "Scanning company pages & people…", result: "94 profiles mapped", accent: "#0a66c2", backendAgent: "research" },
+  { id: "reddit",   name: "Reddit",   icon: MessageCircle, x: 152, y: 500, source: true, deps: ["orchestrator"], duration: 2700, idleText: "Community signals", runningText: "Mining community discussions…", result: "27 threads scanned", accent: "#ff4500", backendAgent: "research" },
 
-  { id: "research",     name: "Research Agent",     icon: Search,      x: 490, y: 348,  deps: ["website", "linkedin", "reddit"], duration: 3200, idleText: "Company, market & competitor context", runningText: "Aggregating multi-source intelligence…", result: "38 companies profiled",      confidence: 94, failChance: 0.07, accent: "#2563eb" },
-  { id: "stakeholder",  name: "Stakeholder Agent",  icon: Users,       x: 490, y: 512,  deps: ["research"],     duration: 2800, idleText: "Buying committee mapping",             runningText: "Mapping decision makers & champions…",  result: "94 decision makers mapped",  confidence: 91, failChance: 0.07, accent: "#0891b2" },
-  { id: "intent",       name: "Intent Agent",       icon: Zap,         x: 490, y: 676,  deps: ["stakeholder"],  duration: 2400, idleText: "Buying signal detection",              runningText: "Scoring verified buying signals…",      result: "67 buying signals scored",   confidence: 88, failChance: 0.07, accent: "#d97706" },
-  { id: "strategy",     name: "Strategy Agent",     icon: Target,      x: 490, y: 840,  deps: ["intent"],       duration: 2800, idleText: "Account strategy generation",          runningText: "Generating account strategies…",        result: "38 strategies generated",    confidence: 92, failChance: 0.07, accent: "#16a34a" },
-  { id: "outreach",     name: "Outreach Agent",     icon: Mail,        x: 490, y: 1004, deps: ["strategy"],     duration: 3000, idleText: "Personalized outreach drafting",       runningText: "Drafting emails, scripts & briefs…",    result: "152 outreach assets drafted", confidence: 90, failChance: 0.07, accent: "#db2777" },
-  { id: "verification", name: "Verification Agent", icon: ShieldCheck, x: 490, y: 1168, deps: ["outreach"],     duration: 2200, idleText: "Evidence & hallucination checks",      runningText: "Validating claims against sources…",    result: "0 unsupported claims found", confidence: 97, failChance: 0.05, accent: "#7c3aed" },
+  { id: "research",     name: "Research Agent",     icon: Search,      x: 490, y: 348,  deps: ["website", "linkedin", "reddit"], duration: 3200, idleText: "Company, market & competitor context", runningText: "Aggregating multi-source intelligence…", result: "38 companies profiled",      confidence: 94, accent: "#2563eb", backendAgent: "research" },
+  { id: "stakeholder",  name: "Stakeholder Agent",  icon: Users,       x: 490, y: 512,  deps: ["research"],     duration: 2800, idleText: "Buying committee mapping",             runningText: "Mapping decision makers & champions…",  result: "94 decision makers mapped",  confidence: 91, accent: "#0891b2", backendAgent: "stakeholder" },
+  { id: "intent",       name: "Intent Agent",       icon: Zap,         x: 490, y: 676,  deps: ["stakeholder"],  duration: 2400, idleText: "Buying signal detection",              runningText: "Scoring verified buying signals…",      result: "67 buying signals scored",   confidence: 88, accent: "#d97706", backendAgent: "intent" },
+  { id: "strategy",     name: "Strategy Agent",     icon: Target,      x: 490, y: 840,  deps: ["intent"],       duration: 2800, idleText: "Account strategy generation",          runningText: "Generating account strategies…",        result: "38 strategies generated",    confidence: 92, accent: "#16a34a", backendAgent: "strategy" },
+  { id: "outreach",     name: "Outreach Agent",     icon: Mail,        x: 490, y: 1004, deps: ["strategy"],     duration: 3000, idleText: "Personalized outreach drafting",       runningText: "Drafting emails, scripts & briefs…",    result: "152 outreach assets drafted", confidence: 90, accent: "#db2777", backendAgent: "outreach" },
 
-  { id: "analytics", name: "Dashboard Analytics", icon: BarChart3, x: 490, y: 1332, wide: true, deps: ["verification"], duration: 1600, idleText: "Awaiting verified results", runningText: "Publishing campaign report…", result: "Report published to dashboard", accent: "#2563eb" },
+  { id: "analytics", name: "Dashboard Analytics", icon: BarChart3, x: 490, y: 1168, wide: true, deps: ["outreach"], duration: 1600, idleText: "Awaiting verified results", runningText: "Publishing campaign report…", result: "Report published to dashboard", accent: "#2563eb" },
 ];
 
-const CANVAS = { w: 980, h: 1450 };
+const CANVAS = { w: 980, h: 1290 };
 
 const dims = (a: AgentDef) => (a.wide ? WIDE : STD);
 const byId = Object.fromEntries(AGENTS.map((a) => [a.id, a])) as Record<string, AgentDef>;
@@ -70,20 +72,16 @@ function buildEdges(): Edge[] {
       const td = dims(to);
       let d: string;
       if (Math.abs(from.x - to.x) < 4) {
-        // vertical chain
         d = `M ${from.x} ${from.y + fd.h} L ${to.x} ${to.y}`;
       } else if (from.source || to.source) {
-        // horizontal-ish connections between side column and center
         const x1 = from.source ? from.x + fd.w / 2 : from.x - fd.w / 2 + 30;
         const y1 = from.source ? from.y + fd.h / 2 : from.y + fd.h;
         const x2 = to.source ? to.x + td.w / 2 : to.x - td.w / 2;
         const y2 = to.source ? to.y : to.y + td.h / 2;
         if (from.wide) {
-          // orchestrator -> source: drop from bottom-left area, curve to source top
           const sx = from.x - fd.w / 2 + 60;
           d = `M ${sx} ${from.y + fd.h} C ${sx} ${from.y + fd.h + 60}, ${to.x} ${to.y - 60}, ${to.x} ${to.y}`;
         } else {
-          // source -> research: right edge to left edge
           const mx = (x1 + x2) / 2;
           d = `M ${x1} ${y1} C ${mx} ${y1}, ${mx} ${y2}, ${x2} ${y2}`;
         }
@@ -99,114 +97,147 @@ function buildEdges(): Edge[] {
 const EDGES = buildEdges();
 
 /* ------------------------------------------------------------------ */
-/* State machine                                                       */
+/* Map backend campaign state to node statuses                          */
 /* ------------------------------------------------------------------ */
 
 interface NodeState { status: NodeStatus; progress: number; elapsed: number; retried: boolean }
 interface LogEntry { t: number; msg: string; kind: "start" | "ok" | "err" | "info" }
-type CampaignPhase = "idle" | "running" | "done";
-
-interface FlowState {
-  nodes: Record<string, NodeState>;
-  log: LogEntry[];
-  total: number;
-  phase: CampaignPhase;
-}
-
-const freshNodes = (): Record<string, NodeState> =>
-  Object.fromEntries(AGENTS.map((a) => [a.id, { status: "waiting" as NodeStatus, progress: 0, elapsed: 0, retried: false }]));
-
-const initialState = (): FlowState => ({ nodes: freshNodes(), log: [], total: 0, phase: "idle" });
 
 const fmt = (s: number) => `${String(Math.floor(s / 60)).padStart(2, "0")}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
+
+function mapBackendStatus(s: CampaignAgentStatus): NodeStatus {
+  if (s === "error") return "failed";
+  if (s === "idle") return "waiting";
+  return s;
+}
 
 /* ------------------------------------------------------------------ */
 /* Component                                                           */
 /* ------------------------------------------------------------------ */
 
 export function AgentFlow() {
-  const [state, setState] = useState<FlowState>(initialState);
-  const stateRef = useRef(state);
-  stateRef.current = state;
-
-  const logRef = useRef<HTMLDivElement>(null);
+  const { state: campaign, startCampaign } = useCampaign();
   const searchParams = useSearchParams();
   const autoStarted = useRef(false);
+  const logRef = useRef<HTMLDivElement>(null);
+  const prevAgentsRef = useRef<string>(""); // track changes for log entries
+  const [log, setLog] = useState<LogEntry[]>([]);
+  const [product, setProduct] = useState("Azure AI");
 
-  const tick = useCallback(() => {
-    const prev = stateRef.current;
-    if (prev.phase !== "running") return;
+  // Derive node states from backend campaign state
+  const nodeStates: Record<string, NodeState> = {};
 
-    const nodes: Record<string, NodeState> = { ...prev.nodes };
-    const log: LogEntry[] = [];
-    let anyRunning = false;
+  // Build a lookup from backend agent id -> campaign agent state
+  const backendMap = new Map(campaign.agents.map(a => [a.id, a]));
 
-    // advance running nodes
-    for (const a of AGENTS) {
-      const n = nodes[a.id];
-      if (n.status !== "running") continue;
-      anyRunning = true;
-      const elapsed = n.elapsed + 0.1;
-      const progress = Math.min(100, (elapsed * 1000 / a.duration) * 100);
-      if (progress >= 100) {
-        const fails = !n.retried && a.failChance && Math.random() < a.failChance;
-        if (fails) {
-          nodes[a.id] = { ...n, elapsed, progress: 100, status: "failed" };
-          log.push({ t: prev.total, msg: `${a.name} failed — evidence source timeout. Awaiting retry.`, kind: "err" });
+  for (const def of AGENTS) {
+    if (def.backendAgent) {
+      const ba = backendMap.get(def.backendAgent);
+      if (ba) {
+        // Special handling for source nodes (website, linkedin, reddit)
+        // They map to the research agent's sub-steps
+        if (def.source && def.backendAgent === "research") {
+          const stepMap: Record<string, number> = { website: 0, linkedin: 1, reddit: 2 };
+          const stepIdx = stepMap[def.id];
+          const step = ba.steps[stepIdx];
+          let status: NodeStatus = "waiting";
+          if (ba.status === "completed") status = "completed";
+          else if (ba.status === "running" || ba.status === "idle") {
+            if (step?.done) status = "completed";
+            else if (ba.status === "running") {
+              // Check if we're at or past this step
+              const currentStepIdx = ba.steps.findIndex(s => !s.done);
+              if (currentStepIdx >= 0 && currentStepIdx <= stepIdx) status = "running";
+              else if (currentStepIdx > stepIdx) status = "completed";
+              else status = "waiting";
+            }
+          }
+          else if (ba.status === "error") status = "failed";
+          nodeStates[def.id] = {
+            status,
+            progress: status === "completed" ? 100 : status === "running" ? ba.progress : 0,
+            elapsed: ba.elapsed,
+            retried: false,
+          };
         } else {
-          nodes[a.id] = { ...n, elapsed, progress: 100, status: "completed" };
-          log.push({ t: prev.total, msg: `${a.name} completed in ${elapsed.toFixed(1)}s — ${a.result}`, kind: "ok" });
+          // Direct mapping for main agents
+          nodeStates[def.id] = {
+            status: mapBackendStatus(ba.status),
+            progress: ba.progress,
+            elapsed: ba.elapsed,
+            retried: false,
+          };
         }
       } else {
-        nodes[a.id] = { ...n, elapsed, progress };
+        nodeStates[def.id] = { status: "waiting", progress: 0, elapsed: 0, retried: false };
       }
+    } else if (def.id === "orchestrator") {
+      // Orchestrator is "completed" once campaign is running
+      const s: NodeStatus = campaign.started
+        ? campaign.running ? "running" : "completed"
+        : "waiting";
+      nodeStates[def.id] = {
+        status: s,
+        progress: s === "completed" ? 100 : s === "running" ? 50 : 0,
+        elapsed: 0,
+        retried: false,
+      };
+    } else if (def.id === "analytics") {
+      // Analytics is "completed" when campaign is completed
+      const s: NodeStatus = campaign.completed ? "completed"
+        : (backendMap.get("outreach")?.status === "completed" ? "running" : "waiting");
+      nodeStates[def.id] = {
+        status: s,
+        progress: s === "completed" ? 100 : s === "running" ? 75 : 0,
+        elapsed: 0,
+        retried: false,
+      };
+    } else {
+      nodeStates[def.id] = { status: "waiting", progress: 0, elapsed: 0, retried: false };
     }
+  }
 
-    // scheduler: start nodes whose deps are all completed
-    for (const a of AGENTS) {
-      const n = nodes[a.id];
-      if (n.status === "waiting" && a.deps.every((d) => nodes[d].status === "completed")) {
-        nodes[a.id] = { ...n, status: "running", elapsed: 0, progress: 0 };
-        anyRunning = true;
-        log.push({ t: prev.total, msg: `${a.name} started`, kind: "start" });
-      }
-    }
-
-    const allDone = AGENTS.every((a) => nodes[a.id].status === "completed");
-    let phase: CampaignPhase = prev.phase;
-    if (allDone) {
-      phase = "done";
-      log.push({ t: prev.total, msg: "Campaign completed — all agents verified ✓", kind: "info" });
-    }
-
-    setState({
-      nodes,
-      log: log.length ? [...prev.log, ...log] : prev.log,
-      total: anyRunning ? prev.total + 0.1 : prev.total, // freeze clock while waiting on a retry
-      phase,
-    });
-  }, []);
-
+  // Build log entries from backend events
   useEffect(() => {
-    if (state.phase !== "running") return;
-    const id = setInterval(tick, 100);
-    return () => clearInterval(id);
-  }, [state.phase, tick]);
+    const sig = campaign.agents.map(a => `${a.id}:${a.status}`).join(",");
+    if (sig === prevAgentsRef.current) return;
+    prevAgentsRef.current = sig;
+
+    const newLog: LogEntry[] = [];
+    if (campaign.started && log.length === 0) {
+      newLog.push({ t: 0, msg: "Campaign pipeline initialized", kind: "info" });
+    }
+    for (const a of campaign.agents) {
+      if (a.status === "running") {
+        const exists = log.some(l => l.msg.includes(`${a.name} started`));
+        if (!exists) newLog.push({ t: campaign.totalElapsed, msg: `${a.name} started`, kind: "start" });
+      }
+      if (a.status === "completed") {
+        const exists = log.some(l => l.msg.includes(`${a.name} completed`));
+        if (!exists) newLog.push({ t: campaign.totalElapsed, msg: `${a.name} completed in ${a.elapsed}s — confidence ${a.confidence}%`, kind: "ok" });
+      }
+      if (a.status === "error") {
+        const exists = log.some(l => l.msg.includes(`${a.name} failed`));
+        if (!exists) newLog.push({ t: campaign.totalElapsed, msg: `${a.name} failed`, kind: "err" });
+      }
+    }
+    if (campaign.completed) {
+      const exists = log.some(l => l.msg.includes("all agents"));
+      if (!exists) newLog.push({ t: campaign.totalElapsed, msg: "Campaign completed — all agents verified ✓", kind: "info" });
+    }
+    if (newLog.length > 0) setLog(prev => [...prev, ...newLog]);
+  }, [campaign, log]);
 
   useEffect(() => {
     logRef.current?.scrollTo({ top: logRef.current.scrollHeight, behavior: "smooth" });
-  }, [state.log.length]);
+  }, [log.length]);
 
   const start = useCallback(() => {
-    setState({
-      nodes: freshNodes(),
-      log: [{ t: 0, msg: "Campaign pipeline initialized", kind: "info" }],
-      total: 0,
-      phase: "running",
-    });
-  }, []);
+    setLog([]);
+    startCampaign(product);
+  }, [startCampaign, product]);
 
-  // auto-start when arriving from the floating Run Campaign button
+  // Auto-start from floating CTA
   useEffect(() => {
     if (!autoStarted.current && searchParams.get("autostart") === "1") {
       autoStarted.current = true;
@@ -215,25 +246,23 @@ export function AgentFlow() {
     }
   }, [searchParams, start]);
 
-  const retry = (id: string) => {
-    setState((prev) => ({
-      ...prev,
-      phase: "running",
-      nodes: { ...prev.nodes, [id]: { status: "running", progress: 0, elapsed: 0, retried: true } },
-      log: [...prev.log, { t: prev.total, msg: `Retrying ${byId[id].name}…`, kind: "start" }],
-    }));
-  };
-
-  const hasFailure = AGENTS.some((a) => state.nodes[a.id].status === "failed");
-  const completedAgents = AGENTS.filter((a) => a.confidence && state.nodes[a.id].status === "completed");
+  const completedAgents = AGENTS.filter((a) => a.confidence && nodeStates[a.id]?.status === "completed");
   const avgConfidence = completedAgents.length
-    ? Math.round(completedAgents.reduce((s, a) => s + (a.confidence ?? 0), 0) / completedAgents.length)
+    ? Math.round(completedAgents.reduce((s, a) => {
+        const ba = backendMap.get(a.backendAgent ?? "");
+        return s + (ba?.confidence ?? a.confidence ?? 0);
+      }, 0) / completedAgents.length)
     : null;
 
+  const hasFailure = AGENTS.some((a) => nodeStates[a.id]?.status === "failed");
+  const phase = !campaign.started ? "idle" : campaign.completed ? "done" : "running";
+
   const statusPill =
-    state.phase === "idle" ? { text: "Idle", cls: "idle" } :
-    state.phase === "done" ? { text: "Campaign Completed", cls: "done" } :
+    phase === "idle" ? { text: "Idle", cls: "idle" } :
+    phase === "done" ? { text: "Campaign Completed", cls: "done" } :
     hasFailure ? { text: "Attention Needed", cls: "fail" } : { text: "Agents Running", cls: "live" };
+
+  const PRODUCTS = ["Azure AI", "AWS Cloud", "Claude Enterprise"] as const;
 
   return (
     <div className="agent-flow">
@@ -246,23 +275,36 @@ export function AgentFlow() {
         </div>
         <div className="af-header-right">
           <span className={`af-pill ${statusPill.cls}`}>
-            {state.phase === "running" && !hasFailure && <span className="af-live-dot" />}
+            {phase === "running" && !hasFailure && <span className="af-live-dot" />}
             {statusPill.text}
           </span>
-          <span className="af-pill idle"><Clock size={13} /> {fmt(state.total)}</span>
+          <span className="af-pill idle"><Clock size={13} /> {fmt(campaign.totalElapsed)}</span>
           {avgConfidence !== null && (
             <span className="af-pill done"><ShieldCheck size={13} /> {avgConfidence}% confidence</span>
           )}
+
+          {/* Product Selector */}
+          <select
+            className="af-product-select"
+            value={product}
+            onChange={(e) => setProduct(e.target.value)}
+            disabled={phase === "running"}
+          >
+            {PRODUCTS.map((p) => (
+              <option key={p} value={p}>{p}</option>
+            ))}
+          </select>
+
           <motion.button
             className="af-run"
             onClick={start}
-            disabled={state.phase === "running"}
-            whileHover={state.phase !== "running" ? { scale: 1.04 } : undefined}
-            whileTap={state.phase !== "running" ? { scale: 0.97 } : undefined}
+            disabled={phase === "running"}
+            whileHover={phase !== "running" ? { scale: 1.04 } : undefined}
+            whileTap={phase !== "running" ? { scale: 0.97 } : undefined}
           >
-            {state.phase === "running"
+            {phase === "running"
               ? <><Loader2 size={16} className="af-spin" /> Running…</>
-              : state.phase === "done"
+              : phase === "done"
                 ? <><RotateCcw size={16} /> Run Again</>
                 : <><Rocket size={16} /> Run Campaign</>}
           </motion.button>
@@ -280,10 +322,10 @@ export function AgentFlow() {
               </linearGradient>
             </defs>
             {EDGES.map((e) => {
-              const target = state.nodes[e.to.id];
-              const from = state.nodes[e.from.id];
-              const active = target.status === "running";
-              const done = target.status === "completed" && from.status === "completed";
+              const target = nodeStates[e.to.id];
+              const from = nodeStates[e.from.id];
+              const active = target?.status === "running";
+              const done = target?.status === "completed" && from?.status === "completed";
               return (
                 <g key={e.id}>
                   <path id={e.id} d={e.d} className={`af-edge ${active ? "active" : ""} ${done ? "done" : ""}`} fill="none" />
@@ -300,9 +342,11 @@ export function AgentFlow() {
           </svg>
 
           {AGENTS.map((a) => {
-            const n = state.nodes[a.id];
+            const n = nodeStates[a.id] ?? { status: "waiting", progress: 0, elapsed: 0, retried: false };
             const d = dims(a);
             const Icon = a.icon;
+            const ba = a.backendAgent ? backendMap.get(a.backendAgent) : null;
+            const displayConfidence = ba?.confidence ?? a.confidence;
             return (
               <motion.div
                 key={a.id}
@@ -343,12 +387,12 @@ export function AgentFlow() {
                   {n.status === "waiting" && a.idleText}
                   {n.status === "running" && a.runningText}
                   {n.status === "completed" && a.result}
-                  {n.status === "failed" && "Evidence source timed out during execution."}
+                  {n.status === "failed" && "Agent execution failed."}
                 </p>
 
                 {n.status === "running" && (
                   <div className="af-progress-row">
-                    <div className="af-progress"><span style={{ width: `${n.progress}%` }} /></div>
+                    <div className="af-progress"><span style={{ width: `${Math.min(n.progress, 99)}%` }} /></div>
                     <span className="af-timer">{fmt(n.elapsed)}</span>
                   </div>
                 )}
@@ -356,14 +400,13 @@ export function AgentFlow() {
                 {n.status === "completed" && (
                   <div className="af-badges">
                     <span className="af-badge time"><Clock size={11} /> {n.elapsed.toFixed(1)}s</span>
-                    {a.confidence && <span className="af-badge conf"><ShieldCheck size={11} /> {a.confidence}% confidence</span>}
+                    {displayConfidence != null && <span className="af-badge conf"><ShieldCheck size={11} /> {displayConfidence}% confidence</span>}
                   </div>
                 )}
 
                 {n.status === "failed" && (
                   <div className="af-badges">
                     <span className="af-badge err"><XCircle size={11} /> Error</span>
-                    <button className="af-retry" onClick={() => retry(a.id)}><RotateCcw size={12} /> Retry</button>
                   </div>
                 )}
               </motion.div>
@@ -377,11 +420,11 @@ export function AgentFlow() {
         <div className="af-log-head">
           <Activity size={15} />
           <strong>Live Agent Activity</strong>
-          {state.phase === "running" && <span className="af-pill live sm"><span className="af-live-dot" /> LIVE</span>}
+          {phase === "running" && <span className="af-pill live sm"><span className="af-live-dot" /> LIVE</span>}
         </div>
         <div className="af-log" ref={logRef}>
-          {state.log.length === 0 && <div className="af-log-empty">Launch a campaign to stream agent activity…</div>}
-          {state.log.map((entry, i) => (
+          {log.length === 0 && <div className="af-log-empty">Launch a campaign to stream agent activity…</div>}
+          {log.map((entry, i) => (
             <div key={i} className={`af-log-line ${entry.kind}`}>
               <span className="af-log-time">[{fmt(entry.t)}]</span> {entry.msg}
             </div>
@@ -400,6 +443,11 @@ export function AgentFlow() {
         .af-pill.fail { color:#b91c1c; border-color:#fecaca; background:#fef2f2; }
         .af-pill.sm { padding:4px 9px; font-size:10px; }
         .af-live-dot { width:7px; height:7px; border-radius:50%; background:#22c55e; animation:af-blink 1.1s ease-in-out infinite; }
+
+        .af-product-select { height:40px; padding:0 14px; border:1px solid #e2e8f0; border-radius:12px; background:#fff; font:700 12px 'Plus Jakarta Sans','DM Sans',sans-serif; color:#0f172a; cursor:pointer; outline:none; transition:border-color .2s; }
+        .af-product-select:focus { border-color:#3b82f6; }
+        .af-product-select:disabled { opacity:.55; cursor:default; }
+
         .af-run { display:inline-flex; align-items:center; gap:9px; height:44px; padding:0 20px; border:0; border-radius:12px; background:linear-gradient(135deg,#2563eb,#4f46e5); color:#fff; font-size:13px; font-weight:800; cursor:pointer; box-shadow:0 10px 26px rgba(37,99,235,.35); }
         .af-run:disabled { opacity:.75; cursor:default; }
 
@@ -444,8 +492,6 @@ export function AgentFlow() {
         .af-badge.time { background:#f1f5f9; color:#475569; }
         .af-badge.conf { background:#f0fdf4; color:#15803d; border:1px solid #bbf7d0; }
         .af-badge.err  { background:#fef2f2; color:#b91c1c; border:1px solid #fecaca; }
-        .af-retry { display:inline-flex; align-items:center; gap:6px; padding:5px 12px; border:0; border-radius:8px; background:#dc2626; color:#fff; font-size:10.5px; font-weight:800; cursor:pointer; box-shadow:0 6px 14px rgba(220,38,38,.3); transition:transform .15s, background .15s; }
-        .af-retry:hover { background:#b91c1c; transform:translateY(-1px); }
 
         .af-log-card { margin-top:26px; border:1px solid #e2e8f0; border-radius:16px; background:#fff; overflow:hidden; }
         .af-log-head { display:flex; align-items:center; gap:9px; padding:13px 18px; border-bottom:1px solid #eef2f8; color:#0f172a; font-size:13px; }

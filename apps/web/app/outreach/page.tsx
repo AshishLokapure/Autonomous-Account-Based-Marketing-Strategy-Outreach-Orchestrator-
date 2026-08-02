@@ -1,2 +1,12 @@
-import { FeaturePage } from "@/components/common/feature-page";
-export default function OutreachPage(){return <FeaturePage active="Outreach Studio" eyebrow="PERSONALIZED ENGAGEMENT" title="Outreach Studio" description="Create evidence-backed outreach that gives each buyer a relevant reason to respond." metric="92%" metricLabel="Personalization quality" items={[{title:"Executive email · Novartis",detail:"A concise opening anchored to their AI initiative and the current investment priority.",tag:"Ready"},{title:"LinkedIn message · Airtel",detail:"A value-led message for the cloud modernization initiative.",tag:"Draft"},{title:"Discovery call brief · Lumen",detail:"A structured agenda addressing pricing, timeline, and stakeholder risk.",tag:"Ready"}]}/>}
+import { AppShell } from "@/components/layout/app-shell";
+import { OutreachStudio } from "@/components/outreach/outreach-studio";
+
+export default function OutreachPage() {
+  return (
+    <AppShell active="Outreach Studio">
+      <div className="content">
+        <OutreachStudio />
+      </div>
+    </AppShell>
+  );
+}

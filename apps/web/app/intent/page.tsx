@@ -1,2 +1,12 @@
-import { FeaturePage } from "@/components/common/feature-page";
-export default function IntentPage(){return <FeaturePage active="Intent Signals" eyebrow="BUYING INTELLIGENCE" title="Intent Signals" description="See the behavior, events, and evidence that reveal purchase readiness." metric="74" metricLabel="Average intent score" items={[{title:"Pricing review requested",detail:"Novartis procurement requested a scoped pricing proposal following the technical workshop.",tag:"Very high"},{title:"AI hiring activity",detail:"Airtel added multiple machine-learning infrastructure roles.",tag:"High"},{title:"Competitor comparison",detail:"Lumen activity shows a recent vendor evaluation process.",tag:"Medium"}]}/>}
+import { AppShell } from "@/components/layout/app-shell";
+import { IntentCenter } from "@/components/research/intent-center";
+
+export default function IntentPage() {
+  return (
+    <AppShell active="Intent Signals">
+      <div className="content">
+        <IntentCenter />
+      </div>
+    </AppShell>
+  );
+}

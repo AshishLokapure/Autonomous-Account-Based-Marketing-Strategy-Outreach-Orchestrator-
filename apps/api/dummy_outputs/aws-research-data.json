@@ -1,0 +1,1347 @@
+{
+  "product": "AWS Cloud",
+  "organization": "Amazon Web Services",
+  "campaign": "AWS Enterprise Growth",
+  "companies": [
+    {
+      "metadata": {
+        "agent": "Research Agent",
+        "status": "completed",
+        "execution_time": "17.8 seconds",
+        "confidence": 95,
+        "generated_at": "2026-08-02T12:40:00Z"
+      },
+      "company_profile": {
+        "company_name": "Netflix",
+        "industry": "Technology",
+        "headquarters": "Los Gatos, California, USA",
+        "employees": 14000,
+        "website": "https://www.netflix.com",
+        "linkedin_followers": 32000000
+      },
+      "company_summary": {
+        "overview": "Netflix is expanding cloud-native infrastructure and enterprise AI workloads with significant adoption of AWS services.",
+        "cloud_focus": [
+          "AWS",
+          "Google Cloud",
+          "Azure"
+        ],
+        "business_model": "Digital Platform"
+      },
+      "website_analysis": {
+        "products": [
+          "Cloud-native Applications",
+          "AI Services",
+          "Data Platforms",
+          "Security"
+        ],
+        "services": [
+          "Application Modernization",
+          "Cloud Migration",
+          "Data Engineering"
+        ],
+        "technology_stack": [
+          "AWS",
+          "Amazon EKS",
+          "Terraform",
+          "Docker",
+          "Kubernetes"
+        ],
+        "recent_announcements": [
+          "Expansion of AI capabilities",
+          "Cloud infrastructure modernization"
+        ]
+      },
+      "linkedin_analysis": {
+        "employee_growth": 5,
+        "open_positions": 220,
+        "cloud_jobs": 80,
+        "azure_jobs": 18,
+        "aws_jobs": 72,
+        "ai_jobs": 95,
+        "top_hiring_roles": [
+          "AWS Solutions Architect",
+          "Site Reliability Engineer",
+          "DevOps Engineer",
+          "Machine Learning Engineer"
+        ],
+        "recent_posts": [
+          "Cloud Innovation",
+          "Generative AI",
+          "AWS Modernization"
+        ]
+      },
+      "reddit_analysis": {
+        "posts_analyzed": 50,
+        "overall_sentiment": "Positive",
+        "positive": 65,
+        "neutral": 20,
+        "negative": 15,
+        "top_discussions": [
+          "AWS Pricing",
+          "Amazon Bedrock",
+          "Amazon EKS",
+          "Serverless"
+        ],
+        "community_feedback": [
+          "Strong AWS adoption",
+          "Interest in Amazon Bedrock",
+          "Focus on cost optimization"
+        ]
+      },
+      "market_intelligence": {
+        "competitors": [
+          "Microsoft Azure",
+          "Google Cloud",
+          "Anthropic Claude"
+        ],
+        "market_trends": [
+          "Cloud-native architecture",
+          "Generative AI",
+          "Containerization",
+          "FinOps"
+        ]
+      },
+      "research_scores": {
+        "website_score": 95,
+        "linkedin_score": 91,
+        "reddit_score": 87,
+        "overall_confidence": 94
+      },
+      "key_findings": [
+        "Company is actively hiring AWS engineers.",
+        "Enterprise AI initiatives are expanding.",
+        "AWS modernization projects are active.",
+        "Amazon Bedrock evaluation detected.",
+        "Kubernetes adoption is increasing."
+      ],
+      "business_opportunities": [
+        "Amazon Bedrock",
+        "Amazon SageMaker",
+        "Amazon EKS",
+        "AWS Security Hub",
+        "AWS Cost Optimization"
+      ],
+      "evidence": [
+        {
+          "source": "Website",
+          "fact": "Cloud modernization initiatives published"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Hiring AWS-focused engineers"
+        },
+        {
+          "source": "Reddit",
+          "fact": "Community discussions around AWS and Bedrock"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "agent": "Research Agent",
+        "status": "completed",
+        "execution_time": "18.4 seconds",
+        "confidence": 95,
+        "generated_at": "2026-08-02T12:40:00Z"
+      },
+      "company_profile": {
+        "company_name": "Airbnb",
+        "industry": "Technology",
+        "headquarters": "San Francisco, California, USA",
+        "employees": 7300,
+        "website": "https://www.airbnb.com",
+        "linkedin_followers": 5200000
+      },
+      "company_summary": {
+        "overview": "Airbnb is expanding cloud-native infrastructure and enterprise AI workloads with significant adoption of AWS services.",
+        "cloud_focus": [
+          "AWS",
+          "Google Cloud",
+          "Azure"
+        ],
+        "business_model": "Digital Platform"
+      },
+      "website_analysis": {
+        "products": [
+          "Cloud-native Applications",
+          "AI Services",
+          "Data Platforms",
+          "Security"
+        ],
+        "services": [
+          "Application Modernization",
+          "Cloud Migration",
+          "Data Engineering"
+        ],
+        "technology_stack": [
+          "AWS",
+          "Amazon EKS",
+          "Terraform",
+          "Docker",
+          "Kubernetes"
+        ],
+        "recent_announcements": [
+          "Expansion of AI capabilities",
+          "Cloud infrastructure modernization"
+        ]
+      },
+      "linkedin_analysis": {
+        "employee_growth": 6,
+        "open_positions": 255,
+        "cloud_jobs": 90,
+        "azure_jobs": 21,
+        "aws_jobs": 80,
+        "ai_jobs": 104,
+        "top_hiring_roles": [
+          "AWS Solutions Architect",
+          "Site Reliability Engineer",
+          "DevOps Engineer",
+          "Machine Learning Engineer"
+        ],
+        "recent_posts": [
+          "Cloud Innovation",
+          "Generative AI",
+          "AWS Modernization"
+        ]
+      },
+      "reddit_analysis": {
+        "posts_analyzed": 55,
+        "overall_sentiment": "Positive",
+        "positive": 65,
+        "neutral": 20,
+        "negative": 15,
+        "top_discussions": [
+          "AWS Pricing",
+          "Amazon Bedrock",
+          "Amazon EKS",
+          "Serverless"
+        ],
+        "community_feedback": [
+          "Strong AWS adoption",
+          "Interest in Amazon Bedrock",
+          "Focus on cost optimization"
+        ]
+      },
+      "market_intelligence": {
+        "competitors": [
+          "Microsoft Azure",
+          "Google Cloud",
+          "Anthropic Claude"
+        ],
+        "market_trends": [
+          "Cloud-native architecture",
+          "Generative AI",
+          "Containerization",
+          "FinOps"
+        ]
+      },
+      "research_scores": {
+        "website_score": 95,
+        "linkedin_score": 91,
+        "reddit_score": 87,
+        "overall_confidence": 94
+      },
+      "key_findings": [
+        "Company is actively hiring AWS engineers.",
+        "Enterprise AI initiatives are expanding.",
+        "AWS modernization projects are active.",
+        "Amazon Bedrock evaluation detected.",
+        "Kubernetes adoption is increasing."
+      ],
+      "business_opportunities": [
+        "Amazon Bedrock",
+        "Amazon SageMaker",
+        "Amazon EKS",
+        "AWS Security Hub",
+        "AWS Cost Optimization"
+      ],
+      "evidence": [
+        {
+          "source": "Website",
+          "fact": "Cloud modernization initiatives published"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Hiring AWS-focused engineers"
+        },
+        {
+          "source": "Reddit",
+          "fact": "Community discussions around AWS and Bedrock"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "agent": "Research Agent",
+        "status": "completed",
+        "execution_time": "19.0 seconds",
+        "confidence": 95,
+        "generated_at": "2026-08-02T12:40:00Z"
+      },
+      "company_profile": {
+        "company_name": "Pinterest",
+        "industry": "Technology",
+        "headquarters": "San Francisco, California, USA",
+        "employees": 4200,
+        "website": "https://www.pinterest.com",
+        "linkedin_followers": 1800000
+      },
+      "company_summary": {
+        "overview": "Pinterest is expanding cloud-native infrastructure and enterprise AI workloads with significant adoption of AWS services.",
+        "cloud_focus": [
+          "AWS",
+          "Google Cloud",
+          "Azure"
+        ],
+        "business_model": "Digital Platform"
+      },
+      "website_analysis": {
+        "products": [
+          "Cloud-native Applications",
+          "AI Services",
+          "Data Platforms",
+          "Security"
+        ],
+        "services": [
+          "Application Modernization",
+          "Cloud Migration",
+          "Data Engineering"
+        ],
+        "technology_stack": [
+          "AWS",
+          "Amazon EKS",
+          "Terraform",
+          "Docker",
+          "Kubernetes"
+        ],
+        "recent_announcements": [
+          "Expansion of AI capabilities",
+          "Cloud infrastructure modernization"
+        ]
+      },
+      "linkedin_analysis": {
+        "employee_growth": 7,
+        "open_positions": 290,
+        "cloud_jobs": 100,
+        "azure_jobs": 24,
+        "aws_jobs": 88,
+        "ai_jobs": 113,
+        "top_hiring_roles": [
+          "AWS Solutions Architect",
+          "Site Reliability Engineer",
+          "DevOps Engineer",
+          "Machine Learning Engineer"
+        ],
+        "recent_posts": [
+          "Cloud Innovation",
+          "Generative AI",
+          "AWS Modernization"
+        ]
+      },
+      "reddit_analysis": {
+        "posts_analyzed": 60,
+        "overall_sentiment": "Positive",
+        "positive": 65,
+        "neutral": 20,
+        "negative": 15,
+        "top_discussions": [
+          "AWS Pricing",
+          "Amazon Bedrock",
+          "Amazon EKS",
+          "Serverless"
+        ],
+        "community_feedback": [
+          "Strong AWS adoption",
+          "Interest in Amazon Bedrock",
+          "Focus on cost optimization"
+        ]
+      },
+      "market_intelligence": {
+        "competitors": [
+          "Microsoft Azure",
+          "Google Cloud",
+          "Anthropic Claude"
+        ],
+        "market_trends": [
+          "Cloud-native architecture",
+          "Generative AI",
+          "Containerization",
+          "FinOps"
+        ]
+      },
+      "research_scores": {
+        "website_score": 95,
+        "linkedin_score": 91,
+        "reddit_score": 87,
+        "overall_confidence": 94
+      },
+      "key_findings": [
+        "Company is actively hiring AWS engineers.",
+        "Enterprise AI initiatives are expanding.",
+        "AWS modernization projects are active.",
+        "Amazon Bedrock evaluation detected.",
+        "Kubernetes adoption is increasing."
+      ],
+      "business_opportunities": [
+        "Amazon Bedrock",
+        "Amazon SageMaker",
+        "Amazon EKS",
+        "AWS Security Hub",
+        "AWS Cost Optimization"
+      ],
+      "evidence": [
+        {
+          "source": "Website",
+          "fact": "Cloud modernization initiatives published"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Hiring AWS-focused engineers"
+        },
+        {
+          "source": "Reddit",
+          "fact": "Community discussions around AWS and Bedrock"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "agent": "Research Agent",
+        "status": "completed",
+        "execution_time": "19.6 seconds",
+        "confidence": 95,
+        "generated_at": "2026-08-02T12:40:00Z"
+      },
+      "company_profile": {
+        "company_name": "Twilio",
+        "industry": "Technology",
+        "headquarters": "San Francisco, California, USA",
+        "employees": 6500,
+        "website": "https://www.twilio.com",
+        "linkedin_followers": 1200000
+      },
+      "company_summary": {
+        "overview": "Twilio is expanding cloud-native infrastructure and enterprise AI workloads with significant adoption of AWS services.",
+        "cloud_focus": [
+          "AWS",
+          "Google Cloud",
+          "Azure"
+        ],
+        "business_model": "Digital Platform"
+      },
+      "website_analysis": {
+        "products": [
+          "Cloud-native Applications",
+          "AI Services",
+          "Data Platforms",
+          "Security"
+        ],
+        "services": [
+          "Application Modernization",
+          "Cloud Migration",
+          "Data Engineering"
+        ],
+        "technology_stack": [
+          "AWS",
+          "Amazon EKS",
+          "Terraform",
+          "Docker",
+          "Kubernetes"
+        ],
+        "recent_announcements": [
+          "Expansion of AI capabilities",
+          "Cloud infrastructure modernization"
+        ]
+      },
+      "linkedin_analysis": {
+        "employee_growth": 8,
+        "open_positions": 325,
+        "cloud_jobs": 110,
+        "azure_jobs": 27,
+        "aws_jobs": 96,
+        "ai_jobs": 122,
+        "top_hiring_roles": [
+          "AWS Solutions Architect",
+          "Site Reliability Engineer",
+          "DevOps Engineer",
+          "Machine Learning Engineer"
+        ],
+        "recent_posts": [
+          "Cloud Innovation",
+          "Generative AI",
+          "AWS Modernization"
+        ]
+      },
+      "reddit_analysis": {
+        "posts_analyzed": 65,
+        "overall_sentiment": "Positive",
+        "positive": 65,
+        "neutral": 20,
+        "negative": 15,
+        "top_discussions": [
+          "AWS Pricing",
+          "Amazon Bedrock",
+          "Amazon EKS",
+          "Serverless"
+        ],
+        "community_feedback": [
+          "Strong AWS adoption",
+          "Interest in Amazon Bedrock",
+          "Focus on cost optimization"
+        ]
+      },
+      "market_intelligence": {
+        "competitors": [
+          "Microsoft Azure",
+          "Google Cloud",
+          "Anthropic Claude"
+        ],
+        "market_trends": [
+          "Cloud-native architecture",
+          "Generative AI",
+          "Containerization",
+          "FinOps"
+        ]
+      },
+      "research_scores": {
+        "website_score": 95,
+        "linkedin_score": 91,
+        "reddit_score": 87,
+        "overall_confidence": 94
+      },
+      "key_findings": [
+        "Company is actively hiring AWS engineers.",
+        "Enterprise AI initiatives are expanding.",
+        "AWS modernization projects are active.",
+        "Amazon Bedrock evaluation detected.",
+        "Kubernetes adoption is increasing."
+      ],
+      "business_opportunities": [
+        "Amazon Bedrock",
+        "Amazon SageMaker",
+        "Amazon EKS",
+        "AWS Security Hub",
+        "AWS Cost Optimization"
+      ],
+      "evidence": [
+        {
+          "source": "Website",
+          "fact": "Cloud modernization initiatives published"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Hiring AWS-focused engineers"
+        },
+        {
+          "source": "Reddit",
+          "fact": "Community discussions around AWS and Bedrock"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "agent": "Research Agent",
+        "status": "completed",
+        "execution_time": "20.2 seconds",
+        "confidence": 95,
+        "generated_at": "2026-08-02T12:40:00Z"
+      },
+      "company_profile": {
+        "company_name": "Coinbase",
+        "industry": "Technology",
+        "headquarters": "San Francisco, California, USA",
+        "employees": 3800,
+        "website": "https://www.coinbase.com",
+        "linkedin_followers": 1500000
+      },
+      "company_summary": {
+        "overview": "Coinbase is expanding cloud-native infrastructure and enterprise AI workloads with significant adoption of AWS services.",
+        "cloud_focus": [
+          "AWS",
+          "Google Cloud",
+          "Azure"
+        ],
+        "business_model": "Digital Platform"
+      },
+      "website_analysis": {
+        "products": [
+          "Cloud-native Applications",
+          "AI Services",
+          "Data Platforms",
+          "Security"
+        ],
+        "services": [
+          "Application Modernization",
+          "Cloud Migration",
+          "Data Engineering"
+        ],
+        "technology_stack": [
+          "AWS",
+          "Amazon EKS",
+          "Terraform",
+          "Docker",
+          "Kubernetes"
+        ],
+        "recent_announcements": [
+          "Expansion of AI capabilities",
+          "Cloud infrastructure modernization"
+        ]
+      },
+      "linkedin_analysis": {
+        "employee_growth": 9,
+        "open_positions": 360,
+        "cloud_jobs": 120,
+        "azure_jobs": 30,
+        "aws_jobs": 104,
+        "ai_jobs": 131,
+        "top_hiring_roles": [
+          "AWS Solutions Architect",
+          "Site Reliability Engineer",
+          "DevOps Engineer",
+          "Machine Learning Engineer"
+        ],
+        "recent_posts": [
+          "Cloud Innovation",
+          "Generative AI",
+          "AWS Modernization"
+        ]
+      },
+      "reddit_analysis": {
+        "posts_analyzed": 70,
+        "overall_sentiment": "Positive",
+        "positive": 65,
+        "neutral": 20,
+        "negative": 15,
+        "top_discussions": [
+          "AWS Pricing",
+          "Amazon Bedrock",
+          "Amazon EKS",
+          "Serverless"
+        ],
+        "community_feedback": [
+          "Strong AWS adoption",
+          "Interest in Amazon Bedrock",
+          "Focus on cost optimization"
+        ]
+      },
+      "market_intelligence": {
+        "competitors": [
+          "Microsoft Azure",
+          "Google Cloud",
+          "Anthropic Claude"
+        ],
+        "market_trends": [
+          "Cloud-native architecture",
+          "Generative AI",
+          "Containerization",
+          "FinOps"
+        ]
+      },
+      "research_scores": {
+        "website_score": 95,
+        "linkedin_score": 91,
+        "reddit_score": 87,
+        "overall_confidence": 94
+      },
+      "key_findings": [
+        "Company is actively hiring AWS engineers.",
+        "Enterprise AI initiatives are expanding.",
+        "AWS modernization projects are active.",
+        "Amazon Bedrock evaluation detected.",
+        "Kubernetes adoption is increasing."
+      ],
+      "business_opportunities": [
+        "Amazon Bedrock",
+        "Amazon SageMaker",
+        "Amazon EKS",
+        "AWS Security Hub",
+        "AWS Cost Optimization"
+      ],
+      "evidence": [
+        {
+          "source": "Website",
+          "fact": "Cloud modernization initiatives published"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Hiring AWS-focused engineers"
+        },
+        {
+          "source": "Reddit",
+          "fact": "Community discussions around AWS and Bedrock"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "agent": "Research Agent",
+        "status": "completed",
+        "execution_time": "18.1 seconds",
+        "confidence": 95,
+        "generated_at": "2026-08-02T13:00:00Z"
+      },
+      "company_profile": {
+        "company_name": "Adobe",
+        "industry": "Software / SaaS",
+        "headquarters": "San Jose, California, USA",
+        "employees": 30000,
+        "website": "https://www.adobe.com",
+        "linkedin_followers": 6200000
+      },
+      "company_summary": {
+        "overview": "Adobe is expanding cloud-native platforms and evaluating AWS services for AI, analytics, and enterprise scalability.",
+        "cloud_focus": [
+          "AWS",
+          "Azure",
+          "Google Cloud"
+        ],
+        "business_model": "Enterprise SaaS"
+      },
+      "website_analysis": {
+        "products": [
+          "Cloud Platform",
+          "AI Services",
+          "Analytics",
+          "Security"
+        ],
+        "services": [
+          "Application Modernization",
+          "Cloud Migration",
+          "Data Engineering"
+        ],
+        "technology_stack": [
+          "AWS",
+          "Amazon EKS",
+          "Amazon Bedrock",
+          "Terraform",
+          "Kubernetes"
+        ],
+        "recent_announcements": [
+          "Expansion of AI-powered products",
+          "AWS infrastructure modernization"
+        ]
+      },
+      "linkedin_analysis": {
+        "employee_growth": 6,
+        "open_positions": 260,
+        "cloud_jobs": 95,
+        "azure_jobs": 20,
+        "aws_jobs": 75,
+        "ai_jobs": 110,
+        "top_hiring_roles": [
+          "AWS Solutions Architect",
+          "Cloud Engineer",
+          "Platform Engineer",
+          "Machine Learning Engineer"
+        ],
+        "recent_posts": [
+          "Generative AI",
+          "AWS Innovation",
+          "Cloud Scalability"
+        ]
+      },
+      "reddit_analysis": {
+        "posts_analyzed": 58,
+        "overall_sentiment": "Positive",
+        "positive": 66,
+        "neutral": 19,
+        "negative": 15,
+        "top_discussions": [
+          "Amazon Bedrock",
+          "AWS Pricing",
+          "Amazon EKS",
+          "Serverless Architecture"
+        ],
+        "community_feedback": [
+          "Growing AWS adoption",
+          "Interest in Bedrock for enterprise AI",
+          "Focus on FinOps and optimization"
+        ]
+      },
+      "market_intelligence": {
+        "competitors": [
+          "Microsoft Azure",
+          "Google Cloud",
+          "Anthropic Claude"
+        ],
+        "market_trends": [
+          "Generative AI",
+          "Cloud-native Platforms",
+          "Containerization",
+          "Cost Optimization"
+        ]
+      },
+      "research_scores": {
+        "website_score": 96,
+        "linkedin_score": 92,
+        "reddit_score": 88,
+        "overall_confidence": 95
+      },
+      "key_findings": [
+        "Hiring AWS cloud specialists.",
+        "Evaluating Amazon Bedrock for enterprise AI.",
+        "Expanding Kubernetes-based deployments.",
+        "Strong cloud modernization roadmap.",
+        "Growing investment in AI infrastructure."
+      ],
+      "business_opportunities": [
+        "Amazon Bedrock",
+        "Amazon SageMaker",
+        "Amazon EKS",
+        "AWS Security Hub",
+        "AWS Cost Optimization"
+      ],
+      "evidence": [
+        {
+          "source": "Website",
+          "fact": "AI and cloud platform expansion announced"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Increase in AWS-focused hiring"
+        },
+        {
+          "source": "Reddit",
+          "fact": "Community discussions around AWS AI services"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "agent": "Research Agent",
+        "status": "completed",
+        "execution_time": "18.6 seconds",
+        "confidence": 95,
+        "generated_at": "2026-08-02T13:00:00Z"
+      },
+      "company_profile": {
+        "company_name": "Salesforce",
+        "industry": "Software / SaaS",
+        "headquarters": "San Francisco, California, USA",
+        "employees": 76000,
+        "website": "https://www.salesforce.com",
+        "linkedin_followers": 8900000
+      },
+      "company_summary": {
+        "overview": "Salesforce is expanding cloud-native platforms and evaluating AWS services for AI, analytics, and enterprise scalability.",
+        "cloud_focus": [
+          "AWS",
+          "Azure",
+          "Google Cloud"
+        ],
+        "business_model": "Enterprise SaaS"
+      },
+      "website_analysis": {
+        "products": [
+          "Cloud Platform",
+          "AI Services",
+          "Analytics",
+          "Security"
+        ],
+        "services": [
+          "Application Modernization",
+          "Cloud Migration",
+          "Data Engineering"
+        ],
+        "technology_stack": [
+          "AWS",
+          "Amazon EKS",
+          "Amazon Bedrock",
+          "Terraform",
+          "Kubernetes"
+        ],
+        "recent_announcements": [
+          "Expansion of AI-powered products",
+          "AWS infrastructure modernization"
+        ]
+      },
+      "linkedin_analysis": {
+        "employee_growth": 7,
+        "open_positions": 290,
+        "cloud_jobs": 103,
+        "azure_jobs": 22,
+        "aws_jobs": 82,
+        "ai_jobs": 120,
+        "top_hiring_roles": [
+          "AWS Solutions Architect",
+          "Cloud Engineer",
+          "Platform Engineer",
+          "Machine Learning Engineer"
+        ],
+        "recent_posts": [
+          "Generative AI",
+          "AWS Innovation",
+          "Cloud Scalability"
+        ]
+      },
+      "reddit_analysis": {
+        "posts_analyzed": 62,
+        "overall_sentiment": "Positive",
+        "positive": 66,
+        "neutral": 19,
+        "negative": 15,
+        "top_discussions": [
+          "Amazon Bedrock",
+          "AWS Pricing",
+          "Amazon EKS",
+          "Serverless Architecture"
+        ],
+        "community_feedback": [
+          "Growing AWS adoption",
+          "Interest in Bedrock for enterprise AI",
+          "Focus on FinOps and optimization"
+        ]
+      },
+      "market_intelligence": {
+        "competitors": [
+          "Microsoft Azure",
+          "Google Cloud",
+          "Anthropic Claude"
+        ],
+        "market_trends": [
+          "Generative AI",
+          "Cloud-native Platforms",
+          "Containerization",
+          "Cost Optimization"
+        ]
+      },
+      "research_scores": {
+        "website_score": 96,
+        "linkedin_score": 92,
+        "reddit_score": 88,
+        "overall_confidence": 95
+      },
+      "key_findings": [
+        "Hiring AWS cloud specialists.",
+        "Evaluating Amazon Bedrock for enterprise AI.",
+        "Expanding Kubernetes-based deployments.",
+        "Strong cloud modernization roadmap.",
+        "Growing investment in AI infrastructure."
+      ],
+      "business_opportunities": [
+        "Amazon Bedrock",
+        "Amazon SageMaker",
+        "Amazon EKS",
+        "AWS Security Hub",
+        "AWS Cost Optimization"
+      ],
+      "evidence": [
+        {
+          "source": "Website",
+          "fact": "AI and cloud platform expansion announced"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Increase in AWS-focused hiring"
+        },
+        {
+          "source": "Reddit",
+          "fact": "Community discussions around AWS AI services"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "agent": "Research Agent",
+        "status": "completed",
+        "execution_time": "19.1 seconds",
+        "confidence": 95,
+        "generated_at": "2026-08-02T13:00:00Z"
+      },
+      "company_profile": {
+        "company_name": "Datadog",
+        "industry": "Software / SaaS",
+        "headquarters": "New York, USA",
+        "employees": 6500,
+        "website": "https://www.datadoghq.com",
+        "linkedin_followers": 850000
+      },
+      "company_summary": {
+        "overview": "Datadog is expanding cloud-native platforms and evaluating AWS services for AI, analytics, and enterprise scalability.",
+        "cloud_focus": [
+          "AWS",
+          "Azure",
+          "Google Cloud"
+        ],
+        "business_model": "Enterprise SaaS"
+      },
+      "website_analysis": {
+        "products": [
+          "Cloud Platform",
+          "AI Services",
+          "Analytics",
+          "Security"
+        ],
+        "services": [
+          "Application Modernization",
+          "Cloud Migration",
+          "Data Engineering"
+        ],
+        "technology_stack": [
+          "AWS",
+          "Amazon EKS",
+          "Amazon Bedrock",
+          "Terraform",
+          "Kubernetes"
+        ],
+        "recent_announcements": [
+          "Expansion of AI-powered products",
+          "AWS infrastructure modernization"
+        ]
+      },
+      "linkedin_analysis": {
+        "employee_growth": 8,
+        "open_positions": 320,
+        "cloud_jobs": 111,
+        "azure_jobs": 24,
+        "aws_jobs": 89,
+        "ai_jobs": 130,
+        "top_hiring_roles": [
+          "AWS Solutions Architect",
+          "Cloud Engineer",
+          "Platform Engineer",
+          "Machine Learning Engineer"
+        ],
+        "recent_posts": [
+          "Generative AI",
+          "AWS Innovation",
+          "Cloud Scalability"
+        ]
+      },
+      "reddit_analysis": {
+        "posts_analyzed": 66,
+        "overall_sentiment": "Positive",
+        "positive": 66,
+        "neutral": 19,
+        "negative": 15,
+        "top_discussions": [
+          "Amazon Bedrock",
+          "AWS Pricing",
+          "Amazon EKS",
+          "Serverless Architecture"
+        ],
+        "community_feedback": [
+          "Growing AWS adoption",
+          "Interest in Bedrock for enterprise AI",
+          "Focus on FinOps and optimization"
+        ]
+      },
+      "market_intelligence": {
+        "competitors": [
+          "Microsoft Azure",
+          "Google Cloud",
+          "Anthropic Claude"
+        ],
+        "market_trends": [
+          "Generative AI",
+          "Cloud-native Platforms",
+          "Containerization",
+          "Cost Optimization"
+        ]
+      },
+      "research_scores": {
+        "website_score": 96,
+        "linkedin_score": 92,
+        "reddit_score": 88,
+        "overall_confidence": 95
+      },
+      "key_findings": [
+        "Hiring AWS cloud specialists.",
+        "Evaluating Amazon Bedrock for enterprise AI.",
+        "Expanding Kubernetes-based deployments.",
+        "Strong cloud modernization roadmap.",
+        "Growing investment in AI infrastructure."
+      ],
+      "business_opportunities": [
+        "Amazon Bedrock",
+        "Amazon SageMaker",
+        "Amazon EKS",
+        "AWS Security Hub",
+        "AWS Cost Optimization"
+      ],
+      "evidence": [
+        {
+          "source": "Website",
+          "fact": "AI and cloud platform expansion announced"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Increase in AWS-focused hiring"
+        },
+        {
+          "source": "Reddit",
+          "fact": "Community discussions around AWS AI services"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "agent": "Research Agent",
+        "status": "completed",
+        "execution_time": "19.6 seconds",
+        "confidence": 95,
+        "generated_at": "2026-08-02T13:00:00Z"
+      },
+      "company_profile": {
+        "company_name": "Snowflake",
+        "industry": "Software / SaaS",
+        "headquarters": "Bozeman, Montana, USA",
+        "employees": 8000,
+        "website": "https://www.snowflake.com",
+        "linkedin_followers": 1200000
+      },
+      "company_summary": {
+        "overview": "Snowflake is expanding cloud-native platforms and evaluating AWS services for AI, analytics, and enterprise scalability.",
+        "cloud_focus": [
+          "AWS",
+          "Azure",
+          "Google Cloud"
+        ],
+        "business_model": "Enterprise SaaS"
+      },
+      "website_analysis": {
+        "products": [
+          "Cloud Platform",
+          "AI Services",
+          "Analytics",
+          "Security"
+        ],
+        "services": [
+          "Application Modernization",
+          "Cloud Migration",
+          "Data Engineering"
+        ],
+        "technology_stack": [
+          "AWS",
+          "Amazon EKS",
+          "Amazon Bedrock",
+          "Terraform",
+          "Kubernetes"
+        ],
+        "recent_announcements": [
+          "Expansion of AI-powered products",
+          "AWS infrastructure modernization"
+        ]
+      },
+      "linkedin_analysis": {
+        "employee_growth": 9,
+        "open_positions": 350,
+        "cloud_jobs": 119,
+        "azure_jobs": 26,
+        "aws_jobs": 96,
+        "ai_jobs": 140,
+        "top_hiring_roles": [
+          "AWS Solutions Architect",
+          "Cloud Engineer",
+          "Platform Engineer",
+          "Machine Learning Engineer"
+        ],
+        "recent_posts": [
+          "Generative AI",
+          "AWS Innovation",
+          "Cloud Scalability"
+        ]
+      },
+      "reddit_analysis": {
+        "posts_analyzed": 70,
+        "overall_sentiment": "Positive",
+        "positive": 66,
+        "neutral": 19,
+        "negative": 15,
+        "top_discussions": [
+          "Amazon Bedrock",
+          "AWS Pricing",
+          "Amazon EKS",
+          "Serverless Architecture"
+        ],
+        "community_feedback": [
+          "Growing AWS adoption",
+          "Interest in Bedrock for enterprise AI",
+          "Focus on FinOps and optimization"
+        ]
+      },
+      "market_intelligence": {
+        "competitors": [
+          "Microsoft Azure",
+          "Google Cloud",
+          "Anthropic Claude"
+        ],
+        "market_trends": [
+          "Generative AI",
+          "Cloud-native Platforms",
+          "Containerization",
+          "Cost Optimization"
+        ]
+      },
+      "research_scores": {
+        "website_score": 96,
+        "linkedin_score": 92,
+        "reddit_score": 88,
+        "overall_confidence": 95
+      },
+      "key_findings": [
+        "Hiring AWS cloud specialists.",
+        "Evaluating Amazon Bedrock for enterprise AI.",
+        "Expanding Kubernetes-based deployments.",
+        "Strong cloud modernization roadmap.",
+        "Growing investment in AI infrastructure."
+      ],
+      "business_opportunities": [
+        "Amazon Bedrock",
+        "Amazon SageMaker",
+        "Amazon EKS",
+        "AWS Security Hub",
+        "AWS Cost Optimization"
+      ],
+      "evidence": [
+        {
+          "source": "Website",
+          "fact": "AI and cloud platform expansion announced"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Increase in AWS-focused hiring"
+        },
+        {
+          "source": "Reddit",
+          "fact": "Community discussions around AWS AI services"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "agent": "Research Agent",
+        "status": "completed",
+        "execution_time": "20.1 seconds",
+        "confidence": 95,
+        "generated_at": "2026-08-02T13:00:00Z"
+      },
+      "company_profile": {
+        "company_name": "Atlassian",
+        "industry": "Software / SaaS",
+        "headquarters": "Sydney, Australia",
+        "employees": 12000,
+        "website": "https://www.atlassian.com",
+        "linkedin_followers": 2600000
+      },
+      "company_summary": {
+        "overview": "Atlassian is expanding cloud-native platforms and evaluating AWS services for AI, analytics, and enterprise scalability.",
+        "cloud_focus": [
+          "AWS",
+          "Azure",
+          "Google Cloud"
+        ],
+        "business_model": "Enterprise SaaS"
+      },
+      "website_analysis": {
+        "products": [
+          "Cloud Platform",
+          "AI Services",
+          "Analytics",
+          "Security"
+        ],
+        "services": [
+          "Application Modernization",
+          "Cloud Migration",
+          "Data Engineering"
+        ],
+        "technology_stack": [
+          "AWS",
+          "Amazon EKS",
+          "Amazon Bedrock",
+          "Terraform",
+          "Kubernetes"
+        ],
+        "recent_announcements": [
+          "Expansion of AI-powered products",
+          "AWS infrastructure modernization"
+        ]
+      },
+      "linkedin_analysis": {
+        "employee_growth": 10,
+        "open_positions": 380,
+        "cloud_jobs": 127,
+        "azure_jobs": 28,
+        "aws_jobs": 103,
+        "ai_jobs": 150,
+        "top_hiring_roles": [
+          "AWS Solutions Architect",
+          "Cloud Engineer",
+          "Platform Engineer",
+          "Machine Learning Engineer"
+        ],
+        "recent_posts": [
+          "Generative AI",
+          "AWS Innovation",
+          "Cloud Scalability"
+        ]
+      },
+      "reddit_analysis": {
+        "posts_analyzed": 74,
+        "overall_sentiment": "Positive",
+        "positive": 66,
+        "neutral": 19,
+        "negative": 15,
+        "top_discussions": [
+          "Amazon Bedrock",
+          "AWS Pricing",
+          "Amazon EKS",
+          "Serverless Architecture"
+        ],
+        "community_feedback": [
+          "Growing AWS adoption",
+          "Interest in Bedrock for enterprise AI",
+          "Focus on FinOps and optimization"
+        ]
+      },
+      "market_intelligence": {
+        "competitors": [
+          "Microsoft Azure",
+          "Google Cloud",
+          "Anthropic Claude"
+        ],
+        "market_trends": [
+          "Generative AI",
+          "Cloud-native Platforms",
+          "Containerization",
+          "Cost Optimization"
+        ]
+      },
+      "research_scores": {
+        "website_score": 96,
+        "linkedin_score": 92,
+        "reddit_score": 88,
+        "overall_confidence": 95
+      },
+      "key_findings": [
+        "Hiring AWS cloud specialists.",
+        "Evaluating Amazon Bedrock for enterprise AI.",
+        "Expanding Kubernetes-based deployments.",
+        "Strong cloud modernization roadmap.",
+        "Growing investment in AI infrastructure."
+      ],
+      "business_opportunities": [
+        "Amazon Bedrock",
+        "Amazon SageMaker",
+        "Amazon EKS",
+        "AWS Security Hub",
+        "AWS Cost Optimization"
+      ],
+      "evidence": [
+        {
+          "source": "Website",
+          "fact": "AI and cloud platform expansion announced"
+        },
+        {
+          "source": "LinkedIn",
+          "fact": "Increase in AWS-focused hiring"
+        },
+        {
+          "source": "Reddit",
+          "fact": "Community discussions around AWS AI services"
+        }
+      ]
+    }
+  ]
+}
