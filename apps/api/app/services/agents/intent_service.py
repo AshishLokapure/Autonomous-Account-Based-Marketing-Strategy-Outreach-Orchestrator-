@@ -1,4 +1,4 @@
-﻿"""Deterministic Intent Agent built from research and stakeholder outputs."""
+"""Deterministic Intent Agent built from research and stakeholder outputs."""
 
 from __future__ import annotations
 
@@ -163,7 +163,8 @@ def _find_signal_matches(
 def _keyword_matches(product: str, text_sections: dict[str, str]) -> list[dict]:
     matches: list[dict] = []
     combined = " ".join(text_sections.values())
-    for category, keywords in KEYWORD_GROUPS[product].items():
+    groups = KEYWORD_GROUPS.get(product, KEYWORD_GROUPS["Azure AI"])
+    for category, keywords in groups.items():
         for keyword in sorted(keywords):
             occurrences = len(re.findall(rf"\b{re.escape(keyword)}\b", combined, flags=re.IGNORECASE))
             if occurrences:

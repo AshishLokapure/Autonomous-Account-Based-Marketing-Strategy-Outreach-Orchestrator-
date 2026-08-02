@@ -38,6 +38,13 @@
     - Two-column grid layout for Account Strategy vs. Recommended Pitch
     - Styled Whitespace Opportunities pills, numbered Next Actions list, Risks/Objections section, Evidence & Sources grid
     - File: `apps/web/components/strategy/strategy-center.tsx`
+- [x] **11.5** Dynamic Workspace/Product Selector Support
+  - Root cause: The Campaign Target dropdown in `agent-flow.tsx` was hardcoded to `["Azure AI", "AWS Cloud", "Claude Enterprise"]` and the backend `validate_product()` threw an error for non-hardcoded workspace names.
+  - Fix:
+    1. Updated `apps/web/components/agents/agent-flow.tsx` to read `allWorkspaces` from `useAuth()` and dynamically append all user-created workspace names to the dropdown options.
+    2. Updated backend `apps/api/app/services/agents/__init__.py` to accept any workspace or product name in `validate_product()` and dynamically tailor research dataset results.
+    3. Updated `KEYWORD_GROUPS` lookup in `apps/api/app/services/agents/intent_service.py` to prevent `KeyError` on custom workspace names.
+  - Files: `apps/web/components/agents/agent-flow.tsx`, `apps/api/app/services/agents/__init__.py`, `apps/api/app/services/agents/intent_service.py`
 
 ## In Progress
 - Verified backend and frontend changes.

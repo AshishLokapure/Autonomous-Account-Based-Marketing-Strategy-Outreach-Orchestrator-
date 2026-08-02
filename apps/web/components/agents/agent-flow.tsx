@@ -9,6 +9,7 @@ import {
   Users, XCircle, Zap,
 } from "lucide-react";
 import { useCampaign, type AgentStatus as CampaignAgentStatus } from "@/stores/campaign-store";
+import { useAuth } from "@/providers/auth-provider";
 
 /* ------------------------------------------------------------------ */
 /* Pipeline definition — maps backend agents to a DAG                  */
@@ -117,6 +118,7 @@ function mapBackendStatus(s: CampaignAgentStatus): NodeStatus {
 
 export function AgentFlow() {
   const { state: campaign, startCampaign } = useCampaign();
+  const { allWorkspaces, workspace } = useAuth();
   const searchParams = useSearchParams();
   const router = useRouter();
   const autoStarted = useRef(false);
@@ -273,7 +275,9 @@ export function AgentFlow() {
     phase === "failed" ? { text: "Campaign Failed", cls: "fail" } :
     { text: "Agents Running", cls: "live" };
 
-  const PRODUCTS = ["Azure AI", "AWS Cloud", "Claude Enterprise"] as const;
+  const DEFAULT_PRODUCTS = ["Azure AI", "AWS Cloud", "Claude Enterprise"];
+  const workspaceNames = (allWorkspaces || []).map((w) => w.name).filter(Boolean);
+  const availableProducts = Array.from(new Set([...DEFAULT_PRODUCTS, ...workspaceNames]));
 
   const completedCount = campaign.agents.filter((a) => a.status === "completed").length;
   const failedCount = campaign.agents.filter((a) => a.status === "error").length;
@@ -299,14 +303,14 @@ export function AgentFlow() {
             <span className="af-pill done"><ShieldCheck size={13} /> {avgConfidence}% confidence</span>
           )}
 
-          {/* Product Selector */}
+          {/* Product / Workspace Selector */}
           <select
             className="af-product-select"
             value={product}
             onChange={(e) => setProduct(e.target.value)}
             disabled={phase === "running"}
           >
-            {PRODUCTS.map((p) => (
+            {availableProducts.map((p) => (
               <option key={p} value={p}>{p}</option>
             ))}
           </select>

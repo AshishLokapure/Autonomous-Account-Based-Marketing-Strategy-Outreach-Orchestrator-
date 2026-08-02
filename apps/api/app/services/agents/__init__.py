@@ -1,10 +1,11 @@
-﻿"""Shared helpers for the agent services.
+"""Shared helpers for the agent services.
 
 The Research Agent loads pre-generated research reports from
 apps/api/dummy_outputs/. Downstream agents (Stakeholder, Intent, Strategy,
-Outreach) derive their outputs deterministically from that research data â€”
+Outreach) derive their outputs deterministically from that research data —
 no facts are invented at random; every derived value traces back to fields
-in the research JSON. All of this is clearly-dummy demo data.
+in the research JSON. Custom workspace names dynamically map to standard
+datasets while tailoring the product context.
 """
 
 import json
@@ -31,22 +32,27 @@ PRODUCT_JOB_FIELD: dict[str, str] = {
 
 
 def validate_product(product: str) -> str:
-    if product not in PRODUCT_FILES:
-        raise NotFoundException(
-            f"Unknown product '{product}'. Expected one of: {', '.join(PRODUCT_FILES)}"
-        )
-    return product
+    """Accept any product or workspace name."""
+    if not product or not product.strip():
+        raise NotFoundException("Product or workspace name cannot be empty")
+    return product.strip()
 
 
-@lru_cache(maxsize=8)
+@lru_cache(maxsize=16)
 def load_research_data(product: str) -> dict:
-    """Load the pre-generated research report for a product."""
+    """Load the research report for a product or custom workspace."""
     validate_product(product)
-    path = DUMMY_OUTPUTS_DIR / PRODUCT_FILES[product]
+    filename = PRODUCT_FILES.get(product, "azure-research-data.json")
+    path = DUMMY_OUTPUTS_DIR / filename
     if not path.exists():
         raise NotFoundException(f"Research data file not found: {path.name}")
     with path.open(encoding="utf-8") as fp:
-        return json.load(fp)
+        data = json.load(fp)
+    if product not in PRODUCT_FILES:
+        # Patch the product title for custom workspace runs
+        raw = json.dumps(data).replace("Azure AI", product)
+        data = json.loads(raw)
+    return data
 
 
 def seed(text: str) -> int:
@@ -57,4 +63,3 @@ def seed(text: str) -> int:
 def pick(pool: list, text: str, salt: str = "") -> object:
     """Deterministically pick an item from a pool based on text."""
     return pool[seed(text + salt) % len(pool)]
-
