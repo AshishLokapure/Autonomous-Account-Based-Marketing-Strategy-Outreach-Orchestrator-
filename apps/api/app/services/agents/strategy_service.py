@@ -1,4 +1,4 @@
-﻿"""Strategy Agent - turns research + intent context into account strategy."""
+"""Strategy Agent - turns research + intent context into account strategy."""
 
 import time
 
@@ -67,6 +67,12 @@ class StrategyService:
 
         execution_time = round(time.perf_counter() - started, 3)
         logger.info("%s completed - %s strategies (%ss)", self.AGENT, len(company_results), execution_time)
+
+        p1 = sum(1 for c in company_results if c["priority_tier"] == "P1")
+        p2 = sum(1 for c in company_results if c["priority_tier"] == "P2")
+        p3 = sum(1 for c in company_results if c["priority_tier"] == "P3")
+        avg_score = round(sum(c["priority_score"] for c in company_results) / max(len(company_results), 1))
+
         return {
             "agent": self.AGENT,
             "status": "completed",
@@ -76,7 +82,10 @@ class StrategyService:
                 "product": product,
                 "totals": {
                     "strategies_generated": len(company_results),
-                    "p1_accounts": sum(1 for c in company_results if c["priority_tier"] == "P1"),
+                    "p1_accounts": p1,
+                    "p2_accounts": p2,
+                    "p3_accounts": p3,
+                    "avg_priority_score": avg_score,
                 },
                 "companies": company_results,
             },
