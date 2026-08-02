@@ -19,14 +19,16 @@
   - Files: `apps/api/app/services/agents/strategy_service.py`
 - [x] **11.4** Enhance Outreach Studio & Strategy Center UI
   - **Outreach Studio**:
+    - Removed Next Best Action card & Evidence Trail sidebar as requested for a cleaner, full-width workspace
+    - Full-width asset card with enlarged editor/preview area
+    - Enhanced spacing across KPI cards, envelope headers, content body, and action buttons
     - Company initials avatars on company tabs
     - Forced horizontal flex layout with gap and overflow scroll (`.company-tabs` and `.asset-header`)
     - Regenerate + Edit Tone action buttons
     - Per-field empty states (dashed border + hint)
     - Word count, char count, estimated read time on every asset
     - Envelope-style email header with From/To avatar chips + subject
-    - Animated copy-button success state (scale transition)
-    - Tab-switch horizontal slide (`x: 12`) + active tab underline spring animation
+    - Animated primary copy-to-clipboard button
     - File: `apps/web/components/outreach/outreach-studio.tsx`
   - **Strategy Center**:
     - Score rings (SVG dasharray progress circles) for visual priority score indicators
@@ -47,7 +49,7 @@
 ## Key Decisions
 - Middleware throttle set to 55s (just under Supabase's default 60s access-token lifetime)
 - Strategy totals fix & data differentiation handled deterministically in backend `strategy_service.py`
-- Horizontal flex containers in `outreach-studio.tsx` and `strategy-center.tsx` use explicit CSS rules (`display: flex !important; flex-direction: row !important; gap: 10px !important;`) to bypass uncompiled Tailwind utility issues
+- Horizontal flex containers in `outreach-studio.tsx` and `strategy-center.tsx` use explicit CSS rules (`display: flex !important; flex-direction: row !important; gap: 12px !important;`) to bypass uncompiled Tailwind utility issues
 - Company avatar colors cycle through a curated 10-color palette
 
 ## Environment/Setup Notes

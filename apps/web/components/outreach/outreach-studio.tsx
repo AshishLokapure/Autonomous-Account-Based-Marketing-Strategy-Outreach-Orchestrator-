@@ -5,7 +5,7 @@ import { useCampaign } from "@/stores/campaign-store";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   Mail, Linkedin, PhoneCall, Copy, CheckCircle2, 
-  ArrowRight, FileText, Send, RefreshCw, SlidersHorizontal,
+  Send, RefreshCw, SlidersHorizontal,
   Clock, Type, AlertCircle, User
 } from "lucide-react";
 import Link from "next/link";
@@ -59,11 +59,11 @@ function ContentStats({ text }: { text: string | undefined | null }) {
   const chars = text.length;
   return (
     <div className="content-stats">
-      <span><Type size={12} /> {words} words</span>
-      <span>·</span>
-      <span>{chars.toLocaleString()} chars</span>
-      <span>·</span>
-      <span><Clock size={12} /> {readTime(words)}</span>
+      <span><Type size={13} /> {words} words</span>
+      <span className="dot-sep">•</span>
+      <span>{chars.toLocaleString()} characters</span>
+      <span className="dot-sep">•</span>
+      <span><Clock size={13} /> {readTime(words)}</span>
     </div>
   );
 }
@@ -117,7 +117,7 @@ function AssetActions({
             </motion.span>
           )}
         </AnimatePresence>
-        {copied === copyId ? "Copied!" : "Copy"}
+        {copied === copyId ? "Copied!" : "Copy to Clipboard"}
       </button>
     </div>
   );
@@ -164,14 +164,15 @@ export function OutreachStudio() {
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="outreach-container p-6"
+      className="outreach-container"
     >
-      <header className="page-header mb-8">
-        <p className="eyebrow text-blue-600 text-xs font-bold uppercase tracking-wider mb-1">EXECUTION</p>
-        <h1 className="page-title text-3xl font-extrabold text-slate-900 font-jakarta">Outreach Studio</h1>
+      <header className="page-header">
+        <p className="eyebrow">EXECUTION</p>
+        <h1 className="page-title">Outreach Studio</h1>
       </header>
 
-      <div className="kpi-grid mb-8">
+      {/* ── KPI Metric Cards ───────────────────────── */}
+      <div className="kpi-grid">
         <div className="card metric-card">
           <p className="metric-label">Emails Generated</p>
           <p className="metric-number text-slate-900">{data.totals?.emails_generated || 0}</p>
@@ -191,7 +192,7 @@ export function OutreachStudio() {
       </div>
 
       {/* ── Company Tabs with Avatars ─────────────────── */}
-      <div className="company-tabs mb-6 flex gap-3 overflow-x-auto pb-4 custom-scrollbar">
+      <div className="company-tabs custom-scrollbar">
         {data.companies.map((company: any, idx: number) => (
           <button
             key={idx}
@@ -212,242 +213,233 @@ export function OutreachStudio() {
         ))}
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div className="lg:col-span-2 space-y-6">
-          <div className="card asset-card bg-white border border-slate-200 rounded-[15px] overflow-hidden flex flex-col shadow-sm">
-            {/* ── Tab Bar ────────────────────────────────── */}
-            <div className="asset-header bg-slate-50 border-b border-slate-200 p-4 flex gap-2">
-              {(['email', 'linkedin', 'call'] as const).map((tab) => (
-                <button
-                  key={tab}
-                  className={`tab-btn ${activeTab === tab ? 'active' : ''}`}
-                  onClick={() => setActiveTab(tab)}
+      {/* ── Main Full-Width Asset Card ────────────── */}
+      <div className="asset-card-wrapper">
+        <div className="card asset-card bg-white border border-slate-200 rounded-[16px] overflow-hidden flex flex-col shadow-sm">
+          {/* ── Channel Tab Bar ────────────────────────── */}
+          <div className="asset-header bg-slate-50/80 border-b border-slate-200/80 p-4 flex gap-3">
+            {(['email', 'linkedin', 'call'] as const).map((tab) => (
+              <button
+                key={tab}
+                className={`tab-btn ${activeTab === tab ? 'active' : ''}`}
+                onClick={() => setActiveTab(tab)}
+              >
+                {tab === 'email' && <Mail size={16} />}
+                {tab === 'linkedin' && <Linkedin size={16} />}
+                {tab === 'call' && <PhoneCall size={16} />}
+                <span>{tab === 'email' ? 'Email' : tab === 'linkedin' ? 'LinkedIn' : 'Call Script'}</span>
+                {activeTab === tab && (
+                  <motion.div
+                    className="tab-indicator"
+                    layoutId="activeTabIndicator"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
+              </button>
+            ))}
+          </div>
+          
+          {/* ── Asset Body ─────────────────────────────── */}
+          <div className="asset-body p-8 flex-grow relative min-h-[420px]">
+            <AnimatePresence mode="wait">
+              {/* Email Tab */}
+              {activeTab === 'email' && (
+                <motion.div
+                  key="email"
+                  initial={{ opacity: 0, x: 12 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -12 }}
+                  transition={{ duration: 0.2 }}
+                  className="email-preview"
                 >
-                  {tab === 'email' && <Mail size={16} />}
-                  {tab === 'linkedin' && <Linkedin size={16} />}
-                  {tab === 'call' && <PhoneCall size={16} />}
-                  {tab === 'email' ? 'Email' : tab === 'linkedin' ? 'LinkedIn' : 'Call Script'}
-                  {activeTab === tab && (
-                    <motion.div
-                      className="tab-indicator"
-                      layoutId="activeTabIndicator"
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                    />
+                  {selectedCompany.executive_email ? (
+                    <>
+                      {/* Envelope Header */}
+                      <div className="envelope-header">
+                        <div className="envelope-row">
+                          <span className="envelope-label">From:</span>
+                          <div className="envelope-chip">
+                            <span className="envelope-avatar"><User size={12} /></span>
+                            <span>AccountPilot AI</span>
+                          </div>
+                        </div>
+                        <div className="envelope-row">
+                          <span className="envelope-label">To:</span>
+                          <div className="envelope-chip">
+                            <span className="envelope-avatar" style={{ background: INITIALS_COLORS[selectedCompanyIndex % INITIALS_COLORS.length] }}>
+                              {getInitials(selectedCompany.executive_email.to || selectedCompany.company_name)}
+                            </span>
+                            <span>{selectedCompany.executive_email.to}</span>
+                          </div>
+                        </div>
+                        <div className="envelope-subject-row">
+                          <span className="envelope-label">Subject:</span>
+                          <span className="envelope-subject">{selectedCompany.executive_email.subject}</span>
+                        </div>
+                      </div>
+                      <div className="email-body whitespace-pre-wrap text-sm leading-relaxed text-slate-800 font-medium">
+                        {selectedCompany.executive_email.body}
+                      </div>
+                      <ContentStats text={selectedCompany.executive_email.body} />
+                      <AssetActions
+                        onCopy={() => handleCopy(selectedCompany.executive_email.body, 'email')}
+                        copied={copied}
+                        copyId="email"
+                      />
+                    </>
+                  ) : (
+                    <EmptyField label="email" />
                   )}
-                </button>
-              ))}
-            </div>
-            
-            {/* ── Asset Body ─────────────────────────────── */}
-            <div className="asset-body p-8 flex-grow relative min-h-[400px]">
-              <AnimatePresence mode="wait">
-                {/* Email Tab */}
-                {activeTab === 'email' && (
-                  <motion.div
-                    key="email"
-                    initial={{ opacity: 0, x: 12 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -12 }}
-                    transition={{ duration: 0.2 }}
-                    className="email-preview"
-                  >
-                    {selectedCompany.executive_email ? (
-                      <>
-                        {/* Envelope Header */}
-                        <div className="envelope-header">
-                          <div className="envelope-row">
-                            <span className="envelope-label">From:</span>
-                            <div className="envelope-chip">
-                              <span className="envelope-avatar"><User size={12} /></span>
-                              <span>AccountPilot AI</span>
-                            </div>
-                          </div>
-                          <div className="envelope-row">
-                            <span className="envelope-label">To:</span>
-                            <div className="envelope-chip">
-                              <span className="envelope-avatar" style={{ background: INITIALS_COLORS[selectedCompanyIndex % INITIALS_COLORS.length] }}>
-                                {getInitials(selectedCompany.executive_email.to || selectedCompany.company_name)}
-                              </span>
-                              <span>{selectedCompany.executive_email.to}</span>
-                            </div>
-                          </div>
-                          <div className="envelope-subject-row">
-                            <span className="envelope-label">Subject:</span>
-                            <span className="envelope-subject">{selectedCompany.executive_email.subject}</span>
-                          </div>
-                        </div>
-                        <div className="email-body whitespace-pre-wrap text-sm leading-relaxed text-slate-700 font-medium mt-6">
-                          {selectedCompany.executive_email.body}
-                        </div>
-                        <ContentStats text={selectedCompany.executive_email.body} />
-                        <AssetActions
-                          onCopy={() => handleCopy(selectedCompany.executive_email.body, 'email')}
-                          copied={copied}
-                          copyId="email"
-                        />
-                      </>
-                    ) : (
-                      <EmptyField label="email" />
-                    )}
-                  </motion.div>
-                )}
+                </motion.div>
+              )}
 
-                {/* LinkedIn Tab */}
-                {activeTab === 'linkedin' && (
-                  <motion.div
-                    key="linkedin"
-                    initial={{ opacity: 0, x: 12 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -12 }}
-                    transition={{ duration: 0.2 }}
-                    className="linkedin-preview"
-                  >
-                    {selectedCompany.linkedin_message ? (
-                      <>
-                        <div className="envelope-header linkedin-header">
-                          <div className="envelope-row">
-                            <span className="envelope-label">To:</span>
-                            <div className="envelope-chip">
-                              <span className="envelope-avatar" style={{ background: INITIALS_COLORS[selectedCompanyIndex % INITIALS_COLORS.length] }}>
-                                {getInitials(selectedCompany.linkedin_message.to || selectedCompany.company_name)}
-                              </span>
-                              <span>{selectedCompany.linkedin_message.to}</span>
-                            </div>
+              {/* LinkedIn Tab */}
+              {activeTab === 'linkedin' && (
+                <motion.div
+                  key="linkedin"
+                  initial={{ opacity: 0, x: 12 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -12 }}
+                  transition={{ duration: 0.2 }}
+                  className="linkedin-preview"
+                >
+                  {selectedCompany.linkedin_message ? (
+                    <>
+                      <div className="envelope-header linkedin-header">
+                        <div className="envelope-row">
+                          <span className="envelope-label">To:</span>
+                          <div className="envelope-chip">
+                            <span className="envelope-avatar" style={{ background: INITIALS_COLORS[selectedCompanyIndex % INITIALS_COLORS.length] }}>
+                              {getInitials(selectedCompany.linkedin_message.to || selectedCompany.company_name)}
+                            </span>
+                            <span>{selectedCompany.linkedin_message.to}</span>
                           </div>
                         </div>
-                        <div className="linkedin-body whitespace-pre-wrap text-sm leading-relaxed bg-slate-50 p-5 rounded-xl border border-slate-200 text-slate-700 font-medium shadow-sm">
-                          {selectedCompany.linkedin_message.body}
-                        </div>
-                        <ContentStats text={selectedCompany.linkedin_message.body} />
-                        <AssetActions
-                          onCopy={() => handleCopy(selectedCompany.linkedin_message.body, 'linkedin')}
-                          copied={copied}
-                          copyId="linkedin"
-                        />
-                      </>
-                    ) : (
-                      <EmptyField label="LinkedIn message" />
-                    )}
-                  </motion.div>
-                )}
+                      </div>
+                      <div className="linkedin-body whitespace-pre-wrap text-sm leading-relaxed bg-slate-50/70 p-6 rounded-xl border border-slate-200/80 text-slate-800 font-medium shadow-sm">
+                        {selectedCompany.linkedin_message.body}
+                      </div>
+                      <ContentStats text={selectedCompany.linkedin_message.body} />
+                      <AssetActions
+                        onCopy={() => handleCopy(selectedCompany.linkedin_message.body, 'linkedin')}
+                        copied={copied}
+                        copyId="linkedin"
+                      />
+                    </>
+                  ) : (
+                    <EmptyField label="LinkedIn message" />
+                  )}
+                </motion.div>
+              )}
 
-                {/* Call Script Tab */}
-                {activeTab === 'call' && (
-                  <motion.div
-                    key="call"
-                    initial={{ opacity: 0, x: 12 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -12 }}
-                    transition={{ duration: 0.2 }}
-                    className="call-preview space-y-6"
-                  >
-                    {selectedCompany.call_script ? (
-                      <>
-                        <div className="flex justify-between items-start mb-2">
-                          <h3 className="font-bold text-lg flex items-center gap-2 text-slate-900">
-                            <PhoneCall size={20} className="text-blue-600" /> Call Script Outline
-                          </h3>
+              {/* Call Script Tab */}
+              {activeTab === 'call' && (
+                <motion.div
+                  key="call"
+                  initial={{ opacity: 0, x: 12 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -12 }}
+                  transition={{ duration: 0.2 }}
+                  className="call-preview"
+                >
+                  {selectedCompany.call_script ? (
+                    <>
+                      <div className="call-script-header">
+                        <h3 className="font-bold text-lg flex items-center gap-2.5 text-slate-900">
+                          <PhoneCall size={20} className="text-blue-600" /> Call Script Outline
+                        </h3>
+                      </div>
+                      <div className="call-script-sections">
+                        <div className="call-section">
+                          <h4 className="call-section-title">Opening</h4>
+                          <p className="call-section-text">{selectedCompany.call_script.opening}</p>
                         </div>
-                        <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                          <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3">Opening</h4>
-                          <p className="text-sm text-slate-700 leading-relaxed font-medium">{selectedCompany.call_script.opening}</p>
-                        </div>
-                        <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                          <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3">Discovery Questions</h4>
-                          <ul className="space-y-3 text-sm text-slate-700 font-medium">
+                        <div className="call-section">
+                          <h4 className="call-section-title">Discovery Questions</h4>
+                          <ul className="call-questions-list">
                             {selectedCompany.call_script.discovery_questions?.map((q: string, i: number) => (
-                              <li key={i} className="flex items-start gap-3">
-                                <span className="flex items-center justify-center bg-blue-100 text-blue-700 w-5 h-5 rounded-full text-xs font-bold shrink-0 mt-0.5">{i + 1}</span>
+                              <li key={i} className="call-question-item">
+                                <span className="call-question-num">{i + 1}</span>
                                 <span>{q}</span>
                               </li>
                             ))}
                           </ul>
                         </div>
-                        <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                          <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3">Close</h4>
-                          <p className="text-sm text-slate-700 leading-relaxed font-medium">{selectedCompany.call_script.close}</p>
+                        <div className="call-section">
+                          <h4 className="call-section-title">Close</h4>
+                          <p className="call-section-text">{selectedCompany.call_script.close}</p>
                         </div>
-                        <ContentStats text={getCallScriptText()} />
-                        <AssetActions
-                          onCopy={() => handleCopy(getCallScriptText(), 'call')}
-                          copied={copied}
-                          copyId="call"
-                        />
-                      </>
-                    ) : (
-                      <EmptyField label="call script" />
-                    )}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
+                      </div>
+                      <ContentStats text={getCallScriptText()} />
+                      <AssetActions
+                        onCopy={() => handleCopy(getCallScriptText(), 'call')}
+                        copied={copied}
+                        copyId="call"
+                      />
+                    </>
+                  ) : (
+                    <EmptyField label="call script" />
+                  )}
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
-        </div>
-
-        {/* ── Right Sidebar (NBA + Evidence) ─────────── */}
-        <div className="lg:col-span-1 space-y-6">
-          <div className="card bg-slate-900 text-white p-6 rounded-[15px] shadow-lg relative overflow-hidden">
-            <div className="absolute top-0 right-0 p-4 opacity-10">
-              <ArrowRight size={64} />
-            </div>
-            <h3 className="font-bold flex items-center gap-2 mb-4 text-lg relative z-10">
-              <span className="bg-blue-600 p-1.5 rounded-lg">
-                <ArrowRight size={18} className="text-white" />
-              </span>
-              Next Best Action
-            </h3>
-            {selectedCompany.next_best_action ? (
-              <p className="text-sm leading-relaxed text-slate-300 font-medium relative z-10">
-                {selectedCompany.next_best_action}
-              </p>
-            ) : (
-              <p className="text-sm leading-relaxed text-slate-500 italic relative z-10">
-                No recommendation available yet.
-              </p>
-            )}
-          </div>
-
-          {selectedCompany.evidence && selectedCompany.evidence.length > 0 && (
-            <div className="card p-6 bg-white border border-slate-200 rounded-[15px] shadow-sm">
-              <h3 className="font-bold flex items-center gap-2 mb-5 text-sm text-slate-800">
-                <FileText size={16} className="text-slate-400" /> Evidence Trail
-              </h3>
-              <div className="space-y-4">
-                {selectedCompany.evidence.map((ev: any, i: number) => (
-                  <div key={i} className="text-xs border-l-2 border-blue-500 pl-4 py-1">
-                    <span className="font-bold block mb-1 text-slate-700">{ev.source}</span>
-                    <span className="text-slate-500 leading-relaxed">{ev.fact}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
         </div>
       </div>
 
       <style jsx global>{`
+        .outreach-container {
+          padding: 24px;
+        }
+
+        .page-header {
+          margin-bottom: 24px;
+        }
+        .eyebrow {
+          color: #2563eb;
+          font-size: 0.75rem;
+          font-weight: 800;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          margin-bottom: 4px;
+        }
+        .page-title {
+          font-size: 1.875rem;
+          font-weight: 800;
+          color: #0f172a;
+          font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        /* ── KPI Grid ────────────────────────────────── */
         .kpi-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-          gap: 1.5rem;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 16px;
+          margin-bottom: 28px;
+        }
+        @media (max-width: 768px) {
+          .kpi-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
         }
         .metric-card {
-          padding: 1.5rem;
+          padding: 1.25rem 1.5rem;
           background: white;
           border: 1px solid var(--line, #e7eaf0);
-          border-radius: 15px;
-          box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+          border-radius: 14px;
+          box-shadow: 0 1px 3px rgba(0,0,0,0.04);
         }
         .metric-label {
-          font-size: 0.875rem;
+          font-size: 0.8125rem;
           color: var(--muted, #64748b);
           font-weight: 600;
-          margin-bottom: 0.5rem;
+          margin-bottom: 0.375rem;
         }
         .metric-number {
-          font-size: 2rem;
+          font-size: 1.875rem;
           font-weight: 800;
           font-family: 'Plus Jakarta Sans', sans-serif;
+          line-height: 1.2;
         }
         
         /* ── Company Tabs Container ─────────────────── */
@@ -455,9 +447,9 @@ export function OutreachStudio() {
           display: flex !important;
           flex-direction: row !important;
           flex-wrap: nowrap !important;
-          gap: 10px !important;
+          gap: 12px !important;
           overflow-x: auto;
-          padding-bottom: 16px;
+          padding-bottom: 12px;
           margin-bottom: 24px;
         }
 
@@ -465,8 +457,8 @@ export function OutreachStudio() {
         .company-tab {
           display: inline-flex;
           align-items: center;
-          gap: 0.5rem;
-          padding: 0.5rem 1rem 0.5rem 0.5rem;
+          gap: 0.625rem;
+          padding: 0.5rem 1.125rem 0.5rem 0.5rem;
           border-radius: 9999px;
           font-size: 0.8125rem;
           font-weight: 600;
@@ -509,20 +501,31 @@ export function OutreachStudio() {
           flex-shrink: 0;
         }
 
+        /* ── Asset Card Wrapper ──────────────────────── */
+        .asset-card-wrapper {
+          width: 100%;
+        }
+        .asset-card {
+          border-radius: 16px;
+          border: 1px solid #e2e8f0;
+          box-shadow: 0 4px 16px -2px rgba(0,0,0,0.05);
+        }
+
         /* ── Channel Tab Bar Container ──────────────── */
         .asset-header {
           display: flex !important;
           flex-direction: row !important;
           align-items: center;
-          gap: 8px;
+          gap: 10px;
+          padding: 16px 24px;
         }
 
         /* ── Channel Tabs ──────────────────────────── */
         .tab-btn {
           display: inline-flex;
           align-items: center;
-          gap: 0.5rem;
-          padding: 0.6rem 1.25rem;
+          gap: 0.625rem;
+          padding: 0.625rem 1.375rem;
           font-size: 0.875rem;
           font-weight: 600;
           color: var(--muted, #64748b);
@@ -530,73 +533,83 @@ export function OutreachStudio() {
           transition: all 0.2s ease;
           position: relative;
           flex-shrink: 0;
+          border: none;
+          background: transparent;
+          cursor: pointer;
         }
         .tab-btn:hover {
-          background: rgba(0,0,0,0.05);
+          background: rgba(0,0,0,0.04);
           color: var(--navy, #0f172a);
         }
         .tab-btn.active {
           background: white;
           color: var(--blue, #2563eb);
-          box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+          box-shadow: 0 1px 4px rgba(0,0,0,0.08);
         }
         .tab-indicator {
           position: absolute;
           bottom: -4px;
           left: 50%;
           transform: translateX(-50%);
-          width: 20px;
+          width: 24px;
           height: 3px;
           border-radius: 3px;
           background: var(--blue, #2563eb);
         }
 
+        .asset-body {
+          padding: 32px;
+        }
+
         /* ── Envelope-Style Email Header ───────────── */
         .envelope-header {
-          background: var(--canvas, #f6f8fc);
-          border: 1px solid var(--line, #e7eaf0);
-          border-radius: 12px;
-          padding: 16px 20px;
+          background: #f8fafc;
+          border: 1px solid #e2e8f0;
+          border-radius: 14px;
+          padding: 20px 24px;
           display: flex;
           flex-direction: column;
-          gap: 10px;
+          gap: 14px;
+          margin-bottom: 24px;
         }
         .linkedin-header {
           background: #f0f7ff;
           border-color: #dbeafe;
+          margin-bottom: 20px;
         }
         .envelope-row {
           display: flex;
           align-items: center;
-          gap: 12px;
+          gap: 14px;
           font-size: 0.8125rem;
         }
         .envelope-subject-row {
           display: flex;
-          align-items: baseline;
-          gap: 12px;
-          padding-top: 8px;
-          border-top: 1px solid var(--line, #e7eaf0);
+          align-items: center;
+          gap: 14px;
+          padding-top: 12px;
+          border-top: 1px solid #e2e8f0;
         }
         .envelope-label {
           color: var(--muted, #64748b);
-          font-weight: 500;
-          min-width: 52px;
+          font-weight: 600;
+          min-width: 56px;
           font-size: 0.75rem;
           text-transform: uppercase;
-          letter-spacing: 0.3px;
+          letter-spacing: 0.4px;
         }
         .envelope-chip {
           display: inline-flex;
           align-items: center;
-          gap: 6px;
+          gap: 8px;
           background: white;
-          border: 1px solid var(--line, #e7eaf0);
+          border: 1px solid #e2e8f0;
           border-radius: 999px;
-          padding: 3px 10px 3px 3px;
+          padding: 4px 12px 4px 4px;
           font-size: 0.8125rem;
           font-weight: 600;
           color: var(--navy, #0f172a);
+          box-shadow: 0 1px 2px rgba(0,0,0,0.03);
         }
         .envelope-avatar {
           display: flex;
@@ -617,41 +630,120 @@ export function OutreachStudio() {
           font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
+        .email-body {
+          line-height: 1.7;
+          font-size: 0.9375rem;
+          color: #334155;
+          margin-bottom: 24px;
+        }
+        .linkedin-body {
+          line-height: 1.7;
+          font-size: 0.9375rem;
+          color: #334155;
+          margin-bottom: 24px;
+        }
+
+        /* ── Call Script Layout ────────────────────── */
+        .call-script-header {
+          margin-bottom: 24px;
+          padding-bottom: 16px;
+          border-bottom: 1px solid #f1f5f9;
+        }
+        .call-script-sections {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          margin-bottom: 24px;
+        }
+        .call-section {
+          background: #f8fafc;
+          border: 1px solid #e2e8f0;
+          border-radius: 14px;
+          padding: 20px 24px;
+        }
+        .call-section-title {
+          font-size: 0.75rem;
+          font-weight: 700;
+          color: #64748b;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          margin-bottom: 10px;
+        }
+        .call-section-text {
+          font-size: 0.875rem;
+          color: #334155;
+          line-height: 1.65;
+          font-weight: 500;
+        }
+        .call-questions-list {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+        .call-question-item {
+          display: flex;
+          align-items: flex-start;
+          gap: 12px;
+          font-size: 0.875rem;
+          color: #334155;
+          font-weight: 500;
+          line-height: 1.5;
+        }
+        .call-question-num {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 22px;
+          height: 22px;
+          border-radius: 50%;
+          background: #dbeafe;
+          color: #2563eb;
+          font-size: 0.6875rem;
+          font-weight: 800;
+          flex-shrink: 0;
+          margin-top: 1px;
+        }
+
         /* ── Content Stats Bar ─────────────────────── */
         .content-stats {
           display: flex;
           align-items: center;
-          gap: 8px;
-          margin-top: 16px;
-          padding-top: 12px;
-          border-top: 1px solid var(--line, #e7eaf0);
-          font-size: 0.6875rem;
+          gap: 10px;
+          margin-top: 24px;
+          padding-top: 16px;
+          border-top: 1px solid #f1f5f9;
+          font-size: 0.75rem;
           color: var(--muted, #64748b);
           font-weight: 500;
-          letter-spacing: 0.2px;
         }
         .content-stats span {
           display: flex;
           align-items: center;
-          gap: 3px;
+          gap: 4px;
+        }
+        .dot-sep {
+          color: #cbd5e1;
         }
 
         /* ── Asset Actions (Regenerate + Tone + Copy) ── */
         .asset-actions {
           display: flex;
           align-items: center;
-          gap: 8px;
-          margin-top: 16px;
-          padding-top: 16px;
-          border-top: 1px solid var(--line, #e7eaf0);
+          gap: 12px;
+          margin-top: 20px;
+          padding-top: 20px;
+          border-top: 1px solid #f1f5f9;
         }
         .action-btn {
-          display: flex;
+          display: inline-flex;
           align-items: center;
-          gap: 6px;
-          padding: 7px 14px;
-          border-radius: 8px;
-          font-size: 0.75rem;
+          gap: 8px;
+          padding: 8px 16px;
+          border-radius: 10px;
+          font-size: 0.8125rem;
           font-weight: 600;
           cursor: pointer;
           transition: all 0.2s ease;
@@ -675,30 +767,31 @@ export function OutreachStudio() {
           background: #f5f3ff;
         }
         .copy-btn {
-          display: flex;
+          display: inline-flex;
           align-items: center;
-          gap: 6px;
-          padding: 7px 14px;
-          border-radius: 8px;
-          font-size: 0.75rem;
+          gap: 8px;
+          padding: 8px 18px;
+          border-radius: 10px;
+          font-size: 0.8125rem;
           font-weight: 600;
           margin-left: auto;
-          background: var(--canvas, #f6f8fc);
-          color: var(--muted, #64748b);
+          background: #2563eb;
+          color: white;
           transition: all 0.2s ease;
-          border: 1px solid transparent;
+          border: 1px solid #2563eb;
           cursor: pointer;
+          box-shadow: 0 1px 3px rgba(37, 99, 235, 0.2);
         }
         .copy-btn:hover {
-          background: white;
-          border-color: var(--line, #e7eaf0);
-          color: var(--navy, #0f172a);
-          box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+          background: #1d4ed8;
+          border-color: #1d4ed8;
+          box-shadow: 0 3px 8px rgba(37, 99, 235, 0.3);
         }
         .copy-btn.copied {
-          background: #ecfdf5;
-          color: #059669;
-          border-color: #a7f3d0;
+          background: #059669;
+          color: white;
+          border-color: #059669;
+          box-shadow: 0 2px 6px rgba(5, 150, 105, 0.25);
         }
         .copy-icon-wrap {
           display: flex;
@@ -710,10 +803,10 @@ export function OutreachStudio() {
           display: flex;
           align-items: flex-start;
           gap: 14px;
-          padding: 28px 24px;
+          padding: 32px 28px;
           background: var(--canvas, #f6f8fc);
           border: 1px dashed var(--line, #e7eaf0);
-          border-radius: 12px;
+          border-radius: 14px;
           color: var(--muted, #64748b);
         }
         .empty-field-title {

@@ -69,19 +69,19 @@ export function AppShell({ children, active }: { children: React.ReactNode; acti
 
       <style jsx>{`
         .status-running {
-          background: #eff6ff !important;
-          color: #1d4ed8 !important;
-          border: 1px solid #bfdbfe;
+          background: var(--violet-soft) !important;
+          color: var(--violet) !important;
+          border: 1px solid #DDD5FF;
           cursor: pointer;
         }
         .status-completed {
-          background: #f0fdf4 !important;
-          color: #15803d !important;
+          background: var(--success-soft) !important;
+          color: var(--success) !important;
           cursor: pointer;
         }
         .dot-pulsing {
-          background: #3b82f6 !important;
-          box-shadow: 0 0 8px #60a5fa;
+          background: var(--violet) !important;
+          box-shadow: 0 0 8px rgba(128, 105, 255, 0.65);
           animation: pulseDot 1.2s infinite ease-in-out;
         }
         @keyframes pulseDot {
