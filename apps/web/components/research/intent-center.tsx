@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
@@ -141,8 +141,8 @@ export function IntentCenter() {
       </div>
 
       <div className="filters" style={{ marginTop: 20 }}>
-        {companies.map((company) => (
-          <button key={company.company_name} className={`filter-btn ${activeCompany?.company_name === company.company_name ? "active" : ""}`} onClick={() => setSelectedCompany(company.company_name)}>
+        {companies.map((company, cIdx) => (
+          <button key={`${company.company_name}-${cIdx}`} className={`filter-btn ${activeCompany?.company_name === company.company_name ? "active" : ""}`} onClick={() => setSelectedCompany(company.company_name)}>
             {company.company_name}
           </button>
         ))}
@@ -161,14 +161,16 @@ export function IntentCenter() {
               </div>
               <p className="detail-copy">{activeCompany.recommended_action}</p>
               <div className="line-items">
-                {(activeCompany.explanation?.line_items ?? []).map((item: string) => <div key={item} className="line-item">{item}</div>)}
+                {(activeCompany.explanation?.line_items ?? []).map((item: string, idx: number) => (
+                  <div key={`${activeCompany.company_name}-line-${idx}-${item.substring(0, 15)}`} className="line-item">{item}</div>
+                ))}
               </div>
             </div>
             <div className="card" style={{ marginTop: 16 }}>
               <h3 className="card-title">Matched Keywords</h3>
               <div className="tag-cloud">
-                {(activeCompany.matched_keywords ?? []).map((keyword: KeywordMatch) => (
-                  <span key={`${keyword.keyword}-${keyword.category}`} className="tag">{keyword.keyword} · {keyword.occurrences}</span>
+                {(activeCompany.matched_keywords ?? []).map((keyword: KeywordMatch, idx: number) => (
+                  <span key={`${activeCompany.company_name}-kw-${keyword.keyword}-${keyword.category}-${idx}`} className="tag">{keyword.keyword} · {keyword.occurrences}</span>
                 ))}
               </div>
             </div>
@@ -177,8 +179,8 @@ export function IntentCenter() {
             <div className="card">
               <h3 className="card-title">Positive Signals</h3>
               <div className="signal-list">
-                {(activeCompany.positive_signals ?? []).map((signal: IntentSignal) => (
-                  <div key={`${signal.signal}-${signal.source}`} className="signal-row positive">
+                {(activeCompany.positive_signals ?? []).map((signal: IntentSignal, idx: number) => (
+                  <div key={`${activeCompany.company_name}-pos-${signal.signal}-${signal.source}-${idx}`} className="signal-row positive">
                     <strong>{signal.signal}</strong>
                     <span>{signal.weight}</span>
                     <span>{signal.source}</span>
@@ -190,8 +192,8 @@ export function IntentCenter() {
             <div className="card" style={{ marginTop: 16 }}>
               <h3 className="card-title">Negative Signals</h3>
               <div className="signal-list">
-                {(activeCompany.negative_signals ?? []).map((signal: IntentSignal) => (
-                  <div key={`${signal.signal}-${signal.source}`} className="signal-row negative">
+                {(activeCompany.negative_signals ?? []).map((signal: IntentSignal, idx: number) => (
+                  <div key={`${activeCompany.company_name}-neg-${signal.signal}-${signal.source}-${idx}`} className="signal-row negative">
                     <strong>{signal.signal}</strong>
                     <span>{signal.weight}</span>
                     <span>{signal.source}</span>

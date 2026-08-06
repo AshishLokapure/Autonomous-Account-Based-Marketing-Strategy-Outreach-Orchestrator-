@@ -8,7 +8,13 @@ and traceable to research facts. Demo data — names are synthetic personas.
 import time
 
 from app.core.logger import logger
-from app.services.agents import load_research_data, pick, seed, validate_product
+from app.services.agents import (
+    AgentResultCache,
+    load_research_data,
+    pick,
+    seed,
+    validate_product,
+)
 
 FIRST_NAMES = ["Ananya", "Rahul", "Priya", "Vikram", "Meera", "Arjun", "Kavya", "Rohan", "Divya", "Karthik", "Sneha", "Aditya"]
 LAST_NAMES = ["Sharma", "Iyer", "Patel", "Reddy", "Nair", "Gupta", "Menon", "Krishnan", "Desai", "Rao", "Bose", "Kulkarni"]
@@ -37,6 +43,10 @@ class StakeholderService:
     AGENT = "Stakeholder Agent"
 
     def run(self, product: str) -> dict:
+        cached = AgentResultCache.get(self.AGENT, product)
+        if cached:
+            return cached
+
         started = time.perf_counter()
         validate_product(product)
         logger.info(f"{self.AGENT} started — product={product}")
@@ -86,7 +96,7 @@ class StakeholderService:
 
         execution_time = round(time.perf_counter() - started, 3)
         logger.info(f"{self.AGENT} completed — {sum(totals.values())} stakeholders ({execution_time}s)")
-        return {
+        result = {
             "agent": self.AGENT,
             "status": "completed",
             "execution_time": execution_time,
@@ -103,3 +113,6 @@ class StakeholderService:
                 "companies": company_results,
             },
         }
+        AgentResultCache.set(self.AGENT, product, result)
+        return result
+

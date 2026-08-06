@@ -61,10 +61,10 @@ def _run_pipeline_task(product: dict, industry: str, count: int) -> None:
             target_company_count=count,
         )
         _job_state = {"status": "completed", "progress": 100, "error": None}
-        logger.info("Campaign pipeline completed — %d companies", len(result.companies))
+        logger.info(f"Campaign pipeline completed — {len(result.companies)} companies")
 
     except Exception as e:
-        logger.error("Campaign pipeline failed: %s", e)
+        logger.error(f"Campaign pipeline failed: {e}")
         _job_state = {"status": "failed", "progress": 0, "error": str(e)[:300]}
 
 
@@ -77,7 +77,7 @@ async def run_campaign(body: CampaignRunRequest, background_tasks: BackgroundTas
     if _job_state.get("status") == "running":
         raise HTTPException(status_code=409, detail="A campaign is already running")
 
-    logger.info("Campaign run triggered — industry=%s count=%d", body.industry_category, body.target_company_count)
+    logger.info(f"Campaign run triggered — industry={body.industry_category} count={body.target_company_count}")
     background_tasks.add_task(
         _run_pipeline_task,
         body.product,

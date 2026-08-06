@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import {
   createContext,
@@ -77,7 +77,17 @@ const AGENT_DEFS = [
     id: "outreach",
     name: "Outreach Agent",
     href: "/outreach",
-    steps: ["Generating Email", "Generating LinkedIn Message", "Generating Next Best Action"],
+    steps: [
+      "Load Research Report",
+      "Load Stakeholder Report",
+      "Load Intent Report",
+      "Load Company Emails",
+      "Load Meeting Transcript",
+      "Extract Context",
+      "Call Grok API",
+      "Generate Personalized Email",
+      "Store Draft in Supabase",
+    ],
   },
 ] as const;
 

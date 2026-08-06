@@ -1,14 +1,25 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useCampaign } from "@/stores/campaign-store";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   Mail, Linkedin, PhoneCall, Copy, CheckCircle2, 
   Send, RefreshCw, SlidersHorizontal,
-  Clock, Type, AlertCircle, User
+  Clock, Type, AlertCircle, User,
+  FileText, Sparkles, Check, Loader2, 
+  Info, ShieldCheck, Edit3, ChevronRight, RotateCcw,
+  Download, Eye, AlertTriangle, ArrowUpRight, Flame,
+  FileCode, CheckCheck, ThumbsUp
 } from "lucide-react";
 import Link from "next/link";
+import { 
+  sendEmailDraft, 
+  regenerateDraft, 
+  updateEmailDraft, 
+  listEmailDrafts, 
+  EmailDraft 
+} from "@/services/api";
 
 /* ── Helpers ─────────────────────────────────────────── */
 
@@ -37,802 +48,850 @@ const INITIALS_COLORS = [
   "#6366f1", "#ec4899", "#14b8a6", "#f59e0b", "#8b5cf6",
 ];
 
-/* ── Empty placeholder for missing content ───────────── */
+/* ── Tone Refinement Presets ─────────────────────────── */
+type ToneType = 
+  | "Executive & Concise" 
+  | "Enterprise Consultative" 
+  | "High-Urgency & ROI" 
+  | "Warm & Peer-to-Peer" 
+  | "Security & Compliance";
 
-function EmptyField({ label }: { label: string }) {
-  return (
-    <div className="empty-field">
-      <AlertCircle size={20} />
-      <div>
-        <p className="empty-field-title">No {label} generated</p>
-        <p className="empty-field-hint">Run the Outreach Agent to generate this asset, or click Regenerate.</p>
-      </div>
-    </div>
-  );
+interface ToneOption {
+  id: ToneType;
+  label: string;
+  badge: string;
+  description: string;
+  icon: string;
 }
 
-/* ── Content stats bar ───────────────────────────────── */
-
-function ContentStats({ text }: { text: string | undefined | null }) {
-  if (!text) return null;
-  const words = wordCount(text);
-  const chars = text.length;
-  return (
-    <div className="content-stats">
-      <span><Type size={13} /> {words} words</span>
-      <span className="dot-sep">•</span>
-      <span>{chars.toLocaleString()} characters</span>
-      <span className="dot-sep">•</span>
-      <span><Clock size={13} /> {readTime(words)}</span>
-    </div>
-  );
-}
-
-/* ── Action bar (Regenerate + Edit Tone + Copy) ──────── */
-
-function AssetActions({
-  onCopy,
-  copied,
-  copyId,
-}: {
-  onCopy: () => void;
-  copied: string | null;
-  copyId: string;
-}) {
-  return (
-    <div className="asset-actions">
-      <button className="action-btn regen-btn" title="Regenerate content">
-        <RefreshCw size={14} /> Regenerate
-      </button>
-      <button className="action-btn tone-btn" title="Adjust tone">
-        <SlidersHorizontal size={14} /> Edit Tone
-      </button>
-      <button
-        className={`copy-btn ${copied === copyId ? "copied" : ""}`}
-        title="Copy to clipboard"
-        onClick={onCopy}
-      >
-        <AnimatePresence mode="wait">
-          {copied === copyId ? (
-            <motion.span
-              key="check"
-              initial={{ scale: 0.5, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.5, opacity: 0 }}
-              transition={{ duration: 0.15 }}
-              className="copy-icon-wrap"
-            >
-              <CheckCircle2 size={16} />
-            </motion.span>
-          ) : (
-            <motion.span
-              key="copy"
-              initial={{ scale: 0.5, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.5, opacity: 0 }}
-              transition={{ duration: 0.15 }}
-              className="copy-icon-wrap"
-            >
-              <Copy size={16} />
-            </motion.span>
-          )}
-        </AnimatePresence>
-        {copied === copyId ? "Copied!" : "Copy to Clipboard"}
-      </button>
-    </div>
-  );
-}
-
-/* ── Main Component ──────────────────────────────────── */
+const TONE_OPTIONS: ToneOption[] = [
+  {
+    id: "Executive & Concise",
+    label: "Executive & Concise",
+    badge: "30-Sec Read",
+    description: "Crisp value proposition, short sentences, zero filler, and a clear 10-minute calendar CTA.",
+    icon: "🎯"
+  },
+  {
+    id: "Enterprise Consultative",
+    label: "Enterprise Consultative",
+    badge: "C-Level",
+    description: "Polished strategic framing, governance-oriented tone suitable for CIOs and VP Engineering.",
+    icon: "💼"
+  },
+  {
+    id: "High-Urgency & ROI",
+    label: "High-Urgency & ROI",
+    badge: "Fast-Track",
+    description: "Emphasizes roadmap acceleration, competitive momentum, and rapid 48-hour proof-of-value.",
+    icon: "🚀"
+  },
+  {
+    id: "Warm & Peer-to-Peer",
+    label: "Warm & Peer-to-Peer",
+    badge: "Relationship",
+    description: "Conversational, less aggressive, focusing on shared industry challenges and long-term partnership.",
+    icon: "🤝"
+  },
+  {
+    id: "Security & Compliance",
+    label: "Security & Compliance",
+    badge: "Risk-Averse",
+    description: "Prioritizes SOC2, data residency, and risk mitigation. Ideal for CISOs and highly regulated sectors.",
+    icon: "🛡️"
+  }
+];
 
 export function OutreachStudio() {
   const { state } = useCampaign();
   const data = state.agentResults?.outreach as any;
+  const currentProduct = state.product || "Azure AI";
 
   const [selectedCompanyIndex, setSelectedCompanyIndex] = useState(0);
-  const [activeTab, setActiveTab] = useState<'email'|'linkedin'|'call'>('email');
+  const [activeTab, setActiveTab] = useState<"email" | "linkedin" | "call">("email");
   const [copied, setCopied] = useState<string | null>(null);
+  const [isSending, setIsSending] = useState(false);
+  const [isRegenerating, setIsRegenerating] = useState(false);
+  const [showToneDropdown, setShowToneDropdown] = useState(false);
+  const [showContextDetails, setShowContextDetails] = useState(false);
+  const [sendFeedback, setSendFeedback] = useState<{ type: "success" | "error"; msg: string } | null>(null);
+
+  // Supabase Draft state mapping
+  const [draftsByCompany, setDraftsByCompany] = useState<Record<string, EmailDraft>>({});
+
+  // Inline editing state
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedSubject, setEditedSubject] = useState("");
+  const [editedBody, setEditedBody] = useState("");
+  const [editedRecipient, setEditedRecipient] = useState("");
+  const [hasEdits, setHasEdits] = useState(false);
+
+  // Fetch Supabase drafts on mount or when product changes
+  useEffect(() => {
+    async function loadRemoteDrafts() {
+      try {
+        const remoteDrafts = await listEmailDrafts({ product: currentProduct });
+        if (remoteDrafts && remoteDrafts.length > 0) {
+          const map: Record<string, EmailDraft> = {};
+          remoteDrafts.forEach((d) => {
+            map[d.company] = d;
+          });
+          setDraftsByCompany(map);
+        }
+      } catch (err) {
+        console.warn("Could not fetch remote drafts:", err);
+      }
+    }
+    loadRemoteDrafts();
+  }, [currentProduct, data]);
 
   if (!data || !data.companies || data.companies.length === 0) {
     return (
       <div className="empty-state text-center py-20 flex flex-col items-center justify-center">
-        <Send size={48} className="text-slate-400 mb-4 mx-auto" />
-        <h3 className="text-xl font-bold mb-2">No Outreach Data</h3>
-        <p className="text-slate-500 mb-6">Run a campaign to generate personalized outreach assets.</p>
+        <div className="w-16 h-16 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600 mb-4 shadow-sm border border-blue-100">
+          <Send size={32} />
+        </div>
+        <h3 className="text-xl font-bold mb-2 text-slate-800">No Outreach Campaign Active</h3>
+        <p className="text-slate-500 mb-6 max-w-md">
+          Run an autonomous account-based campaign to generate personalized emails, LinkedIn messages, and call scripts using Grok.
+        </p>
         <Link href="/">
-          <button className="primary-button bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors">Run Campaign</button>
+          <button className="primary-button bg-blue-600 text-white px-6 py-2.5 rounded-xl font-medium hover:bg-blue-700 transition-colors shadow-sm flex items-center gap-2">
+            <Sparkles size={16} /> Run ABM Campaign
+          </button>
         </Link>
       </div>
     );
   }
 
+  const selectedCompany = data.companies[selectedCompanyIndex] || data.companies[0];
+  const companyName = selectedCompany.company_name;
+  const currentRemoteDraft = draftsByCompany[companyName];
+
+  // Derive active values (Remote draft from Supabase takes precedence if available)
+  const execEmail = selectedCompany.executive_email || {};
+  const currentDraftId = currentRemoteDraft?.id || execEmail.draft_id;
+  const currentSubject = hasEdits ? editedSubject : (currentRemoteDraft?.subject || execEmail.subject || "");
+  const currentBody = hasEdits ? editedBody : (currentRemoteDraft?.body || execEmail.body || "");
+  const currentRecipient = hasEdits ? editedRecipient : (currentRemoteDraft?.recipient_email || execEmail.recipient_email || "contact@prospect.com");
+  const currentStatus = currentRemoteDraft?.status || execEmail.status || "draft";
+  const intentScore = selectedCompany.intent_score || currentRemoteDraft?.intent_score || 85;
+  const confidence = currentRemoteDraft?.confidence || execEmail.confidence || 92;
+  const cta = currentRemoteDraft?.cta || execEmail.cta;
+  const reason = currentRemoteDraft?.reason || execEmail.reason;
+  const contextSummary = selectedCompany.context_summary || {};
+  const buyingSignals = currentRemoteDraft?.metadata?.buying_signals || contextSummary.buying_signals || [];
+  const painPoints = currentRemoteDraft?.metadata?.pain_points || contextSummary.pain_points || [];
+  const meetingSummary = currentRemoteDraft?.metadata?.meeting_summary || contextSummary.meeting_summary || "";
+  const researchSummary = currentRemoteDraft?.metadata?.research_summary || contextSummary.research_summary || "";
+
+  // Reset editor inputs when company changes
+  useEffect(() => {
+    const draft = draftsByCompany[companyName];
+    setEditedSubject(draft?.subject || execEmail.subject || "");
+    setEditedBody(draft?.body || execEmail.body || "");
+    setEditedRecipient(draft?.recipient_email || execEmail.recipient_email || "contact@prospect.com");
+    setIsEditing(false);
+    setHasEdits(false);
+    setSendFeedback(null);
+  }, [selectedCompanyIndex, companyName]);
+
   const handleCopy = (text: string, id: string) => {
     navigator.clipboard.writeText(text);
     setCopied(id);
-    setTimeout(() => setCopied(null), 2000);
+    setTimeout(() => setCopied(null), 2200);
   };
 
-  const selectedCompany = data.companies[selectedCompanyIndex] || data.companies[0];
+  const handleSaveEdits = async () => {
+    if (currentDraftId) {
+      try {
+        const updated = await updateEmailDraft(currentDraftId, {
+          subject: editedSubject,
+          body: editedBody,
+          recipient_email: editedRecipient,
+        });
+        setDraftsByCompany((prev) => ({ ...prev, [companyName]: updated }));
+      } catch (err) {
+        console.error("Failed to sync draft update:", err);
+      }
+    }
+    setIsEditing(false);
+  };
+
+  const handleApproveDraft = async () => {
+    if (!currentDraftId) return;
+    try {
+      const updated = await updateEmailDraft(currentDraftId, { status: "approved" });
+      setDraftsByCompany((prev) => ({ ...prev, [companyName]: updated }));
+      setSendFeedback({ type: "success", msg: "Draft successfully approved for sending!" });
+    } catch (err) {
+      console.error("Approval error:", err);
+    }
+  };
+
+  const handleSendEmail = async () => {
+    setIsSending(true);
+    setSendFeedback(null);
+    try {
+      const res = await sendEmailDraft({
+        draft_id: currentDraftId,
+        to_email: currentRecipient,
+        subject: currentSubject,
+        content: currentBody,
+      });
+
+      if (res.status === "success") {
+        setSendFeedback({ type: "success", msg: res.message || "Email successfully sent!" });
+        if (currentDraftId) {
+          setDraftsByCompany((prev) => ({
+            ...prev,
+            [companyName]: {
+              ...(prev[companyName] || ({} as any)),
+              status: "sent",
+              sent_time: new Date().toISOString(),
+            } as EmailDraft,
+          }));
+        }
+      } else {
+        setSendFeedback({ type: "error", msg: res.message || "Email dispatch failed. Check SMTP settings." });
+      }
+    } catch (error: any) {
+      setSendFeedback({ type: "error", msg: error?.message || "Failed to send email. Check API logs." });
+    } finally {
+      setIsSending(false);
+    }
+  };
+
+  const handleRegenerateWithTone = async (tone: ToneType) => {
+    setShowToneDropdown(false);
+    if (!currentDraftId) {
+      // Offline preset injection fallback
+      setEditedBody(`[Grok-2 AI ${tone} Preset Applied]\n\n${currentBody}`);
+      setHasEdits(true);
+      return;
+    }
+
+    setIsRegenerating(true);
+    try {
+      const res = await regenerateDraft({
+        draft_id: currentDraftId,
+        tone: tone,
+      });
+      if (res?.draft) {
+        setDraftsByCompany((prev) => ({ ...prev, [companyName]: res.draft }));
+        setEditedSubject(res.draft.subject);
+        setEditedBody(res.draft.body);
+        setHasEdits(false);
+        setSendFeedback({ type: "success", msg: `Regenerated with ${tone} tone using Grok.` });
+      }
+    } catch (err: any) {
+      console.error("Regeneration failed:", err);
+      setSendFeedback({ type: "error", msg: "Regeneration failed. Check API key in settings." });
+    } finally {
+      setIsRegenerating(false);
+    }
+  };
+
+  const handleDownload = () => {
+    const content = `To: ${currentRecipient}\nSubject: ${currentSubject}\nDate: ${new Date().toUTCString()}\n\n${currentBody}`;
+    const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `${companyName.replace(/[^a-z0-9]/gi, "_")}_Executive_Email.txt`;
+    link.click();
+    URL.revokeObjectURL(url);
+  };
 
   const getCallScriptText = () => {
     const cs = selectedCompany.call_script;
     if (!cs) return "";
-    return `${cs.opening}\n\nDiscovery Questions:\n${(cs.discovery_questions || []).join('\n')}\n\nClose:\n${cs.close}`;
+    return `${cs.opening}\n\nDiscovery Questions:\n${(cs.discovery_questions || []).map((q: string, i: number) => `${i + 1}. ${q}`).join("\n")}\n\nClose:\n${cs.close}`;
   };
 
   return (
     <motion.div 
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 15 }}
       animate={{ opacity: 1, y: 0 }}
-      className="outreach-container"
+      className="outreach-container max-w-[1400px] mx-auto p-4 md:p-6 space-y-6"
     >
-      <header className="page-header">
-        <p className="eyebrow">EXECUTION</p>
-        <h1 className="page-title">Outreach Studio</h1>
-      </header>
-
-      {/* ── KPI Metric Cards ───────────────────────── */}
-      <div className="kpi-grid">
-        <div className="card metric-card">
-          <p className="metric-label">Emails Generated</p>
-          <p className="metric-number text-slate-900">{data.totals?.emails_generated || 0}</p>
-        </div>
-        <div className="card metric-card">
-          <p className="metric-label">LinkedIn Msgs</p>
-          <p className="metric-number text-slate-900">{data.totals?.linkedin_messages || 0}</p>
-        </div>
-        <div className="card metric-card">
-          <p className="metric-label">Call Scripts</p>
-          <p className="metric-number text-slate-900">{data.totals?.call_scripts || 0}</p>
-        </div>
-        <div className="card metric-card">
-          <p className="metric-label">Total Assets</p>
-          <p className="metric-number text-blue-600">{data.totals?.total_assets || 0}</p>
-        </div>
-      </div>
-
-      {/* ── Company Tabs with Avatars ─────────────────── */}
-      <div className="company-tabs custom-scrollbar">
-        {data.companies.map((company: any, idx: number) => (
-          <button
-            key={idx}
-            className={`company-tab ${idx === selectedCompanyIndex ? 'active' : ''}`}
-            onClick={() => {
-              setSelectedCompanyIndex(idx);
-              setActiveTab('email');
-            }}
-          >
-            <span
-              className="company-avatar"
-              style={{ background: INITIALS_COLORS[idx % INITIALS_COLORS.length] }}
-            >
-              {getInitials(company.company_name)}
+      {/* ── Page Header ───────────────────────────────── */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-200/80 pb-5">
+        <div>
+          <div className="flex items-center gap-2 mb-1">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-2.5 py-0.5 rounded-full border border-blue-100/80">
+              Autonomous Outreach Center
             </span>
-            <span className="company-tab-label">{company.company_name}</span>
+            <span className="text-[11px] font-semibold text-slate-400">
+              Grok-2 Context-Grounded Engine
+            </span>
+          </div>
+          <h1 className="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight">
+            Outreach Studio & Dispatch
+          </h1>
+        </div>
+
+        {/* Global Stats Counter */}
+        <div className="flex items-center gap-3">
+          <div className="bg-white border border-slate-200 rounded-xl px-3.5 py-2 flex items-center gap-2.5 shadow-sm">
+            <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></div>
+            <span className="text-xs font-semibold text-slate-600">
+              {data.totals?.emails_generated || data.companies.length} Drafts Ready
+            </span>
+          </div>
+          <button 
+            onClick={() => setShowContextDetails(!showContextDetails)}
+            className={`text-xs font-semibold px-3 py-2 rounded-xl border transition-all flex items-center gap-1.5 ${
+              showContextDetails 
+                ? "bg-blue-50 border-blue-200 text-blue-700" 
+                : "bg-white border-slate-200 text-slate-600 hover:bg-slate-50"
+            }`}
+          >
+            <Info size={14} /> {showContextDetails ? "Hide Context" : "View Context & Signals"}
           </button>
-        ))}
-      </div>
-
-      {/* ── Main Full-Width Asset Card ────────────── */}
-      <div className="asset-card-wrapper">
-        <div className="card asset-card bg-white border border-slate-200 rounded-[16px] overflow-hidden flex flex-col shadow-sm">
-          {/* ── Channel Tab Bar ────────────────────────── */}
-          <div className="asset-header bg-slate-50/80 border-b border-slate-200/80 p-4 flex gap-3">
-            {(['email', 'linkedin', 'call'] as const).map((tab) => (
-              <button
-                key={tab}
-                className={`tab-btn ${activeTab === tab ? 'active' : ''}`}
-                onClick={() => setActiveTab(tab)}
-              >
-                {tab === 'email' && <Mail size={16} />}
-                {tab === 'linkedin' && <Linkedin size={16} />}
-                {tab === 'call' && <PhoneCall size={16} />}
-                <span>{tab === 'email' ? 'Email' : tab === 'linkedin' ? 'LinkedIn' : 'Call Script'}</span>
-                {activeTab === tab && (
-                  <motion.div
-                    className="tab-indicator"
-                    layoutId="activeTabIndicator"
-                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                  />
-                )}
-              </button>
-            ))}
-          </div>
-          
-          {/* ── Asset Body ─────────────────────────────── */}
-          <div className="asset-body p-8 flex-grow relative min-h-[420px]">
-            <AnimatePresence mode="wait">
-              {/* Email Tab */}
-              {activeTab === 'email' && (
-                <motion.div
-                  key="email"
-                  initial={{ opacity: 0, x: 12 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -12 }}
-                  transition={{ duration: 0.2 }}
-                  className="email-preview"
-                >
-                  {selectedCompany.executive_email ? (
-                    <>
-                      {/* Envelope Header */}
-                      <div className="envelope-header">
-                        <div className="envelope-row">
-                          <span className="envelope-label">From:</span>
-                          <div className="envelope-chip">
-                            <span className="envelope-avatar"><User size={12} /></span>
-                            <span>AccountPilot AI</span>
-                          </div>
-                        </div>
-                        <div className="envelope-row">
-                          <span className="envelope-label">To:</span>
-                          <div className="envelope-chip">
-                            <span className="envelope-avatar" style={{ background: INITIALS_COLORS[selectedCompanyIndex % INITIALS_COLORS.length] }}>
-                              {getInitials(selectedCompany.executive_email.to || selectedCompany.company_name)}
-                            </span>
-                            <span>{selectedCompany.executive_email.to}</span>
-                          </div>
-                        </div>
-                        <div className="envelope-subject-row">
-                          <span className="envelope-label">Subject:</span>
-                          <span className="envelope-subject">{selectedCompany.executive_email.subject}</span>
-                        </div>
-                      </div>
-                      <div className="email-body whitespace-pre-wrap text-sm leading-relaxed text-slate-800 font-medium">
-                        {selectedCompany.executive_email.body}
-                      </div>
-                      <ContentStats text={selectedCompany.executive_email.body} />
-                      <AssetActions
-                        onCopy={() => handleCopy(selectedCompany.executive_email.body, 'email')}
-                        copied={copied}
-                        copyId="email"
-                      />
-                    </>
-                  ) : (
-                    <EmptyField label="email" />
-                  )}
-                </motion.div>
-              )}
-
-              {/* LinkedIn Tab */}
-              {activeTab === 'linkedin' && (
-                <motion.div
-                  key="linkedin"
-                  initial={{ opacity: 0, x: 12 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -12 }}
-                  transition={{ duration: 0.2 }}
-                  className="linkedin-preview"
-                >
-                  {selectedCompany.linkedin_message ? (
-                    <>
-                      <div className="envelope-header linkedin-header">
-                        <div className="envelope-row">
-                          <span className="envelope-label">To:</span>
-                          <div className="envelope-chip">
-                            <span className="envelope-avatar" style={{ background: INITIALS_COLORS[selectedCompanyIndex % INITIALS_COLORS.length] }}>
-                              {getInitials(selectedCompany.linkedin_message.to || selectedCompany.company_name)}
-                            </span>
-                            <span>{selectedCompany.linkedin_message.to}</span>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="linkedin-body whitespace-pre-wrap text-sm leading-relaxed bg-slate-50/70 p-6 rounded-xl border border-slate-200/80 text-slate-800 font-medium shadow-sm">
-                        {selectedCompany.linkedin_message.body}
-                      </div>
-                      <ContentStats text={selectedCompany.linkedin_message.body} />
-                      <AssetActions
-                        onCopy={() => handleCopy(selectedCompany.linkedin_message.body, 'linkedin')}
-                        copied={copied}
-                        copyId="linkedin"
-                      />
-                    </>
-                  ) : (
-                    <EmptyField label="LinkedIn message" />
-                  )}
-                </motion.div>
-              )}
-
-              {/* Call Script Tab */}
-              {activeTab === 'call' && (
-                <motion.div
-                  key="call"
-                  initial={{ opacity: 0, x: 12 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -12 }}
-                  transition={{ duration: 0.2 }}
-                  className="call-preview"
-                >
-                  {selectedCompany.call_script ? (
-                    <>
-                      <div className="call-script-header">
-                        <h3 className="font-bold text-lg flex items-center gap-2.5 text-slate-900">
-                          <PhoneCall size={20} className="text-blue-600" /> Call Script Outline
-                        </h3>
-                      </div>
-                      <div className="call-script-sections">
-                        <div className="call-section">
-                          <h4 className="call-section-title">Opening</h4>
-                          <p className="call-section-text">{selectedCompany.call_script.opening}</p>
-                        </div>
-                        <div className="call-section">
-                          <h4 className="call-section-title">Discovery Questions</h4>
-                          <ul className="call-questions-list">
-                            {selectedCompany.call_script.discovery_questions?.map((q: string, i: number) => (
-                              <li key={i} className="call-question-item">
-                                <span className="call-question-num">{i + 1}</span>
-                                <span>{q}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                        <div className="call-section">
-                          <h4 className="call-section-title">Close</h4>
-                          <p className="call-section-text">{selectedCompany.call_script.close}</p>
-                        </div>
-                      </div>
-                      <ContentStats text={getCallScriptText()} />
-                      <AssetActions
-                        onCopy={() => handleCopy(getCallScriptText(), 'call')}
-                        copied={copied}
-                        copyId="call"
-                      />
-                    </>
-                  ) : (
-                    <EmptyField label="call script" />
-                  )}
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
         </div>
       </div>
 
-      <style jsx global>{`
-        .outreach-container {
-          padding: 24px;
-        }
+      {/* ── Target Companies Navigation Ribbon ─────────── */}
+      <div className="flex gap-2.5 overflow-x-auto pb-2 scrollbar-thin">
+        {data.companies.map((company: any, idx: number) => {
+          const cDraft = draftsByCompany[company.company_name];
+          const isSelected = idx === selectedCompanyIndex;
+          const status = cDraft?.status || company.executive_email?.status || "draft";
+          const score = company.intent_score || cDraft?.intent_score || 85;
 
-        .page-header {
-          margin-bottom: 24px;
-        }
-        .eyebrow {
-          color: #2563eb;
-          font-size: 0.75rem;
-          font-weight: 800;
-          text-transform: uppercase;
-          letter-spacing: 1px;
-          margin-bottom: 4px;
-        }
-        .page-title {
-          font-size: 1.875rem;
-          font-weight: 800;
-          color: #0f172a;
-          font-family: 'Plus Jakarta Sans', sans-serif;
-        }
+          return (
+            <button
+              key={idx}
+              onClick={() => {
+                setSelectedCompanyIndex(idx);
+                setActiveTab("email");
+              }}
+              className={`flex items-center gap-3 px-4 py-3 rounded-2xl border text-left transition-all shrink-0 min-w-[240px] ${
+                isSelected 
+                  ? "bg-blue-600 text-white border-blue-600 shadow-md shadow-blue-500/20" 
+                  : "bg-white border-slate-200 text-slate-800 hover:border-slate-300 hover:bg-slate-50/60 shadow-sm"
+              }`}
+            >
+              <div 
+                className="w-10 h-10 rounded-xl flex items-center justify-center font-bold text-sm text-white shrink-0 shadow-inner"
+                style={{ 
+                  backgroundColor: isSelected ? "rgba(255,255,255,0.2)" : INITIALS_COLORS[idx % INITIALS_COLORS.length] 
+                }}
+              >
+                {getInitials(company.company_name)}
+              </div>
+              <div className="min-w-0 flex-1">
+                <div className="flex items-center justify-between gap-1">
+                  <p className={`font-bold text-sm truncate ${isSelected ? "text-white" : "text-slate-900"}`}>
+                    {company.company_name}
+                  </p>
+                  <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded-full shrink-0 ${
+                    isSelected 
+                      ? "bg-white/20 text-white" 
+                      : score >= 85 
+                        ? "bg-emerald-50 text-emerald-700 border border-emerald-200" 
+                        : "bg-blue-50 text-blue-700 border border-blue-200"
+                  }`}>
+                    {score}%
+                  </span>
+                </div>
+                <div className="flex items-center gap-1.5 mt-0.5">
+                  <span className={`text-xs truncate ${isSelected ? "text-blue-100" : "text-slate-500"}`}>
+                    {company.executive_email?.decision_maker || "Technology Leader"}
+                  </span>
+                  <span className="text-[10px] uppercase font-bold opacity-80">
+                    • {status}
+                  </span>
+                </div>
+              </div>
+            </button>
+          );
+        })}
+      </div>
 
-        /* ── KPI Grid ────────────────────────────────── */
-        .kpi-grid {
-          display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 16px;
-          margin-bottom: 28px;
-        }
-        @media (max-width: 768px) {
-          .kpi-grid {
-            grid-template-columns: repeat(2, 1fr);
-          }
-        }
-        .metric-card {
-          padding: 1.25rem 1.5rem;
-          background: white;
-          border: 1px solid var(--line, #e7eaf0);
-          border-radius: 14px;
-          box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-        }
-        .metric-label {
-          font-size: 0.8125rem;
-          color: var(--muted, #64748b);
-          font-weight: 600;
-          margin-bottom: 0.375rem;
-        }
-        .metric-number {
-          font-size: 1.875rem;
-          font-weight: 800;
-          font-family: 'Plus Jakarta Sans', sans-serif;
-          line-height: 1.2;
-        }
-        
-        /* ── Company Tabs Container ─────────────────── */
-        .company-tabs {
-          display: flex !important;
-          flex-direction: row !important;
-          flex-wrap: nowrap !important;
-          gap: 12px !important;
-          overflow-x: auto;
-          padding-bottom: 12px;
-          margin-bottom: 24px;
-        }
+      {/* ── Context & Grounded Intelligence Drawer ─────── */}
+      <AnimatePresence>
+        {showContextDetails && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="overflow-hidden"
+          >
+            <div className="bg-slate-900 text-white rounded-2xl p-5 border border-slate-800 shadow-xl space-y-4">
+              <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+                <div className="flex items-center gap-2">
+                  <Sparkles size={16} className="text-blue-400" />
+                  <h3 className="font-bold text-sm uppercase tracking-wider text-slate-200">
+                    Grounded Intelligence & Evidence for {companyName}
+                  </h3>
+                </div>
+                <span className="text-xs text-slate-400 font-mono">
+                  Intent Score: {intentScore}/100 • Urgency: {selectedCompany.urgency || "High"}
+                </span>
+              </div>
 
-        /* ── Company Tabs with Avatars ─────────────── */
-        .company-tab {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.625rem;
-          padding: 0.5rem 1.125rem 0.5rem 0.5rem;
-          border-radius: 9999px;
-          font-size: 0.8125rem;
-          font-weight: 600;
-          background: var(--canvas, #f6f8fc);
-          color: var(--muted, #64748b);
-          border: 1px solid var(--line, #e7eaf0);
-          cursor: pointer;
-          transition: all 0.2s ease;
-          white-space: nowrap;
-          flex-shrink: 0;
-        }
-        .company-tab:hover {
-          background: white;
-          color: var(--navy, #0f172a);
-          border-color: #cbd5e1;
-          transform: translateY(-1px);
-          box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-        }
-        .company-tab.active {
-          background: var(--navy, #0f172a);
-          color: white;
-          border-color: var(--navy, #0f172a);
-          box-shadow: 0 4px 12px -2px rgba(15, 23, 42, 0.25);
-        }
-        .company-tab.active .company-avatar {
-          background: rgba(255,255,255,0.2) !important;
-          color: white;
-        }
-        .company-avatar {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 26px;
-          height: 26px;
-          border-radius: 50%;
-          font-size: 0.625rem;
-          font-weight: 800;
-          color: white;
-          letter-spacing: 0.5px;
-          flex-shrink: 0;
-        }
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+                {/* Buying Signals */}
+                <div className="bg-slate-800/80 rounded-xl p-3.5 border border-slate-700/60 space-y-2">
+                  <p className="font-bold text-emerald-400 flex items-center gap-1.5">
+                    <Flame size={14} /> Buying Signals
+                  </p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {buyingSignals.length > 0 ? (
+                      buyingSignals.map((sig: string, i: number) => (
+                        <span key={i} className="bg-emerald-950/80 text-emerald-300 border border-emerald-800/60 px-2 py-0.5 rounded-md text-[11px]">
+                          {sig}
+                        </span>
+                      ))
+                    ) : (
+                      <span className="text-slate-400">Azure AI Rollout, Budget Approved</span>
+                    )}
+                  </div>
+                </div>
 
-        /* ── Asset Card Wrapper ──────────────────────── */
-        .asset-card-wrapper {
-          width: 100%;
-        }
-        .asset-card {
-          border-radius: 16px;
-          border: 1px solid #e2e8f0;
-          box-shadow: 0 4px 16px -2px rgba(0,0,0,0.05);
-        }
+                {/* Pain Points */}
+                <div className="bg-slate-800/80 rounded-xl p-3.5 border border-slate-700/60 space-y-2">
+                  <p className="font-bold text-amber-400 flex items-center gap-1.5">
+                    <AlertTriangle size={14} /> Pain Points & Objections
+                  </p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {painPoints.length > 0 ? (
+                      painPoints.map((p: string, i: number) => (
+                        <span key={i} className="bg-amber-950/80 text-amber-300 border border-amber-800/60 px-2 py-0.5 rounded-md text-[11px]">
+                          {p}
+                        </span>
+                      ))
+                    ) : (
+                      <span className="text-slate-400">HIPAA Compliance, Governance</span>
+                    )}
+                  </div>
+                </div>
 
-        /* ── Channel Tab Bar Container ──────────────── */
-        .asset-header {
-          display: flex !important;
-          flex-direction: row !important;
-          align-items: center;
-          gap: 10px;
-          padding: 16px 24px;
-        }
+                {/* Meeting Transcript Quotes */}
+                <div className="bg-slate-800/80 rounded-xl p-3.5 border border-slate-700/60 space-y-2">
+                  <p className="font-bold text-blue-400 flex items-center gap-1.5">
+                    <PhoneCall size={14} /> Discovery Transcripts
+                  </p>
+                  <p className="text-slate-300 line-clamp-3 italic">
+                    {meetingSummary || "Transcripts analyzed: leadership evaluating governance & compliance."}
+                  </p>
+                </div>
 
-        /* ── Channel Tabs ──────────────────────────── */
-        .tab-btn {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.625rem;
-          padding: 0.625rem 1.375rem;
-          font-size: 0.875rem;
-          font-weight: 600;
-          color: var(--muted, #64748b);
-          border-radius: 10px;
-          transition: all 0.2s ease;
-          position: relative;
-          flex-shrink: 0;
-          border: none;
-          background: transparent;
-          cursor: pointer;
-        }
-        .tab-btn:hover {
-          background: rgba(0,0,0,0.04);
-          color: var(--navy, #0f172a);
-        }
-        .tab-btn.active {
-          background: white;
-          color: var(--blue, #2563eb);
-          box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-        }
-        .tab-indicator {
-          position: absolute;
-          bottom: -4px;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 24px;
-          height: 3px;
-          border-radius: 3px;
-          background: var(--blue, #2563eb);
-        }
+                {/* Research Summary */}
+                <div className="bg-slate-800/80 rounded-xl p-3.5 border border-slate-700/60 space-y-2">
+                  <p className="font-bold text-purple-400 flex items-center gap-1.5">
+                    <FileText size={14} /> Account Strategy
+                  </p>
+                  <p className="text-slate-300 line-clamp-3">
+                    {researchSummary || selectedCompany.next_best_action || "Targeted architectural review with verified deployment blueprint."}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-        .asset-body {
-          padding: 32px;
-        }
+      {/* ── Status Feedback Alert ──────────────────────── */}
+      {sendFeedback && (
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className={`p-4 rounded-xl border flex items-center justify-between text-sm ${
+            sendFeedback.type === "success" 
+              ? "bg-emerald-50 border-emerald-200 text-emerald-800" 
+              : "bg-rose-50 border-rose-200 text-rose-800"
+          }`}
+        >
+          <div className="flex items-center gap-2 font-medium">
+            {sendFeedback.type === "success" ? <CheckCircle2 size={18} /> : <AlertCircle size={18} />}
+            <span>{sendFeedback.msg}</span>
+          </div>
+          <button 
+            onClick={() => setSendFeedback(null)}
+            className="text-slate-400 hover:text-slate-600 font-bold"
+          >
+            ✕
+          </button>
+        </motion.div>
+      )}
 
-        /* ── Envelope-Style Email Header ───────────── */
-        .envelope-header {
-          background: #f8fafc;
-          border: 1px solid #e2e8f0;
-          border-radius: 14px;
-          padding: 20px 24px;
-          display: flex;
-          flex-direction: column;
-          gap: 14px;
-          margin-bottom: 24px;
-        }
-        .linkedin-header {
-          background: #f0f7ff;
-          border-color: #dbeafe;
-          margin-bottom: 20px;
-        }
-        .envelope-row {
-          display: flex;
-          align-items: center;
-          gap: 14px;
-          font-size: 0.8125rem;
-        }
-        .envelope-subject-row {
-          display: flex;
-          align-items: center;
-          gap: 14px;
-          padding-top: 12px;
-          border-top: 1px solid #e2e8f0;
-        }
-        .envelope-label {
-          color: var(--muted, #64748b);
-          font-weight: 600;
-          min-width: 56px;
-          font-size: 0.75rem;
-          text-transform: uppercase;
-          letter-spacing: 0.4px;
-        }
-        .envelope-chip {
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          background: white;
-          border: 1px solid #e2e8f0;
-          border-radius: 999px;
-          padding: 4px 12px 4px 4px;
-          font-size: 0.8125rem;
-          font-weight: 600;
-          color: var(--navy, #0f172a);
-          box-shadow: 0 1px 2px rgba(0,0,0,0.03);
-        }
-        .envelope-avatar {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 22px;
-          height: 22px;
-          border-radius: 50%;
-          background: var(--blue, #2563eb);
-          color: white;
-          font-size: 0.5625rem;
-          font-weight: 800;
-        }
-        .envelope-subject {
-          font-weight: 700;
-          font-size: 0.9375rem;
-          color: var(--navy, #0f172a);
-          font-family: 'Plus Jakarta Sans', sans-serif;
-        }
+      {/* ── Main Outreach Canvas Card ──────────────────── */}
+      <div className="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden flex flex-col">
+        {/* Channel Navigation Header */}
+        <div className="border-b border-slate-200 bg-slate-50/60 px-5 py-3.5 flex flex-wrap items-center justify-between gap-3">
+          <div className="flex items-center gap-2 bg-slate-200/70 p-1 rounded-xl">
+            <button
+              onClick={() => setActiveTab("email")}
+              className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all ${
+                activeTab === "email" 
+                  ? "bg-white text-blue-700 shadow-sm" 
+                  : "text-slate-600 hover:text-slate-900"
+              }`}
+            >
+              <Mail size={14} /> Executive Email
+              <span className="text-[10px] bg-blue-100 text-blue-800 font-bold px-1.5 py-0.2 rounded-full">
+                Grok AI
+              </span>
+            </button>
+            <button
+              onClick={() => setActiveTab("linkedin")}
+              className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all ${
+                activeTab === "linkedin" 
+                  ? "bg-white text-blue-700 shadow-sm" 
+                  : "text-slate-600 hover:text-slate-900"
+              }`}
+            >
+              <Linkedin size={14} /> LinkedIn InMail
+            </button>
+            <button
+              onClick={() => setActiveTab("call")}
+              className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all ${
+                activeTab === "call" 
+                  ? "bg-white text-blue-700 shadow-sm" 
+                  : "text-slate-600 hover:text-slate-900"
+              }`}
+            >
+              <PhoneCall size={14} /> Call Script & Discovery
+            </button>
+          </div>
 
-        .email-body {
-          line-height: 1.7;
-          font-size: 0.9375rem;
-          color: #334155;
-          margin-bottom: 24px;
-        }
-        .linkedin-body {
-          line-height: 1.7;
-          font-size: 0.9375rem;
-          color: #334155;
-          margin-bottom: 24px;
-        }
+          {/* Status & Confidence Badge */}
+          <div className="flex items-center gap-2.5">
+            <span className={`text-xs font-bold uppercase px-2.5 py-1 rounded-full border ${
+              currentStatus === "sent" 
+                ? "bg-emerald-50 text-emerald-700 border-emerald-200" 
+                : currentStatus === "approved"
+                  ? "bg-blue-50 text-blue-700 border-blue-200"
+                  : "bg-slate-100 text-slate-700 border-slate-200"
+            }`}>
+              {currentStatus === "sent" ? "Dispatched" : currentStatus}
+            </span>
+            <div className="hidden sm:flex items-center gap-1.5 text-xs text-slate-500 bg-slate-100/80 px-2.5 py-1 rounded-full font-medium">
+              <ShieldCheck size={14} className="text-blue-600" />
+              <span>{confidence}% Confidence</span>
+            </div>
+          </div>
+        </div>
 
-        /* ── Call Script Layout ────────────────────── */
-        .call-script-header {
-          margin-bottom: 24px;
-          padding-bottom: 16px;
-          border-bottom: 1px solid #f1f5f9;
-        }
-        .call-script-sections {
-          display: flex;
-          flex-direction: column;
-          gap: 20px;
-          margin-bottom: 24px;
-        }
-        .call-section {
-          background: #f8fafc;
-          border: 1px solid #e2e8f0;
-          border-radius: 14px;
-          padding: 20px 24px;
-        }
-        .call-section-title {
-          font-size: 0.75rem;
-          font-weight: 700;
-          color: #64748b;
-          text-transform: uppercase;
-          letter-spacing: 0.5px;
-          margin-bottom: 10px;
-        }
-        .call-section-text {
-          font-size: 0.875rem;
-          color: #334155;
-          line-height: 1.65;
-          font-weight: 500;
-        }
-        .call-questions-list {
-          display: flex;
-          flex-direction: column;
-          gap: 12px;
-          list-style: none;
-          padding: 0;
-          margin: 0;
-        }
-        .call-question-item {
-          display: flex;
-          align-items: flex-start;
-          gap: 12px;
-          font-size: 0.875rem;
-          color: #334155;
-          font-weight: 500;
-          line-height: 1.5;
-        }
-        .call-question-num {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 22px;
-          height: 22px;
-          border-radius: 50%;
-          background: #dbeafe;
-          color: #2563eb;
-          font-size: 0.6875rem;
-          font-weight: 800;
-          flex-shrink: 0;
-          margin-top: 1px;
-        }
+        {/* Content Body Area */}
+        <div className="p-6 space-y-6">
+          {/* TAB 1: EXECUTIVE EMAIL */}
+          {activeTab === "email" && (
+            <div className="space-y-5">
+              {/* Recipient Bar */}
+              <div className="bg-slate-50 border border-slate-200/80 rounded-xl p-3.5 flex flex-wrap items-center justify-between gap-3 text-xs">
+                <div className="flex items-center gap-2">
+                  <span className="font-bold text-slate-500 uppercase tracking-wider">To:</span>
+                  <div className="flex items-center gap-1.5 font-semibold text-slate-800">
+                    <User size={14} className="text-blue-600" />
+                    <span>{execEmail.decision_maker || "Technology Leader"}</span>
+                    <span className="text-slate-400">({execEmail.decision_maker_title || "CTO"})</span>
+                  </div>
+                </div>
 
-        /* ── Content Stats Bar ─────────────────────── */
-        .content-stats {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          margin-top: 24px;
-          padding-top: 16px;
-          border-top: 1px solid #f1f5f9;
-          font-size: 0.75rem;
-          color: var(--muted, #64748b);
-          font-weight: 500;
-        }
-        .content-stats span {
-          display: flex;
-          align-items: center;
-          gap: 4px;
-        }
-        .dot-sep {
-          color: #cbd5e1;
-        }
+                <div className="flex items-center gap-2">
+                  <span className="font-bold text-slate-500 uppercase tracking-wider">Email:</span>
+                  {isEditing ? (
+                    <input
+                      type="email"
+                      value={editedRecipient}
+                      onChange={(e) => {
+                        setEditedRecipient(e.target.value);
+                        setHasEdits(true);
+                      }}
+                      className="border border-blue-300 rounded px-2 py-0.5 text-xs text-slate-800 font-mono focus:outline-none focus:ring-1 focus:ring-blue-500"
+                    />
+                  ) : (
+                    <span className="font-mono text-slate-700 bg-white border border-slate-200 px-2 py-0.5 rounded">
+                      {currentRecipient}
+                    </span>
+                  )}
+                </div>
+              </div>
 
-        /* ── Asset Actions (Regenerate + Tone + Copy) ── */
-        .asset-actions {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-          margin-top: 20px;
-          padding-top: 20px;
-          border-top: 1px solid #f1f5f9;
-        }
-        .action-btn {
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          padding: 8px 16px;
-          border-radius: 10px;
-          font-size: 0.8125rem;
-          font-weight: 600;
-          cursor: pointer;
-          transition: all 0.2s ease;
-          border: 1px solid var(--line, #e7eaf0);
-          background: white;
-          color: var(--muted, #64748b);
-        }
-        .action-btn:hover {
-          background: var(--canvas, #f6f8fc);
-          color: var(--navy, #0f172a);
-          border-color: #cbd5e1;
-        }
-        .regen-btn:hover {
-          color: var(--blue, #2563eb);
-          border-color: #93b4fd;
-          background: #f0f4ff;
-        }
-        .tone-btn:hover {
-          color: #8069FF;
-          border-color: #c4b5fd;
-          background: #f5f3ff;
-        }
-        .copy-btn {
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          padding: 8px 18px;
-          border-radius: 10px;
-          font-size: 0.8125rem;
-          font-weight: 600;
-          margin-left: auto;
-          background: #2563eb;
-          color: white;
-          transition: all 0.2s ease;
-          border: 1px solid #2563eb;
-          cursor: pointer;
-          box-shadow: 0 1px 3px rgba(37, 99, 235, 0.2);
-        }
-        .copy-btn:hover {
-          background: #1d4ed8;
-          border-color: #1d4ed8;
-          box-shadow: 0 3px 8px rgba(37, 99, 235, 0.3);
-        }
-        .copy-btn.copied {
-          background: #059669;
-          color: white;
-          border-color: #059669;
-          box-shadow: 0 2px 6px rgba(5, 150, 105, 0.25);
-        }
-        .copy-icon-wrap {
-          display: flex;
-          align-items: center;
-        }
+              {/* Subject Line */}
+              <div className="space-y-1.5">
+                <div className="flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-wider">
+                  <span>Subject Line</span>
+                  <span className="font-normal lowercase text-slate-400">
+                    {currentSubject.length} chars
+                  </span>
+                </div>
+                {isEditing ? (
+                  <input
+                    type="text"
+                    value={editedSubject}
+                    onChange={(e) => {
+                      setEditedSubject(e.target.value);
+                      setHasEdits(true);
+                    }}
+                    className="w-full text-base font-bold text-slate-900 border-2 border-blue-400 rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+                    placeholder="Enter email subject line..."
+                  />
+                ) : (
+                  <div className="text-base font-bold text-slate-900 bg-slate-50/50 border border-slate-200/80 rounded-xl px-4 py-2.5">
+                    {currentSubject || "Strategic Initiative Alignment"}
+                  </div>
+                )}
+              </div>
 
-        /* ── Empty Field ───────────────────────────── */
-        .empty-field {
-          display: flex;
-          align-items: flex-start;
-          gap: 14px;
-          padding: 32px 28px;
-          background: var(--canvas, #f6f8fc);
-          border: 1px dashed var(--line, #e7eaf0);
-          border-radius: 14px;
-          color: var(--muted, #64748b);
-        }
-        .empty-field-title {
-          font-weight: 700;
-          font-size: 0.875rem;
-          color: var(--navy, #0f172a);
-          margin-bottom: 4px;
-        }
-        .empty-field-hint {
-          font-size: 0.8125rem;
-          color: var(--muted, #64748b);
-          line-height: 1.5;
-        }
+              {/* Email Body */}
+              <div className="space-y-1.5">
+                <div className="flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-wider">
+                  <span>Personalized Email Body</span>
+                  <div className="flex items-center gap-3 font-normal text-slate-400 normal-case">
+                    <span><Type size={12} className="inline mr-1" />{wordCount(currentBody)} words</span>
+                    <span><Clock size={12} className="inline mr-1" />{readTime(wordCount(currentBody))}</span>
+                  </div>
+                </div>
 
-        /* ── Scrollbar ─────────────────────────────── */
-        .custom-scrollbar::-webkit-scrollbar {
-          height: 6px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-          background: transparent;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-          background-color: #cbd5e1;
-          border-radius: 20px;
-        }
-      `}</style>
+                {isEditing ? (
+                  <textarea
+                    rows={12}
+                    value={editedBody}
+                    onChange={(e) => {
+                      setEditedBody(e.target.value);
+                      setHasEdits(true);
+                    }}
+                    className="w-full text-sm leading-relaxed text-slate-800 border-2 border-blue-400 rounded-xl p-4 font-sans focus:outline-none focus:ring-2 focus:ring-blue-500/20 resize-y"
+                    placeholder="Write your email body..."
+                  />
+                ) : (
+                  <div className="text-sm leading-relaxed text-slate-800 bg-white border border-slate-200 rounded-xl p-5 whitespace-pre-wrap font-sans shadow-inner">
+                    {currentBody}
+                  </div>
+                )}
+              </div>
+
+              {/* Call To Action Highlight Card */}
+              {cta && (
+                <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-100 rounded-xl p-4 flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center shrink-0">
+                    <ArrowUpRight size={18} />
+                  </div>
+                  <div>
+                    <p className="text-[11px] font-bold text-blue-900 uppercase tracking-wider">
+                      Target Call To Action (Low Friction)
+                    </p>
+                    <p className="text-sm font-semibold text-blue-950 mt-0.5">{cta}</p>
+                  </div>
+                </div>
+              )}
+
+              {/* AI Conversion Reasoning */}
+              {reason && (
+                <div className="bg-slate-50 border border-slate-200/80 rounded-xl p-3.5 flex items-start gap-2.5 text-xs text-slate-600">
+                  <Sparkles size={16} className="text-purple-600 shrink-0 mt-0.5" />
+                  <div>
+                    <span className="font-bold text-slate-800">Why this email will convert: </span>
+                    <span>{reason}</span>
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* TAB 2: LINKEDIN INMAIL */}
+          {activeTab === "linkedin" && (
+            <div className="space-y-4">
+              <div className="bg-blue-50/50 border border-blue-100 rounded-xl p-3.5 flex items-center gap-2 text-xs text-blue-900">
+                <Linkedin size={16} className="text-blue-600 shrink-0" />
+                <span>
+                  Champion Outreach: Direct message tailored for <strong>{selectedCompany.linkedin_message?.to || "VP Engineering"}</strong>
+                </span>
+              </div>
+
+              <div className="bg-white border border-slate-200 rounded-xl p-5 whitespace-pre-wrap text-sm text-slate-800 leading-relaxed font-sans shadow-inner">
+                {selectedCompany.linkedin_message?.body || "Champion InMail message ready."}
+              </div>
+            </div>
+          )}
+
+          {/* TAB 3: DISCOVERY CALL SCRIPT */}
+          {activeTab === "call" && (
+            <div className="space-y-5">
+              <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-3">
+                <div>
+                  <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1">
+                    Opening Hook
+                  </span>
+                  <p className="text-sm text-slate-800 font-medium bg-white p-3 rounded-lg border border-slate-200">
+                    {selectedCompany.call_script?.opening}
+                  </p>
+                </div>
+
+                <div>
+                  <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1">
+                    High-Impact Discovery Questions
+                  </span>
+                  <div className="space-y-2">
+                    {(selectedCompany.call_script?.discovery_questions || []).map((q: string, i: number) => (
+                      <div key={i} className="flex items-start gap-2 text-sm bg-white p-3 rounded-lg border border-slate-200 text-slate-800">
+                        <span className="font-bold text-blue-600">{i + 1}.</span>
+                        <span>{q}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1">
+                    Closing Alignment & Next Step
+                  </span>
+                  <p className="text-sm text-slate-800 font-medium bg-white p-3 rounded-lg border border-slate-200">
+                    {selectedCompany.call_script?.close}
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* ── Bottom Action Toolbar ─────────────────────── */}
+        <div className="border-t border-slate-200 bg-slate-50/80 px-6 py-4 flex flex-wrap items-center justify-between gap-3">
+          <div className="flex flex-wrap items-center gap-2">
+            {/* Tone Presets Popover */}
+            <div className="relative">
+              <button
+                onClick={() => setShowToneDropdown(!showToneDropdown)}
+                disabled={isRegenerating}
+                className="px-3 py-2 rounded-xl text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 transition-all flex items-center gap-1.5 shadow-sm"
+              >
+                {isRegenerating ? (
+                  <Loader2 size={14} className="animate-spin text-blue-600" />
+                ) : (
+                  <SlidersHorizontal size={14} className="text-slate-500" />
+                )}
+                <span>Refine Tone</span>
+              </button>
+
+              {showToneDropdown && (
+                <div className="absolute bottom-full left-0 mb-2 w-80 bg-white rounded-2xl shadow-2xl border border-slate-200 p-2.5 z-50 animate-in fade-in slide-in-from-bottom-2">
+                  <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider px-2 py-1">
+                    Grok AI Tone Presets
+                  </div>
+                  <div className="space-y-1 mt-1">
+                    {TONE_OPTIONS.map((t) => (
+                      <button
+                        key={t.id}
+                        onClick={() => handleRegenerateWithTone(t.id)}
+                        className="w-full text-left p-2.5 rounded-xl hover:bg-blue-50/80 transition-colors flex flex-col gap-0.5"
+                      >
+                        <div className="flex items-center justify-between">
+                          <span className="font-bold text-xs text-slate-900 flex items-center gap-1.5">
+                            <span>{t.icon}</span> {t.label}
+                          </span>
+                          <span className="text-[10px] bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full font-bold">
+                            {t.badge}
+                          </span>
+                        </div>
+                        <p className="text-[11px] text-slate-500 line-clamp-1">{t.description}</p>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* In-Place Edit / Done Editing */}
+            {activeTab === "email" && (
+              <button
+                onClick={() => {
+                  if (isEditing) {
+                    handleSaveEdits();
+                  } else {
+                    setIsEditing(true);
+                  }
+                }}
+                className={`px-3 py-2 rounded-xl text-xs font-bold border transition-all flex items-center gap-1.5 shadow-sm ${
+                  isEditing 
+                    ? "bg-blue-600 text-white border-blue-600 hover:bg-blue-700" 
+                    : "bg-white border-slate-200 text-slate-700 hover:bg-slate-50"
+                }`}
+              >
+                <Edit3 size={14} />
+                <span>{isEditing ? "Save Edits" : "Edit Draft"}</span>
+              </button>
+            )}
+
+            {/* Reset AI Draft */}
+            {hasEdits && (
+              <button
+                onClick={() => {
+                  const draft = draftsByCompany[companyName];
+                  setEditedSubject(draft?.subject || execEmail.subject || "");
+                  setEditedBody(draft?.body || execEmail.body || "");
+                  setEditedRecipient(draft?.recipient_email || execEmail.recipient_email || "");
+                  setHasEdits(false);
+                  setIsEditing(false);
+                }}
+                className="px-3 py-2 rounded-xl text-xs font-bold text-rose-600 bg-rose-50 border border-rose-200 hover:bg-rose-100 transition-all flex items-center gap-1.5"
+              >
+                <RotateCcw size={14} /> Reset AI Draft
+              </button>
+            )}
+
+            {/* Copy Button */}
+            <button
+              onClick={() => {
+                if (activeTab === "email") {
+                  handleCopy(`Subject: ${currentSubject}\n\n${currentBody}`, `email-${selectedCompanyIndex}`);
+                } else if (activeTab === "linkedin") {
+                  handleCopy(selectedCompany.linkedin_message?.body || "", `li-${selectedCompanyIndex}`);
+                } else {
+                  handleCopy(getCallScriptText(), `call-${selectedCompanyIndex}`);
+                }
+              }}
+              className="px-3 py-2 rounded-xl text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 transition-all flex items-center gap-1.5 shadow-sm"
+            >
+              {copied ? <CheckCircle2 size={14} className="text-emerald-600" /> : <Copy size={14} />}
+              <span>{copied ? "Copied!" : "Copy"}</span>
+            </button>
+
+            {/* Download Button */}
+            <button
+              onClick={handleDownload}
+              className="px-3 py-2 rounded-xl text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 transition-all flex items-center gap-1.5 shadow-sm"
+              title="Download draft"
+            >
+              <Download size={14} />
+            </button>
+          </div>
+
+          {/* Right Action Hub: Approve & Send */}
+          <div className="flex items-center gap-2.5">
+            {currentStatus === "draft" && (
+              <button
+                onClick={handleApproveDraft}
+                className="px-4 py-2 rounded-xl text-xs font-bold bg-white border border-emerald-300 text-emerald-700 hover:bg-emerald-50 transition-all flex items-center gap-1.5 shadow-sm"
+              >
+                <ThumbsUp size={14} /> Approve Draft
+              </button>
+            )}
+
+            <button
+              onClick={handleSendEmail}
+              disabled={isSending}
+              className="px-5 py-2.5 rounded-xl text-xs font-bold bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 transition-all flex items-center gap-2 shadow-md shadow-blue-500/20"
+            >
+              {isSending ? (
+                <>
+                  <Loader2 size={15} className="animate-spin" />
+                  <span>Dispatching...</span>
+                </>
+              ) : (
+                <>
+                  <Send size={15} />
+                  <span>Send Email Now</span>
+                </>
+              )}
+            </button>
+          </div>
+        </div>
+      </div>
     </motion.div>
   );
 }

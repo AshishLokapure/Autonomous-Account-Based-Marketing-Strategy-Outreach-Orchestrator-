@@ -76,9 +76,15 @@ AGENTS = (
         "service": OutreachService,
         "delay": 2.0,
         "steps": [
-            "Generating Email",
-            "Generating LinkedIn Message",
-            "Generating Next Best Action",
+            "Load Research Report",
+            "Load Stakeholder Report",
+            "Load Intent Report",
+            "Load Company Emails",
+            "Load Meeting Transcript",
+            "Extract Context",
+            "Call Grok API",
+            "Generate Personalized Email",
+            "Store Draft in Supabase",
         ],
     },
 )
@@ -161,6 +167,19 @@ class CampaignOrchestrator:
                 self._store_result(run_id, agent_id, result["result"])
                 self._update(run_id, progress=(index + 1) * 20)
                 self._event(run_id, "completed", f"{name} completed")
+                
+                # Check auto-send settings if this is the Outreach Agent
+                if agent_id == "outreach":
+                    try:
+                        from app.services.settings_service import SettingsService
+                        # We use a placeholder for user_id here since orchestrator runs without user context in this demo
+                        is_auto = SettingsService.is_auto_send_enabled("00000000-0000-0000-0000-000000000000")
+                        if is_auto:
+                            self._event(run_id, "auto-send", "Auto-send enabled: Draft emails queued for sending")
+                        else:
+                            self._event(run_id, "auto-send", "Auto-send disabled: Draft emails saved for review")
+                    except Exception as e:
+                        pass
 
             except Exception as exc:
                 self._set_agent(run_id, index, status="failed", current_step=None)

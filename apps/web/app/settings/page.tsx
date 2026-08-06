@@ -1,2 +1,10 @@
-import { FeaturePage } from "@/components/common/feature-page";
-export default function SettingsPage(){return <FeaturePage active="Settings" eyebrow="WORKSPACE CONFIGURATION" title="Settings" description="Manage your workspace, integrations, AI controls, and security preferences." metric="8" metricLabel="Connected integrations" items={[{title:"CRM sync",detail:"Salesforce account records are synchronized and healthy.",tag:"Connected"},{title:"AI governance",detail:"Evidence validation and data grounding are enabled for all agents.",tag:"Protected"},{title:"Workspace security",detail:"Single sign-on and audit logging are active for your organization.",tag:"Secure"}]}/>}
+import { AppShell } from "@/components/layout/app-shell";
+import { SettingsModule } from "@/components/settings/settings-module";
+
+export default function SettingsPage() {
+  return (
+    <AppShell active="Settings">
+      <SettingsModule />
+    </AppShell>
+  );
+}

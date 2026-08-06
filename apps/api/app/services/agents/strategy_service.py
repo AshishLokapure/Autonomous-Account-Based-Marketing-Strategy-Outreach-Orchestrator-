@@ -9,7 +9,13 @@ distinct strategic recommendations.
 import time
 
 from app.core.logger import logger
-from app.services.agents import load_research_data, pick, seed, validate_product
+from app.services.agents import (
+    AgentResultCache,
+    load_research_data,
+    pick,
+    seed,
+    validate_product,
+)
 from app.services.agents.intent_service import IntentService
 
 CHANNELS = [
@@ -96,9 +102,13 @@ class StrategyService:
     AGENT = "Strategy Agent"
 
     def run(self, product: str) -> dict:
+        cached = AgentResultCache.get(self.AGENT, product)
+        if cached:
+            return cached
+
         started = time.perf_counter()
         validate_product(product)
-        logger.info("%s started - product=%s", self.AGENT, product)
+        logger.info(f"{self.AGENT} started - product={product}")
 
         research = load_research_data(product)
         intent = IntentService().run(product)["result"]
@@ -173,14 +183,14 @@ class StrategyService:
         company_results.sort(key=lambda c: c["priority_score"], reverse=True)
 
         execution_time = round(time.perf_counter() - started, 3)
-        logger.info("%s completed - %s strategies (%ss)", self.AGENT, len(company_results), execution_time)
+        logger.info(f"{self.AGENT} completed - {len(company_results)} strategies ({execution_time}s)")
 
         p1 = sum(1 for c in company_results if c["priority_tier"] == "P1")
         p2 = sum(1 for c in company_results if c["priority_tier"] == "P2")
         p3 = sum(1 for c in company_results if c["priority_tier"] == "P3")
         avg_score = round(sum(c["priority_score"] for c in company_results) / max(len(company_results), 1))
 
-        return {
+        result = {
             "agent": self.AGENT,
             "status": "completed",
             "execution_time": execution_time,
@@ -197,3 +207,5 @@ class StrategyService:
                 "companies": company_results,
             },
         }
+        AgentResultCache.set(self.AGENT, product, result)
+        return result

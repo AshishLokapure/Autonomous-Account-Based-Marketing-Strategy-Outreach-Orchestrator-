@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=DM+Mono:wght@400;500&display=swap');
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* ------------------------------------------------------------------
    Design tokens — warm executive palette (evolved from design.md)
    Canvas: warm off-white paper · Surface: white cards · Ink text

@@ -12,7 +12,7 @@ ProductName = Literal["Azure AI", "AWS Cloud", "Claude Enterprise"]
 
 
 class AgentRunCreate(BaseModel):
-    product: ProductName
+    product: str = "Azure AI"
 
 
 @router.post("", status_code=status.HTTP_202_ACCEPTED)

@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useMemo } from "react";
 import { motion } from "framer-motion";
@@ -98,8 +98,8 @@ export function StakeholderCenter() {
       <div className="stack" style={{ marginTop: 20 }}>
         <h2 className="section-title">Company Breakdown</h2>
         <div className="analytics-grid">
-          {companies.map((company: any) => (
-            <div key={company.company_name} className="card company-card">
+          {companies.map((company: any, cIdx: number) => (
+            <div key={`${company.company_name || 'company'}-${cIdx}`} className="card company-card">
               <div className="company-head">
                 <div>
                   <h3 className="card-title">{company.company_name}</h3>
@@ -120,17 +120,19 @@ export function StakeholderCenter() {
                 </div>
               </div>
               <div className="topic-row">
-                {(company.meeting_analytics?.key_topics ?? []).map((topic: string) => <span key={topic} className="tag">{topic}</span>)}
+                {(company.meeting_analytics?.key_topics ?? []).map((topic: string, tIdx: number) => (
+                  <span key={`${company.company_name || cIdx}-topic-${topic}-${tIdx}`} className="tag">{topic}</span>
+                ))}
               </div>
               <div className="stakeholder-list">
-                {(company.stakeholders ?? []).map((stakeholder: any) => (
-                  <div key={`${company.company_name}-${stakeholder.name}`} className="stakeholder-row">
+                {(company.stakeholders ?? []).map((stakeholder: any, sIdx: number) => (
+                  <div key={`${company.company_name || cIdx}-${stakeholder.name || 'stk'}-${stakeholder.title || ''}-${stakeholder.type || ''}-${sIdx}`} className="stakeholder-row">
                     <div>
                       <strong>{stakeholder.name}</strong>
                       <div className="mini-copy">{stakeholder.title}</div>
                     </div>
                     <div className="stakeholder-meta">
-                      <span className={`role-pill ${stakeholder.type}`}>{stakeholder.type.replace("_", " ")}</span>
+                      <span className={`role-pill ${stakeholder.type}`}>{stakeholder.type?.replace("_", " ")}</span>
                       <span className="mini-copy">{stakeholder.influence}</span>
                     </div>
                   </div>

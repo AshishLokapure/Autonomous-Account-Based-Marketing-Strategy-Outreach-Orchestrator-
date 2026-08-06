@@ -30,7 +30,6 @@ const navigationGroups = [
     label: "OPERATIONS",
     items: [
       { label: "Agent Monitor", href: "/agent-monitor", icon: Bot },
-      { label: "Notifications", href: "/notifications", icon: Bell },
       { label: "Settings", href: "/settings", icon: Settings },
     ],
   },

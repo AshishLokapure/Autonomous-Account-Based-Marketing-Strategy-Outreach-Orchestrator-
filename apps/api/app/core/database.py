@@ -37,5 +37,5 @@ def check_database_connection() -> bool:
             connection.execute(text("select 1"))
         return True
     except Exception as exc:
-        logger.warning("Database connection check failed: %s", exc)
+        logger.warning(f"Database connection check failed: {exc}")
         return False

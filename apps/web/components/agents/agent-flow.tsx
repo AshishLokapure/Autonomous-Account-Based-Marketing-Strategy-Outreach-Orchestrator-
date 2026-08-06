@@ -542,8 +542,6 @@ export function AgentFlow() {
                 <strong>{campaign.currentStep ?? "Waiting"}</strong>
                 <p>Current step</p>
               </div>
-            </div>
-            <div className="af-sidebar-row">
               <div>
                 <strong>{completedAgents.length}</strong>
                 <p>Success count</p>
@@ -654,6 +652,7 @@ export function AgentFlow() {
         .aside-items div { display:flex; justify-content:space-between; align-items:center; font-size:13px; color:#e2e8f0; }
         .aside-value { font-size:22px; font-weight:800; color:#fff; }
         .af-sidebar-row { display:grid; gap:14px; }
+        .af-sidebar-row + .af-sidebar-row { margin-top:14px; }
         .af-sidebar-row > div { background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.08); border-radius:14px; padding:16px; }
         .af-sidebar-row strong { display:block; font-size:20px; font-weight:800; margin-bottom:6px; }
         .af-sidebar-row p { margin:0; color:#cbd5e1; font-size:12px; }

@@ -55,6 +55,43 @@ def load_research_data(product: str) -> dict:
     return data
 
 
+PRODUCT_EMAIL_FILES: dict[str, str] = {
+    "Azure AI": "azure-mails.json",
+    "AWS Cloud": "aws-mails.json",
+    "Claude Enterprise": "claude-mails.json",
+}
+
+PRODUCT_TRANSCRIPT_FILES: dict[str, str] = {
+    "Azure AI": "azure-transcripts.json",
+    "AWS Cloud": "aws-transcripts.json",
+    "Claude Enterprise": "claude-transcripts.json",
+}
+
+
+@lru_cache(maxsize=16)
+def load_company_emails(product: str) -> list[dict]:
+    """Load logged email threads for a product workspace."""
+    validate_product(product)
+    filename = PRODUCT_EMAIL_FILES.get(product, "azure-mails.json")
+    path = DUMMY_OUTPUTS_DIR / filename
+    if not path.exists():
+        return []
+    with path.open(encoding="utf-8") as fp:
+        return json.load(fp)
+
+
+@lru_cache(maxsize=16)
+def load_meeting_transcripts(product: str) -> list[dict]:
+    """Load recorded meeting transcripts for a product workspace."""
+    validate_product(product)
+    filename = PRODUCT_TRANSCRIPT_FILES.get(product, "azure-transcripts.json")
+    path = DUMMY_OUTPUTS_DIR / filename
+    if not path.exists():
+        return []
+    with path.open(encoding="utf-8") as fp:
+        return json.load(fp)
+
+
 def seed(text: str) -> int:
     """Deterministic small integer derived from text (stable across runs)."""
     return zlib.crc32(text.encode("utf-8"))
@@ -63,3 +100,26 @@ def seed(text: str) -> int:
 def pick(pool: list, text: str, salt: str = "") -> object:
     """Deterministically pick an item from a pool based on text."""
     return pool[seed(text + salt) % len(pool)]
+
+
+class AgentResultCache:
+    """In-memory cache for agent execution outputs to eliminate redundant recalculation."""
+
+    _cache: dict[tuple[str, str], dict] = {}
+
+    @classmethod
+    def get(cls, agent_name: str, product: str) -> dict | None:
+        """Retrieve cached agent output for a given product/workspace."""
+        return cls._cache.get((agent_name.lower().strip(), product.strip().lower()))
+
+    @classmethod
+    def set(cls, agent_name: str, product: str, result: dict) -> None:
+        """Cache agent output for a given product/workspace."""
+        cls._cache[(agent_name.lower().strip(), product.strip().lower())] = result
+
+    @classmethod
+    def clear(cls) -> None:
+        """Clear all cached agent outputs."""
+        cls._cache.clear()
+
+

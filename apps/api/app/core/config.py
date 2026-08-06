@@ -10,8 +10,22 @@ class Settings(BaseSettings):
     database_url: str = "sqlite:///./accountpilot_demo.db"
     jwt_secret_key: str = ""
     jwt_algorithm: str = "HS256"
-    access_token_expire_minutes: int = 60
-    cors_origins: str = "http://localhost:3000"
+    cors_origins: str = "http://localhost:3000,http://127.0.0.1:3000,http://localhost:3001,http://127.0.0.1:3001,http://localhost:3002,http://127.0.0.1:3002"
+
+    mail_server: str = ""
+    mail_port: int = 587
+    mail_username: str = ""
+    mail_password: str = ""
+    mail_from: str = ""
+    mail_from_name: str = "Marketing Agent"
+
+    supabase_url: str = ""
+    supabase_anon_key: str = ""
+    groq_api_key: str = ""
+    grok_api_key: str = ""
+    xai_api_key: str = ""
+    sendinblue_api_key: str = ""
+    brevo_api_key: str = ""
 
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
 

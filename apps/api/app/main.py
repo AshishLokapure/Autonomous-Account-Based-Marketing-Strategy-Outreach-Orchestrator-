@@ -1,4 +1,4 @@
-﻿"""AccountPilot AI FastAPI application entrypoint."""
+"""AccountPilot AI FastAPI application entrypoint."""
 
 from contextlib import asynccontextmanager
 
@@ -31,7 +31,14 @@ app = FastAPI(
 )
 app.add_middleware(SecurityHeadersMiddleware)
 app.add_middleware(RequestLoggingMiddleware)
-app.add_middleware(CORSMiddleware, allow_origins=settings.cors_origin_list, allow_credentials=True, allow_methods=["*"], allow_headers=["*"])
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=settings.cors_origin_list,
+    allow_origin_regex=r"^https?://(localhost|127\.0\.0\.1)(:\d+)?$",
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 register_exception_handlers(app)
 app.include_router(api_router, prefix=settings.api_v1_prefix)
 

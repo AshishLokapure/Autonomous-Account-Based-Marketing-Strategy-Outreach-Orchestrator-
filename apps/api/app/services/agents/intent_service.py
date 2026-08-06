@@ -9,7 +9,11 @@ from dataclasses import dataclass
 
 from app.core.logger import logger
 from app.repositories.intent_repository import IntentRepository
-from app.services.agents import load_research_data, validate_product
+from app.services.agents import (
+    AgentResultCache,
+    load_research_data,
+    validate_product,
+)
 from app.services.agents.stakeholder_service import StakeholderService
 
 POSITIVE_SIGNAL_DEFINITIONS = (
@@ -263,9 +267,14 @@ class IntentService:
         self.repository = repository or IntentRepository()
 
     def run(self, product: str, campaign_id: str | None = None) -> dict:
+        if not campaign_id:
+            cached = AgentResultCache.get(self.AGENT, product)
+            if cached:
+                return cached
+
         started = time.perf_counter()
         validate_product(product)
-        logger.info("%s started - product=%s campaign_id=%s", self.AGENT, product, campaign_id)
+        logger.info(f"{self.AGENT} started - product={product} campaign_id={campaign_id}")
 
         research = load_research_data(product)
         stakeholder = StakeholderService().run(product)["result"]
@@ -469,13 +478,9 @@ class IntentService:
         stored_result = self.repository.save(product=product, campaign_id=campaign_id, payload=response_payload)
 
         logger.info(
-            "%s completed - avg intent=%s high_intent=%s stored=%s",
-            self.AGENT,
-            average_intent,
-            len(high_intent_companies),
-            stored_result["path"],
+            f"{self.AGENT} completed - avg intent={average_intent} high_intent={len(high_intent_companies)} stored={stored_result['path']}"
         )
-        return {
+        result = {
             "agent": self.AGENT,
             "status": "completed",
             "execution_time": response_payload["execution_time"],
@@ -490,5 +495,8 @@ class IntentService:
                 "stored_result": stored_result,
             },
         }
+        if not campaign_id:
+            AgentResultCache.set(self.AGENT, product, result)
+        return result
 
 

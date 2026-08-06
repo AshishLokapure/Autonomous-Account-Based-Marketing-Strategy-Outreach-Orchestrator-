@@ -3,13 +3,17 @@
 import time
 
 from app.core.logger import logger
-from app.services.agents import load_research_data, validate_product
+from app.services.agents import AgentResultCache, load_research_data, validate_product
 
 
 class ResearchService:
     AGENT = "Research Agent"
 
     def run(self, product: str) -> dict:
+        cached = AgentResultCache.get(self.AGENT, product)
+        if cached:
+            return cached
+
         started = time.perf_counter()
         validate_product(product)
         logger.info(f"{self.AGENT} started — product={product}")
@@ -21,7 +25,7 @@ class ResearchService:
 
         execution_time = round(time.perf_counter() - started, 3)
         logger.info(f"{self.AGENT} completed — {len(companies)} companies ({execution_time}s)")
-        return {
+        result = {
             "agent": self.AGENT,
             "status": "completed",
             "execution_time": execution_time,
@@ -34,3 +38,6 @@ class ResearchService:
                 "companies": companies,
             },
         }
+        AgentResultCache.set(self.AGENT, product, result)
+        return result
+
