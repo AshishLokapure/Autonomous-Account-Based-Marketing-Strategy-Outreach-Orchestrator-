@@ -15,10 +15,16 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
+
+    # Stable production domains
     allow_origins=[
-        "https://innovahack-j0pxy5irm-manthann-0s-projects.vercel.app",
         "https://innovahack-zeta.vercel.app",
+        "http://localhost:3000",
     ],
+
+    # Allow Vercel preview/deployment URLs
+    allow_origin_regex=r"https://.*\.vercel\.app",
+
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
