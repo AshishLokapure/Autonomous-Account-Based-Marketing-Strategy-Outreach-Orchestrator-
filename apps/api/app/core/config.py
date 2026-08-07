@@ -10,8 +10,16 @@ class Settings(BaseSettings):
     database_url: str = "sqlite:///./accountpilot_demo.db"
     jwt_secret_key: str = ""
     jwt_algorithm: str = "HS256"
-    cors_origins: str = "http://localhost:3000,http://127.0.0.1:3000,http://localhost:3001,http://127.0.0.1:3001,http://localhost:3002,http://127.0.0.1:3002"
-
+    cors_origins: str = (
+        "http://localhost:3000,"
+        "http://127.0.0.1:3000,"
+        "http://localhost:3001,"
+        "http://127.0.0.1:3001,"
+        "http://localhost:3002,"
+        "http://127.0.0.1:3002,"
+        "https://innovahack-zeta.vercel.app,"
+        "https://innovahack-73xbd87b2-manthann-0s-projects.vercel.app"
+    )
     mail_server: str = ""
     mail_port: int = 587
     mail_username: str = ""
