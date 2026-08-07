@@ -31,10 +31,11 @@ async def root():
 app = CORSMiddleware(
     app=fastapi_app,
     allow_origins=[
+        "https://innovahack-73xbd87b2-manthann-0s-projects.vercel.app",
         "https://innovahack-zeta.vercel.app",
+        "http://localhost:3000",
     ],
-    allow_origin_regex=r"https://[a-zA-Z0-9-]+\.vercel\.app",
     allow_credentials=True,
-    allow_methods=["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allow_methods=["*"],
     allow_headers=["*"],
 )
