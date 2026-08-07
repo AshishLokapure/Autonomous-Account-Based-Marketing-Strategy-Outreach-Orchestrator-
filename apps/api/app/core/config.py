@@ -18,7 +18,7 @@ class Settings(BaseSettings):
         "http://localhost:3002,"
         "http://127.0.0.1:3002,"
         "https://innovahack-zeta.vercel.app,"
-        "https://innovahack-73xbd87b2-manthann-0s-projects.vercel.app"
+        "https://innovahack-1yxdrokox-manthann-0s-projects.vercel.app"
     )
     mail_server: str = ""
     mail_port: int = 587
